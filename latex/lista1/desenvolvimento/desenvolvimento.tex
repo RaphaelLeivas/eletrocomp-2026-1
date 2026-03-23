@@ -1,0 +1,74 @@
+\chapter*{Equações Úteis}
+
+As seguintes equações serão referenciadas várias vezes ao longo da lista, 
+então são definidas aqui para facilitar as referências.
+
+\begin{equation}
+\nabla \times \mathbf{E} = -\frac{\partial \mathbf{B}}{\partial t}
+\label{eq:faraday_EB}
+\end{equation}
+
+\begin{equation}
+\nabla \times \mathbf{H} = \mathbf{J} + \frac{\partial \mathbf{D}}{\partial t}
+\label{eq:ampere_HD}
+\end{equation}
+
+\begin{equation}
+\nabla \cdot \mathbf{D} = \rho
+\label{eq:gauss_D}
+\end{equation}
+
+\begin{equation}
+\nabla \cdot \mathbf{B} = 0
+\label{eq:gauss_B}
+\end{equation}
+
+% \begin{equation}
+% \iint_{\partial V} \mathbf{E} \cdot d\mathbf{A} = \frac{1}{\varepsilon_0} \iiint_{V} \rho \, dV
+% \label{eq:gauss_electric_integral}
+% \end{equation}
+
+% \begin{equation}
+% \iint_{\partial V} \mathbf{B} \cdot d\mathbf{A} = 0
+% \label{eq:gauss_magnetic_integral}
+% \end{equation}
+
+% \begin{equation}
+% \oint_{\partial S} \mathbf{E} \cdot d\mathbf{l} = - \frac{d}{dt} \iint_{S} \mathbf{B} \cdot d\mathbf{A}
+% \label{eq:faraday_integral}
+% \end{equation}
+
+% \begin{equation}
+% \oint_{\partial S} \mathbf{B} \cdot d\mathbf{l} = \mu_0 \iint_{S} \mathbf{J} \cdot d\mathbf{A} + \mu_0 \varepsilon_0 \frac{d}{dt} \iint_{S} \mathbf{E} \cdot d\mathbf{A}
+% \label{eq:ampere_maxwell_integral}
+% \end{equation}
+
+\chapter{Questão 1}\label{cap:q1}
+
+Usando a equação (\ref{eq:ampere_maxwell}), podemos derivar a equação de onda para o campo elétrico.
+
+
+\begin{equation}
+\nabla \cdot \mathbf{B} = 0
+\label{eq:teste}
+\end{equation}
+
+\chapter{Questão 4}\label{cap:q4}
+
+Usando (\ref{eq:ampere_HD}), tomamos o divergente nos dois lados
+
+\[ \nabla \cdot \left( \nabla \times \mathbf{H} \right) = \nabla \cdot \left( \mathbf{J} + \frac{\partial \mathbf{D}}{\partial t} \right) \]
+
+Divergente do rotacional é zero, e aplicando a propriedade distribuitiva do divergente 
+sobre adição
+
+\[ 0 = \nabla \cdot \mathbf{J} +  \nabla \cdot \left( \frac{\partial  \mathbf{D}}{\partial t} \right) \]
+
+Divergente é derivada espacial, que independe da derivada de tempo de $\mathbf{D}$
+
+\[ 0 = \nabla \cdot \mathbf{J} +  \frac{\partial }{\partial t} \left(  \nabla \cdot \mathbf{D} \right) \]
+
+
+Substituindo (\ref{eq:gauss_D}) na equação acima, obtemos a equação da conservação de carga:
+
+\[ \boxed{\nabla \cdot \mathbf{J} + \frac{\partial \rho}{\partial t} = 0} \]
