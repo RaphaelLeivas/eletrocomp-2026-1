@@ -45,13 +45,191 @@ então são definidas aqui para facilitar as referências.
 
 \chapter{Questão 1}\label{cap:q1}
 
-Usando a equação (\ref{eq:ampere_maxwell}), podemos derivar a equação de onda para o campo elétrico.
+\section{Item a)}
+
+\[ \mathbf{u} = \left[ u_x \quad u_y \quad u_z \right] \]
+
+\[ \nabla \times \mathbf{u} = \left[ 
+    \pd{u_z}{y} - \pd{u_y}{z} \quad
+     \pd{u_x}{z} - \pd{u_z}{x} \quad
+     \pd{u_y}{x} - \pd{u_x}{y}
+\right] \]
+
+\[ \nabla \cdot \left( \nabla \times \mathbf{u} \right)  = 
+    \pd{}{x} \left(  \pd{u_z}{y} - \pd{u_y}{z}  \right) +
+    \pd{}{y} \left( \pd{u_x}{z} - \pd{u_z}{x} \right) +
+    \pd{}{z} \left( \pd{u_y}{x} - \pd{u_x}{y} \right)
+ \]
+
+\[ \nabla \cdot \left( \nabla \times \mathbf{u} \right)  = 
+    \pdm{u_z}{x}{y} - \pdm{u_y}{x}{z} +
+    \pdm{u_x}{y}{z} - \pdm{u_z}{y}{x} +
+    \pdm{u_y}{z}{x} - \pdm{u_x}{z}{y}
+ \]
+
+Agrupando os termos que possuem o mesmo termo a ser derivado
+
+\[ \nabla \cdot \left( \nabla \times \mathbf{u} \right)  = 
+\pdm{u_x}{y}{z} - \pdm{u_x}{z}{y} + \pdm{u_y}{z}{x} - \pdm{u_y}{x}{z} + \pdm{u_z}{x}{y} - \pdm{u_z}{y}{x}   
+ \]
+
+Assumindo que  
+
+\[ \pdm{A}{x}{y} = \pdm{A}{y}{x}  \] 
+
+Temos 
+
+\[ \nabla \cdot \left( \nabla \times \mathbf{u} \right)  = 
+0 + 0 + 0   
+ \]
+
+ \[ \boxed{\nabla \cdot \left( \nabla \times \mathbf{u} \right)  = 0} 
+ \]
+
+\section{Item b)}
+
+\begin{flalign*}
+\nabla \cdot \left( \phi \mathbf{u} \right) &= \nabla \cdot \left[ \phi u_x \quad \phi u_y \quad \phi u_z \right] &&\\\nonumber
+            &= \pd{\phi u_x}{x} + \pd{\phi u_y}{y} + \pd{\phi u_z}{z}&&
+\end{flalign*}
+
+Aplica a regra do produto da derivada
+
+\begin{flalign*}
+\nabla \cdot \left( \phi \mathbf{u} \right) &= \pd{\phi}{x}u_x + \pd{u_x}{x} \phi + \pd{\phi}{y}u_y + \pd{u_y}{y} \phi + \pd{\phi}{z}u_z + \pd{u_z}{z} \phi &&\\\nonumber
+            &= \phi \left( \pd{u_x}{x} + \pd{u_y}{y} + \pd{u_z}{z} \right) + \left[ \pd{\phi}{x} \quad \pd{\phi}{y} \quad \pd{\phi}{z} \right] \cdot \left[ u_x \quad u_y \quad u_z \right] &&
+\end{flalign*}
+
+\[ \boxed{\nabla \cdot \left( \phi \mathbf{u} \right) = \phi \left( \nabla \cdot \mathbf{u} \right) + \left( \nabla \phi \right) \cdot \mathbf{u}  } \]
+\section{Item c)}
+
+\[ \mathbf{u} \times \mathbf{v} = \left[
+u_y v_z - u_z v_y \quad 
+u_z v_x - u_x v_z \quad 
+u_x v_y - u_y v_x
+\right]  \]
+
+\[ \nabla \cdot \left( \mathbf{u} \times \mathbf{v} \right)  = 
+ \pd{}{x} \left(  u_y v_z - u_z v_y \right) +
+ \pd{}{y} \left( u_z v_x - u_x v_z \right) +
+ \pd{}{z} \left( u_x v_y - u_y v_x \right)
+ \]
+
+\[ \nabla \cdot \left( \mathbf{u} \times \mathbf{v} \right)  = 
+ \pd{u_y v_z}{x} - \pd{u_z v_y}{x} +
+ \pd{u_z v_x}{y} - \pd{u_x v_z}{y} +
+ \pd{u_x v_y}{z} - \pd{u_y v_x}{z}
+ \]
+
+ Aplica a regra do produto da derivada
+
+ \begin{footnotesize}
+    \[
+        \pd{u_y}{x}v_z + \pd{v_z}{x}u_x - \left( \pd{u_z}{x}v_y + \pd{v_y}{x}u_z \right)  +
+        \pd{u_z}{y}v_x + \pd{v_x}{y}u_z - \left( \pd{u_x}{y}v_z + \pd{v_z}{y}u_x \right) +
+        \pd{u_x}{z}v_y + \pd{v_y}{z}u_x - \left( \pd{u_y}{z}v_x + \pd{v_x}{z}u_y \right)
+    \]
+ \end{footnotesize}
+
+Puxa a definição do rotacional de um vetor
+
+\begin{footnotesize}
+    \[ \nabla \times \mathbf{u} =
+        \left[
+        \frac{\partial u_z}{\partial y} - \frac{\partial u_y}{\partial z} \quad
+        \frac{\partial u_x}{\partial z} - \frac{\partial u_z}{\partial x} \quad
+        \frac{\partial u_y}{\partial x} - \frac{\partial u_x}{\partial y}
+        \right] \quad , \quad \nabla \times \mathbf{v} =
+        \left[
+        \frac{\partial v_z}{\partial y} - \frac{\partial v_y}{\partial z} \quad
+        \frac{\partial v_x}{\partial z} - \frac{\partial v_z}{\partial x} \quad
+        \frac{\partial v_y}{\partial x} - \frac{\partial v_x}{\partial y}
+        \right] \]
+\end{footnotesize}
+
+Agrupa esses termos na expressão obtida com a regra do produto
+
+\textcolor{red}{Dúvida: o que significa o termo $\mathbf{v} \left( \nabla \times \mathbf{v} \right)$?
+É o vetor $\mathbf{v}$ produto escalar com o rotacional? 
+}
 
 
-\begin{equation}
-\nabla \cdot \mathbf{B} = 0
-\label{eq:teste}
-\end{equation}
+\section{Item d)}
+
+\[ \nabla \phi = \left[ \pd{\phi}{x} \quad \pd{\phi}{y} \quad \pd{\phi}{z} \right]  \]
+
+\[ \nabla \times \nabla \phi = \left[ \pdm{\phi}{y}{z} -  \pdm{\phi}{z}{y} \quad \pdm{\phi}{z}{x} - \pdm{\phi}{x}{z} \quad \pdm{\phi}{x}{y} - \pdm{\phi}{y}{x} \right] \]
+
+Assumindo que  
+
+\[ \pdm{A}{x}{y} = \pdm{A}{y}{x}  \] 
+
+Temos 
+
+\[ \nabla \times \nabla \phi = \left[ 0 \quad 0 \quad 0 \right] = \mathbf{0} \]
+
+\[ \boxed{\nabla \times \nabla \phi = \mathbf{0}} \]
+
+\section{Item e)}
+
+\begin{footnotesize}
+    
+
+\begin{align*}
+\nabla \times (\phi \mathbf{u})
+&=
+\left[
+\frac{\partial (\phi u_z)}{\partial y} - \frac{\partial (\phi u_y)}{\partial z} \quad
+\frac{\partial (\phi u_x)}{\partial z} - \frac{\partial (\phi u_z)}{\partial x} \quad
+\frac{\partial (\phi u_y)}{\partial x} - \frac{\partial (\phi u_x)}{\partial y}
+\right]
+\\[6pt]
+& \text{Aplica a regra do produto da derivada}
+\\[6pt]
+&=
+\left[
+u_z \frac{\partial \phi}{\partial y} + \phi \frac{\partial u_z}{\partial y}
+- u_y \frac{\partial \phi}{\partial z} - \phi \frac{\partial u_y}{\partial z} \quad
+u_x \frac{\partial \phi}{\partial z} + \phi \frac{\partial u_x}{\partial z}
+- u_z \frac{\partial \phi}{\partial x} - \phi \frac{\partial u_z}{\partial x} \quad
+u_y \frac{\partial \phi}{\partial x} + \phi \frac{\partial u_y}{\partial x}
+- u_x \frac{\partial \phi}{\partial y} - \phi \frac{\partial u_x}{\partial y}
+\right]
+\\[6pt]
+& \text{Coloca o $\phi$ em evidência e joga para fora do vetor}
+\\[6pt]
+&=
+\left[
+u_z \frac{\partial \phi}{\partial y} - u_y \frac{\partial \phi}{\partial z} \quad
+u_x \frac{\partial \phi}{\partial z} - u_z \frac{\partial \phi}{\partial x} \quad
+u_y \frac{\partial \phi}{\partial x} - u_x \frac{\partial \phi}{\partial y}
+\right] +
+\phi
+\left[
+\frac{\partial u_z}{\partial y} - \frac{\partial u_y}{\partial z} \quad
+\frac{\partial u_x}{\partial z} - \frac{\partial u_z}{\partial x} \quad
+\frac{\partial u_y}{\partial x} - \frac{\partial u_x}{\partial y}
+\right]
+\\[6pt]
+&=
+\left[
+u_z \frac{\partial \phi}{\partial y} - u_y \frac{\partial \phi}{\partial z} \quad
+u_x \frac{\partial \phi}{\partial z} - u_z \frac{\partial \phi}{\partial x} \quad
+u_y \frac{\partial \phi}{\partial x} - u_x \frac{\partial \phi}{\partial y}
+\right] + \phi (\nabla \times \mathbf{u})
+\\[6pt]
+& \text{A segunda parcela já foi. Falta a primeira. Reescreve como um produto vetorial simples.}
+\\[6pt]
+&=
+\left[
+\pd{\phi}{x} \quad \pd{\phi}{y} \quad \pd{\phi}{z}
+\right] \times \left[ 
+    u_x \quad u_y \quad u_z
+ \right] + \phi (\nabla \times \mathbf{u})
+\\[6pt]
+&= \boxed{\phi (\nabla \times \mathbf{u}) + \nabla \phi \times \mathbf{u}} 
+\end{align*}
+\end{footnotesize}
 
 \chapter{Questão 4}\label{cap:q4}
 
