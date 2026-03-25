@@ -23,157 +23,146 @@ então são definidas aqui para facilitar as referências.
 \label{eq:gauss_B}
 \end{equation}
 
-% \begin{equation}
-% \iint_{\partial V} \mathbf{E} \cdot d\mathbf{A} = \frac{1}{\varepsilon_0} \iiint_{V} \rho \, dV
-% \label{eq:gauss_electric_integral}
-% \end{equation}
+\begin{equation}
+\iint_{\partial V} \mathbf{E} \cdot d\mathbf{A} = \frac{1}{\varepsilon_0} \iiint_{V} \rho \, dV
+\label{eq:gauss_electric_integral}
+\end{equation}
 
-% \begin{equation}
-% \iint_{\partial V} \mathbf{B} \cdot d\mathbf{A} = 0
-% \label{eq:gauss_magnetic_integral}
-% \end{equation}
+\begin{equation}
+\iint_{\partial V} \mathbf{B} \cdot d\mathbf{A} = 0
+\label{eq:gauss_magnetic_integral}
+\end{equation}
 
-% \begin{equation}
-% \oint_{\partial S} \mathbf{E} \cdot d\mathbf{l} = - \frac{d}{dt} \iint_{S} \mathbf{B} \cdot d\mathbf{A}
-% \label{eq:faraday_integral}
-% \end{equation}
+\begin{equation}
+\oint_{\partial S} \mathbf{E} \cdot d\mathbf{l} = - \frac{d}{dt} \iint_{S} \mathbf{B} \cdot d\mathbf{A}
+\label{eq:faraday_integral}
+\end{equation}
 
-% \begin{equation}
-% \oint_{\partial S} \mathbf{B} \cdot d\mathbf{l} = \mu_0 \iint_{S} \mathbf{J} \cdot d\mathbf{A} + \mu_0 \varepsilon_0 \frac{d}{dt} \iint_{S} \mathbf{E} \cdot d\mathbf{A}
-% \label{eq:ampere_maxwell_integral}
-% \end{equation}
+\begin{equation}
+\oint_{\partial S} \mathbf{B} \cdot d\mathbf{l} = \mu_0 \iint_{S} \mathbf{J} \cdot d\mathbf{A} + \mu_0 \varepsilon_0 \frac{d}{dt} \iint_{S} \mathbf{E} \cdot d\mathbf{A}
+\label{eq:ampere_maxwell_integral}
+\end{equation}
 
 \chapter{Questão 1}\label{cap:q1}
 
-\section{Item a)}
+\section{Item (a)}
 
-\[ \mathbf{u} = \left[ u_x \quad u_y \quad u_z \right] \]
-
-\[ \nabla \times \mathbf{u} = \left[ 
+\begin{footnotesize}
+\begin{align*}
+\mathbf{u}
+&=
+\left[ u_x \quad u_y \quad u_z \right]
+\\[6pt]
+\nabla \times \mathbf{u}
+&= \left[ 
     \pd{u_z}{y} - \pd{u_y}{z} \quad
      \pd{u_x}{z} - \pd{u_z}{x} \quad
      \pd{u_y}{x} - \pd{u_x}{y}
-\right] \]
-
-\[ \nabla \cdot \left( \nabla \times \mathbf{u} \right)  = 
-    \pd{}{x} \left(  \pd{u_z}{y} - \pd{u_y}{z}  \right) +
+\right]
+\\[6pt]
+\nabla \cdot \left( \nabla \times \mathbf{u} \right) 
+&= 
+\pd{}{x} \left(  \pd{u_z}{y} - \pd{u_y}{z}  \right) +
     \pd{}{y} \left( \pd{u_x}{z} - \pd{u_z}{x} \right) +
     \pd{}{z} \left( \pd{u_y}{x} - \pd{u_x}{y} \right)
- \]
-
-\[ \nabla \cdot \left( \nabla \times \mathbf{u} \right)  = 
+\\[6pt]
+&= 
     \pdm{u_z}{x}{y} - \pdm{u_y}{x}{z} +
     \pdm{u_x}{y}{z} - \pdm{u_z}{y}{x} +
     \pdm{u_y}{z}{x} - \pdm{u_x}{z}{y}
- \]
+\\[6pt]
+& \text{Agrupando os termos que possuem o mesmo termo a ser derivado}
+\\[6pt]
+&= 
+\pdm{u_x}{y}{z} - \pdm{u_x}{z}{y} + \pdm{u_y}{z}{x} - \pdm{u_y}{x}{z} + \pdm{u_z}{x}{y} - \pdm{u_z}{y}{x}  
+\\[6pt]
+& \text{Assumindo que $\pdm{}{x}{y} = \pdm{}{y}{x}$, temos}
+\\[6pt]
+\nabla \cdot \left( \nabla \times \mathbf{u} \right)  &= 0 + 0 + 0 = 0
+\\[6pt]
+\end{align*}
+\end{footnotesize}
 
-Agrupando os termos que possuem o mesmo termo a ser derivado
+\section{Item (b)}
 
-\[ \nabla \cdot \left( \nabla \times \mathbf{u} \right)  = 
-\pdm{u_x}{y}{z} - \pdm{u_x}{z}{y} + \pdm{u_y}{z}{x} - \pdm{u_y}{x}{z} + \pdm{u_z}{x}{y} - \pdm{u_z}{y}{x}   
- \]
+\begin{footnotesize}
+\begin{align*}
+\nabla \cdot \left( \phi \mathbf{u} \right)
+&=
+\nabla \cdot \left[ \phi u_x \quad \phi u_y \quad \phi u_z \right]
+\\[6pt]
+&=\pd{\phi u_x}{x} + \pd{\phi u_y}{y} + \pd{\phi u_z}{z}
+\\[6pt]
+& \text{Aplica a regra do produto da derivada}
+\\[6pt]
+&=\pd{\phi}{x}u_x + \pd{u_x}{x} \phi + \pd{\phi}{y}u_y + \pd{u_y}{y} \phi + \pd{\phi}{z}u_z + \pd{u_z}{z} \phi 
+\\[6pt]
+&= \phi \left( \pd{u_x}{x} + \pd{u_y}{y} + \pd{u_z}{z} \right) + \left[ \pd{\phi}{x} \quad \pd{\phi}{y} \quad \pd{\phi}{z} \right] \cdot \left[ u_x \quad u_y \quad u_z \right]
+\\[6pt]
+\nabla \cdot \left( \phi \mathbf{u} \right)
+&= \phi \left( \nabla \cdot \mathbf{u} \right) + \left( \nabla \phi \right) \cdot \mathbf{u}
+\end{align*}
+\end{footnotesize}
 
-Assumindo que  
 
-\[ \pdm{A}{x}{y} = \pdm{A}{y}{x}  \] 
+\section{Item (c)}
 
-Temos 
-
-\[ \nabla \cdot \left( \nabla \times \mathbf{u} \right)  = 
-0 + 0 + 0   
- \]
-
- \[ \boxed{\nabla \cdot \left( \nabla \times \mathbf{u} \right)  = 0} 
- \]
-
-\section{Item b)}
-
-\begin{flalign*}
-\nabla \cdot \left( \phi \mathbf{u} \right) &= \nabla \cdot \left[ \phi u_x \quad \phi u_y \quad \phi u_z \right] &&\\\nonumber
-            &= \pd{\phi u_x}{x} + \pd{\phi u_y}{y} + \pd{\phi u_z}{z}&&
-\end{flalign*}
-
-Aplica a regra do produto da derivada
-
-\begin{flalign*}
-\nabla \cdot \left( \phi \mathbf{u} \right) &= \pd{\phi}{x}u_x + \pd{u_x}{x} \phi + \pd{\phi}{y}u_y + \pd{u_y}{y} \phi + \pd{\phi}{z}u_z + \pd{u_z}{z} \phi &&\\\nonumber
-            &= \phi \left( \pd{u_x}{x} + \pd{u_y}{y} + \pd{u_z}{z} \right) + \left[ \pd{\phi}{x} \quad \pd{\phi}{y} \quad \pd{\phi}{z} \right] \cdot \left[ u_x \quad u_y \quad u_z \right] &&
-\end{flalign*}
-
-\[ \boxed{\nabla \cdot \left( \phi \mathbf{u} \right) = \phi \left( \nabla \cdot \mathbf{u} \right) + \left( \nabla \phi \right) \cdot \mathbf{u}  } \]
-\section{Item c)}
-
-\[ \mathbf{u} \times \mathbf{v} = \left[
+\begin{footnotesize}
+\begin{align*}
+\mathbf{u} \times \mathbf{v}
+&=
+\left[
 u_y v_z - u_z v_y \quad 
 u_z v_x - u_x v_z \quad 
 u_x v_y - u_y v_x
-\right]  \]
-
-\[ \nabla \cdot \left( \mathbf{u} \times \mathbf{v} \right)  = 
- \pd{}{x} \left(  u_y v_z - u_z v_y \right) +
+\right]
+\\[6pt]
+\nabla \cdot \left( \mathbf{u} \times \mathbf{v} \right)
+&= \pd{}{x} \left(  u_y v_z - u_z v_y \right) +
  \pd{}{y} \left( u_z v_x - u_x v_z \right) +
  \pd{}{z} \left( u_x v_y - u_y v_x \right)
- \]
-
-\[ \nabla \cdot \left( \mathbf{u} \times \mathbf{v} \right)  = 
+\\[6pt]
+&=
  \pd{u_y v_z}{x} - \pd{u_z v_y}{x} +
  \pd{u_z v_x}{y} - \pd{u_x v_z}{y} +
  \pd{u_x v_y}{z} - \pd{u_y v_x}{z}
- \]
-
- Aplica a regra do produto da derivada
-
- \begin{footnotesize}
-    \[
-        \pd{u_y}{x}v_z + \pd{v_z}{x}u_x - \left( \pd{u_z}{x}v_y + \pd{v_y}{x}u_z \right)  +
-        \pd{u_z}{y}v_x + \pd{v_x}{y}u_z - \left( \pd{u_x}{y}v_z + \pd{v_z}{y}u_x \right) +
+\\[6pt]
+& \text{Aplica a regra do produto da derivada}
+\\[6pt]
+&=\pd{u_y}{x}v_z + \pd{v_z}{x}u_x - \left( \pd{u_z}{x}v_y + \pd{v_y}{x}u_z \right)  +
+        \pd{u_z}{y}v_x + \pd{v_x}{y}u_z - \\ & \left( \pd{u_x}{y}v_z + \pd{v_z}{y}u_x \right) + 
         \pd{u_x}{z}v_y + \pd{v_y}{z}u_x - \left( \pd{u_y}{z}v_x + \pd{v_x}{z}u_y \right)
-    \]
- \end{footnotesize}
-
-Puxa a definição do rotacional de um vetor
-
-\begin{footnotesize}
-    \[ \nabla \times \mathbf{u} =
-        \left[
-        \frac{\partial u_z}{\partial y} - \frac{\partial u_y}{\partial z} \quad
-        \frac{\partial u_x}{\partial z} - \frac{\partial u_z}{\partial x} \quad
-        \frac{\partial u_y}{\partial x} - \frac{\partial u_x}{\partial y}
-        \right] \quad , \quad \nabla \times \mathbf{v} =
-        \left[
-        \frac{\partial v_z}{\partial y} - \frac{\partial v_y}{\partial z} \quad
-        \frac{\partial v_x}{\partial z} - \frac{\partial v_z}{\partial x} \quad
-        \frac{\partial v_y}{\partial x} - \frac{\partial v_x}{\partial y}
-        \right] \]
+\\[6pt]
+& \text{\textcolor{red}{Dúvida: o que significa o termo $\mathbf{v} \left( \nabla \times \mathbf{v} \right)$?
+É o vetor $\mathbf{v}$ produto escalar com o rotacional? 
+}}
+\\[6pt]
+\end{align*}
 \end{footnotesize}
 
-Agrupa esses termos na expressão obtida com a regra do produto
-
-\textcolor{red}{Dúvida: o que significa o termo $\mathbf{v} \left( \nabla \times \mathbf{v} \right)$?
-É o vetor $\mathbf{v}$ produto escalar com o rotacional? 
-}
-
-
-\section{Item d)}
-
-\[ \nabla \phi = \left[ \pd{\phi}{x} \quad \pd{\phi}{y} \quad \pd{\phi}{z} \right]  \]
-
-\[ \nabla \times \nabla \phi = \left[ \pdm{\phi}{y}{z} -  \pdm{\phi}{z}{y} \quad \pdm{\phi}{z}{x} - \pdm{\phi}{x}{z} \quad \pdm{\phi}{x}{y} - \pdm{\phi}{y}{x} \right] \]
-
-Assumindo que  
-
-\[ \pdm{A}{x}{y} = \pdm{A}{y}{x}  \] 
-
-Temos 
-
-\[ \nabla \times \nabla \phi = \left[ 0 \quad 0 \quad 0 \right] = \mathbf{0} \]
-
-\[ \boxed{\nabla \times \nabla \phi = \mathbf{0}} \]
-
-\section{Item e)}
+\section{Item (d)}
 
 \begin{footnotesize}
-    
+\begin{align*}
+\nabla \phi
+&=
+\left[ \pd{\phi}{x} \quad \pd{\phi}{y} \quad \pd{\phi}{z} \right]
+\\[6pt]
+\nabla \times \nabla \phi
+&=
+\left[ \pdm{\phi}{y}{z} -  \pdm{\phi}{z}{y} \quad \pdm{\phi}{z}{x} - \pdm{\phi}{x}{z} \quad \pdm{\phi}{x}{y} - \pdm{\phi}{y}{x} \right] 
+\\[6pt]
+& \text{Assumindo que $\pdm{}{x}{y} = \pdm{}{y}{x}$, temos}
+\\[6pt]
+\nabla \times \nabla \phi =
+&=
+\left[ 0 \quad 0 \quad 0 \right] = \mathbf{0}
+\end{align*}
+\end{footnotesize}
+
+\section{Item (e)}
+
+\begin{footnotesize}
 
 \begin{align*}
 \nabla \times (\phi \mathbf{u})
@@ -231,22 +220,128 @@ u_y \frac{\partial \phi}{\partial x} - u_x \frac{\partial \phi}{\partial y}
 \end{align*}
 \end{footnotesize}
 
-\chapter{Questão 4}\label{cap:q4}
+\section{Item (f)}
 
-Usando (\ref{eq:ampere_HD}), tomamos o divergente nos dois lados
+\textcolor{red}{Dúvida: o que significa o termo $\mathbf{u}^2$? É o produto escalar do vetor com ele mesmo?
+}
 
-\[ \nabla \cdot \left( \nabla \times \mathbf{H} \right) = \nabla \cdot \left( \mathbf{J} + \frac{\partial \mathbf{D}}{\partial t} \right) \]
+\section{Item (g)}
 
-Divergente do rotacional é zero, e aplicando a propriedade distribuitiva do divergente 
-sobre adição
+\begin{footnotesize}
+\begin{align*}
+\mathbf{b} \times \mathbf{c}
+&=
+\left[
+b_y c_z - b_z c_y  \quad
+b_z c_x - b_x c_z  \quad
+b_x c_y - b_y c_x
+\right]
+\\[6pt]
+a \cdot (\mathbf{b} \times \mathbf{c}) 
+&=
+\left[
+a_x (b_y c_z - b_z c_y) + a_y (b_z c_x - b_x c_z) + a_z (b_x c_y - b_y c_x)
+\right]
+\\[6pt]
+&=
+\left[
+a_x b_y c_z - a_x b_z c_y + a_y b_z c_x - a_y b_x c_z + a_z b_x c_y - a_z b_y c_x
+\right]
+\\[6pt]
+& \text{Aplica propriedade de comutatividade do produto para colocar parênteses em lugares diferentes}
+\\[6pt]
+&=
+\left[
+(a_x b_y) c_z - (a_x b_z) c_y + (a_y b_z) c_x - (a_y b_x) c_z + (a_z b_x) c_y - (a_z b_y) c_x
+\right]
+\\[6pt]
+& \text{Coloca o $c$ em evidência}
+\\[6pt]
+&=
+\left[
+c_x (a_y b_z - a_z b_y) + c_y (a_z b_x - a_x b_z) + c_z (a_x b_y - a_y b_x) 
+\right]
+\\[6pt]
+a \cdot (\mathbf{b} \times \mathbf{c})
+&=
+c \cdot (\mathbf{a} \times \mathbf{b})
+\\[6pt]
+& \text{Mesma coisa se colocar o $b$ em evidência nas comutações.}
+\\[6pt]
+\end{align*}
+\end{footnotesize}
 
-\[ 0 = \nabla \cdot \mathbf{J} +  \nabla \cdot \left( \frac{\partial  \mathbf{D}}{\partial t} \right) \]
+\section{Item (h)}
 
-Divergente é derivada espacial, que independe da derivada de tempo de $\mathbf{D}$
+\begin{footnotesize}
+\begin{align*}
+\mathbf{b} \times \mathbf{c}
+&=
+\left[
+b_y c_z - b_z c_y  \quad
+b_z c_x - b_x c_z  \quad
+b_x c_y - b_y c_x
+\right]
+\\[6pt]
+\mathbf{a} \times (\mathbf{b} \times \mathbf{c})
+&= \Big[
+    b_x(a_x c_x + a_y c_y + a_z c_z) - c_x(a_x b_x + a_y b_y + a_z b_z) \\ & \quad
+    b_y(a_x c_x + a_y c_y + a_z c_z) - c_y(a_x b_x + a_y b_y + a_z b_z) \\ & \quad
+    b_z(a_x c_x + a_y c_y + a_z c_z) - c_z(a_x b_x + a_y b_y + a_z b_z)
+ \Big]
+\\[6pt]
+&= \Big[
+    b_x(\mathbf{a} \cdot \mathbf{c}) - c_x(\mathbf{a} \cdot \mathbf{b}) \quad
+    b_y(\mathbf{a} \cdot \mathbf{c}) - c_y(\mathbf{a} \cdot \mathbf{b}) \quad
+    b_z(\mathbf{a} \cdot \mathbf{c}) - c_z(\mathbf{a} \cdot \mathbf{b})
+ \Big]
+\\[6pt]
+\mathbf{a} \times (\mathbf{b} \times \mathbf{c})
+&=
+\mathbf{b}\left(\mathbf{a} \cdot \mathbf{c}\right) - \mathbf{c}\left(\mathbf{a} \cdot \mathbf{b}\right)
+\end{align*}
+\end{footnotesize}
 
-\[ 0 = \nabla \cdot \mathbf{J} +  \frac{\partial }{\partial t} \left(  \nabla \cdot \mathbf{D} \right) \]
+% \begin{footnotesize}
+% \begin{align*}
+% a
+% &= 10
+% % \left[
+% % b_x(a_x c_x + a_y c_y + a_z c_z) - c_x(a_x b_x + a_y b_y + a_z b_z) \\ &
+% % b_y(a_x c_x + a_y c_y + a_z c_z) - c_y(a_x b_x + a_y b_y + a_z b_z) \\ &
+% % b_z(a_x c_x + a_y c_y + a_z c_z) - c_z(a_x b_x + a_y b_y + a_z b_z)
+% % \right]
+% \\[6pt]
+
+% % &=
+% % \left[
+% % b_x(\mathbf{a}  \cdot \mathbf{c}) - c_x(\mathbf{a}  \cdot \mathbf{b}) 
+% % \quad 
+% % b_y(\mathbf{a}  \cdot \mathbf{c}) - c_y(\mathbf{a}  \cdot \mathbf{b})
+% % \quad 
+% % b_z(\mathbf{a}  \cdot \mathbf{c}) - c_z(\mathbf{a}  \cdot \mathbf{b})
+% % \right]
+% % \\[6pt]
+% \end{align*}
+% \end{footnotesize}
 
 
-Substituindo (\ref{eq:gauss_D}) na equação acima, obtemos a equação da conservação de carga:
+% \chapter{Questão 4}\label{cap:q4}
 
-\[ \boxed{\nabla \cdot \mathbf{J} + \frac{\partial \rho}{\partial t} = 0} \]
+% Usando (\ref{eq:ampere_HD}), tomamos o divergente nos dois lados
+
+% \[ \nabla \cdot \left( \nabla \times \mathbf{H} \right) = \nabla \cdot \left( \mathbf{J} + \frac{\partial \mathbf{D}}{\partial t} \right) \]
+
+% Divergente do rotacional é zero, e aplicando a propriedade distribuitiva do divergente 
+% sobre adição
+
+% \[ 0 = \nabla \cdot \mathbf{J} +  \nabla \cdot \left( \frac{\partial  \mathbf{D}}{\partial t} \right) \]
+
+% Divergente é derivada espacial, que independe da derivada de tempo de $\mathbf{D}$
+
+% \[ 0 = \nabla \cdot \mathbf{J} +  \frac{\partial }{\partial t} \left(  \nabla \cdot \mathbf{D} \right) \]
+
+
+% Substituindo (\ref{eq:gauss_D}) na equação acima, obtemos a equação da conservação de carga:
+
+% \[ \boxed{\nabla \cdot \mathbf{J} + \frac{\partial \rho}{\partial t} = 0} \]
