@@ -23,25 +23,25 @@ então são definidas aqui para facilitar as referências.
 \label{eq:gauss_B}
 \end{equation}
 
-\begin{equation}
-\iint_{\partial V} \mathbf{E} \cdot d\mathbf{A} = \frac{1}{\varepsilon_0} \iiint_{V} \rho \, dV
-\label{eq:gauss_electric_integral}
-\end{equation}
+% \begin{equation}
+% \iint_{\partial V} \mathbf{E} \cdot d\mathbf{A} = \frac{1}{\varepsilon_0} \iiint_{V} \rho \, dV
+% \label{eq:gauss_electric_integral}
+% \end{equation}
 
-\begin{equation}
-\iint_{\partial V} \mathbf{B} \cdot d\mathbf{A} = 0
-\label{eq:gauss_magnetic_integral}
-\end{equation}
+% \begin{equation}
+% \iint_{\partial V} \mathbf{B} \cdot d\mathbf{A} = 0
+% \label{eq:gauss_magnetic_integral}
+% \end{equation}
 
-\begin{equation}
-\oint_{\partial S} \mathbf{E} \cdot d\mathbf{l} = - \frac{d}{dt} \iint_{S} \mathbf{B} \cdot d\mathbf{A}
-\label{eq:faraday_integral}
-\end{equation}
+% \begin{equation}
+% \oint_{\partial S} \mathbf{E} \cdot d\mathbf{l} = - \frac{d}{dt} \iint_{S} \mathbf{B} \cdot d\mathbf{A}
+% \label{eq:faraday_integral}
+% \end{equation}
 
-\begin{equation}
-\oint_{\partial S} \mathbf{B} \cdot d\mathbf{l} = \mu_0 \iint_{S} \mathbf{J} \cdot d\mathbf{A} + \mu_0 \varepsilon_0 \frac{d}{dt} \iint_{S} \mathbf{E} \cdot d\mathbf{A}
-\label{eq:ampere_maxwell_integral}
-\end{equation}
+% \begin{equation}
+% \oint_{\partial S} \mathbf{B} \cdot d\mathbf{l} = \mu_0 \iint_{S} \mathbf{J} \cdot d\mathbf{A} + \mu_0 \varepsilon_0 \frac{d}{dt} \iint_{S} \mathbf{E} \cdot d\mathbf{A}
+% \label{eq:ampere_maxwell_integral}
+% \end{equation}
 
 \chapter{Questão 1}\label{cap:q1}
 
@@ -302,46 +302,158 @@ b_x c_y - b_y c_x
 \end{align*}
 \end{footnotesize}
 
-% \begin{footnotesize}
-% \begin{align*}
-% a
-% &= 10
-% % \left[
-% % b_x(a_x c_x + a_y c_y + a_z c_z) - c_x(a_x b_x + a_y b_y + a_z b_z) \\ &
-% % b_y(a_x c_x + a_y c_y + a_z c_z) - c_y(a_x b_x + a_y b_y + a_z b_z) \\ &
-% % b_z(a_x c_x + a_y c_y + a_z c_z) - c_z(a_x b_x + a_y b_y + a_z b_z)
-% % \right]
-% \\[6pt]
+\chapter{Questão 2}\label{cap:q2}
 
-% % &=
-% % \left[
-% % b_x(\mathbf{a}  \cdot \mathbf{c}) - c_x(\mathbf{a}  \cdot \mathbf{b}) 
-% % \quad 
-% % b_y(\mathbf{a}  \cdot \mathbf{c}) - c_y(\mathbf{a}  \cdot \mathbf{b})
-% % \quad 
-% % b_z(\mathbf{a}  \cdot \mathbf{c}) - c_z(\mathbf{a}  \cdot \mathbf{b})
-% % \right]
-% % \\[6pt]
-% \end{align*}
-% \end{footnotesize}
+\textcolor{red}{Dúvida}
 
+\chapter{Questão 3}\label{cap:q3}
 
-% \chapter{Questão 4}\label{cap:q4}
+A Lei de Gauss para o magnetismo (\ref{eq:gauss_B}) pode ser derivada diretamente da Lei de Faraday 
+(\ref{eq:faraday_EB}) tomando o divergente 
+dos dois lados:
 
-% Usando (\ref{eq:ampere_HD}), tomamos o divergente nos dois lados
+\[ \nabla \cdot \left( \nabla \times \mathbf{E} \right)  = \nabla \cdot \left( -\frac{\partial \mathbf{B}}{\partial t} \right) \]  
 
-% \[ \nabla \cdot \left( \nabla \times \mathbf{H} \right) = \nabla \cdot \left( \mathbf{J} + \frac{\partial \mathbf{D}}{\partial t} \right) \]
+\[ 0  = - \pd{(\nabla \cdot \mathbf{B})}{t} \] 
 
-% Divergente do rotacional é zero, e aplicando a propriedade distribuitiva do divergente 
-% sobre adição
+\[ \nabla \cdot \mathbf{B} = \text{const.} \] 
 
-% \[ 0 = \nabla \cdot \mathbf{J} +  \nabla \cdot \left( \frac{\partial  \mathbf{D}}{\partial t} \right) \]
+Isso implica que $\nabla \cdot \mathbf{B}$ é constante no tempo. Se assumirmos que o campo magnético é zero em um tempo inicial, 
+então $\nabla \cdot \mathbf{B} = 0 \quad \forall t$, obtendo a equação (\ref{eq:gauss_B}).
+Dessa forma, ela poderia ser considerada redundante, mas como ainda depende do valor inicial que permanece 
+constante no tempo, ela é necessária como condição inicial. 
 
-% Divergente é derivada espacial, que independe da derivada de tempo de $\mathbf{D}$
+\chapter{Questão 4}\label{cap:q4}
 
-% \[ 0 = \nabla \cdot \mathbf{J} +  \frac{\partial }{\partial t} \left(  \nabla \cdot \mathbf{D} \right) \]
+Usando (\ref{eq:ampere_HD}), tomamos o divergente nos dois lados
+
+\[ \nabla \cdot \left( \nabla \times \mathbf{H} \right) = \nabla \cdot \left( \mathbf{J} + \frac{\partial \mathbf{D}}{\partial t} \right) \]
+
+Divergente do rotacional é zero, e aplicando a propriedade distribuitiva do divergente 
+sobre adição
+
+\[ 0 = \nabla \cdot \mathbf{J} +  \nabla \cdot \left( \frac{\partial  \mathbf{D}}{\partial t} \right) \]
+
+Divergente é derivada espacial, que independe da derivada de tempo de $\mathbf{D}$
+
+\[ 0 = \nabla \cdot \mathbf{J} +  \frac{\partial }{\partial t} \left(  \nabla \cdot \mathbf{D} \right) \]
 
 
-% Substituindo (\ref{eq:gauss_D}) na equação acima, obtemos a equação da conservação de carga:
+Substituindo (\ref{eq:gauss_D}) na equação acima, obtemos a equação da conservação de carga:
 
-% \[ \boxed{\nabla \cdot \mathbf{J} + \frac{\partial \rho}{\partial t} = 0} \]
+\[ \boxed{\nabla \cdot \mathbf{J} + \frac{\partial \rho}{\partial t} = 0} \]
+
+\chapter{Questão 5}\label{cap:q5}
+
+Seja $V$ um cilindro de altura $h$ que engloba a fronteira entre os meios 1 e 2, com as propriedades:
+
+\begin{itemize}
+    \item Meio 1: $\varepsilon_1$, $\mu_1$
+    \item Meio 2: $\varepsilon_2$, $\mu_2$
+\end{itemize}
+
+\section{Campo $\mathbf{E}$ }
+
+Usando a Lei de Gauss para a eletricidade na forma integral, temos:
+
+\[ \int_{\partial V} \mathbf{D} \cdot d\mathbf{A}
+= \int_{V} \rho \, dV \]
+
+Dividindo o cilindro em topo, base e lateral, temos 
+
+\[ \int_{topo} \mathbf{D} \cdot d\mathbf{A} + \int_{base} \mathbf{D} \cdot d\mathbf{A} + \int_{lateral} \mathbf{D} \cdot d\mathbf{A}
+= \int_{V} \rho \, dV \]
+
+Fazendo $h \to 0$, obtemos:
+
+\[ \int_{topo} \mathbf{D} \cdot d\mathbf{A} + \int_{base} \mathbf{D} \cdot d\mathbf{A} + 0
+= \rho_s \Delta S \]
+
+\noindent onde $\rho_s$ é a densidade de carga superficial na interface entre os meios.
+
+\[ \mathbf{D_2} \cdot \mathbf{\hat{n}} \Delta S - \mathbf{D_1} \cdot \mathbf{\hat{n}} \Delta S = \rho_s \Delta S \]
+
+\[ \mathbf{\hat{n}} \cdot \left( \mathbf{D_2} - \mathbf{D_1} \right) = \rho_s \]
+
+Se ambos os meios são um dielétrico, então $\rho_s = 0$ e 
+
+\[ \mathbf{\hat{n}} \cdot \left( \mathbf{D_2} - \mathbf{D_1} \right) = 0 \]
+
+Como queremos o campo $\mathbf{E}$, 
+
+\[ \mathbf{\hat{n}} \cdot \left( \mathbf{\varepsilon_2 \mathbf{E_2}} - \mathbf{\varepsilon_1 \mathbf{E_1}} \right) = 0 \]
+
+\section{Campo $\mathbf{B}$ }
+
+Segue a mesma ideia, usando a Lei de Gauss para o magnetismo na forma integral
+
+\[ \int_{\partial V} \mathbf{B} \cdot d\mathbf{A}
+= 0 \]
+
+\[ \int_{topo} \mathbf{B} \cdot d\mathbf{A} + \int_{base} \mathbf{B} \cdot d\mathbf{A} + \int_{lateral} \mathbf{B} \cdot d\mathbf{A}
+= 0 \]
+
+Faz o $h \to 0$
+
+\[\mathbf{B_2} \cdot \mathbf{\hat{n}} \Delta S - \mathbf{B_1} \cdot \mathbf{\hat{n}} \Delta S = 0\]
+
+\[ \mathbf{\hat{n}} \cdot \left( \mathbf{B_2} - \mathbf{B_1} \right) = 0 \]
+
+\chapter{Questão 6}\label{cap:q6}
+
+No vácuo, temos 
+
+\[  \mathbf{D} = \varepsilon_0 \mathbf{E} \quad , \quad \mathbf{B} = \mu_0 \mathbf{H} 
+\quad , \quad \rho = 0 \quad , \quad \mathbf{J} = 0 \]
+
+Em que as equações de Maxwell se reduzem para 
+
+\[ \nabla \cdot \mathbf{E} = 0  \]
+
+\[ \nabla \cdot \mathbf{H} = 0 \]
+
+\[ \nabla \times \mathbf{H} = \varepsilon_0 \frac{\partial \mathbf{E}}{\partial t} \]
+
+\[ \nabla \times \mathbf{E} = -\mu_0 \frac{\partial \mathbf{H}}{\partial t} \]
+
+Tomando o rotacional em ambos lados da última equação, temos
+
+\[ \nabla \times \nabla \times \mathbf{E} = \nabla \times \left( -\mu_0 \frac{\partial \mathbf{H}}{\partial t} \right)  \]
+
+\[ \nabla \times \nabla \times \mathbf{E} = -\mu_0 \frac{\partial }{\partial t} \left( \nabla \times \mathbf{H} \right)  \]
+
+Substituindo,
+
+\[ \nabla \times \nabla \times \mathbf{E} = -\mu_0 \frac{\partial }{\partial t} \left( \varepsilon_0 \frac{\partial \mathbf{E}}{\partial t} \right)  \]
+
+\[ \nabla \left( \nabla \cdot \mathbf{E} \right) - \nabla^2 \mathbf{E} = -\mu_0 \varepsilon_0  \pdd{\mathbf{E}}{t}  \]
+
+\[ \nabla^2 \mathbf{E} = \mu_0 \varepsilon_0 \pdd{\mathbf{E}}{t} \]
+
+\noindent que representa uma equação da onda com velocidade 
+
+\[ v = \sqrt{\frac{1}{\mu_0 \varepsilon_0}} \]
+
+\chapter{Questão 7}\label{cap:q7}
+
+\chapter{Questão 8}\label{cap:q8}
+
+\chapter{Questão 9}\label{cap:q9}
+
+\chapter{Questão 10}\label{cap:q10}
+
+\section{2.5}
+
+\section{2.6}
+
+\section{2.7}
+
+
+
+
+
+
+
+
+
+
