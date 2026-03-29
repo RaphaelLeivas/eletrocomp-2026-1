@@ -304,7 +304,57 @@ b_x c_y - b_y c_x
 
 \chapter{Questão 2}\label{cap:q2}
 
-\textcolor{red}{Dúvida}
+\section{Item (a)}
+
+Pelo teorema do divergente, sabemos que
+
+\[
+\int_{\Omega} \nabla \cdot \mathbf{F} \, d\Omega = \int_{\partial \Omega} \mathbf{F} \cdot \mathbf{n} \, dS
+\]
+
+Seja $\mathbf{F} = f \nabla g$. Temos que 
+
+\[
+\int_{\Omega} \nabla \cdot (f \nabla g)\, d\Omega
+= \int_{\partial \Omega} (f \nabla g) \cdot \mathbf{n}\, dS
+\]
+
+\noindent mas sabemos também que 
+
+\[
+\nabla \cdot (f \nabla g) = f \nabla^2 g + \nabla f \cdot \nabla g
+\]
+
+Logo, substituindo,
+
+\[
+\int_{\Omega} \left( f \nabla^2 g + \nabla f \cdot \nabla g \right) d\Omega
+= \int_{\partial \Omega} f \frac{\partial g}{\partial n} \, dS
+\]
+
+\section{Item (b)}
+
+Troca $f$ pro $g$ na respota do Item (a)
+
+\[
+\int_{\Omega} \left( g \nabla^2 f + \nabla g \cdot \nabla f \right) d\Omega
+= \int_{\partial \Omega} g \frac{\partial f}{\partial n} \, dS
+\]
+
+Agora subtrai a equação do Item (a) da equação obtida
+
+\[
+\int_{\Omega} \left( f \nabla^2 g + \nabla f \cdot \nabla g \right) d\Omega
+- \int_{\Omega} \left( g \nabla^2 f + \nabla g \cdot \nabla f \right) d\Omega
+= \int_{\partial \Omega} f \frac{\partial g}{\partial n} \, dS
+- \int_{\partial \Omega} g \frac{\partial f}{\partial n} \, dS
+\]
+
+\[
+\int_{\Omega} f \nabla^2 g - g \nabla^2 f d\Omega
+= \int_{\partial \Omega} f \frac{\partial g}{\partial n} - g \frac{\partial f}{\partial n} \, dS
+\]
+
 
 \chapter{Questão 3}\label{cap:q3}
 
@@ -436,17 +486,126 @@ Substituindo,
 
 \chapter{Questão 7}\label{cap:q7}
 
+A partir da Lei de Ohm:
+
+\[
+\mathbf{J} = \sigma \mathbf{E}
+\]
+
+Se $\sigma \to \infty$, então precisamos de $\mathbf{E} = 0 $
+dentro do condutor para 
+que $\mathbf{J}$ seja finita. Logo, as cargas ficam todas na superfície 
+externa do condutor, de modo que a corrente flui apenas na superfície. 
+
+Usando a condição de fronteira obtida na Questão 5,
+temos que a carga superficial $\rho_s$ é dada pela 
+carga que flui no condutor.
+
 \chapter{Questão 8}\label{cap:q8}
+
+Definições dos potencias
+
+\[
+\mathbf{B} = \nabla \times \mathbf{A}, \qquad
+\mathbf{E} = -\nabla \phi - \frac{\partial \mathbf{A}}{\partial t}
+\]
+
+Substitui nas equações de Maxwell
+
+\begin{align*}
+\nabla \cdot -\nabla \phi - \frac{\partial \mathbf{A}}{\partial t} &= \frac{\rho}{\varepsilon} \\
+\nabla \cdot \nabla \times \mathbf{A} &= 0 \\
+\nabla \times -\nabla \phi - \frac{\partial \mathbf{A}}{\partial t} &= -\frac{\partial \nabla \times \mathbf{A}}{\partial t} \\
+\nabla \times \nabla \times \mathbf{A} &= \mu \mathbf{J} + \mu \varepsilon \frac{\partial \mathbf{E}}{\partial t}
+\end{align*}
+
+\textcolor{red}{Dúvida: como avançar?}
 
 \chapter{Questão 9}\label{cap:q9}
 
-\chapter{Questão 10}\label{cap:q10}
+Vamos considerar o caso simples no vácuo
 
-\section{2.5}
+\begin{align}
+\nabla \times \mathbf{E} &= -\mu \frac{\partial \mathbf{H}}{\partial t} \\
+\nabla \times \mathbf{H} &= \varepsilon \frac{\partial \mathbf{E}}{\partial t}
+\end{align}
 
-\section{2.6}
+Expande os rotacionais, zerando as derivadas em $z$
 
-\section{2.7}
+\[
+\nabla \times \mathbf{E} =
+\left[
+\frac{\partial E_z}{\partial y} \quad
+-\frac{\partial E_z}{\partial x} \quad
+\frac{\partial E_y}{\partial x} - \frac{\partial E_x}{\partial y}
+\right]
+\]
+
+\[
+\nabla \times \mathbf{H} =
+\left[
+\frac{\partial H_z}{\partial y} \quad
+-\frac{\partial H_z}{\partial x} \quad
+\frac{\partial H_y}{\partial x} - \frac{\partial H_x}{\partial y}
+\right]
+\]
+
+Igualando componente a componente, temos 6 equações: 
+
+
+\begin{align*}
+\frac{\partial E_z}{\partial y} &= -\mu \frac{\partial H_x}{\partial t} \\
+-\frac{\partial E_z}{\partial x} &= -\mu \frac{\partial H_y}{\partial t} \\
+\frac{\partial E_y}{\partial x} - \frac{\partial E_x}{\partial y}
+&= -\mu \frac{\partial H_z}{\partial t}
+\end{align*}
+
+\begin{align*}
+\frac{\partial H_z}{\partial y} &= \varepsilon \frac{\partial E_x}{\partial t} \\
+-\frac{\partial H_z}{\partial x} &= \varepsilon \frac{\partial E_y}{\partial t} \\
+\frac{\partial H_y}{\partial x} - \frac{\partial H_x}{\partial y}
+&= \varepsilon \frac{\partial E_z}{\partial t}
+\end{align*}
+
+No modo TE, fazemos $E_z = 0$, 
+
+\begin{align*}
+0 &= -\mu \frac{\partial H_x}{\partial t} \\
+0 &= -\mu \frac{\partial H_y}{\partial t} \\
+\frac{\partial E_y}{\partial x} - \frac{\partial E_x}{\partial y}
+&= -\mu \frac{\partial H_z}{\partial t} \\
+\frac{\partial H_z}{\partial y} &= \varepsilon \frac{\partial E_x}{\partial t} \\
+-\frac{\partial H_z}{\partial x} &= \varepsilon \frac{\partial E_y}{\partial t} \\
+\frac{\partial H_y}{\partial x} 
+&= \frac{\partial H_x}{\partial y}
+\end{align*}
+
+
+Substituindo as equações, 
+
+\begin{align*}
+\frac{\partial E_y}{\partial x} - \frac{\partial E_x}{\partial y}
+&= -\mu \frac{\partial H_z}{\partial t} \\
+\frac{\partial H_z}{\partial y} &= \varepsilon \frac{\partial E_x}{\partial t} \\
+-\frac{\partial H_z}{\partial x} &= \varepsilon \frac{\partial E_y}{\partial t}
+\end{align*}
+
+
+Dependendo apenas de:
+\[
+(H_z, E_x, E_y)
+\]
+
+Mesma ideia para o TM, fazendo $H_z = 0$.
+
+
+% \chapter{Questão 10}\label{cap:q10}
+
+% \section{2.5}
+
+% \section{2.6}
+
+% \section{2.7}
 
 
 
