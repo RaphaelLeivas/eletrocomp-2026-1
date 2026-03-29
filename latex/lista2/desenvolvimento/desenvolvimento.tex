@@ -1,0 +1,69 @@
+
+\chapter{Problema 3.3}
+
+\section{Solução analítica}
+
+Temos a equação diferencial ordinária (EDO) dada por:
+
+\[ \od{y}{t} = \left( \alpha + j\omega \right)y \]
+
+\noindent e o objetivo é identificar a solução $y(t)$.
+
+Usa separação de variáveis 
+
+\[ \frac{1}{y} dy  = \left( \alpha + j\omega \right) dt  \]
+
+Integrando ambos os lados
+
+\[ \int_{t_0}^{t} \frac{1}{y} dy  = \int_{t_0}^{t} \left( \alpha + j\omega \right) dt  \]
+
+\[ \ln|y(t)| - \ln|y(t_0)| = \left( \alpha + j\omega \right)(t - t_0) \]
+
+Considerando $t_0 = 0$ e $y(t_0) = y_0$, temos
+
+\[ \ln|y(t)| = \ln|y_0| + \left( \alpha + j\omega \right)t \]
+
+\[ y(t) = y_0 e^{\left( \alpha + j\omega \right)t} \]
+
+Considerando $y(t_0) = 1$, 
+
+\[ y(t) = e^{\left( \alpha + j\omega \right)t} \]
+
+Plotando essa solução, temos 
+
+\begin{figure}[htb]
+	\caption{\label{fig:analitica_q1}Solução analítica da questão 1.}
+	\begin{center}
+        \includegraphics[width=\textwidth,trim=1 1 1 1,clip]{analitica_q1.png}
+	\end{center}
+\end{figure}
+
+\section{Solução numérica via Método de Euler}
+
+Segundo o método de Euler, temos 
+
+\[ y_{n+1} = y_n + \Delta t \left( \alpha + j\omega \right) y_n \]
+
+\noindent com $y_0 = 1$. Considerando $\omega = 2$, $\alpha = 0$,
+$\Delta = 0.1$, 
+
+\[ y_{n+1} = y_n + j \, 2 \, 0.1 \,   y_n \]
+
+\[ y_{n+1} = y_n + j \, 0.2 \, y_n \]
+
+Resolvendo numericamente para $t \in [0, 10]$, temos a seguinte solução numérica
+
+\begin{figure}[htb]
+	\caption{\label{fig:euler_q1}Solução numérica via Método de Euler da questão 1.}
+	\begin{center}
+        \includegraphics[width=\textwidth,trim=1 1 1 1,clip]{euler_q1.png}
+	\end{center}
+\end{figure}
+
+Vemos que o método é instável, conforme explicado no livro-texto.
+
+
+
+
+
+
