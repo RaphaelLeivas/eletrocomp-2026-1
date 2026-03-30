@@ -1,69 +1,105 @@
 
-\chapter{Problema 3.3}
+% \chapter{Problema 3.3}
+
+% \section{Solução analítica}
+
+% Temos a equação diferencial ordinária (EDO) dada por:
+
+% \[ \od{y}{t} = \left( \alpha + j\omega \right)y \]
+
+% \noindent e o objetivo é identificar a solução $y(t)$.
+
+% Usa separação de variáveis 
+
+% \[ \frac{1}{y} dy  = \left( \alpha + j\omega \right) dt  \]
+
+% Integrando ambos os lados
+
+% \[ \int_{t_0}^{t} \frac{1}{y} dy  = \int_{t_0}^{t} \left( \alpha + j\omega \right) dt  \]
+
+% \[ \ln|y(t)| - \ln|y(t_0)| = \left( \alpha + j\omega \right)(t - t_0) \]
+
+% Considerando $t_0 = 0$ e $y(t_0) = y_0$, temos
+
+% \[ \ln|y(t)| = \ln|y_0| + \left( \alpha + j\omega \right)t \]
+
+% \[ y(t) = y_0 e^{\left( \alpha + j\omega \right)t} \]
+
+% Considerando $y(t_0) = 1$, 
+
+% \[ y(t) = e^{\left( \alpha + j\omega \right)t} \]
+
+% Plotando essa solução, temos 
+
+% \begin{figure}[htb]
+% 	\caption{\label{fig:analitica_q1}Solução analítica da questão 1.}
+% 	\begin{center}
+%         \includegraphics[width=\textwidth,trim=1 1 1 1,clip]{analitica_q1.png}
+% 	\end{center}
+% \end{figure}
+
+% \section{Solução numérica via Método de Euler}
+
+% Segundo o método de Euler, temos 
+
+% \[ y_{n+1} = y_n + \Delta t \left( \alpha + j\omega \right) y_n \]
+
+% \noindent com $y_0 = 1$. Considerando $\omega = 2$, $\alpha = 0$,
+% $\Delta = 0.1$, 
+
+% \[ y_{n+1} = y_n + j \, 2 \, 0.1 \,   y_n \]
+
+% \[ y_{n+1} = y_n + j \, 0.2 \, y_n \]
+
+% Resolvendo numericamente para $t \in [0, 10]$, temos a seguinte solução numérica
+
+% \begin{figure}[htb]
+% 	\caption{\label{fig:euler_q1}Solução numérica via Método de Euler da questão 1.}
+% 	\begin{center}
+%         \includegraphics[width=\textwidth,trim=1 1 1 1,clip]{euler_q1.png}
+% 	\end{center}
+% \end{figure}
+
+
+% \section{Solução numérica via Método Leapfrog}
+
+
+\chapter{Problema 3.4}
 
 \section{Solução analítica}
 
-Temos a equação diferencial ordinária (EDO) dada por:
+A solução analítica vem da equação de D'Alembert, conforme descrito 
+no livro-text: 
 
-\[ \od{y}{t} = \left( \alpha + j\omega \right)y \]
+\[ \mathcal{V}(x, t) = \frac{1}{2} \left[ \phi(x - v_p t) + \phi(x + v_p t) + \frac{1}{v_p} \int_{x - v_p t}^{x + v_p t} \theta(\zeta) d\zeta \right] \]
 
-\noindent e o objetivo é identificar a solução $y(t)$.
+Temos 
 
-Usa separação de variáveis 
+\begin{itemize}
+	\item $\phi$ é a função da condição inicial de $\mathcal{V}(x, t)$, dada no enunciado
+	\item $\theta$ é a função da condição inicial de $\mathcal{V}(x, t)$, que assumimos ser zero
+	uma vez que a corrente inicial é nula
+\end{itemize}
 
-\[ \frac{1}{y} dy  = \left( \alpha + j\omega \right) dt  \]
+Assim, 
 
-Integrando ambos os lados
+\[ \mathcal{V}(x, t) = \frac{1}{2} \left[ \phi(x - v_p t) + \phi(x + v_p t) \right] \]  
 
-\[ \int_{t_0}^{t} \frac{1}{y} dy  = \int_{t_0}^{t} \left( \alpha + j\omega \right) dt  \]
+\[ \mathcal{V}(x, t) = 
+\begin{cases} 
+\frac{1}{2} \left(  x - v_p t - 8 + x + v_p t - 8 \right) & \text{Volts} \quad 8 \text{ cm} \leq x \leq 10 \text{ cm}, \\ 
+\frac{1}{2} \left( -(x - v_p t) + 12 + -(x + v_p t) + 12 \right) & \text{Volts} \quad 10 \text{ cm} \leq x \leq 12 \text{ cm}, \\ 
+0 & \text{Volts} \quad \text{caso contrário}, 
+\end{cases}\]  
 
-\[ \ln|y(t)| - \ln|y(t_0)| = \left( \alpha + j\omega \right)(t - t_0) \]
+\[ \mathcal{V}(x, t) = 
+\begin{cases} 
+x - 8 & \text{Volts} \quad 8 \text{ cm} \leq x \leq 10 \text{ cm}, \\ 
+-x + 12 & \text{Volts} \quad 10 \text{ cm} \leq x \leq 12 \text{ cm}, \\ 
+0 & \text{Volts} \quad \text{caso contrário}, 
+\end{cases}\]  
 
-Considerando $t_0 = 0$ e $y(t_0) = y_0$, temos
-
-\[ \ln|y(t)| = \ln|y_0| + \left( \alpha + j\omega \right)t \]
-
-\[ y(t) = y_0 e^{\left( \alpha + j\omega \right)t} \]
-
-Considerando $y(t_0) = 1$, 
-
-\[ y(t) = e^{\left( \alpha + j\omega \right)t} \]
-
-Plotando essa solução, temos 
-
-\begin{figure}[htb]
-	\caption{\label{fig:analitica_q1}Solução analítica da questão 1.}
-	\begin{center}
-        \includegraphics[width=\textwidth,trim=1 1 1 1,clip]{analitica_q1.png}
-	\end{center}
-\end{figure}
-
-\section{Solução numérica via Método de Euler}
-
-Segundo o método de Euler, temos 
-
-\[ y_{n+1} = y_n + \Delta t \left( \alpha + j\omega \right) y_n \]
-
-\noindent com $y_0 = 1$. Considerando $\omega = 2$, $\alpha = 0$,
-$\Delta = 0.1$, 
-
-\[ y_{n+1} = y_n + j \, 2 \, 0.1 \,   y_n \]
-
-\[ y_{n+1} = y_n + j \, 0.2 \, y_n \]
-
-Resolvendo numericamente para $t \in [0, 10]$, temos a seguinte solução numérica
-
-\begin{figure}[htb]
-	\caption{\label{fig:euler_q1}Solução numérica via Método de Euler da questão 1.}
-	\begin{center}
-        \includegraphics[width=\textwidth,trim=1 1 1 1,clip]{euler_q1.png}
-	\end{center}
-\end{figure}
-
-Vemos que o método é instável, conforme explicado no livro-texto.
-
-
-
+\section{Solução numérica}
 
 
 
