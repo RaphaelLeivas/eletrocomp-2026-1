@@ -85,21 +85,30 @@ Assim,
 
 \[ \mathcal{V}(x, t) = \frac{1}{2} \left[ \phi(x - v_p t) + \phi(x + v_p t) \right] \]  
 
-\[ \mathcal{V}(x, t) = 
-\begin{cases} 
-\frac{1}{2} \left(  x - v_p t - 8 + x + v_p t - 8 \right) & \text{Volts} \quad 8 \text{ cm} \leq x \leq 10 \text{ cm}, \\ 
-\frac{1}{2} \left( -(x - v_p t) + 12 + -(x + v_p t) + 12 \right) & \text{Volts} \quad 10 \text{ cm} \leq x \leq 12 \text{ cm}, \\ 
-0 & \text{Volts} \quad \text{caso contrário}, 
-\end{cases}\]  
-
-\[ \mathcal{V}(x, t) = 
-\begin{cases} 
-x - 8 & \text{Volts} \quad 8 \text{ cm} \leq x \leq 10 \text{ cm}, \\ 
--x + 12 & \text{Volts} \quad 10 \text{ cm} \leq x \leq 12 \text{ cm}, \\ 
-0 & \text{Volts} \quad \text{caso contrário}, 
-\end{cases}\]  
+Temos duas ondas se propagandos em direções opostas com metade da amplitude inicial.
 
 \section{Solução numérica}
 
+O código usado nessa solução encontra-se no Anexo \ref{cap:codigo_q34}.
 
+Os parâmetros de discretização foram selecionados da seguinte forma:
 
+\begin{itemize}
+	\item $\Delta t = 5 \un{ps}$: isso vem do fato de que a velocidade da onda é de $v_p = 1.25 \cdot 10^{10} \un{cm/s}$. 
+	Como o comprimento da linha é de 20 cm, o tempo de propagação é de $t_p = \frac{20 \un{cm}}{1.25 \cdot 10^{10} \un{cm/s}} = 1.6 \un{ns}$.
+	Assim, um passo de tempo de $5 \un{ps}$ é suficientemente pequeno para capturar a dinâmica da propagação da onda.
+	\item $\Delta x = 0.1 \un{cm}$: isso é escolhido para garantir que tenhamos uma resolução espacial adequada para capturar a forma da onda, obtendo-se 200 pontos espaciais ao longo da linha de 20 cm.
+\end{itemize}
+
+A Figura \ref{fig:result_q34} apresenta a solução numérica para diferentes instantes de tempo.
+Ela mostra como a onda se propaga como duas ondas viajando em direções opostas, uma para a direita e outra para a esquerda, a partir da condição inicial dada,
+conforme previsto na solução analítica. 
+
+\begin{figure}[htb]
+	\caption{\label{fig:result_q34}Solução numérica da questão 3.4.}
+	\begin{center}
+        \includegraphics[width=\textwidth,trim=1 1 1 1,clip]{result_q34.png}
+	\end{center}
+\end{figure}
+
+\section{Variando os parâmetros}
