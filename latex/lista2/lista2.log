@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2026.4.1)  2 APR 2026 09:55
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2026.4.1)  2 APR 2026 11:11
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1043,7 +1043,7 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `phv' (encoding: TS1).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
-<./images/result_q34.png, id=31, 1148.3703pt x 657.657pt>
+<./images/result_q34.png, id=35, 1148.3703pt x 657.657pt>
 File: ./images/result_q34.png Graphic file (type png)
 <use ./images/result_q34.png>
 Package pdftex.def Info: ./images/result_q34.png  used on input line 110.
@@ -1052,12 +1052,12 @@ Package pdftex.def Info: ./images/result_q34.png  used on input line 110.
 
 
 ]
-<./images/result_q34_dx.png, id=50, 1164.35pt x 807.015pt>
+<./images/result_q34_dx.png, id=54, 1164.35pt x 807.015pt>
 File: ./images/result_q34_dx.png Graphic file (type png)
 <use ./images/result_q34_dx.png>
 Package pdftex.def Info: ./images/result_q34_dx.png  used on input line 124.
 (pdftex.def)             Requested size: 409.49722pt x 283.61163pt.
-<./images/result_q34_dt.png, id=52, 1164.35pt x 807.015pt>
+<./images/result_q34_dt.png, id=56, 1164.35pt x 807.015pt>
 File: ./images/result_q34_dt.png Graphic file (type png)
 <use ./images/result_q34_dt.png>
 Package pdftex.def Info: ./images/result_q34_dt.png  used on input line 135.
@@ -1069,28 +1069,39 @@ File: lstlang1.sty 2023/02/27 1.9 listings language file
 )
 LaTeX Font Info:    Font shape `T1/phv/m/it' in size <8> not available
 (Font)              Font shape `T1/phv/m/sl' tried instead on input line 145.
-<./images/result_q35.png, id=73, 1148.3703pt x 657.657pt>
+<./images/result_q35.png, id=77, 1148.3703pt x 657.657pt>
 File: ./images/result_q35.png Graphic file (type png)
 <use ./images/result_q35.png>
 Package pdftex.def Info: ./images/result_q35.png  used on input line 157.
 (pdftex.def)             Requested size: 455.0pt x 260.23427pt.
-<./images/result_q35_dx.png, id=75, 1184.425pt x 813.0375pt>
+<./images/result_q35_dx.png, id=79, 1184.425pt x 813.0375pt>
 File: ./images/result_q35_dx.png Graphic file (type png)
 <use ./images/result_q35_dx.png>
 Package pdftex.def Info: ./images/result_q35_dx.png  used on input line 167.
 (pdftex.def)             Requested size: 455.0pt x 312.08044pt.
-<./images/result_q35_dt.png, id=77, 1320.935pt x 879.285pt>
+<./images/result_q35_dt.png, id=81, 1320.935pt x 879.285pt>
 File: ./images/result_q35_dt.png Graphic file (type png)
 <use ./images/result_q35_dt.png>
 Package pdftex.def Info: ./images/result_q35_dt.png  used on input line 174.
 (pdftex.def)             Requested size: 455.0pt x 302.6343pt.
-)
-(./elementos-pos-textuais/anexos.tex [6
+ [6
 
  <./images/result_q35.png>] [7 <./images/result_q35_dx.png> <./images/result_q3
-5_dt.png>]) [8
+5_dt.png>]
+<./images/result_q36.png, id=108, 1138.9752pt x 657.657pt>
+File: ./images/result_q36.png Graphic file (type png)
+<use ./images/result_q36.png>
+Package pdftex.def Info: ./images/result_q36.png  used on input line 188.
+(pdftex.def)             Requested size: 455.0pt x 262.38521pt.
+)
+(./elementos-pos-textuais/anexos.tex [8
 
-]
+ <./images/result_q36.png>] [9
+
+] [10
+
+])
+[11]
 \tf@toc=\write5
 \openout5 = `lista2.toc'.
 
@@ -1101,13 +1112,13 @@ L3 programming layer <2020/03/25>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 20999 strings out of 476162
- 332391 string characters out of 5794815
- 2173975 words of memory out of 5000000
- 42494 multiletter control sequences out of 15000+600000
- 591300 words of font info for 137 fonts, out of 8000000 for 9000
+ 21093 strings out of 476162
+ 333831 string characters out of 5794815
+ 2182975 words of memory out of 5000000
+ 42514 multiletter control sequences out of 15000+600000
+ 591425 words of font info for 139 fonts, out of 8000000 for 9000
  16 hyphenation exceptions out of 8191
- 99i,13n,107p,1003b,1502s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 99i,13n,107p,1003b,2142s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></us
 r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/shar
 e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texl
@@ -1121,10 +1132,10 @@ m/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy
 8.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/
 share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/share/texliv
 e/texmf-dist/fonts/type1/urw/helvetic/uhvro8a.pfb>
-Output written on lista2.pdf (8 pages, 1347620 bytes).
+Output written on lista2.pdf (11 pages, 1588140 bytes).
 PDF statistics:
- 253 PDF objects out of 1000 (max. 8388607)
- 193 compressed objects within 2 object streams
- 76 named destinations out of 1000 (max. 500000)
- 38008 words of extra memory for PDF output out of 42996 (max. 10000000)
+ 361 PDF objects out of 1000 (max. 8388607)
+ 294 compressed objects within 3 object streams
+ 146 named destinations out of 1000 (max. 500000)
+ 38035 words of extra memory for PDF output out of 42996 (max. 10000000)
 

@@ -54,5 +54,76 @@
         V[n+1, -1] = V[n, -2] # em x = 20
 
     \end{lstlisting}
+
+\chapter{Código Questao 3.6}\label{cap:codigo_q36}
+    
+    \begin{lstlisting}[language=Python, breaklines=true, basicstyle=\tiny]
+    import numpy as np
+    import matplotlib.pyplot as plt
+    import pandas as pd
+
+    L = 0.242e-6
+    C = 96.8e-12
+    Z0 = np.sqrt(L / C) # characteristic impedance
+
+    vp = 1 / np.sqrt(L * C) # wave velocity
+    f = 100e6 # frequency
+    lambda_wave = vp / f # wavelength
+    print(lambda_wave)
+    dx = lambda_wave / 20
+    dt = dx / vp
+
+    print(dx)
+    print(dt)
+
+    # it reaches the end x = 20 
+
+    x_max = 20 # transmission line length
+    t_max = 200e-9 # final time
+
+    print(x_max / vp)
+
+
+    stable_condition = vp * dt / dx
+    print(stable_condition)
+
+    coeff_V = dt / (C * dx)
+    coeff_I = dt / (L * dx)
+
+    # Parametros de grade
+    nx = int(x_max / dx) + 1
+    nt = int(t_max / dt) + 1
+    print(nt)
+
+    # Inicializacao da matriz de potencial V[tempo, espaco]
+    V = np.zeros((nt, nx))
+    I = np.zeros((nt, nx))
+
+    # condicao inicial
+    initial_V = np.zeros(nx)
+    initial_I = np.zeros(nx)
+
+    V[0, :] = initial_V
+    I[0, :] = initial_I
+
+    # lanca uma senoide em x = 0
+    for n in range(nt):
+        V[n, 0] = 1 * np.sin(2 * np.pi * f * n * dt)
+
+    # Primeiro passo de tempo
+    for i in range(1, nx - 1):
+        V[1, i] = V[0, i]
+
+    # Loop Principal
+    for n in range(1, nt - 1):
+        V[n+1, 1:-1] = V[n-1, 1:-1] - coeff_V * (I[n, 2:] - I[n, :-2])
+        I[n+1, 1:-1] = I[n-1, 1:-1] - coeff_I * (V[n, 2:] - V[n, :-2])
+
+        # condicoes de contorno
+        V[n+1, -1] = 0 # curto circuito em x = 20
+
+
+
+    \end{lstlisting}
     
 \end{anexosenv}

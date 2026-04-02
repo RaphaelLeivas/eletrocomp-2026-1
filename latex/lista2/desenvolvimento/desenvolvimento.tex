@@ -174,3 +174,24 @@ vemos comportamentos semelhantes aos observados na questão 3.4.
         \includegraphics[width=\textwidth,trim=1 1 1 1,clip]{result_q35_dt.png}
 	\end{center}
 \end{figure}
+
+\chapter{Problema 3.6}
+
+Usando o código disponível no Anexo \ref{cap:codigo_q36}, os parâmetros fornecidos pelo enunciado e 
+a condição de contorno de um curto-circuito na extremidade direita da linha, 
+na qual fixamos a tensão em zero em $x = 20 \un{m}$,
+obtemos a seguinte solução numérica na Figura \ref{fig:result_q36}.
+
+\begin{figure}[htb]
+	\caption{\label{fig:result_q36}Solução numérica da questão 3.6.}
+	\begin{center}
+        \includegraphics[width=\textwidth,trim=1 1 1 1,clip]{result_q36.png}
+	\end{center}
+\end{figure}
+
+Vemos que a onda se propaga para a direita, refletindo-se na extremidade direita da linha,
+devido à condição de curto-circuito e descontinuidade de impedância, e se propaga para a esquerda 
+causando interferência 
+com o sinal original.
+
+\textcolor{red}{Dúvida para a aula de 02/04: entender melhor o que está acontecendo fisicamente antes de calcular o SWR.}
