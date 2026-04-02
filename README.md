@@ -43,6 +43,14 @@ Ou cria um bash script para rodar isso automático.
 
 Ou usa o VS que já faz tudo isso automático.
 
+## Compilando localmente em Ubuntu (abntex2)
+
+sudo apt update
+sudo apt install texlive-latex-base
+sudo apt-get install texlive-publishers texlive-lang-portuguese texlive-latex-extra texlive-fonts-recommended
+
+Aí compile com o script run.sh em cada folder
+
 # Setting Up Development Environment (Python)
 
 - install python 3.12.4 https://www.python.org/downloads/release/python-3124/
@@ -83,3 +91,14 @@ OU
 cd myEnv/bin/
 .\activate
 cd ../../
+
+# Python development Environment (Ubuntu)
+
+sudo apt install python3-venv python3-pip
+
+python3 -m venv myEnv
+cd myEnv/bin
+sudo source activate
+cd ../../
+pip install -r requirements.txt
+
