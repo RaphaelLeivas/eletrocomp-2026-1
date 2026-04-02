@@ -114,6 +114,27 @@ conforme previsto na solução analítica.
 Além disso, note que a condição de contorno ''A`` usada simula uma linha de transmissão infinita, 
 de modo que não temos reflexões no sinal nas extremidades.
 
+Variando-se o parâmetro $\Delta x$, vemos que valores muito grandes levam a 
+instabilidades numéricas, enquanto valores muito pequenos levam a um aumento significativo no tempo de execução do código
+e uma mudança na solução obtida, como mostra a Figura \ref{fig:result_q34_dx}.
+
+\begin{figure}[htb]
+	\caption{\label{fig:result_q34_dx}Variações de $\Delta x$ na solução da questão 3.4.}
+	\begin{center}
+        \includegraphics[width=0.9\textwidth,trim=1 1 1 1,clip]{result_q34_dx.png}
+	\end{center}
+\end{figure}
+
+De modo similar, variando-se o parâmetro $\Delta t$, vemos que valores muito grandes levam a
+instabilidades numéricas, enquanto valores muito pequenos levam a uma 
+melhor resolução na forma de onda, apesar de um aumento no tempo de execução do código. 
+
+\begin{figure}[htb]
+	\caption{\label{fig:result_q34_dt}Variações de $\Delta t$ na solução da questão 3.4.}
+	\begin{center}
+        \includegraphics[width=0.9\textwidth,trim=1 1 1 1,clip]{result_q34_dt.png}
+	\end{center}
+\end{figure}
 
 \chapter{Problema 3.5}
 
@@ -137,9 +158,8 @@ obtemos a seguinte solução numérica na Figura \ref{fig:result_q35}.
 	\end{center}
 \end{figure}
 
-Variando-se o parâmetro $\Delta x$, vemos que valores muito grandes levam a 
-instabilidades numéricas, enquanto valores muito pequenos levam a um aumento significativo no tempo de execução do código
-e uma mudança na solução obtida, como mostra a Figura \ref{fig:result_q35_dx}.
+Variando-se os parãmetros $\Delta x$ e $\Delta t$,
+vemos comportamentos semelhantes aos observados na questão 3.4.
 
 \begin{figure}[htb]
 	\caption{\label{fig:result_q35_dx}Variações de $\Delta x$ na solução da questão 3.5.}
@@ -147,10 +167,6 @@ e uma mudança na solução obtida, como mostra a Figura \ref{fig:result_q35_dx}
         \includegraphics[width=\textwidth,trim=1 1 1 1,clip]{result_q35_dx.png}
 	\end{center}
 \end{figure}
-
-De modo similar, variando-se o parâmetro $\Delta t$, vemos que valores muito grandes levam a
-instabilidades numéricas, enquanto valores muito pequenos levam a uma 
-melhor resolução na forma de onda, apesar de um aumento no tempo de execução do código. 
 
 \begin{figure}[htb]
 	\caption{\label{fig:result_q35_dt}Variações de $\Delta t$ na solução da questão 3.5.}
