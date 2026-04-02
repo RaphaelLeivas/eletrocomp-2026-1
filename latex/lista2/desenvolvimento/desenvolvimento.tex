@@ -69,7 +69,7 @@
 \section{Solução analítica}
 
 A solução analítica vem da equação de D'Alembert, conforme descrito 
-no livro-text: 
+no livro-texto: 
 
 \[ \mathcal{V}(x, t) = \frac{1}{2} \left[ \phi(x - v_p t) + \phi(x + v_p t) + \frac{1}{v_p} \int_{x - v_p t}^{x + v_p t} \theta(\zeta) d\zeta \right] \]
 
@@ -111,4 +111,50 @@ conforme previsto na solução analítica.
 	\end{center}
 \end{figure}
 
-\section{Variando os parâmetros}
+Além disso, note que a condição de contorno ''A`` usada simula uma linha de transmissão infinita, 
+de modo que não temos reflexões no sinal nas extremidades.
+
+
+\chapter{Problema 3.5}
+
+Para resolver ambas equações ao mesmo tempo, basta resolver elas juntas no loop principal, 
+com a seguinte adaptação ao código da questão 3.4:
+
+\begin{lstlisting}[language=Python, breaklines=true, basicstyle=\tiny]
+    # Loop Principal
+	for n in range(1, nt - 1):
+		V[n+1, 1:-1] = V[n-1, 1:-1] - coeff_V * (I[n, 2:] - I[n, :-2])
+		I[n+1, 1:-1] = I[n-1, 1:-1] - coeff_I * (V[n, 2:] - V[n, :-2])
+    \end{lstlisting}
+
+Usando os mesmos parâmetros de discretização da questão anterior, 
+obtemos a seguinte solução numérica na Figura \ref{fig:result_q35}.
+
+\begin{figure}[htb]
+	\caption{\label{fig:result_q35}Solução numérica da questão 3.5.}
+	\begin{center}
+        \includegraphics[width=\textwidth,trim=1 1 1 1,clip]{result_q35.png}
+	\end{center}
+\end{figure}
+
+Variando-se o parâmetro $\Delta x$, vemos que valores muito grandes levam a 
+instabilidades numéricas, enquanto valores muito pequenos levam a um aumento significativo no tempo de execução do código
+e uma mudança na solução obtida, como mostra a Figura \ref{fig:result_q35_dx}.
+
+\begin{figure}[htb]
+	\caption{\label{fig:result_q35_dx}Variações de $\Delta x$ na solução da questão 3.5.}
+	\begin{center}
+        \includegraphics[width=\textwidth,trim=1 1 1 1,clip]{result_q35_dx.png}
+	\end{center}
+\end{figure}
+
+De modo similar, variando-se o parâmetro $\Delta t$, vemos que valores muito grandes levam a
+instabilidades numéricas, enquanto valores muito pequenos levam a uma 
+melhor resolução na forma de onda, apesar de um aumento no tempo de execução do código. 
+
+\begin{figure}[htb]
+	\caption{\label{fig:result_q35_dt}Variações de $\Delta t$ na solução da questão 3.5.}
+	\begin{center}
+        \includegraphics[width=\textwidth,trim=1 1 1 1,clip]{result_q35_dt.png}
+	\end{center}
+\end{figure}

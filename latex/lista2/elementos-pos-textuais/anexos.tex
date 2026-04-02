@@ -24,15 +24,15 @@
     Z0 = np.sqrt(L / C) # characteristic impedance
     vp = 1 / np.sqrt(L * C) # wave velocity
 
-    # Parametros de grade
+    # Parâmetros de grade
     nx = int(x_max / dx) + 1
     nt = int(t_max / dt) + 1
     C2 = (vp * dt / dx)**2 
 
-    # Inicializacao da matriz de potencial V[tempo, espaco]
+    # Inicialização da matriz de potencial V[tempo, espaço]
     V = np.zeros((nt, nx))
 
-    # condicao inicial
+    # condição inicial
     x = np.linspace(0, x_max, nx)
     initial = np.zeros(nx)
 
@@ -49,22 +49,10 @@
     for n in range(1, nt - 1):
         V[n+1, 1:-1] = C2 * (V[n, 2:] - 2*V[n, 1:-1] + V[n, :-2]) + 2*V[n, 1:-1] - V[n-1, 1:-1]
 
-    fig, axes = plt.subplots(nrows=3, ncols=3, figsize=(10, 10))
+        # condições de contorno
+        V[n+1, 0] = V[n, 1] # em x = 0
+        V[n+1, -1] = V[n, -2] # em x = 20
 
-    t = np.linspace(0, t_max, nt)
-
-    t_list = [0, 10, 30, 40, 50, 60, 70, 80, 90]
-
-    for i, ax in enumerate(axes.flatten()):
-        ax.plot(x, V[t_list[i], :], color='blue') # Plot the i-th dataset on the i-th axis
-        ax.set_title(f'Instante {t_list[i] * dt * 1e9:.2f} ns')      # Set a title for each subplot
-        ax.set_xlabel('Posicao (cm)')
-        ax.set_ylabel('Tensao (V)')
-        ax.grid(True)
-
-    plt.tight_layout(rect=[0, 0.03, 1, 0.95]) # Adjust rect to make space for suptitle
-
-    plt.show()
     \end{lstlisting}
     
 \end{anexosenv}
