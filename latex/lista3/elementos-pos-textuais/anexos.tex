@@ -1,0 +1,56 @@
+% ---
+% Inicia os anexos
+% ---
+\begin{anexosenv}
+    \chapter{Código Exercício 2}\label{cap:codigo_ex2}
+    
+    \begin{lstlisting}[language=Python, breaklines=true, basicstyle=\tiny]
+    import numpy as np
+    import matplotlib.pyplot as plt
+    import pandas as pd
+
+    # Parameters
+    e0 = 8.854187817e-12  # Vacuum permittivity (F/m)
+    mu0 = 4 * np.pi * 1e-7  # Vacuum permeability (H/m)
+    vp = 1 / np.sqrt(e0 * mu0)
+
+    a = 1 # tamanho da reta (eixo x)
+    T = 10e-9 # tempo de simulação 
+
+    dx = 0.01
+    dt = 0.005e-9
+
+    nx = int(a / dx) + 1
+    nt = int(T / dt)
+
+    xgrid = np.linspace(0, a, nx)
+
+    # campos
+    Ey = np.zeros((nt, nx))
+    Hz = np.zeros((nt, nx))
+
+    # valor inicial do campo Ey em t = 0
+    Ey[0, :] = np.sin(np.pi / a * xgrid)
+
+    # marcha no tempo
+    for n in range(nt - 1):
+
+        # atualiza o H
+        for i in range(nx - 1):
+            Hz[n+1, i] = Hz[n, i] + (dt / (mu0 * dx)) * (Ey[n, i+1] - Ey[n, i])
+
+        # atualiza o E
+        for i in range(1, nx - 1):
+            # por causa do i-1 no final que o range começa em 1
+            Ey[n+1, i] = Ey[n, i] + (dt / (e0 * dx)) * (Hz[n+1, i] - Hz[n+1, i-1])
+
+        # zero na condição de contorno (extremidades)
+        Ey[n+1, 0] = 0
+        Ey[n+1, -1] = 0
+
+
+    \end{lstlisting}
+
+
+    
+\end{anexosenv}

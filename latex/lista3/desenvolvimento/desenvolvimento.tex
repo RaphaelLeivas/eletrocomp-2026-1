@@ -1,0 +1,62 @@
+\chapter{Exercício 1}
+
+Sabemos que o esquema de Yee em 1D no vácuo é dado por 
+
+\[ \frac{E^{n+1} - E^n}{\Delta t} = E_t + O\left( \Delta t^2 \right) 
+\quad , \quad
+\frac{H_{i+1/2} - H_{i-1/2}}{\Delta x} = H_x + O\left( \Delta x^2 \right)
+\]
+
+\noindent onde as diferenças centradas resultam em erros de ordem 2. O erro é dado por 
+
+\begin{align*}
+\tau_E
+&=
+E_t + O\left( \Delta t^2 \right) - \frac{1}{\epsilon} \left( H_x + O\left( \Delta x^2 \right) \right) 
+\\[6pt]
+&=
+E_t + O\left( \Delta t^2 \right) - \frac{1}{\epsilon} H_x - \frac{1}{\epsilon} O\left( \Delta x^2 \right)
+\end{align*}
+
+Agrupando os termos de $O\left( \Delta x^2 \right)$ e $O\left( \Delta t^2 \right)$, chegamos em um
+resultado próximo do que queremos mostrar:
+
+\begin{align*}
+\tau_E
+&\leq
+C \left( \Delta x^2 + \Delta t^2  \right)
+\\[6pt]
+\end{align*}
+
+\chapter{Exercício 2}
+
+\section{Solução Analítica}
+
+O primeiro passo é entender a solução analítica, exibida na Figura \ref{fig:ex2-analitico}. 
+Temos uma onda estacionária, com um campo elétrico $E_y$ que oscila no tempo e tem um perfil senoidal no espaço.
+
+\begin{figure}[htb]
+	\caption{\label{fig:ex2-analitico}Solução analítica do exercício 2.}
+	\begin{center}
+        \includegraphics[width=0.8\textwidth,trim=1 1 1 1,clip]{ex2-analitico.png}
+	\end{center}
+\end{figure}
+
+\section{Solução Numérica}
+
+Todo o código usado nessa solução encontra-se no Anexo \ref{cap:codigo_ex2}. 
+
+A solução obtida para os diferentes valores de 
+$\Delta x$ e $\Delta t$ é exibida na Figura \ref{fig:ex2-numerico}.
+Vemos que a solução numérica é parecida com a solução analítica 
+em todos os valores de discretização usados. 
+
+\begin{figure}[htb]
+	\caption{\label{fig:ex2-numerico}Solução numérica do exercício 2.}
+	\begin{center}
+        \includegraphics[width=\textwidth,trim=1 1 1 1,clip]{ex2-numerico.png}
+	\end{center}
+\end{figure}
+
+\section{Medida de erro}
+

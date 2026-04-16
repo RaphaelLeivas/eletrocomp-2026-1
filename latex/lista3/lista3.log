@@ -1,9 +1,9 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2026.4.1)  15 APR 2026 21:44
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2026.4.1)  15 APR 2026 22:40
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**lista2.tex
-(./lista2.tex
+**lista3.tex
+(./lista3.tex
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-01-22>
 (/usr/share/texlive/texmf-dist/tex/latex/abntex2/abntex2.cls
@@ -887,9 +887,9 @@ LaTeX Info: Redefining \newblock on input line 591.
 LaTeX Info: Redefining \cite on input line 618.
 \ABCItoken=\toks48
 )
-Package color Info: Redefining color blue on input line 55.
-Package color Info: Redefining color black on input line 56.
-Package hyperref Info: Option `colorlinks' set `true' on input line 73.
+Package color Info: Redefining color blue on input line 69.
+Package color Info: Redefining color black on input line 70.
+Package hyperref Info: Option `colorlinks' set `true' on input line 87.
 
 
 ******************************************************
@@ -926,32 +926,32 @@ Sidefootvsep and sidefootheight: 14.5pt and 590.14995pt
 \cftbeforecircuitoskip=\skip274
 \cftcircuitoindent=\skip275
 \cftcircuitonumwidth=\skip276
-\lista2@idxfile=\write4
-\openout4 = `lista2.idx'.
+\lista3@idxfile=\write4
+\openout4 = `lista3.idx'.
 
-Writing index file lista2.idx 
-(./lista2.aux)
-\openout1 = `lista2.aux'.
+Writing index file lista3.idx 
+(./lista3.aux)
+\openout1 = `lista3.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 229.
-LaTeX Font Info:    ... okay on input line 229.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 229.
-LaTeX Font Info:    ... okay on input line 229.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 229.
-LaTeX Font Info:    ... okay on input line 229.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 229.
-LaTeX Font Info:    ... okay on input line 229.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 229.
-LaTeX Font Info:    ... okay on input line 229.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 229.
-LaTeX Font Info:    ... okay on input line 229.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 229.
-LaTeX Font Info:    ... okay on input line 229.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 229.
-LaTeX Font Info:    ... okay on input line 229.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 229.
-LaTeX Font Info:    ... okay on input line 229.
-Package hyperref Info: Link coloring ON on input line 229.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 241.
+LaTeX Font Info:    ... okay on input line 241.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 241.
+LaTeX Font Info:    ... okay on input line 241.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 241.
+LaTeX Font Info:    ... okay on input line 241.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 241.
+LaTeX Font Info:    ... okay on input line 241.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 241.
+LaTeX Font Info:    ... okay on input line 241.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 241.
+LaTeX Font Info:    ... okay on input line 241.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 241.
+LaTeX Font Info:    ... okay on input line 241.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 241.
+LaTeX Font Info:    ... okay on input line 241.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 241.
+LaTeX Font Info:    ... okay on input line 241.
+Package hyperref Info: Link coloring ON on input line 241.
 \myptabbox=\box63
 \myptabboxwidth=\skip277
 
@@ -977,19 +977,19 @@ Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
-LaTeX Info: Redefining \microtypecontext on input line 229.
-Package microtype Info: Applying patch `item' on input line 229.
-Package microtype Info: Applying patch `toc' on input line 229.
-Package microtype Info: Applying patch `eqnum' on input line 229.
-Package microtype Info: Applying patch `footnote' on input line 229.
-Package microtype Info: Applying patch `verbatim' on input line 229.
+LaTeX Info: Redefining \microtypecontext on input line 241.
+Package microtype Info: Applying patch `item' on input line 241.
+Package microtype Info: Applying patch `toc' on input line 241.
+Package microtype Info: Applying patch `eqnum' on input line 241.
+Package microtype Info: Applying patch `footnote' on input line 241.
+Package microtype Info: Applying patch `verbatim' on input line 241.
 Package microtype Info: Generating PDF output.
 Package microtype Info: Character protrusion enabled (level 2).
 Package microtype Info: Using default protrusion set `alltext'.
 Package microtype Info: Automatic font expansion enabled (level 2),
 (microtype)             stretch: 20, shrink: 20, step: 1, non-selected.
 Package microtype Info: Using default expansion set `alltext-nott'.
-LaTeX Info: Redefining \showhyphens on input line 229.
+LaTeX Info: Redefining \showhyphens on input line 241.
 Package microtype Info: No adjustment of tracking.
 Package microtype Info: No adjustment of interword spacing.
 Package microtype Info: No adjustment of character kerning.
@@ -1009,7 +1009,7 @@ Package pdftex.def Info: images/logo_ufmg.png  used on input line 3.
 [1
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}{/usr/share/texlive/texmf-di
-st/fonts/enc/dvips/base/8r.enc} <./images/logo_ufmg.png>] (./lista2.toc
+st/fonts/enc/dvips/base/8r.enc} <./images/logo_ufmg.png>] (./lista3.toc
 (/usr/share/texlive/texmf-dist/tex/latex/microtype/mt-cmr.cfg
 File: mt-cmr.cfg 2013/05/19 v2.2 microtype config. file: Computer Modern Roman 
 (RS)
@@ -1030,11 +1030,33 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 (/usr/share/texlive/texmf-dist/tex/latex/microtype/mt-msb.cfg
 File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
 )) [2])
-(./desenvolvimento/desenvolvimento.tex
+(./desenvolvimento/desenvolvimento.tex [3
+
+
+]
 LaTeX Font Info:    Font shape `T1/phv/m/it' in size <12> not available
-(Font)              Font shape `T1/phv/m/sl' tried instead on input line 69.
-LaTeX Font Info:    Trying to load font information for TS1+phv on input line 7
-9.
+(Font)              Font shape `T1/phv/m/sl' tried instead on input line 33.
+<./images/ex2-analitico.png, id=41, 625.8582pt x 395.3169pt>
+File: ./images/ex2-analitico.png Graphic file (type png)
+<use ./images/ex2-analitico.png>
+Package pdftex.def Info: ./images/ex2-analitico.png  used on input line 41.
+(pdftex.def)             Requested size: 364.00139pt x 229.48793pt.
+<./images/ex2-numerico.png, id=46, 1606.0pt x 903.375pt>
+File: ./images/ex2-numerico.png Graphic file (type png)
+<use ./images/ex2-numerico.png>
+Package pdftex.def Info: ./images/ex2-numerico.png  used on input line 57.
+(pdftex.def)             Requested size: 455.0pt x 255.68208pt.
+)
+(./elementos-pos-textuais/anexos.tex [4
+
+ <./images/ex2-analitico.png>] [5 <./images/ex2-numerico.png>]
+(/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
+File: lstlang1.sty 2023/02/27 1.9 listings language file
+)
+LaTeX Font Info:    Font shape `T1/phv/m/it' in size <8> not available
+(Font)              Font shape `T1/phv/m/sl' tried instead on input line 12.
+LaTeX Font Info:    Trying to load font information for TS1+phv on input line 1
+3.
 
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ts1phv.fd
 File: ts1phv.fd 2020/03/25 scalable font definitions for TS1/phv.
@@ -1043,99 +1065,41 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `phv' (encoding: TS1).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
-<./images/result_q34.png, id=35, 1148.3703pt x 657.657pt>
-File: ./images/result_q34.png Graphic file (type png)
-<use ./images/result_q34.png>
-Package pdftex.def Info: ./images/result_q34.png  used on input line 110.
-(pdftex.def)             Requested size: 455.0pt x 260.23427pt.
- [3
-
+LaTeX Font Info:    Font shape `TS1/phv/m/it' in size <8> not available
+(Font)              Font shape `TS1/phv/m/sl' tried instead on input line 44.
+) [6
 
 ]
-<./images/result_q34_dx.png, id=54, 1164.35pt x 807.015pt>
-File: ./images/result_q34_dx.png Graphic file (type png)
-<use ./images/result_q34_dx.png>
-Package pdftex.def Info: ./images/result_q34_dx.png  used on input line 124.
-(pdftex.def)             Requested size: 409.49722pt x 283.61163pt.
-<./images/result_q34_dt.png, id=56, 1164.35pt x 807.015pt>
-File: ./images/result_q34_dt.png Graphic file (type png)
-<use ./images/result_q34_dt.png>
-Package pdftex.def Info: ./images/result_q34_dt.png  used on input line 135.
-(pdftex.def)             Requested size: 409.49722pt x 283.61163pt.
- [4 <./images/result_q34.png>] [5 <./images/result_q34_dx.png> <./images/result
-_q34_dt.png>]
-(/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
-File: lstlang1.sty 2023/02/27 1.9 listings language file
-)
-LaTeX Font Info:    Font shape `T1/phv/m/it' in size <8> not available
-(Font)              Font shape `T1/phv/m/sl' tried instead on input line 145.
-<./images/result_q35.png, id=77, 1148.3703pt x 657.657pt>
-File: ./images/result_q35.png Graphic file (type png)
-<use ./images/result_q35.png>
-Package pdftex.def Info: ./images/result_q35.png  used on input line 157.
-(pdftex.def)             Requested size: 455.0pt x 260.23427pt.
-<./images/result_q35_dx.png, id=79, 1184.425pt x 813.0375pt>
-File: ./images/result_q35_dx.png Graphic file (type png)
-<use ./images/result_q35_dx.png>
-Package pdftex.def Info: ./images/result_q35_dx.png  used on input line 167.
-(pdftex.def)             Requested size: 455.0pt x 312.08044pt.
-<./images/result_q35_dt.png, id=81, 1320.935pt x 879.285pt>
-File: ./images/result_q35_dt.png Graphic file (type png)
-<use ./images/result_q35_dt.png>
-Package pdftex.def Info: ./images/result_q35_dt.png  used on input line 174.
-(pdftex.def)             Requested size: 455.0pt x 302.6343pt.
- [6
-
- <./images/result_q35.png>] [7 <./images/result_q35_dx.png> <./images/result_q3
-5_dt.png>]
-<./images/result_q36.png, id=108, 1138.9752pt x 657.657pt>
-File: ./images/result_q36.png Graphic file (type png)
-<use ./images/result_q36.png>
-Package pdftex.def Info: ./images/result_q36.png  used on input line 188.
-(pdftex.def)             Requested size: 455.0pt x 262.38521pt.
-)
-(./elementos-pos-textuais/anexos.tex [8
-
- <./images/result_q36.png>] [9
-
-] [10
-
-])
-[11]
 \tf@toc=\write5
-\openout5 = `lista2.toc'.
+\openout5 = `lista3.toc'.
 
- (./lista2.aux)
+ (./lista3.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2020/03/25>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 21093 strings out of 476162
- 333831 string characters out of 5794815
- 2182975 words of memory out of 5000000
- 42514 multiletter control sequences out of 15000+600000
- 591425 words of font info for 139 fonts, out of 8000000 for 9000
+ 20909 strings out of 476162
+ 330424 string characters out of 5794815
+ 2170975 words of memory out of 5000000
+ 42459 multiletter control sequences out of 15000+600000
+ 586605 words of font info for 106 fonts, out of 8000000 for 9000
  16 hyphenation exceptions out of 8191
- 99i,13n,107p,1003b,2142s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 99i,12n,107p,1003b,1650s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></us
-r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/shar
-e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texl
-ive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texlive/tex
-mf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist
-/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/
-type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/p
-ublic/amsfonts/cm/cmr6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/am
-sfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/c
-m/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy
-8.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/
-share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/share/texliv
-e/texmf-dist/fonts/type1/urw/helvetic/uhvro8a.pfb>
-Output written on lista2.pdf (11 pages, 1588140 bytes).
+r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/shar
+e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texli
+ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texm
+f-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/f
+onts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/t
+ype1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/ur
+w/helvetic/uhvb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/u
+hvr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvro8a.pfb>
+Output written on lista3.pdf (6 pages, 548666 bytes).
 PDF statistics:
- 361 PDF objects out of 1000 (max. 8388607)
- 294 compressed objects within 3 object streams
- 146 named destinations out of 1000 (max. 500000)
- 38035 words of extra memory for PDF output out of 42996 (max. 10000000)
+ 188 PDF objects out of 1000 (max. 8388607)
+ 150 compressed objects within 2 object streams
+ 60 named destinations out of 1000 (max. 500000)
+ 34380 words of extra memory for PDF output out of 35830 (max. 10000000)
 
