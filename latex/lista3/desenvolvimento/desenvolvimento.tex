@@ -1,32 +1,41 @@
 \chapter{Exercício 1}
 
-Sabemos que o esquema de Yee em 1D no vácuo é dado por 
+Vamos discretizar uma das equações de Maxwell em 1 dimensão no vácuo, 
+como por exemplo
 
-\[ \frac{E^{n+1} - E^n}{\Delta t} = E_t + O\left( \Delta t^2 \right) 
-\quad , \quad
-\frac{H_{i+1/2} - H_{i-1/2}}{\Delta x} = H_x + O\left( \Delta x^2 \right)
+\begin{equation}\label{eq:maxwell-1d-vacuo}
+	\pd{E_y}{t} =  - \frac{1}{\epsilon} \pd{H_z}{z} 
+\end{equation}
+
+Usando diferenças centradas, cada uma das derivadas de (\ref{eq:maxwell-1d-vacuo}) 
+pode ser aproximada por 
+
+\[ \pd{E_y}{t} = \frac{E^{n+1} - E^n}{\Delta t} + O\left( \Delta t^2 \right) \quad , \quad 
+	\pd{H_z}{z} = \frac{H_{i+1/2} - H_{i-1/2}}{\Delta x} + O\left( \Delta x^2 \right)
 \]
 
-\noindent onde as diferenças centradas resultam em erros de ordem 2. O erro é dado por 
+\noindent onde as diferenças centradas resultam em erros de ordem 2. O erro $\tau_E$ é dado pela 
+diferença entre os lados esquerdo e direito da Equação (\ref{eq:maxwell-1d-vacuo}) após substituir 
+as aproximações, ou seja,
 
 \begin{align*}
 \tau_E
 &=
-E_t + O\left( \Delta t^2 \right) - \frac{1}{\epsilon} \left( H_x + O\left( \Delta x^2 \right) \right) 
+\frac{E^{n+1} - E^n}{\Delta t} + O\left( \Delta t^2 \right) - \frac{1}{\epsilon} \left( \frac{H_{i+1/2} - H_{i-1/2}}{\Delta x} + O\left( \Delta x^2 \right) \right) 
 \\[6pt]
 &=
-E_t + O\left( \Delta t^2 \right) - \frac{1}{\epsilon} H_x - \frac{1}{\epsilon} O\left( \Delta x^2 \right)
-\end{align*}
-
-Agrupando os termos de $O\left( \Delta x^2 \right)$ e $O\left( \Delta t^2 \right)$, chegamos em um
-resultado próximo do que queremos mostrar:
-
-\begin{align*}
+\left[ \frac{E^{n+1} - E^n}{\Delta t} -  \frac{1}{\epsilon} \frac{H_{i+1/2} - H_{i-1/2}}{\Delta x} \right] + O\left( \Delta t^2 \right) + \frac{1}{\epsilon} O\left( \Delta x^2 \right)
+\\[6pt]
+&=
+\left[ \frac{E^{n+1} - E^n}{\Delta t} -  \frac{1}{\epsilon} \frac{H_{i+1/2} - H_{i-1/2}}{\Delta x} \right] + C \Delta t^2  + \frac{C}{\epsilon} \Delta x^2
+\\[6pt]
+&\text{Aplicando a Equação \ref{eq:maxwell-1d-vacuo} para substituir o termo entre colchetes, temos:}
+\\[6pt]
 \tau_E
 &\leq
-C \left( \Delta x^2 + \Delta t^2  \right)
-\\[6pt]
+C \left( \Delta t^2 + \Delta x^2  \right)
 \end{align*}
+
 
 \chapter{Exercício 2}
 
@@ -60,3 +69,4 @@ em todos os valores de discretização usados.
 
 \section{Medida de erro}
 
+\textcolor{red}{Dúvida: confirmar na aula como calcular isso.}
