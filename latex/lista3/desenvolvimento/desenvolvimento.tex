@@ -70,3 +70,78 @@ em todos os valores de discretização usados.
 \section{Medida de erro}
 
 \textcolor{red}{Dúvida: confirmar na aula como calcular isso.}
+
+\chapter{Exercício 3}
+
+O primeiro passo é montar um grid nas condições do problema, como mostra a 
+Figura \ref{fig:ex3-grid}. Esse grid comporta uma cavidade circular de 
+raio 0.5 m. No instante $t = 0$, não há campo elétrico e nenhuma excitação introduzida, 
+sendo esse o estado inicial do grid.
+
+\begin{figure}[htb]
+	\caption{\label{fig:ex3-grid}Grid para o exercício 3.}
+	\begin{center}
+        \includegraphics[width=\textwidth,trim=1 1 1 1,clip]{ex3-grid.png}
+	\end{center}
+\end{figure}
+
+O grid é composto dos seguintes parâmetros:
+
+\begin{itemize}
+	\item $N_x = N_y = 150$
+	\item $\Delta x = \Delta y = 2a / N_x = 6.67 \un{mm}$
+	\item $\Delta t = 10^{-12} \un{s}$
+	\item $N_t$ = 2000
+\end{itemize}
+
+\section{Excitação gaussiana}
+
+Aplicamos um pulso gaussiano no centro do grid com o perfil temporal exibido na 
+Figura \ref{fig:ex3-pulso}. O pulso é dado por
+
+\[ E(t) = \exp\left(-\frac{(t - t_0)^2}{\sigma^2}\right) \]
+
+\noindent onde $t_0 = 50 \Delta t$ e $\sigma = 15$. Assim, o pulso cresce suavamente 
+a partir de zero e atinge seu pico em $t = t_0$, para depois decrescer novamente.
+
+\begin{figure}[htb]
+	\caption{\label{fig:ex3-pulso}Pulso gaussiano para o exercício 3.}
+	\begin{center}
+        \includegraphics[width=0.8\textwidth,trim=1 1 1 1,clip]{ex3-pulso.png}
+	\end{center}
+\end{figure}
+
+Usando o esquema de Yee em duas dimensões para o modo Transversal Magnético (TM), 
+obtemos a seguinte evolução do campo elétrico $E_z$ ao longo do tempo, exibida na Figura \ref{fig:ex3-evolucao}.
+Vemos que o pulso gaussiano se propaga para fora a partir do centro da cavidade.
+
+\begin{figure}[htb]
+	\caption{\label{fig:ex3-evolucao}Evolução do campo elétrico $E_z$ para o exercício 3.}
+	\begin{center}
+        \includegraphics[width=\textwidth,trim=1 1 1 1,clip]{ex3-evolucao.png}
+	\end{center}
+\end{figure}
+
+Para simular reflexão nas paredes da cavidade, consideramos a cavidade como um condutor 
+elétrico perfeito (PEC), o que implica que o campo elétrico tangencial deve ser zero nas paredes.
+Por simplicidade, também consideramos o campo elétrico zero para fora da cavidade.
+Assim, temos $E_z = 0$ nas bordas do grid, o que simula a reflexão do pulso gaussiano quando ele atinge as paredes da cavidade.
+A ressonância do campo ao longo do tempo está exibida na Figura \ref{fig:ex3-resonancia}. 
+
+\begin{figure}[htb]
+	\caption{\label{fig:ex3-resonancia}Ressonância do campo elétrico $E_z$ para o exercício 3.}
+	\begin{center}
+        \includegraphics[width=\textwidth,trim=1 1 1 1,clip]{ex3-resonancia.png}
+	\end{center}
+\end{figure}
+
+Para calcular a frequência de ressonância, coletamos valores de $E_z$ em um ponto fixo 
+da cavidade e plotamos sua transformada de Fourier. Tomando o ponto central do grid, 
+obtemos a seguinte transformada de Fourier, exibida na Figura \ref{fig:ex3-frequencia}.
+
+\begin{figure}[htb]
+	\caption{\label{fig:ex3-frequencia}Espectro FFT do campo elétrico $E_z$ para o exercício 3.}
+	\begin{center}
+        \includegraphics[width=0.8\textwidth,trim=1 1 1 1,clip]{ex3-frequencia.png}
+	\end{center}
+\end{figure}
