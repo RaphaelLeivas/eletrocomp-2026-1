@@ -323,3 +323,33 @@ Vemos que o campo magnético é gerado a partir do campo elétrico, e tem um per
         \includegraphics[width=\textwidth,trim=1 1 1 1,clip]{ex4-4-evolucao-hx.png}
 	\end{center}
 \end{figure}
+
+Como a condição de contorno possui o campo elétrico zerado nas bordas do grid,
+o pulso gaussiano é refletido nas bordas e cria um padrão de ressonância ao longo do tempo, 
+com interferências destrutivas e construtivas, como mostra a Figura \ref{fig:ex4-4-resonancia}.
+
+\begin{figure}[htb]
+	\caption{\label{fig:ex4-4-resonancia}Padrão de ressonância do pulso gaussiano 
+	ao longo do tempo após atingir as bordas do grid.}
+	\begin{center}
+        \includegraphics[width=\textwidth,trim=1 1 1 1,clip]{ex4-4-resonancia.png}
+	\end{center}
+\end{figure}
+
+\section{Item (b)}
+
+Agora consideramos uma fonte senoidal no centro do grid, com frequência de $f = 30 \un{GHz}$ 
+e amplitude unitária. A evolução do campo elétrico $E_z$ ao longo do tempo está exibida na 
+Figura \ref{fig:ex4-4-evolucao-senoidal}.
+
+\begin{figure}[htb]
+	\caption{\label{fig:ex4-4-evolucao-senoidal}Evolução do campo elétrico $E_z$ ao longo do grid para uma fonte senoidal.}
+	\begin{center}
+        \includegraphics[width=\textwidth,trim=1 1 1 1,clip]{ex4-4-evolucao-senoidal.png}
+	\end{center}
+\end{figure}
+
+Vemos que a amplitude do campo é maior no centro do grid, onde a fonte senoidal é aplicada, e decresce à medida que se propaga para fora.
+\textcolor{red}{Dúvida, entender porque não é constante se o meio é sem perdas.}
+
+\section{Item (c)}

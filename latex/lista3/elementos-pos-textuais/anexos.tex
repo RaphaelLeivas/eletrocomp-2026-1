@@ -240,4 +240,64 @@
     \end{lstlisting}
 
 
+    \chapter{Código Exercício 4.4}\label{cap:codigo_ex4-4}
+
+    \begin{lstlisting}[language=Python, breaklines=true, basicstyle=\tiny]
+    import numpy as np
+    import matplotlib.pyplot as plt
+    import seaborn as sns
+    from scipy.fft import fft, fftfreq
+
+    # --- parâmetros físicos ---
+    eps = 8.854187817e-12  # Vacuum permittivity (F/m)
+    mu = 4 * np.pi * 1e-7  # Vacuum permeability (H/m)
+    vp = 1 / np.sqrt(eps * mu)
+
+    # --- domínio ---
+    min_lambda = vp / 1e9  # comprimento de onda mínimo para 1 GHz = 3e-1 m
+    Nx = Ny = 50
+    dx = dy = 0.1 * min_lambda
+    dt = dx / (vp * np.sqrt(2))
+    Nt = 200
+
+    cx, cy = Nx // 2, Ny // 2
+
+    # --- campos ---
+    Ez = np.zeros((Nt, Nx, Ny))
+    Hx = np.zeros((Nt, Nx, Ny))
+    Hy = np.zeros((Nt, Nx, Ny))
+
+    for n in range(Nt-1):
+        # --- fonte (pulso gaussiano no tempo) ---
+        source_gaussiano = np.exp(-((n * dt - 1.8e-9)**2) / (0.6e-9)**2)
+
+        # --- fonte (senoidal no tempo) ---
+        frequency = 30e9
+        source_senoidal = np.sin(2 * np.pi * frequency * n * dt)
+
+        Ez[n, cx, cy] += source_senoidal
+
+        Hx[n+1, :, :-1] = Hx[n, :, :-1] - (dt/(mu*dy)) * (
+            Ez[n, :, 1:] - Ez[n, :, :-1]
+        )
+
+        Hy[n+1, :-1, :] = Hy[n, :-1, :] + (dt/(mu*dx)) * (
+            Ez[n, 1:, :] - Ez[n, :-1, :]
+        )
+
+        # --- Update E field (from H at time n+1) ---
+        Ez[n+1, 1:-1, 1:-1] = Ez[n, 1:-1, 1:-1] + (dt/eps) * (
+            (Hy[n+1, 1:-1, 1:-1] - Hy[n+1, :-2, 1:-1]) / dx -
+            (Hx[n+1, 1:-1, 1:-1] - Hx[n+1, 1:-1, :-2]) / dy
+        )
+
+        # zero nas nas extremidades - PEC
+        Ez[n+1, 1:-1, 0] = 0
+        Ez[n+1, 1:-1, -1] = 0
+        Ez[n+1, 0, 1:-1] = 0
+        Ez[n+1, -1, 1:-1] = 0
+    \end{lstlisting}
+
+
+
 \end{anexosenv}
