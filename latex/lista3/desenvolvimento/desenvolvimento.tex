@@ -177,6 +177,8 @@ como mostra a Figura \ref{fig:ex3-frequencia-senoidal}.
 
 \chapter{Exercício 4.3 (livro)}
 
+Todo o código usado nesse exercício encontra-se no Anexo \ref{cap:codigo_ex4-3}.
+
 Primeira coisa é desenhar a geometria do problema, como mostra a Figura \ref{fig:ex4-3-geometria}.
 Temos uma linha de comprimento $L = 3 \un{m}$ que passa por três tipos de materiais: ar livre, 
 com $\epsilon_1 = \epsilon_0$, um slab de material dielétrico com $\epsilon_2 = 2 \epsilon_0$ e depois 
@@ -265,5 +267,59 @@ está exibida na Figura \ref{fig:ex4-3-b-evolucao}, e variação dos coeficiente
 	\caption{\label{fig:ex4-3-b-resposta-frequencia}Valores dos coeficientes de reflexão e transmissão do exercício 4.3, com slab de metade da dimensão.}
 	\begin{center}
         \includegraphics[width=0.8\textwidth,trim=1 1 1 1,clip]{ex4-3-b-resposta-frequencia.png}
+	\end{center}
+\end{figure}
+
+\chapter{Exercício 4.4 (livro)}
+
+Todo o código usado nesse exercício encontra-se no Anexo \ref{cap:codigo_ex4-4}.
+
+\section{Item (a)}
+
+Como a discretização proposta pelo exercício depende do valor de $\lambda_{min}$, o primeiro passo é identificar 
+esse valor. O pulso gaussiano que iremos excitar no centro do grid possui a forma exibida na 
+Figura \ref{fig:ex4-4-pulso} (a), 
+e tem um espectro de frequência exibido na Figura \ref{fig:ex4-4-pulso} (b). 
+
+\begin{figure}[htb]
+	\caption{\label{fig:ex4-4-pulso}Pulso gaussiano (a) e seu espectro de frequência (b).}
+	\begin{center}
+        \includegraphics[width=\textwidth,trim=1 1 1 1,clip]{ex4-4-pulso.png}
+	\end{center}
+\end{figure}
+
+
+Como vemos na Figura \ref{fig:ex4-4-pulso} (b), o espectro se estende até $f_{max} = 1 \un{GHz}$, 
+o que implica um comprimento de onda mínimo de
+
+\[ \lambda_{min} = \frac{c}{f_{max}} = 0.3 \un{m} \]
+
+Com esse valor determinado, temos os seguintes parâmetros de discretização:
+
+\begin{itemize}
+	\item $N_x = N_y = 50$
+	\item $\Delta x = \Delta y = 0.1 \lambda_{min} = 0.03 \un{m}$
+	\item $\Delta t = \frac{\Delta x}{v_p \sqrt{2}} \approx 2.12 \cdot 10^{-11} \un{s}$
+	\item $N_t = 300$
+\end{itemize}
+
+\noindent e a evolução do campo elétrico $E_z$ ao longo do tempo está exibida na Figura 
+\ref{fig:ex4-4-evolucao-ez}. Note que a figura está ``borrada'' uma vez que 
+$N_x$ e $N_y$ exigidos pelo enunciado são pequenos.
+
+\begin{figure}[htb]
+	\caption{\label{fig:ex4-4-evolucao-ez}Evolução do campo elétrico $E_z$ ao longo do grid.}
+	\begin{center}
+        \includegraphics[width=\textwidth,trim=1 1 1 1,clip]{ex4-4-evolucao-ez.png}
+	\end{center}
+\end{figure}
+
+A evolução do campo magnético $H_x$ ao longo do tempo está exibida na Figura \ref{fig:ex4-4-evolucao-hx}. 
+Vemos que o campo magnético é gerado a partir do campo elétrico, e tem um perfil de propagação semelhante.
+
+\begin{figure}[htb]
+	\caption{\label{fig:ex4-4-evolucao-hx}Evolução do campo magnético $H_x$ ao longo do grid.}
+	\begin{center}
+        \includegraphics[width=\textwidth,trim=1 1 1 1,clip]{ex4-4-evolucao-hx.png}
 	\end{center}
 \end{figure}

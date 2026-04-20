@@ -138,4 +138,106 @@
     plt.show()
     \end{lstlisting}
 
+    \chapter{Código Exercício 4.3}\label{cap:codigo_ex4-3}
+
+    \begin{lstlisting}[language=Python, breaklines=true, basicstyle=\tiny]
+    import numpy as np
+    import matplotlib.pyplot as plt
+    import pandas as pd
+
+    # Parameters
+    e0 = 8.854187817e-12  # Vacuum permittivity (F/m)
+    mu0 = 4 * np.pi * 1e-7  # Vacuum permeability (H/m)
+    vp = 1 / np.sqrt(e0 * mu0)
+
+    # free space
+    e1 = 1 * e0
+    mu1 = 1 * mu0
+
+    # dieletric slab
+    e2 = 2 * e0 
+    mu2 = 1 * mu0 
+
+    # second dielectric to the right 
+    e3 = 4 * e0
+    mu3 = 1 * mu0
+
+    lambda0 = 0.3
+    dx = lambda0 / (20 * np.sqrt(e1 / e0))
+    dt = dx / vp
+
+    L = 3
+    Nx = int(L / dx) + 1
+    Nt = 600
+    T = Nt * dt
+
+    # tau = 0.8e-9 / dt
+    # tau = 0.2e-9 / dt
+
+    tau_list = np.linspace(0.1, 2, 20) * 1e-9 / dt
+    # tau_list = np.array([0.8e-9 / dt])
+    r_list = []
+    transmit_list = []
+
+    for tau in tau_list:
+        # inicio e fim do slab
+        d = lambda0 / (4 * np.sqrt(e2 / e0)) # tamanho do slab
+        center = Nx // 2
+        center_m = center * dx
+        start_d = center_m - d / 2
+        end_d = center_m + d / 2
+
+        def gaussian(n):
+            return np.exp(-(n - 3 * tau)**2 / tau**2)
+
+        # campos
+        Ey = np.zeros((Nt, Nx))
+        Hz = np.zeros((Nt, Nx))
+
+        # arrays para as propriedades dos materiais
+        e_medium = np.zeros(Nx)
+        mu_medium = np.zeros(Nx)
+
+        for i in range(Nx):
+            xcoord = i * dx
+            if xcoord < start_d: # ar livre
+                e_medium[i] = e1
+                mu_medium[i] = mu1
+            elif start_d <= xcoord <= end_d: # slab
+                e_medium[i] = e2
+                mu_medium[i] = mu2
+            elif xcoord > end_d: # segundo dieletrico
+                e_medium[i] = e3
+                mu_medium[i] = mu3
+
+        # marcha no tempo
+        for n in range(Nt - 1):
+
+            # atualiza o H
+            for i in range(Nx - 1):
+                Hz[n+1, i] = Hz[n, i] + (dt / (mu_medium[i] * dx)) * (Ey[n, i+1] - Ey[n, i])
+
+            # atualiza o E
+            for i in range(1, Nx - 1):
+                # por causa do i-1 no final que o range começa em 1
+                Ey[n+1, i] = Ey[n, i] + (dt / (e_medium[i] * dx)) * (Hz[n+1, i] - Hz[n+1, i-1])
+
+            # condição de contorno
+            if n < 6 * tau:  # só aplica a fonte nos primeiros instantes
+                Ey[n+1, 0] = gaussian(n+1) # esquerda
+            else: # condicao de contorno absorvente
+                Ey[n+1, 0] = Ey[n, 1] + (vp * dt - dx) / (vp * dt + dx) * (Ey[n+1, 1] - Ey[n, 0])  # absorvente à esquerda
+            Ey[n+1, -1] = Ey[n, -2] - (vp * dt - dx) / (vp * dt + dx) * (Ey[n+1, -2] - Ey[n, -1])  # absorvente à direita
+
+
+        # coeficiente de reflexão - minimo valor medido no primeiro interval
+        R = np.abs(np.min(Ey[:, 0]) / np.max(Ey[:, 0]))
+        r_list.append(R)
+
+        # coeficiente de tranmissão - maximo valor medido no ultimo intervalo
+        T = np.max(Ey[:, -1]) / 1
+        transmit_list.append(T)
+    \end{lstlisting}
+
+
 \end{anexosenv}
