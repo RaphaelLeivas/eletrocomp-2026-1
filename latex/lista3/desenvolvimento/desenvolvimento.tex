@@ -174,3 +174,68 @@ como mostra a Figura \ref{fig:ex3-frequencia-senoidal}.
         \includegraphics[width=0.8\textwidth,trim=1 1 1 1,clip]{ex3-frequencia-senoidal.png}
 	\end{center}
 \end{figure}
+
+\chapter{Exercício 4.3 (livro)}
+
+Primeira coisa é desenhar a geometria do problema, como mostra a Figura \ref{fig:ex4-3-geometria}.
+Temos uma linha de comprimento $L = 3 \un{m}$ que passa por três tipos de materiais: ar livre, 
+com $\epsilon_1 = \epsilon_0$, um slab de material dielétrico com $\epsilon_2 = 2 \epsilon_0$ e depois 
+um segundo dielétrico com $\epsilon_3 = 4 \epsilon_0$. $\mu$ é constante nos três materiais, sendo 
+igual a $\mu_0$. 
+
+\begin{figure}[htb]
+	\caption{\label{fig:ex4-3-geometria}Geometria do exercício 4.3.}
+	\begin{center}
+        \includegraphics[width=0.8\textwidth,trim=1 1 1 1,clip]{ex4-3-geometria.png}
+	\end{center}
+\end{figure}
+
+A variação da permissividade ao longo da linha é exibida na Figura \ref{fig:ex4-3-permissividade}. Vemos que a permissividade é $\epsilon_0$ para $0 \leq x < 1 \un{m}$,
+
+\begin{figure}[htb]
+	\caption{\label{fig:ex4-3-permissividade}Variação da permissividade ao longo da linha do exercício 4.3.}
+	\begin{center}
+        \includegraphics[width=0.8\textwidth,trim=1 1 1 1,clip]{ex4-3-permissividade.png}
+	\end{center}
+\end{figure}
+
+Os parâmetros de discretização usados foram:
+
+\begin{itemize}
+	\item $N_x = 200 \quad , \quad N_t = 600$
+	\item $\Delta x = 15 \un{mm}$
+	\item $\Delta t = 50^{-12} \un{s}$
+	\item $T = 30 \un{ns}$
+\end{itemize}
+
+O campo elétrico é excitado por um pulso gaussiano no início da linha, 
+e o objetivo é observar a propagação do pulso ao longo da linha, 
+incluindo as reflexões e transmissões nos limites entre os materiais.
+Após a excitação, as condições de contorno nas extremidades são 
+consideradas de um meio infinito, o que implica que as ondas que atingem as extremidades do grid
+e não sofrem reflexão.
+
+\section{Item (a)}
+
+Usando o esquema de Yee em uma dimensão, obtemos o resultado exibido
+na Figura \ref{fig:ex4-3-evolucao}. Vemos que o pulso gaussiano se propaga para a direita,
+sendo parcialmente refletido e transmitido em cada interface entre os materiais.
+
+\begin{figure}[htb]
+	\caption{\label{fig:ex4-3-evolucao}Evolução do pulso gaussiano ao longo da linha do exercício 4.3.}
+	\begin{center}
+        \includegraphics[width=\textwidth,trim=1 1 1 1,clip]{ex4-3-evolucao.png}
+	\end{center}
+\end{figure}
+
+Vemos na Figura \ref{fig:ex4-3-evolucao} que o sinal incidente tem amplitude 
+de 1 V, enquanto o sinal refletido tem amplitude de 0.25 V, o que resulta 
+em um coeficiente de reflexão de 
+
+\[ R = \frac{0.25}{1} = 0.25 \]
+
+Além disso, o sinal transmitido tem amplitude de 0.70 V, o que resulta em um coeficiente de transmissão de
+
+\[ T = \frac{0.70}{1} = 0.70 \]
+
+Variando a frequência do pulso gaussiano, obtemos os seguintes coeficientes de reflexão e transmissão:
