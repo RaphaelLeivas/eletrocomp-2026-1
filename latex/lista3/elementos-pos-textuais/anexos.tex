@@ -51,6 +51,91 @@
 
     \end{lstlisting}
 
+    \chapter{Código Exercício 3}\label{cap:codigo_ex3}
 
+    \begin{lstlisting}[language=Python, breaklines=true, basicstyle=\tiny]
     
+    import numpy as np
+    import matplotlib.pyplot as plt
+    import seaborn as sns
+    from scipy.fft import fft, fftfreq
+
+    # --- parâmetros físicos ---
+    eps = 8.854187817e-12  # Vacuum permittivity (F/m)
+    mu = 4 * np.pi * 1e-7  # Vacuum permeability (H/m)
+    c = 1 / np.sqrt(eps * mu)
+
+    # --- domínio ---
+    a = 0.5
+    Nx = Ny = 300
+    dx = dy = 5e-3
+    cx, cy = Nx//2, Ny//2
+
+    dt = 10e-12
+    Nt = 2000
+
+    # --- campos ---
+    Ez = np.zeros((Nt, Nx, Ny))
+    Hx = np.zeros((Nt, Nx, Ny))
+    Hy = np.zeros((Nt, Nx, Ny))
+
+    # mascara para a cavidade
+    x = np.arange(Nx) * dx
+    y = np.arange(Ny) * dy
+    X, Y = np.meshgrid(x, y, indexing='ij')
+
+    # circle parameters
+    R = a               # radius (meters)
+
+    # boolean mask: True inside the circle
+    mask = (X - cx * dx)**2 + (Y - cy * dy)**2 <= R**2
+
+    # ponta de prova para coletar pontos para a FFT no centro da cavidade
+    probe = []
+
+    for n in range(Nt-1):
+        # --- fonte (pulso gaussiano no tempo) ---
+        t0 = 50
+        spread = 15
+        source_gaussiano = np.exp(-((n - t0)**2) / spread**2)
+
+        # --- fonte (senoidal no tempo) ---
+        frequency = 1e9  # 1 GHz
+        source_senoidal = np.sin(2 * np.pi * frequency * n * dt)
+
+        Ez[n, cx, cy] += source_senoidal
+
+        Hx[n+1, :, :-1] = Hx[n, :, :-1] - (dt/(mu*dy)) * (
+            Ez[n, :, 1:] - Ez[n, :, :-1]
+        )
+
+        Hy[n+1, :-1, :] = Hy[n, :-1, :] + (dt/(mu*dx)) * (
+            Ez[n, 1:, :] - Ez[n, :-1, :]
+        )
+
+        # --- Update E field (from H at time n+1) ---
+        Ez[n+1, 1:-1, 1:-1] = Ez[n, 1:-1, 1:-1] + (dt/eps) * (
+            (Hy[n+1, 1:-1, 1:-1] - Hy[n+1, :-2, 1:-1]) / dx -
+            (Hx[n+1, 1:-1, 1:-1] - Hx[n+1, 1:-1, :-2]) / dy
+        )
+
+        # zero nas extremidades e para fora da cavidade (condição de contorno)
+        Ez[n+1][~mask] = 0
+
+        # salva o valor no centro para a FFT
+        probe.append(Ez[n+1, cx, cy])
+
+    # 2. Compute the FFT
+    yf = fft(probe)
+    xf = fftfreq(len(probe), dt)
+
+    # 3. Plot the results (Positive frequencies only)
+    plt.plot(xf[:len(probe)//8], 1e3 * 2.0/len(probe) * np.abs(yf[:len(probe)//8]))
+    plt.title("Espectro FFT do campo Ez no centro da cavidade")
+    plt.xlabel(r"Frequência $\cdot 10^{10}$ Hz")
+    plt.ylabel(r"Amplitude $\cdot 10^{-3}$")
+    plt.grid()
+    plt.show()
+    \end{lstlisting}
+
 \end{anexosenv}

@@ -85,16 +85,24 @@ sendo esse o estado inicial do grid.
 	\end{center}
 \end{figure}
 
-O grid é composto dos seguintes parâmetros:
+Os seguintes parâemtros de discretização foram usados:
 
 \begin{itemize}
-	\item $N_x = N_y = 150$
-	\item $\Delta x = \Delta y = 2a / N_x = 6.67 \un{mm}$
+	\item $N_x = N_y = 300$
+	\item $\Delta x = \Delta y = 5 \un{mm}$
 	\item $\Delta t = 10^{-12} \un{s}$
 	\item $N_t$ = 2000
 \end{itemize}
 
+Note que esses parâmetros satisfazem a condição de estabilidade para o método de Yee em 2D,
+uma vez que
+
+\[  \Delta t \leq \frac{1}{c \sqrt{\frac{1}{(\Delta x)^2} + \frac{1}{(\Delta y)^2}}} \quad \Longrightarrow \quad 10^{-12} \leq 11.79 \cdot 10^{-12} \]
+
+
 \section{Excitação gaussiana}
+
+Todo o código usado nessa solução encontra-se no Anexo \ref{cap:codigo_ex3}.
 
 Aplicamos um pulso gaussiano no centro do grid com o perfil temporal exibido na 
 Figura \ref{fig:ex3-pulso}. O pulso é dado por
@@ -143,5 +151,26 @@ obtemos a seguinte transformada de Fourier, exibida na Figura \ref{fig:ex3-frequ
 	\caption{\label{fig:ex3-frequencia}Espectro FFT do campo elétrico $E_z$ para o exercício 3.}
 	\begin{center}
         \includegraphics[width=0.8\textwidth,trim=1 1 1 1,clip]{ex3-frequencia.png}
+	\end{center}
+\end{figure}
+
+\section{Excitação senoidal}
+
+Aplicando uma senoide de $f = 1 \un{GHz}$ e amplitude unitária no centro da cavidade,
+obtemos o seguinte perfil de ressonância para o campo elétrico $E_z$, 
+exibido na Figura \ref{fig:ex3-resonancia-senoidal}. A FFT do campo elétrico no centro da cavidade exibe um pico claro em $f = 1 \un{GHz}$,
+como mostra a Figura \ref{fig:ex3-frequencia-senoidal}.
+
+\begin{figure}[htb]
+	\caption{\label{fig:ex3-resonancia-senoidal}Ressonância do campo elétrico $E_z$ para o exercício 3, excitação senoidal.}
+	\begin{center}
+        \includegraphics[width=\textwidth,trim=1 1 1 1,clip]{ex3-resonancia-senoidal.png}
+	\end{center}
+\end{figure}
+
+\begin{figure}[htb]
+	\caption{\label{fig:ex3-frequencia-senoidal}Espectro FFT do campo elétrico $E_z$ para o exercício 3, excitação senoidal.}
+	\begin{center}
+        \includegraphics[width=0.8\textwidth,trim=1 1 1 1,clip]{ex3-frequencia-senoidal.png}
 	\end{center}
 \end{figure}
