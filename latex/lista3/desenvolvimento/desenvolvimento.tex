@@ -1,3 +1,14 @@
+\chapter*{Lista de Dúvidas - Aula de 23/04}
+
+\begin{itemize}
+	\item Questão 2: a medida de erro se reduz por um fator 2 ao diminuir pela metade os valores de 
+	$\Delta x$ e $\Delta t$. O esperado era um fator 4.
+	\item Questão 4: como resolver sem armazenar o tempo na matriz, para não estourar a memória
+	\item Questão 4.3 (b): Porque a amplitude se reduz se o meio é sem perdas? 
+	\item Questão 4.4 (c): Modo TE 2D - Equação 4.15 do livro confusa
+	\item Questão 4.6: aprender a resolver 3D antes (questão 4)
+\end{itemize}
+
 \chapter{Exercício 1}
 
 Vamos discretizar uma das equações de Maxwell em 1 dimensão no vácuo, 
@@ -36,29 +47,36 @@ as aproximações, ou seja,
 C \left( \Delta t^2 + \Delta x^2  \right)
 \end{align*}
 
-
 \chapter{Exercício 2}
 
-\section{Solução Analítica}
-
-O primeiro passo é entender a solução analítica, exibida na Figura \ref{fig:ex2-analitico}. 
-Temos uma onda estacionária, com um campo elétrico $E_y$ que oscila no tempo e tem um perfil senoidal no espaço.
-
-\begin{figure}[htb]
-	\caption{\label{fig:ex2-analitico}Solução analítica do exercício 2.}
-	\begin{center}
-        \includegraphics[width=0.8\textwidth,trim=1 1 1 1,clip]{ex2-analitico.png}
-	\end{center}
-\end{figure}
-
-\section{Solução Numérica}
+\section{Solução}
 
 Todo o código usado nessa solução encontra-se no Anexo \ref{cap:codigo_ex2}. 
 
-A solução obtida para os diferentes valores de 
-$\Delta x$ e $\Delta t$ é exibida na Figura \ref{fig:ex2-numerico}.
-Vemos que a solução numérica é parecida com a solução analítica 
-em todos os valores de discretização usados. 
+Os seguintes parâmetros de discretização foram usados:
+
+\begin{itemize}
+	\item $N_x = 50 \quad , \quad N_t = 100$
+	\item $\Delta x = 0.02 \un{m}$
+	\item $\Delta t = 0.01 \un{s}$
+	\item $T = 1 \un{s}$
+\end{itemize}
+
+A solução numérica ($E_y$ e $H_z$) obtida é semelhante com a solução analítica 
+($E_{y-exact}$ e $H_{z-exact}$)
+tanto para o campo magnético quando para o campo elétrico, conforme mostra 
+a Figura \ref{fig:ex2-comparacao}.
+
+\begin{figure}[htb]
+	\caption{\label{fig:ex2-comparacao}Comparação entre as soluções analítica (exact) e numéricas obtidas.}
+	\begin{center}
+        \includegraphics[width=\textwidth,trim=1 1 1 1,clip]{ex2-comparacao.png}
+	\end{center}
+\end{figure}
+
+Variando os valores dos parâmeotros
+$\Delta x$ e $\Delta t$, vemos que a solução não sofre muitas alterações, 
+como mostra a Figura \ref{fig:ex2-numerico}.
 
 \begin{figure}[htb]
 	\caption{\label{fig:ex2-numerico}Solução numérica do exercício 2.}
@@ -67,9 +85,11 @@ em todos os valores de discretização usados.
 	\end{center}
 \end{figure}
 
+
+
 \section{Medida de erro}
 
-\textcolor{red}{Dúvida: confirmar na aula como calcular isso.}
+
 
 \chapter{Exercício 3}
 
