@@ -1,10 +1,7 @@
 \chapter*{Lista de Dúvidas - Aula de 23/04}
 
 \begin{itemize}
-	\item Questão 2: a medida de erro se reduz por um fator 2 ao diminuir pela metade os valores de 
-	$\Delta x$ e $\Delta t$. O esperado era um fator 4.
 	\item Questão 4: como resolver sem armazenar o tempo na matriz, para não estourar a memória
-	\item Questão 4.3 (b): Porque a amplitude se reduz se o meio é sem perdas? 
 	\item Questão 4.4 (c): Modo TE 2D - Equação 4.15 do livro confusa
 	\item Questão 4.6: aprender a resolver 3D antes (questão 4)
 \end{itemize}
@@ -403,6 +400,16 @@ Figura \ref{fig:ex4-4-evolucao-senoidal}.
 \end{figure}
 
 Vemos que a amplitude do campo é maior no centro do grid, onde a fonte senoidal é aplicada, e decresce à medida que se propaga para fora.
-\textcolor{red}{Dúvida, entender porque não é constante se o meio é sem perdas.}
+Isso está exibido em mais detalhes nas Figura \ref{fig:ex4-decaimento}.
+Esse comportamento é conforme o esperado, uma vez que as amplitudes das componetes de E e H decaem
+com a distância $r$ da fonte  
+com um fator $1 / r$ em duas dimensões.
+
+\begin{figure}[htb]
+	\caption{\label{fig:ex4-decaimento}Decaimento da amplitude de $E_z$ ao se distanciar da fonte.}
+	\begin{center}
+        \includegraphics[width=\textwidth,trim=1 1 1 1,clip]{ex4-decaimento.png}
+	\end{center}
+\end{figure}
 
 \section{Item (c)}
