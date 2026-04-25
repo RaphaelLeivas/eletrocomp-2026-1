@@ -79,16 +79,49 @@ $\Delta x$ e $\Delta t$, vemos que a solução não sofre muitas alterações,
 como mostra a Figura \ref{fig:ex2-numerico}.
 
 \begin{figure}[htb]
-	\caption{\label{fig:ex2-numerico}Solução numérica do exercício 2.}
+	\caption{\label{fig:ex2-numerico}Solução numérica do exercício 2 para diferentes discretizações.}
 	\begin{center}
         \includegraphics[width=\textwidth,trim=1 1 1 1,clip]{ex2-numerico.png}
 	\end{center}
 \end{figure}
 
-
-
 \section{Medida de erro}
 
+Usando a medida de erro proposta no enunciado, vemos que o erro se reduz por um fator 
+de $1/4$ quando reduzimos o valor de $\Delta x$ pela metade, conforme esperado dado que o 
+esquema de Yee é de ordem 2, como mostra a Tabela \ref{tab:convergencia-ex2}.
+
+A ordem $p$ é obtida através de 
+
+\[ p = \frac{\ln \left( \frac{e_2}{e_1} \right)}{\ln \left( \frac{\Delta x_2}{\Delta x_1} \right)}
+= \frac{\ln \left( \frac{e_2}{e_1} \right)}{\ln 0.5}
+ \]
+
+\begin{table}[h!]
+	\caption{Tabela de convergência do método para diferentes parâmetros de discretização.}
+	\vspace{0.5cm}
+	\centering
+		\begin{tabular}{c|c|c|c|c|c}
+
+		$N_x$ & $\Delta t$ & $\Delta x$ & Rel. Err. $\cdot 10^3$ & Razão $e_2 / e_1$ & Ordem $p$ \\ \hline
+		50    & 0.02       & 0.04       &    0.583      &   -    &   -  \\ \hline
+		100   & 0.01       & 0.02       &    0.145       &   0.2495    &   2.002  \\ \hline
+		200   & 0.005      & 0.01       &      0.036     &   0.2497    &   2.001  \\ \hline
+		400   & 0.0025     & 0.005      &      0.009     &    0.2498  &   2.000  \\ 
+		\end{tabular}
+	\label{tab:convergencia-ex2}
+\end{table}
+
+A redução do erro também está exibida graficamente na Figura \ref{fig:ex2-convergencia}, 
+tanto em escala linear quanto em escala logarítimica. Note que na escala log a reta tem inclinação 
+igual a 2, conforme esperado pela ordem.
+
+\begin{figure}[htb]
+	\caption{\label{fig:ex2-convergencia}Convergência do erro relativo máximo obtido.}
+	\begin{center}
+        \includegraphics[width=\textwidth,trim=1 1 1 1,clip]{ex2-convergencia.png}
+	\end{center}
+\end{figure}
 
 
 \chapter{Exercício 3}

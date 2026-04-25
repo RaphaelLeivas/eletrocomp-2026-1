@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2026.4.1)  21 APR 2026 11:39
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2026.4.1)  25 APR 2026 17:43
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1061,141 +1061,147 @@ Package pdftex.def Info: ./images/ex2-numerico.png  used on input line 84.
 (pdftex.def)             Requested size: 455.0pt x 255.68208pt.
  [5
 
- <./images/ex2-comparacao.png>] [6 <./images/ex2-numerico.png>]
-<./images/ex3-grid.png, id=106, 612.2875pt x 265.99374pt>
+ <./images/ex2-comparacao.png>]
+<./images/ex2-convergencia.png, id=102, 855.6768pt x 349.7868pt>
+File: ./images/ex2-convergencia.png Graphic file (type png)
+<use ./images/ex2-convergencia.png>
+Package pdftex.def Info: ./images/ex2-convergencia.png  used on input line 122.
+
+(pdftex.def)             Requested size: 455.0pt x 185.36226pt.
+ [6 <./images/ex2-numerico.png>] [7 <./images/ex2-convergencia.png>]
+<./images/ex3-grid.png, id=120, 612.2875pt x 265.99374pt>
 File: ./images/ex3-grid.png Graphic file (type png)
 <use ./images/ex3-grid.png>
-Package pdftex.def Info: ./images/ex3-grid.png  used on input line 104.
+Package pdftex.def Info: ./images/ex3-grid.png  used on input line 137.
 (pdftex.def)             Requested size: 455.0pt x 196.82507pt.
-<./images/ex3-pulso.png, id=110, 409.7709pt x 328.8285pt>
+<./images/ex3-pulso.png, id=124, 409.7709pt x 328.8285pt>
 File: ./images/ex3-pulso.png Graphic file (type png)
 <use ./images/ex3-pulso.png>
-Package pdftex.def Info: ./images/ex3-pulso.png  used on input line 138.
+Package pdftex.def Info: ./images/ex3-pulso.png  used on input line 171.
 (pdftex.def)             Requested size: 364.00139pt x 291.75247pt.
- [7
+ [8
 
  <./images/ex3-grid.png>]
-<./images/ex3-evolucao.png, id=123, 1115.8488pt x 715.473pt>
+<./images/ex3-evolucao.png, id=135, 1115.8488pt x 715.473pt>
 File: ./images/ex3-evolucao.png Graphic file (type png)
 <use ./images/ex3-evolucao.png>
-Package pdftex.def Info: ./images/ex3-evolucao.png  used on input line 149.
+Package pdftex.def Info: ./images/ex3-evolucao.png  used on input line 182.
 (pdftex.def)             Requested size: 455.0pt x 291.44498pt.
-<./images/ex3-resonancia.png, id=126, 1115.8488pt x 715.473pt>
+<./images/ex3-resonancia.png, id=138, 1115.8488pt x 715.473pt>
 File: ./images/ex3-resonancia.png Graphic file (type png)
 <use ./images/ex3-resonancia.png>
-Package pdftex.def Info: ./images/ex3-resonancia.png  used on input line 162.
+Package pdftex.def Info: ./images/ex3-resonancia.png  used on input line 195.
 (pdftex.def)             Requested size: 455.0pt x 291.44498pt.
-<./images/ex3-frequencia.png, id=129, 411.939pt x 333.8874pt>
+<./images/ex3-frequencia.png, id=141, 411.939pt x 333.8874pt>
 File: ./images/ex3-frequencia.png Graphic file (type png)
 <use ./images/ex3-frequencia.png>
-Package pdftex.def Info: ./images/ex3-frequencia.png  used on input line 173.
+Package pdftex.def Info: ./images/ex3-frequencia.png  used on input line 206.
 (pdftex.def)             Requested size: 364.00139pt x 294.70879pt.
-<./images/ex3-resonancia-senoidal.png, id=133, 1115.8488pt x 715.473pt>
+<./images/ex3-resonancia-senoidal.png, id=145, 1115.8488pt x 715.473pt>
 File: ./images/ex3-resonancia-senoidal.png Graphic file (type png)
 <use ./images/ex3-resonancia-senoidal.png>
 Package pdftex.def Info: ./images/ex3-resonancia-senoidal.png  used on input li
-ne 187.
+ne 220.
 (pdftex.def)             Requested size: 455.0pt x 291.44498pt.
-<./images/ex3-frequencia-senoidal.png, id=135, 424.9476pt x 333.8874pt>
+<./images/ex3-frequencia-senoidal.png, id=147, 424.9476pt x 333.8874pt>
 File: ./images/ex3-frequencia-senoidal.png Graphic file (type png)
 <use ./images/ex3-frequencia-senoidal.png>
 Package pdftex.def Info: ./images/ex3-frequencia-senoidal.png  used on input li
-ne 194.
+ne 227.
 (pdftex.def)             Requested size: 364.00139pt x 285.6289pt.
- [8 <./images/ex3-pulso.png>] [9 <./images/ex3-evolucao.png> <./images/ex3-reso
-nancia.png>] [10 <./images/ex3-frequencia.png> <./images/ex3-resonancia-senoida
-l.png>] [11 <./images/ex3-frequencia-senoidal.png>]
-<./images/ex4-3-geometria.png, id=174, 714.7503pt x 426.393pt>
+ [9 <./images/ex3-pulso.png>] [10 <./images/ex3-evolucao.png> <./images/ex3-res
+onancia.png>] [11 <./images/ex3-frequencia.png> <./images/ex3-resonancia-senoid
+al.png>] [12 <./images/ex3-frequencia-senoidal.png>]
+<./images/ex4-3-geometria.png, id=187, 714.7503pt x 426.393pt>
 File: ./images/ex4-3-geometria.png Graphic file (type png)
 <use ./images/ex4-3-geometria.png>
-Package pdftex.def Info: ./images/ex4-3-geometria.png  used on input line 211.
+Package pdftex.def Info: ./images/ex4-3-geometria.png  used on input line 244.
 (pdftex.def)             Requested size: 364.00139pt x 216.73808pt.
-<./images/ex4-3-permissividade.png, id=177, 570.933pt x 354.123pt>
+<./images/ex4-3-permissividade.png, id=190, 570.933pt x 354.123pt>
 File: ./images/ex4-3-permissividade.png Graphic file (type png)
 <use ./images/ex4-3-permissividade.png>
 Package pdftex.def Info: ./images/ex4-3-permissividade.png  used on input line 
-220.
+253.
 (pdftex.def)             Requested size: 364.00139pt x 225.28867pt.
- [12
+ [13
 
  <./images/ex4-3-geometria.png> <./images/ex4-3-permissividade.png>]
-<./images/ex4-3-evolucao.png, id=191, 1148.3703pt x 714.7503pt>
+<./images/ex4-3-evolucao.png, id=204, 1148.3703pt x 714.7503pt>
 File: ./images/ex4-3-evolucao.png Graphic file (type png)
 <use ./images/ex4-3-evolucao.png>
-Package pdftex.def Info: ./images/ex4-3-evolucao.png  used on input line 249.
+Package pdftex.def Info: ./images/ex4-3-evolucao.png  used on input line 282.
 (pdftex.def)             Requested size: 455.0pt x 282.8952pt.
- [13 <./images/ex4-3-evolucao.png>]
-<./images/ex4-3-resposta-frequencia.png, id=203, 714.7503pt x 426.393pt>
+ [14 <./images/ex4-3-evolucao.png>]
+<./images/ex4-3-resposta-frequencia.png, id=215, 714.7503pt x 426.393pt>
 File: ./images/ex4-3-resposta-frequencia.png Graphic file (type png)
 <use ./images/ex4-3-resposta-frequencia.png>
 Package pdftex.def Info: ./images/ex4-3-resposta-frequencia.png  used on input 
-line 270.
+line 303.
 (pdftex.def)             Requested size: 364.00139pt x 216.73808pt.
-<./images/ex4-3-b-evolucao.png, id=207, 1148.3703pt x 714.7503pt>
+<./images/ex4-3-b-evolucao.png, id=219, 1148.3703pt x 714.7503pt>
 File: ./images/ex4-3-b-evolucao.png Graphic file (type png)
 <use ./images/ex4-3-b-evolucao.png>
-Package pdftex.def Info: ./images/ex4-3-b-evolucao.png  used on input line 282.
+Package pdftex.def Info: ./images/ex4-3-b-evolucao.png  used on input line 315.
 
 (pdftex.def)             Requested size: 455.0pt x 282.8952pt.
-<./images/ex4-3-b-resposta-frequencia.png, id=209, 714.7503pt x 426.393pt>
+<./images/ex4-3-b-resposta-frequencia.png, id=221, 714.7503pt x 426.393pt>
 File: ./images/ex4-3-b-resposta-frequencia.png Graphic file (type png)
 <use ./images/ex4-3-b-resposta-frequencia.png>
 Package pdftex.def Info: ./images/ex4-3-b-resposta-frequencia.png  used on inpu
-t line 289.
+t line 322.
 (pdftex.def)             Requested size: 364.00139pt x 216.73808pt.
- [14 <./images/ex4-3-resposta-frequencia.png>] [15 <./images/ex4-3-b-evolucao.p
+ [15 <./images/ex4-3-resposta-frequencia.png>] [16 <./images/ex4-3-b-evolucao.p
 ng> <./images/ex4-3-b-resposta-frequencia.png>]
-<./images/ex4-4-pulso.png, id=231, 1403.2425pt x 621.32124pt>
+<./images/ex4-4-pulso.png, id=243, 1403.2425pt x 621.32124pt>
 File: ./images/ex4-4-pulso.png Graphic file (type png)
 <use ./images/ex4-4-pulso.png>
-Package pdftex.def Info: ./images/ex4-4-pulso.png  used on input line 307.
+Package pdftex.def Info: ./images/ex4-4-pulso.png  used on input line 340.
 (pdftex.def)             Requested size: 455.0pt x 201.09503pt.
-<./images/ex4-4-evolucao-ez.png, id=235, 1121.6304pt x 715.473pt>
+<./images/ex4-4-evolucao-ez.png, id=247, 1121.6304pt x 715.473pt>
 File: ./images/ex4-4-evolucao-ez.png Graphic file (type png)
 <use ./images/ex4-4-evolucao-ez.png>
-Package pdftex.def Info: ./images/ex4-4-evolucao-ez.png  used on input line 333
+Package pdftex.def Info: ./images/ex4-4-evolucao-ez.png  used on input line 366
 .
 (pdftex.def)             Requested size: 455.0pt x 289.94263pt.
-<./images/ex4-4-evolucao-hx.png, id=238, 1121.6304pt x 715.473pt>
+<./images/ex4-4-evolucao-hx.png, id=250, 1121.6304pt x 715.473pt>
 File: ./images/ex4-4-evolucao-hx.png Graphic file (type png)
 <use ./images/ex4-4-evolucao-hx.png>
-Package pdftex.def Info: ./images/ex4-4-evolucao-hx.png  used on input line 343
+Package pdftex.def Info: ./images/ex4-4-evolucao-hx.png  used on input line 376
 .
 (pdftex.def)             Requested size: 455.0pt x 289.94263pt.
- [16
+ [17
 
  <./images/ex4-4-pulso.png>]
-<./images/ex4-4-resonancia.png, id=251, 1115.1261pt x 714.7503pt>
+<./images/ex4-4-resonancia.png, id=263, 1115.1261pt x 714.7503pt>
 File: ./images/ex4-4-resonancia.png Graphic file (type png)
 <use ./images/ex4-4-resonancia.png>
-Package pdftex.def Info: ./images/ex4-4-resonancia.png  used on input line 355.
+Package pdftex.def Info: ./images/ex4-4-resonancia.png  used on input line 388.
 
 (pdftex.def)             Requested size: 455.0pt x 291.34552pt.
-<./images/ex4-4-evolucao-senoidal.png, id=254, 1108.6218pt x 714.7503pt>
+<./images/ex4-4-evolucao-senoidal.png, id=266, 1108.6218pt x 714.7503pt>
 File: ./images/ex4-4-evolucao-senoidal.png Graphic file (type png)
 <use ./images/ex4-4-evolucao-senoidal.png>
 Package pdftex.def Info: ./images/ex4-4-evolucao-senoidal.png  used on input li
-ne 368.
+ne 401.
 (pdftex.def)             Requested size: 455.0pt x 293.05298pt.
-) (./elementos-pos-textuais/anexos.tex [17 <./images/ex4-4-evolucao-ez.png>]
-[18 <./images/ex4-4-evolucao-hx.png> <./images/ex4-4-resonancia.png>] [19 <./im
-ages/ex4-4-evolucao-senoidal.png>]
+) (./elementos-pos-textuais/anexos.tex
+[18 <./images/ex4-4-evolucao-ez.png>] [19 <./images/ex4-4-evolucao-hx.png> <./i
+mages/ex4-4-resonancia.png>] [20 <./images/ex4-4-evolucao-senoidal.png>]
 (/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2023/02/27 1.9 listings language file
 )
 LaTeX Font Info:    Font shape `T1/phv/m/it' in size <8> not available
-(Font)              Font shape `T1/phv/m/sl' tried instead on input line 12.
- [20
-
-]
+(Font)              Font shape `T1/phv/m/sl' tried instead on input line 13.
 LaTeX Font Info:    Font shape `TS1/phv/m/it' in size <8> not available
-(Font)              Font shape `TS1/phv/m/sl' tried instead on input line 63.
+(Font)              Font shape `TS1/phv/m/sl' tried instead on input line 37.
  [21
 
-]
-[22] [23
+] [22]
+[23
 
-] [24]) [25
+] [24] [25
+
+] [26]) [27
 
 ]
 \tf@toc=\write5
@@ -1208,13 +1214,13 @@ L3 programming layer <2020/03/25>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 21595 strings out of 476162
- 343020 string characters out of 5794815
- 2259975 words of memory out of 5000000
- 42760 multiletter control sequences out of 15000+600000
- 593469 words of font info for 167 fonts, out of 8000000 for 9000
+ 21683 strings out of 476162
+ 344462 string characters out of 5794815
+ 2270975 words of memory out of 5000000
+ 42802 multiletter control sequences out of 15000+600000
+ 593594 words of font info for 169 fonts, out of 8000000 for 9000
  16 hyphenation exceptions out of 8191
- 99i,13n,107p,1003b,2182s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 99i,13n,107p,1003b,2300s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></us
 r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/shar
 e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texl
@@ -1228,10 +1234,10 @@ m/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy
 8.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/
 share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/share/texliv
 e/texmf-dist/fonts/type1/urw/helvetic/uhvro8a.pfb>
-Output written on lista3.pdf (25 pages, 2013643 bytes).
+Output written on lista3.pdf (27 pages, 2058762 bytes).
 PDF statistics:
- 778 PDF objects out of 1000 (max. 8388607)
- 647 compressed objects within 7 object streams
- 347 named destinations out of 1000 (max. 500000)
- 40314 words of extra memory for PDF output out of 42996 (max. 10000000)
+ 841 PDF objects out of 1000 (max. 8388607)
+ 704 compressed objects within 8 object streams
+ 389 named destinations out of 1000 (max. 500000)
+ 40325 words of extra memory for PDF output out of 42996 (max. 10000000)
 

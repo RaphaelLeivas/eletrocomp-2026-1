@@ -7,47 +7,85 @@
     \begin{lstlisting}[language=Python, breaklines=true, basicstyle=\tiny]
     import numpy as np
     import matplotlib.pyplot as plt
-    import pandas as pd
 
-    # Parameters
-    e0 = 1 
-    mu0 = 1 
-    vp = 1 / np.sqrt(e0 * mu0)
+    plt.rcParams.update({'font.size': 12}) 
+
+    # Constantes
+    eps = 1 
+    mu = 1 
+    vp = 1 / np.sqrt(eps * mu)
 
     a = 1 # tamanho da reta (eixo x)
-    T = 1 # tempo de simulação 
+    T = 1.5 # tempo de simulação 
 
-    dx = 0.02
-    dt = dx / 2
-    dt = dx
+    kx = np.pi / a
+    omega = vp * kx
 
-    nx = int(a / dx)
-    nt = int(T / dt)
+    nx_list = [50, 100, 200, 400]
+    rel_err_by_nx = []
 
-    xgrid = np.linspace(0, a, nx) # xgrid para o Ey
-    tgrid = np.linspace(0, T, nt) # tgrid para o Ey
+    for nx in nx_list:
+        dx = a / nx
+        dt = dx / 2
+        nt = int(T / dt)
 
-    xgrid_interc = np.linspace(dx / 2, a - dx / 2, nx - 1) # xgrid para o Hz
-    tgrid_interc = np.linspace(dt / 2, T - dt / 2, nt - 1) # tgrid para o Hz
+        # grids: armazenam os nós 
+        # OBS: nx + 1 nós implicam em nx intervalos
+        grid_xE = np.linspace(0, a, nx + 1) # xgrid para o Ey ; +1 pois sao nx intervalos de delta x
+        grid_tE = np.linspace(0, T, nt + 1) # tgrid para o Ey ; +1 pois sao nt intervalos de delta t
 
-    # campos
-    Ey = np.zeros((nt, nx))
-    Hz = np.zeros((nt, nx-1))
+        grid_xH = np.linspace(dx / 2, a - dx / 2, nx) # xgrid para o Hz ; temos nx - 1 intervalos de delta x
+        grid_tH = np.linspace(dt / 2, T - dt / 2, nt) # tgrid para o Hz ; temos nt - 1 intervalos de delta t
 
-    # valor inicial do campo Ey em t = 0
-    Ey[0, :] = np.sin(np.pi / a * xgrid)
+        E_curr = np.sin(kx * grid_xE) # condicao inicial
+        E_next = np.zeros(grid_xE.shape[0])
 
-    # marcha no tempo
-    for n in range(nt - 1):
-        # atualiza o H
-        Hz[n+1, :] = Hz[n, :] - (dt / (mu0 * dx)) * (Ey[n, 1:] - Ey[n, :-1])
+        H_curr = np.sin(omega * dt/2) * np.cos(kx * grid_xH) # estende a condição inicial para o H
+        # H_curr = - (dt / (mu0 * dx)) * (E_curr[1:] - E_curr[:-1])
+        H_next = np.zeros(grid_xH.shape[0])
 
-        # atualiza o E
-        Ey[n+1, 1:-1] = Ey[n, 1:-1] - (dt / (e0 * dx)) * (Hz[n+1, 1:] - Hz[n+1, :-1])
+        # snapshots para as fotos
+        snapshot_times = np.linspace(0, nt - 1, 6, dtype=int)
+        E_snapshots = []
+        H_snapshots = []
+        E_exact_snapshots = []
+        H_exact_snapshots = []
 
-        # zero na condição de contorno (extremidades)
-        Ey[n+1, 0] = 0
-        Ey[n+1, -1] = 0
+        # marcha no tempo - calculamos o next a cada interação
+        error_by_n = []
+        for n in range(nt):
+            # equações do FDTD 1D
+            H_next = H_curr - dt / (mu * dx) * (E_curr[1:] - E_curr[:-1])
+            E_next[1:-1] = E_curr[1:-1] - dt / (eps * dx) * (H_next[1:] - H_next[:-1])
+
+            # condição de contorno: PEC nas bordas
+            E_next[0] = E_next[-1] = 0
+
+            # Solução exata nos instantes do next, que foram calculados
+            E_exact = np.cos(omega * grid_tE[n+1]) * np.sin(kx * grid_xE)
+            H_exact = -np.sin(omega * grid_tH[n]) * np.cos(kx * grid_xH)
+
+            # energia da solução exata
+            wt = np.sqrt(np.sum((E_exact[:-1]**2 + H_exact**2) * dx))
+
+            # Erro nas normas discretas
+            err_E = np.sqrt(dx * np.sum((E_next - E_exact)**2))
+            err_H = np.sqrt(dx * np.sum((H_next - H_exact)**2))
+            err_total = np.sqrt(err_E**2 + err_H**2)
+            error_by_n.append(err_total / wt)
+
+            # tira as fotos
+            if n in snapshot_times:
+                E_snapshots.append(E_next.copy())
+                H_snapshots.append(H_next.copy())
+                E_exact_snapshots.append(E_exact.copy())
+                H_exact_snapshots.append(H_exact.copy())
+
+            # atualiza o corrente para o proximo passo
+            E_curr = E_next
+            H_curr = H_next
+
+        rel_err_by_nx.append(np.max(error_by_n))
 
     \end{lstlisting}
 
