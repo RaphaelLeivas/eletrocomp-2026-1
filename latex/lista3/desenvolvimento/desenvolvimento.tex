@@ -225,6 +225,85 @@ como mostra a Figura \ref{fig:ex3-frequencia-senoidal}.
 	\end{center}
 \end{figure}
 
+\chapter{Exercício 4}
+
+Todo o código desse exercício encontra-se no Anexo \ref{cap:codigo_ex4}.
+
+O primeiro passo é desenhar o domínio, como mostra a Figura \ref{fig:ex4-dominio} (a).
+O centro da elipse é o ponto $C$, e os planos $XY$, $XZ$ e $YZ$ serão usados para analisar o 
+valor dos campos em uma projeção bidimensional, facilitando a análise dos gráficos.
+A elipse representa o interior de uma cavidade metálica, cujas paredes são assumidas ser um 
+condutor elétrico perfeito (condição de contorno PEC).
+O ponto de análise do espectro de frequência está localizado a 20 mm do centro.
+
+\begin{figure}[htb]
+	\caption{\label{fig:ex4-dominio}(a) Cavidade elíptica do problema 4 e 
+	(b) planos de análise, a uma distância de 20 mm do centro $C$.}
+	\begin{center}
+        \includegraphics[width=\textwidth,trim=1 1 1 1,clip]{ex4-dominio.png}
+	\end{center}
+\end{figure}
+
+Os parâmetros de discretização usados foram:
+
+\begin{itemize}
+	\item $N_x = N_y = N_z = 50 \quad , \quad N_t = 600$
+	\item $\Delta x = \Delta y = \Delta z = 2 \un{mm}$
+	\item $\Delta t = 3 \cdot 10^{-12} \un{s}$
+\end{itemize}
+
+\section{Excitação gaussiana}
+
+No centro da cavidade, aplicamos uma excitação gaussiana igual à usada no Exercício 3.
+A Figura \ref{fig:ex4-resultado-gaussiana} mostra as projeções do campo $E_z$ em 
+diferentes instantes
+de tempo nos três planos de análise. Vemos que o campo se propaga nas três direções, 
+e o ponto de análise tem o espectro de frequência exibido 
+na Figura \ref{fig:ex4-frequencia-gaussiana}. 
+
+\begin{figure}[htb]
+	\caption{\label{fig:ex4-resultado-gaussiana}Evolução do campo $E_z$ ao longo do tempo através 
+	dos três planos de análise.}
+	\begin{center}
+        \includegraphics[width=\textwidth,trim=1 1 1 1,clip]{ex4-resultado-gaussiana.png}
+	\end{center}
+\end{figure}
+
+\begin{figure}[htb]
+	\caption{\label{fig:ex4-frequencia-gaussiana}Transformada de Fourier do sinal coletado no ponto de análise a 
+	20 mm do centro da cavidade.}
+	\begin{center}
+        \includegraphics[width=0.8\textwidth,trim=1 1 1 1,clip]{ex4-frequencia-gaussiana.png}
+	\end{center}
+\end{figure}
+
+\section{Excitação senoidal}
+
+No centro da cavidade, aplicamos uma excitação senoidal dada por 
+
+\[ E_z(n) = \sin \left( 2 \pi f n \Delta t \right) \]
+
+\noindent onde $f = 10^{9} \un{Hz}$. A Figura \ref{fig:ex4-resultado-senoidal} mostra as projeções do campo $E_z$ em diferentes instantes
+de tempo nos três planos de análise. Vemos que o campo se propaga nas três direções, 
+e o ponto de análise tem o espectro de frequência exibido 
+na Figura \ref{fig:ex4-frequencia-senoidal}. Vemos um pico na frequência de 1 GHz, conforme esperado.
+
+\begin{figure}[htb]
+	\caption{\label{fig:ex4-resultado-senoidal}Evolução do campo $E_z$ ao longo do tempo através 
+	dos três planos de análise.}
+	\begin{center}
+        \includegraphics[width=\textwidth,trim=1 1 1 1,clip]{ex4-resultado-senoidal.png}
+	\end{center}
+\end{figure}
+
+\begin{figure}[htb]
+	\caption{\label{fig:ex4-frequencia-senoidal}Transformada de Fourier do sinal coletado no ponto de análise a 
+	20 mm do centro da cavidade.}
+	\begin{center}
+        \includegraphics[width=0.8\textwidth,trim=1 1 1 1,clip]{ex4-frequencia-senoidal.png}
+	\end{center}
+\end{figure}
+
 \chapter{Exercício 4.3 (livro)}
 
 Todo o código usado nesse exercício encontra-se no Anexo \ref{cap:codigo_ex4-3}.
@@ -256,7 +335,7 @@ Os parâmetros de discretização usados foram:
 \begin{itemize}
 	\item $N_x = 200 \quad , \quad N_t = 600$
 	\item $\Delta x = 15 \un{mm}$
-	\item $\Delta t = 50^{-12} \un{s}$
+	\item $\Delta t = 50 \cdot 10^{-12} \un{s}$
 	\item $T = 30 \un{ns}$
 \end{itemize}
 
