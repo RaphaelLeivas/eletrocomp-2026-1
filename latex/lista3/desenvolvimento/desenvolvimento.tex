@@ -279,8 +279,6 @@ exibida na Figura \ref{fig:fig:ex4-dispersao-3d}.
 	\end{center}
 \end{figure}
 
-
-
 \section{Excitação senoidal}
 
 No centro da cavidade, aplicamos uma excitação senoidal dada por 
@@ -508,3 +506,73 @@ evolução do campo $H_z$ exibida na Figura \ref{fig:ex4-4-evolucao-hz-tm}.
         \includegraphics[width=\textwidth,trim=1 1 1 1,clip]{ex4-4-evolucao-hz-tm.png}
 	\end{center}
 \end{figure}
+
+\chapter{Exercício 4.6 (livro)}
+
+Todo o código usado nesse item encontra-se no Anexo \ref{cap:codigo_ex4-6}. 
+
+\section{Item (a)}
+
+Considerando espaço livre, vamos excitar a antena com uma tensão senoidal dada por
+
+\[ V(n) = \sin \left( 2 \pi f n \Delta t \right) \]
+
+\noindent onde $f = 1 \un{GHz}$. Assim, o campo gerado $E_z = V(t) / \Delta z$ terá ondas 
+de comprimento de onda
+
+\[ \lambda = v / f \quad \Longrightarrow \quad \lambda = 0.3 \un{m} \]
+
+Assim, para usar 20 células por $\lambda$, temos $\Delta x = 15 \un{mm}$. Além disso, 
+para evitar que o simulação sofra interferência por reflexão nas bordas, vamos parar a
+simulação antes de o sinal chegar na parede. Com $N_x = 100$, o sinal atinge as bordas
+após aproximadamente 2.5 ns. Usando $\Delta t = 28.6 \un{ps}$ (isso vem da condição CFL 3D),
+usamos $N_t = 70$ para que a simulação se encerre em aproximadamente 2 ns.
+
+A propagação de $E_z$ a partir da antena está exibido na Figura \ref{fig:ex4-6-a-radiacao}.
+
+\begin{figure}[htb]
+	\caption{\label{fig:ex4-6-a-radiacao}Evolução do campo $E_z$ 
+	em um scatter 3D ao longo do tempo.}
+	\begin{center}
+        \includegraphics[width=\textwidth,trim=1 1 1 1,clip]{ex4-6-a-radiacao.png}
+	\end{center}
+\end{figure}
+
+A Figura \ref{fig:ex4-6-a-radiacao-planos} mostra o perfil do campo $E_z$ através de 
+3 planos ortogonais a $10 \cdot \Delta x$ de distância da antena, de modo semelhante
+ao feito na Questão 4. 
+
+\begin{figure}[htb]
+	\caption{\label{fig:ex4-6-a-radiacao-planos}Evolução do campo $E_z$ 
+	através dos planos ortogonais.}
+	\begin{center}
+        \includegraphics[width=\textwidth,trim=1 1 1 1,clip]{ex4-6-a-radiacao-planos.png}
+	\end{center}
+\end{figure}
+
+O ponto de monitoramento está a $10 \cdot \Delta x$ da antena nos três eixos
+e possui as seguintes medições
+ao longo do tempo, exibidas na Figura \ref{fig:ex4-6-a-probe}.
+
+\begin{figure}[htb]
+	\caption{\label{fig:ex4-6-a-probe}$E_z$ em função do tempo medido no ponto de teste.}
+	\begin{center}
+        \includegraphics[width=0.8\textwidth,trim=1 1 1 1,clip]{ex4-6-a-probe.png}
+	\end{center}
+\end{figure}
+
+Note que o campo gastou cerca de 800 ps para atingir o ponto de teste. Isso implica que o 
+ponto de teste está a 
+
+\[ d = v \cdot 800 \un{ps} \quad \Longrightarrow \quad d = 240 \un{mm} \]
+
+\noindent o que é condizente com a distância $D_{teorica}$ do ponto de teste ao
+centro da antena:
+
+\[ D_{teorica} = \sqrt{(10 \cdot \Delta x)^2 + (10 \cdot \Delta y)^2 + (10 \cdot \Delta z)^2} 
+= \sqrt{300 (\Delta x)^2 } = \sqrt{300} \Delta x = 260 \un{mm} \]
+
+\noindent sendo essa uma nova métrica do bom 
+funcionamento do método codificado.
+
+\section{Item (b)}
