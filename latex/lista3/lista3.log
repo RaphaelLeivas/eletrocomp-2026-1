@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2026.4.1)  26 APR 2026 15:59
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2026.4.1)  26 APR 2026 16:49
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1114,124 +1114,145 @@ File: ./images/ex4-dominio.png Graphic file (type png)
 <use ./images/ex4-dominio.png>
 Package pdftex.def Info: ./images/ex4-dominio.png  used on input line 235.
 (pdftex.def)             Requested size: 455.0pt x 265.50806pt.
+LaTeX Font Info:    Trying to load font information for T1+pcr on input line 25
+5.
+ (/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1pcr.fd
+File: t1pcr.fd 2001/06/04 font definitions for T1/pcr.
+)
+Package microtype Info: Loading generic protrusion settings for font family
+(microtype)             `pcr' (encoding: T1).
+(microtype)             For optimal results, create family-specific settings.
+(microtype)             See the microtype manual for details.
+
+
+LaTeX Warning: Reference `fig:fig:ex4-dispersao-3d' on page 12 undefined on inp
+ut line 256.
+
 <./images/ex4-resultado-gaussiana.png, id=196, 1141.1433pt x 714.7503pt>
 File: ./images/ex4-resultado-gaussiana.png Graphic file (type png)
 <use ./images/ex4-resultado-gaussiana.png>
 Package pdftex.def Info: ./images/ex4-resultado-gaussiana.png  used on input li
-ne 260.
+ne 262.
 (pdftex.def)             Requested size: 455.0pt x 284.68968pt.
 <./images/ex4-frequencia-gaussiana.png, id=198, 414.8298pt x 333.8874pt>
 File: ./images/ex4-frequencia-gaussiana.png Graphic file (type png)
 <use ./images/ex4-frequencia-gaussiana.png>
 Package pdftex.def Info: ./images/ex4-frequencia-gaussiana.png  used on input l
-ine 268.
+ine 270.
 (pdftex.def)             Requested size: 364.00139pt x 292.63252pt.
- [12
+<./images/ex4-dispersao-3d.png, id=200, 1555.8125pt x 487.8225pt>
+File: ./images/ex4-dispersao-3d.png Graphic file (type png)
+<use ./images/ex4-dispersao-3d.png>
+Package pdftex.def Info: ./images/ex4-dispersao-3d.png  used on input line 277.
+
+(pdftex.def)             Requested size: 455.0pt x 142.26154pt.
+[12
 
  <./images/ex4-dominio.png>]
-<./images/ex4-resultado-senoidal.png, id=211, 1141.1433pt x 714.7503pt>
+<./images/ex4-resultado-senoidal.png, id=214, 1141.1433pt x 714.7503pt>
 File: ./images/ex4-resultado-senoidal.png Graphic file (type png)
 <use ./images/ex4-resultado-senoidal.png>
 Package pdftex.def Info: ./images/ex4-resultado-senoidal.png  used on input lin
-e 287.
+e 298.
 (pdftex.def)             Requested size: 455.0pt x 284.68968pt.
-<./images/ex4-frequencia-senoidal.png, id=213, 414.8298pt x 333.8874pt>
+<./images/ex4-frequencia-senoidal.png, id=216, 414.8298pt x 333.8874pt>
 File: ./images/ex4-frequencia-senoidal.png Graphic file (type png)
 <use ./images/ex4-frequencia-senoidal.png>
 Package pdftex.def Info: ./images/ex4-frequencia-senoidal.png  used on input li
-ne 295.
+ne 306.
 (pdftex.def)             Requested size: 364.00139pt x 292.63252pt.
  [13 <./images/ex4-resultado-gaussiana.png>]
-[14 <./images/ex4-frequencia-gaussiana.png> <./images/ex4-resultado-senoidal.pn
-g>] [15 <./images/ex4-frequencia-senoidal.png>]
-<./images/ex4-3-geometria.png, id=240, 714.7503pt x 426.393pt>
+[14 <./images/ex4-frequencia-gaussiana.png> <./images/ex4-dispersao-3d.png>]
+[15 <./images/ex4-resultado-senoidal.png> <./images/ex4-frequencia-senoidal.png
+>]
+<./images/ex4-3-geometria.png, id=246, 714.7503pt x 426.393pt>
 File: ./images/ex4-3-geometria.png Graphic file (type png)
 <use ./images/ex4-3-geometria.png>
-Package pdftex.def Info: ./images/ex4-3-geometria.png  used on input line 312.
+Package pdftex.def Info: ./images/ex4-3-geometria.png  used on input line 323.
 (pdftex.def)             Requested size: 364.00139pt x 216.73808pt.
-<./images/ex4-3-permissividade.png, id=243, 570.933pt x 354.123pt>
+<./images/ex4-3-permissividade.png, id=249, 570.933pt x 354.123pt>
 File: ./images/ex4-3-permissividade.png Graphic file (type png)
 <use ./images/ex4-3-permissividade.png>
 Package pdftex.def Info: ./images/ex4-3-permissividade.png  used on input line 
-321.
+332.
 (pdftex.def)             Requested size: 364.00139pt x 225.28867pt.
  [16
 
  <./images/ex4-3-geometria.png> <./images/ex4-3-permissividade.png>]
-<./images/ex4-3-evolucao.png, id=256, 1148.3703pt x 714.7503pt>
+<./images/ex4-3-evolucao.png, id=262, 1148.3703pt x 714.7503pt>
 File: ./images/ex4-3-evolucao.png Graphic file (type png)
 <use ./images/ex4-3-evolucao.png>
-Package pdftex.def Info: ./images/ex4-3-evolucao.png  used on input line 350.
+Package pdftex.def Info: ./images/ex4-3-evolucao.png  used on input line 361.
 (pdftex.def)             Requested size: 455.0pt x 282.8952pt.
- [17 <./images/ex4-3-evolucao.png>]
-<./images/ex4-3-resposta-frequencia.png, id=267, 714.7503pt x 426.393pt>
+
+[17 <./images/ex4-3-evolucao.png>]
+<./images/ex4-3-resposta-frequencia.png, id=273, 714.7503pt x 426.393pt>
 File: ./images/ex4-3-resposta-frequencia.png Graphic file (type png)
 <use ./images/ex4-3-resposta-frequencia.png>
 Package pdftex.def Info: ./images/ex4-3-resposta-frequencia.png  used on input 
-line 371.
+line 382.
 (pdftex.def)             Requested size: 364.00139pt x 216.73808pt.
-<./images/ex4-3-b-evolucao.png, id=271, 1148.3703pt x 714.7503pt>
+<./images/ex4-3-b-evolucao.png, id=277, 1148.3703pt x 714.7503pt>
 File: ./images/ex4-3-b-evolucao.png Graphic file (type png)
 <use ./images/ex4-3-b-evolucao.png>
-Package pdftex.def Info: ./images/ex4-3-b-evolucao.png  used on input line 383.
+Package pdftex.def Info: ./images/ex4-3-b-evolucao.png  used on input line 394.
 
 (pdftex.def)             Requested size: 455.0pt x 282.8952pt.
-<./images/ex4-3-b-resposta-frequencia.png, id=273, 714.7503pt x 426.393pt>
+<./images/ex4-3-b-resposta-frequencia.png, id=279, 714.7503pt x 426.393pt>
 File: ./images/ex4-3-b-resposta-frequencia.png Graphic file (type png)
 <use ./images/ex4-3-b-resposta-frequencia.png>
 Package pdftex.def Info: ./images/ex4-3-b-resposta-frequencia.png  used on inpu
-t line 390.
+t line 401.
 (pdftex.def)             Requested size: 364.00139pt x 216.73808pt.
-
-[18 <./images/ex4-3-resposta-frequencia.png>] [19 <./images/ex4-3-b-evolucao.pn
-g> <./images/ex4-3-b-resposta-frequencia.png>]
-<./images/ex4-4-pulso.png, id=296, 1403.2425pt x 621.32124pt>
+ [18 <./images/ex4-3-resposta-frequencia.png>] [19 <./images/ex4-3-b-evolucao.p
+ng> <./images/ex4-3-b-resposta-frequencia.png>]
+<./images/ex4-4-pulso.png, id=302, 1403.2425pt x 621.32124pt>
 File: ./images/ex4-4-pulso.png Graphic file (type png)
 <use ./images/ex4-4-pulso.png>
-Package pdftex.def Info: ./images/ex4-4-pulso.png  used on input line 408.
+Package pdftex.def Info: ./images/ex4-4-pulso.png  used on input line 419.
 (pdftex.def)             Requested size: 455.0pt x 201.09503pt.
-<./images/ex4-4-evolucao-ez.png, id=300, 1121.6304pt x 715.473pt>
+<./images/ex4-4-evolucao-ez.png, id=306, 1121.6304pt x 715.473pt>
 File: ./images/ex4-4-evolucao-ez.png Graphic file (type png)
 <use ./images/ex4-4-evolucao-ez.png>
-Package pdftex.def Info: ./images/ex4-4-evolucao-ez.png  used on input line 434
+Package pdftex.def Info: ./images/ex4-4-evolucao-ez.png  used on input line 445
 .
 (pdftex.def)             Requested size: 455.0pt x 289.94263pt.
-<./images/ex4-4-evolucao-hx.png, id=303, 1121.6304pt x 715.473pt>
+<./images/ex4-4-evolucao-hx.png, id=309, 1121.6304pt x 715.473pt>
 File: ./images/ex4-4-evolucao-hx.png Graphic file (type png)
 <use ./images/ex4-4-evolucao-hx.png>
-Package pdftex.def Info: ./images/ex4-4-evolucao-hx.png  used on input line 444
+Package pdftex.def Info: ./images/ex4-4-evolucao-hx.png  used on input line 455
 .
 (pdftex.def)             Requested size: 455.0pt x 289.94263pt.
  [20
 
  <./images/ex4-4-pulso.png>]
-<./images/ex4-4-resonancia.png, id=316, 1115.1261pt x 714.7503pt>
+<./images/ex4-4-resonancia.png, id=322, 1115.1261pt x 714.7503pt>
 File: ./images/ex4-4-resonancia.png Graphic file (type png)
 <use ./images/ex4-4-resonancia.png>
-Package pdftex.def Info: ./images/ex4-4-resonancia.png  used on input line 456.
+Package pdftex.def Info: ./images/ex4-4-resonancia.png  used on input line 467.
 
 (pdftex.def)             Requested size: 455.0pt x 291.34552pt.
-<./images/ex4-4-evolucao-senoidal.png, id=319, 1108.6218pt x 714.7503pt>
+<./images/ex4-4-evolucao-senoidal.png, id=325, 1108.6218pt x 714.7503pt>
 File: ./images/ex4-4-evolucao-senoidal.png Graphic file (type png)
 <use ./images/ex4-4-evolucao-senoidal.png>
 Package pdftex.def Info: ./images/ex4-4-evolucao-senoidal.png  used on input li
-ne 469.
+ne 480.
 (pdftex.def)             Requested size: 455.0pt x 293.05298pt.
-<./images/ex4-decaimento.png, id=322, 854.9541pt x 349.7868pt>
+<./images/ex4-decaimento.png, id=328, 854.9541pt x 349.7868pt>
 File: ./images/ex4-decaimento.png Graphic file (type png)
 <use ./images/ex4-decaimento.png>
-Package pdftex.def Info: ./images/ex4-decaimento.png  used on input line 482.
+Package pdftex.def Info: ./images/ex4-decaimento.png  used on input line 493.
 (pdftex.def)             Requested size: 455.0pt x 185.52145pt.
-<./images/ex4-4-evolucao-hz-tm.png, id=326, 1120.9077pt x 715.473pt>
+<./images/ex4-4-evolucao-hz-tm.png, id=332, 1120.9077pt x 715.473pt>
 File: ./images/ex4-4-evolucao-hz-tm.png Graphic file (type png)
 <use ./images/ex4-4-evolucao-hz-tm.png>
 Package pdftex.def Info: ./images/ex4-4-evolucao-hz-tm.png  used on input line 
-496.
+507.
 (pdftex.def)             Requested size: 455.0pt x 290.1277pt.
-) (./elementos-pos-textuais/anexos.tex [21 <./images/ex4-4-evolucao-ez.png>]
-[22 <./images/ex4-4-evolucao-hx.png> <./images/ex4-4-resonancia.png>] [23 <./im
-ages/ex4-4-evolucao-senoidal.png> <./images/ex4-decaimento.png>] [24 <./images/
-ex4-4-evolucao-hz-tm.png>]
+) (./elementos-pos-textuais/anexos.tex
+[21 <./images/ex4-4-evolucao-ez.png>] [22 <./images/ex4-4-evolucao-hx.png> <./i
+mages/ex4-4-resonancia.png>] [23 <./images/ex4-4-evolucao-senoidal.png> <./imag
+es/ex4-decaimento.png>] [24 <./images/ex4-4-evolucao-hz-tm.png>]
 (/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2023/02/27 1.9 listings language file
 )
@@ -1261,13 +1282,17 @@ LaTeX Font Info:    Font shape `TS1/phv/m/it' in size <8> not available
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2020/03/25>
  ***********
+
+
+LaTeX Warning: There were undefined references.
+
  ) 
 Here is how much of TeX's memory you used:
- 22084 strings out of 476162
- 351705 string characters out of 5794815
+ 22136 strings out of 476162
+ 352635 string characters out of 5794815
  2344975 words of memory out of 5000000
- 42923 multiletter control sequences out of 15000+600000
- 594219 words of font info for 179 fonts, out of 8000000 for 9000
+ 42967 multiletter control sequences out of 15000+600000
+ 594840 words of font info for 181 fonts, out of 8000000 for 9000
  16 hyphenation exceptions out of 8191
  99i,13n,107p,1003b,2300s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></us
@@ -1280,13 +1305,14 @@ type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/p
 ublic/amsfonts/cm/cmr6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/am
 sfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/c
 m/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy
-8.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/
-share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/share/texliv
-e/texmf-dist/fonts/type1/urw/helvetic/uhvro8a.pfb>
-Output written on lista3.pdf (36 pages, 2764407 bytes).
+8.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></usr/s
+hare/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/share/texlive
+/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/share/texlive/texmf-dist/
+fonts/type1/urw/helvetic/uhvro8a.pfb>
+Output written on lista3.pdf (36 pages, 3166081 bytes).
 PDF statistics:
- 1238 PDF objects out of 1440 (max. 8388607)
- 1068 compressed objects within 11 object streams
- 647 named destinations out of 1000 (max. 500000)
- 40442 words of extra memory for PDF output out of 42996 (max. 10000000)
+ 1248 PDF objects out of 1440 (max. 8388607)
+ 1073 compressed objects within 11 object streams
+ 648 named destinations out of 1000 (max. 500000)
+ 40965 words of extra memory for PDF output out of 42996 (max. 10000000)
 
