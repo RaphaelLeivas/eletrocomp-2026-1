@@ -576,3 +576,32 @@ centro da antena:
 funcionamento do método codificado.
 
 \section{Item (b)}
+
+Para o item (b), fazemos as seguintes modificações na geometria do item (a):
+
+\begin{itemize}
+	\item Zera todas as componentes do campo $E$ em $z = 0$, representando o plano de ground;
+	\item Posiciona a antena em $k = 1$, com 5 grids acima sendo PEC 
+\end{itemize}
+
+Com essas modificações, obtemos a dispersão da radiação em 3D exibida na Figura 
+\ref{fig:ex4-6-b-radiacao}, e a projeção através do planos $XY$, $XZ$ e $YZ$ 
+exibida na Figura \ref{fig:ex4-6-b-radiacao-planos}.
+
+\begin{figure}[htb]
+	\caption{\label{fig:ex4-6-b-radiacao}$E_z$ irradiado pela antena ao longo do tempo.}
+	\begin{center}
+        \includegraphics[width=\textwidth,trim=1 1 1 1,clip]{ex4-6-b-radiacao.png}
+	\end{center}
+\end{figure}
+
+\begin{figure}[htb]
+	\caption{\label{fig:ex4-6-b-radiacao-planos}$E_z$ através dos planos ortogonais.}
+	\begin{center}
+        \includegraphics[width=\textwidth,trim=1 1 1 1,clip]{ex4-6-b-radiacao-planos.png}
+	\end{center}
+\end{figure}
+
+Note que projeção no plano XY permance inalterada, uma vez que o campo continua se propagando
+na direção $z$ mesmo estando mais perto da borda do grid. Os demais projeções sofrem 
+alterações devido à essa proximidade com o plano de ground.
