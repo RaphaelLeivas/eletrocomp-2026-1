@@ -1,0 +1,51 @@
+\chapter{Exercício 5.7}
+
+Todo o código usado nesse exercício encontra-se no Anexo \ref{cap:ex5-7-codigo}.
+
+O primeiro passo é obter uma simulação estável na geometria proposta pelo problema.
+Considerando uma fonte de onda planar senoidal com $f = 1 \un{GHz}$ no espaço livre, 
+temos $\lambda = c / f = 0.3 \un{m}$.
+Usando os seguintes parâmetros de discretização:
+
+\begin{itemize}
+	\item $N_x = 500 \quad , \quad N_y = 100$
+	\item $\Delta y = \Delta x = 0.1 \cdot \lambda = 0.03 \un{m}$
+	\item $\Delta t = \frac{0.99}{c \sqrt{(\Delta x)^{-2} + (\Delta y)^{-2}}} = 70 \un{ps} $ (condição CFL 2D)
+	\item $N_t = 500$
+\end{itemize}
+
+\noindent obtemos a seguinte propagação da onda planar a partir da extremidade esquerda
+do grid, exibida na Figura \ref{fig:ex5-7-propagacao}.
+
+\begin{figure}[htbp]
+	\caption{\label{fig:ex5-7-propagacao}Propagação da onda planar senoidal a partir da extremidade esquerda.}
+	\begin{center}
+        \includegraphics[width=\textwidth,trim=1 1 1 1,clip]{ex5-7-propagacao.png}
+	\end{center}
+\end{figure}
+
+Note que ao atingir a borda direita do grid temos reflexão por ser um PEC, obtendo assim
+um padrão de interferência.
+
+Variando o valor de $\Delta t$, e usando uma ponta de prova no centro do grid, podemos 
+usar o valor máximo medido para aferir a estabilidade do método em função de $\Delta t$, 
+como mostra a Tabela \ref{tab:ex5-7-estabilidade}. Vemos que o método se torna 
+instável quando a condição de CFL não é respeitada.
+
+\begin{table}[htbp]
+	\caption{Valor máximo medido no centro do grid em função de $\Delta t$.}
+	\vspace{0.5cm}
+	\centering
+		\begin{tabular}{c|c}
+
+		$\Delta t$ & $E_z$ Máximo (V/m) \\ \hline
+		$0.50 \quad  / \quad c  \sqrt{(\Delta x)^{-2} + (\Delta y)^{-2}}$ & 1.18  \\ \hline
+		$0.90 \quad  / \quad c  \sqrt{(\Delta x)^{-2} + (\Delta y)^{-2}}$ & 1.25  \\ \hline
+		$0.98 \quad  / \quad c  \sqrt{(\Delta x)^{-2} + (\Delta y)^{-2}}$ & 1.25  \\ \hline
+		$0.99 \quad  / \quad c  \sqrt{(\Delta x)^{-2} + (\Delta y)^{-2}}$ & 1.24  \\ \hline
+		$1.00 \quad  / \quad c  \sqrt{(\Delta x)^{-2} + (\Delta y)^{-2}}$ & 1.25  \\ \hline
+		$1.01 \quad  / \quad c  \sqrt{(\Delta x)^{-2} + (\Delta y)^{-2}}$ & $1.13 \cdot 10^{54}$ \\ \hline
+		$1.10 \quad  / \quad c  \sqrt{(\Delta x)^{-2} + (\Delta y)^{-2}}$ & $1.016 \cdot 10^{184}$  \\
+		\end{tabular}
+	\label{tab:ex5-7-estabilidade}
+\end{table}

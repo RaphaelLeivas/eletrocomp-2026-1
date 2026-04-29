@@ -56,7 +56,7 @@ A solução numérica ($E_y$ e $H_z$) obtida é semelhante com a solução anal�
 tanto para o campo magnético quando para o campo elétrico, conforme mostra 
 a Figura \ref{fig:ex2-comparacao}.
 
-\begin{figure}[htb]
+\begin{figure}[htbp]
 	\caption{\label{fig:ex2-comparacao}Comparação entre as soluções analítica (exact) e numéricas obtidas.}
 	\begin{center}
         \includegraphics[width=\textwidth,trim=1 1 1 1,clip]{ex2-comparacao.png}
@@ -67,7 +67,7 @@ Variando os valores dos parâmeotros
 $\Delta x$ e $\Delta t$, vemos que a solução não sofre muitas alterações, 
 como mostra a Figura \ref{fig:ex2-numerico}.
 
-\begin{figure}[htb]
+\begin{figure}[htbp]
 	\caption{\label{fig:ex2-numerico}Solução numérica do exercício 2 para diferentes discretizações.}
 	\begin{center}
         \includegraphics[width=\textwidth,trim=1 1 1 1,clip]{ex2-numerico.png}
@@ -105,7 +105,7 @@ A redução do erro também está exibida graficamente na Figura \ref{fig:ex2-co
 tanto em escala linear quanto em escala logarítimica. Note que na escala log a reta tem inclinação 
 igual a 2, conforme esperado pela ordem.
 
-\begin{figure}[htb]
+\begin{figure}[htbp]
 	\caption{\label{fig:ex2-convergencia}Convergência do erro relativo máximo obtido.}
 	\begin{center}
         \includegraphics[width=\textwidth,trim=1 1 1 1,clip]{ex2-convergencia.png}
@@ -120,7 +120,7 @@ Figura \ref{fig:ex3-grid}. Esse grid comporta uma cavidade circular de
 raio 0.5 m. No instante $t = 0$, não há campo elétrico e nenhuma excitação introduzida, 
 sendo esse o estado inicial do grid.
 
-\begin{figure}[htb]
+\begin{figure}[htbp]
 	\caption{\label{fig:ex3-grid}Grid para o exercício 3.}
 	\begin{center}
         \includegraphics[width=\textwidth,trim=1 1 1 1,clip]{ex3-grid.png}
@@ -154,7 +154,7 @@ Figura \ref{fig:ex3-pulso}. O pulso é dado por
 \noindent onde $t_0 = 50 \Delta t$ e $\sigma = 15$. Assim, o pulso cresce suavamente 
 a partir de zero e atinge seu pico em $t = t_0$, para depois decrescer novamente.
 
-\begin{figure}[htb]
+\begin{figure}[htbp]
 	\caption{\label{fig:ex3-pulso}Pulso gaussiano para o exercício 3.}
 	\begin{center}
         \includegraphics[width=0.8\textwidth,trim=1 1 1 1,clip]{ex3-pulso.png}
@@ -165,7 +165,7 @@ Usando o esquema de Yee em duas dimensões para o modo Transversal Magnético (T
 obtemos a seguinte evolução do campo elétrico $E_z$ ao longo do tempo, exibida na Figura \ref{fig:ex3-evolucao}.
 Vemos que o pulso gaussiano se propaga para fora a partir do centro da cavidade.
 
-\begin{figure}[htb]
+\begin{figure}[htbp]
 	\caption{\label{fig:ex3-evolucao}Evolução do campo elétrico $E_z$ para o exercício 3.}
 	\begin{center}
         \includegraphics[width=\textwidth,trim=1 1 1 1,clip]{ex3-evolucao.png}
@@ -178,7 +178,7 @@ Por simplicidade, também consideramos o campo elétrico zero para fora da cavid
 Assim, temos $E_z = 0$ nas bordas do grid, o que simula a reflexão do pulso gaussiano quando ele atinge as paredes da cavidade.
 A ressonância do campo ao longo do tempo está exibida na Figura \ref{fig:ex3-resonancia}. 
 
-\begin{figure}[htb]
+\begin{figure}[htbp]
 	\caption{\label{fig:ex3-resonancia}Ressonância do campo elétrico $E_z$ para o exercício 3.}
 	\begin{center}
         \includegraphics[width=\textwidth,trim=1 1 1 1,clip]{ex3-resonancia.png}
@@ -189,7 +189,7 @@ Para calcular a frequência de ressonância, coletamos valores de $E_z$ em um po
 da cavidade e plotamos sua transformada de Fourier. Tomando o ponto central do grid, 
 obtemos a seguinte transformada de Fourier, exibida na Figura \ref{fig:ex3-frequencia}.
 
-\begin{figure}[htb]
+\begin{figure}[htbp]
 	\caption{\label{fig:ex3-frequencia}Espectro FFT do campo elétrico $E_z$ para o exercício 3.}
 	\begin{center}
         \includegraphics[width=0.8\textwidth,trim=1 1 1 1,clip]{ex3-frequencia.png}
@@ -203,14 +203,14 @@ obtemos o seguinte perfil de ressonância para o campo elétrico $E_z$,
 exibido na Figura \ref{fig:ex3-resonancia-senoidal}. A FFT do campo elétrico no centro da cavidade exibe um pico claro em $f = 1 \un{GHz}$,
 como mostra a Figura \ref{fig:ex3-frequencia-senoidal}.
 
-\begin{figure}[htb]
+\begin{figure}[htbp]
 	\caption{\label{fig:ex3-resonancia-senoidal}Ressonância do campo elétrico $E_z$ para o exercício 3, excitação senoidal.}
 	\begin{center}
         \includegraphics[width=\textwidth,trim=1 1 1 1,clip]{ex3-resonancia-senoidal.png}
 	\end{center}
 \end{figure}
 
-\begin{figure}[htb]
+\begin{figure}[htbp]
 	\caption{\label{fig:ex3-frequencia-senoidal}Espectro FFT do campo elétrico $E_z$ para o exercício 3, excitação senoidal.}
 	\begin{center}
         \includegraphics[width=0.8\textwidth,trim=1 1 1 1,clip]{ex3-frequencia-senoidal.png}
@@ -228,7 +228,7 @@ A elipse representa o interior de uma cavidade metálica, cujas paredes são ass
 condutor elétrico perfeito (condição de contorno PEC).
 O ponto de análise do espectro de frequência está localizado a 20 mm do centro.
 
-\begin{figure}[htb]
+\begin{figure}[htbp]
 	\caption{\label{fig:ex4-dominio}(a) Cavidade elíptica do problema 4 e 
 	(b) planos de análise, a uma distância de 20 mm do centro $C$.}
 	\begin{center}
@@ -255,7 +255,7 @@ na Figura \ref{fig:ex4-frequencia-gaussiana}.
 Usando \verb|scatter|, é possível obter uma visualização 3D da dispersão do campo $E_z$, 
 exibida na Figura \ref{fig:fig:ex4-dispersao-3d}.
 
-\begin{figure}[htb]
+\begin{figure}[htbp]
 	\caption{\label{fig:ex4-resultado-gaussiana}Evolução do campo $E_z$ ao longo do tempo através 
 	dos três planos de análise.}
 	\begin{center}
@@ -263,7 +263,7 @@ exibida na Figura \ref{fig:fig:ex4-dispersao-3d}.
 	\end{center}
 \end{figure}
 
-\begin{figure}[htb]
+\begin{figure}[htbp]
 	\caption{\label{fig:ex4-frequencia-gaussiana}Transformada de Fourier do sinal coletado no ponto de análise a 
 	20 mm do centro da cavidade.}
 	\begin{center}
@@ -271,7 +271,7 @@ exibida na Figura \ref{fig:fig:ex4-dispersao-3d}.
 	\end{center}
 \end{figure}
 
-\begin{figure}[htb]
+\begin{figure}[htbp]
 	\caption{\label{fig:ex4-dispersao-3d}Dispersão 3D do campo $E_z$ ao longo do tempo dentro da cavidade
 	elíptica.}
 	\begin{center}
@@ -290,7 +290,7 @@ de tempo nos três planos de análise. Vemos que o campo se propaga nas três di
 e o ponto de análise tem o espectro de frequência exibido 
 na Figura \ref{fig:ex4-frequencia-senoidal}. Vemos um pico na frequência de 1 GHz, conforme esperado.
 
-\begin{figure}[htb]
+\begin{figure}[htbp]
 	\caption{\label{fig:ex4-resultado-senoidal}Evolução do campo $E_z$ ao longo do tempo através 
 	dos três planos de análise.}
 	\begin{center}
@@ -298,7 +298,7 @@ na Figura \ref{fig:ex4-frequencia-senoidal}. Vemos um pico na frequência de 1 G
 	\end{center}
 \end{figure}
 
-\begin{figure}[htb]
+\begin{figure}[htbp]
 	\caption{\label{fig:ex4-frequencia-senoidal}Transformada de Fourier do sinal coletado no ponto de análise a 
 	20 mm do centro da cavidade.}
 	\begin{center}
@@ -316,7 +316,7 @@ com $\epsilon_1 = \epsilon_0$, um slab de material dielétrico com $\epsilon_2 =
 um segundo dielétrico com $\epsilon_3 = 4 \epsilon_0$. $\mu$ é constante nos três materiais, sendo 
 igual a $\mu_0$. 
 
-\begin{figure}[htb]
+\begin{figure}[htbp]
 	\caption{\label{fig:ex4-3-geometria}Geometria do exercício 4.3.}
 	\begin{center}
         \includegraphics[width=0.8\textwidth,trim=1 1 1 1,clip]{ex4-3-geometria.png}
@@ -325,7 +325,7 @@ igual a $\mu_0$.
 
 A variação da permissividade ao longo da linha é exibida na Figura \ref{fig:ex4-3-permissividade}. Vemos que a permissividade é $\epsilon_0$ para $0 \leq x < 1 \un{m}$,
 
-\begin{figure}[htb]
+\begin{figure}[htbp]
 	\caption{\label{fig:ex4-3-permissividade}Variação da permissividade ao longo da linha do exercício 4.3.}
 	\begin{center}
         \includegraphics[width=0.8\textwidth,trim=1 1 1 1,clip]{ex4-3-permissividade.png}
@@ -354,7 +354,7 @@ Usando o esquema de Yee em uma dimensão, obtemos o resultado exibido
 na Figura \ref{fig:ex4-3-evolucao}. Vemos que o pulso gaussiano se propaga para a direita,
 sendo parcialmente refletido e transmitido em cada interface entre os materiais.
 
-\begin{figure}[htb]
+\begin{figure}[htbp]
 	\caption{\label{fig:ex4-3-evolucao}Evolução do pulso gaussiano ao longo da linha do exercício 4.3.}
 	\begin{center}
         \includegraphics[width=\textwidth,trim=1 1 1 1,clip]{ex4-3-evolucao.png}
@@ -375,7 +375,7 @@ Variando a duração $\tau \Delta t$ no pulso gaussiano, obtemos os seguintes
 coeficientes de reflexão e transmissão para cada valor de frequência $1 / (\tau \Delta t)$, 
 exibidos na Figura \ref{fig:ex4-3-resposta-frequencia}.
 
-\begin{figure}[htb]
+\begin{figure}[htbp]
 	\caption{\label{fig:ex4-3-resposta-frequencia}Valores dos coeficientes de reflexão e transmissão do exercício 4.3.}
 	\begin{center}
         \includegraphics[width=0.8\textwidth,trim=1 1 1 1,clip]{ex4-3-resposta-frequencia.png}
@@ -387,14 +387,14 @@ exibidos na Figura \ref{fig:ex4-3-resposta-frequencia}.
 Agora consideramos um slab com metade de dimensão do item (a). A evolução do campo elétrico 
 está exibida na Figura \ref{fig:ex4-3-b-evolucao}, e variação dos coeficientes de reflexão e transmissão está exibida na Figura \ref{fig:ex4-3-b-resposta-frequencia}.
 
-\begin{figure}[htb]
+\begin{figure}[htbp]
 	\caption{\label{fig:ex4-3-b-evolucao}Evolução do pulso gaussiano ao longo da linha do exercício 4.3, com slab de metade da dimensão.}
 	\begin{center}
         \includegraphics[width=\textwidth,trim=1 1 1 1,clip]{ex4-3-b-evolucao.png}
 	\end{center}
 \end{figure}
 
-\begin{figure}[htb]
+\begin{figure}[htbp]
 	\caption{\label{fig:ex4-3-b-resposta-frequencia}Valores dos coeficientes de reflexão e transmissão do exercício 4.3, com slab de metade da dimensão.}
 	\begin{center}
         \includegraphics[width=0.8\textwidth,trim=1 1 1 1,clip]{ex4-3-b-resposta-frequencia.png}
@@ -412,7 +412,7 @@ esse valor. O pulso gaussiano que iremos excitar no centro do grid possui a form
 Figura \ref{fig:ex4-4-pulso} (a), 
 e tem um espectro de frequência exibido na Figura \ref{fig:ex4-4-pulso} (b). 
 
-\begin{figure}[htb]
+\begin{figure}[htbp]
 	\caption{\label{fig:ex4-4-pulso}Pulso gaussiano (a) e seu espectro de frequência (b).}
 	\begin{center}
         \includegraphics[width=\textwidth,trim=1 1 1 1,clip]{ex4-4-pulso.png}
@@ -438,7 +438,7 @@ Com esse valor determinado, temos os seguintes parâmetros de discretização:
 \ref{fig:ex4-4-evolucao-ez}. Note que a figura está ``borrada'' uma vez que 
 $N_x$ e $N_y$ exigidos pelo enunciado são pequenos.
 
-\begin{figure}[htb]
+\begin{figure}[htbp]
 	\caption{\label{fig:ex4-4-evolucao-ez}Evolução do campo elétrico $E_z$ ao longo do grid.}
 	\begin{center}
         \includegraphics[width=\textwidth,trim=1 1 1 1,clip]{ex4-4-evolucao-ez.png}
@@ -448,7 +448,7 @@ $N_x$ e $N_y$ exigidos pelo enunciado são pequenos.
 A evolução do campo magnético $H_x$ ao longo do tempo está exibida na Figura \ref{fig:ex4-4-evolucao-hx}. 
 Vemos que o campo magnético é gerado a partir do campo elétrico, e tem um perfil de propagação semelhante.
 
-\begin{figure}[htb]
+\begin{figure}[htbp]
 	\caption{\label{fig:ex4-4-evolucao-hx}Evolução do campo magnético $H_x$ ao longo do grid.}
 	\begin{center}
         \includegraphics[width=\textwidth,trim=1 1 1 1,clip]{ex4-4-evolucao-hx.png}
@@ -459,7 +459,7 @@ Como a condição de contorno possui o campo elétrico zerado nas bordas do grid
 o pulso gaussiano é refletido nas bordas e cria um padrão de ressonância ao longo do tempo, 
 com interferências destrutivas e construtivas, como mostra a Figura \ref{fig:ex4-4-resonancia}.
 
-\begin{figure}[htb]
+\begin{figure}[htbp]
 	\caption{\label{fig:ex4-4-resonancia}Padrão de ressonância do pulso gaussiano 
 	ao longo do tempo após atingir as bordas do grid.}
 	\begin{center}
@@ -473,7 +473,7 @@ Agora consideramos uma fonte senoidal no centro do grid, com frequência de $f =
 e amplitude unitária. A evolução do campo elétrico $E_z$ ao longo do tempo está exibida na 
 Figura \ref{fig:ex4-4-evolucao-senoidal}.
 
-\begin{figure}[htb]
+\begin{figure}[htbp]
 	\caption{\label{fig:ex4-4-evolucao-senoidal}Evolução do campo elétrico $E_z$ ao longo do grid para uma fonte senoidal.}
 	\begin{center}
         \includegraphics[width=\textwidth,trim=1 1 1 1,clip]{ex4-4-evolucao-senoidal.png}
@@ -486,7 +486,7 @@ Esse comportamento é conforme o esperado, uma vez que as amplitudes das compone
 com a distância $r$ da fonte  
 com um fator $1 / r$ em duas dimensões.
 
-\begin{figure}[htb]
+\begin{figure}[htbp]
 	\caption{\label{fig:ex4-decaimento}Decaimento da amplitude de $E_z$ ao se distanciar da fonte.}
 	\begin{center}
         \includegraphics[width=\textwidth,trim=1 1 1 1,clip]{ex4-decaimento.png}
@@ -500,7 +500,7 @@ O código usado nesse exercício encontra-se no Anexo \ref{cap:codigo_ex4-4-TE}.
 Usando o modo Transversal Elétrico (TE) com a excitação gaussiana, obtemos a
 evolução do campo $H_z$ exibida na Figura \ref{fig:ex4-4-evolucao-hz-tm}.
 
-\begin{figure}[htb]
+\begin{figure}[htbp]
 	\caption{\label{fig:ex4-4-evolucao-hz-tm}Evolução do campo $H_z$ para uma excitação gaussiana no modo TE.}
 	\begin{center}
         \includegraphics[width=\textwidth,trim=1 1 1 1,clip]{ex4-4-evolucao-hz-tm.png}
@@ -530,7 +530,7 @@ usamos $N_t = 70$ para que a simulação se encerre em aproximadamente 2 ns.
 
 A propagação de $E_z$ a partir da antena está exibido na Figura \ref{fig:ex4-6-a-radiacao}.
 
-\begin{figure}[htb]
+\begin{figure}[htbp]
 	\caption{\label{fig:ex4-6-a-radiacao}Evolução do campo $E_z$ 
 	em um scatter 3D ao longo do tempo.}
 	\begin{center}
@@ -542,7 +542,7 @@ A Figura \ref{fig:ex4-6-a-radiacao-planos} mostra o perfil do campo $E_z$ atrav�
 3 planos ortogonais a $10 \cdot \Delta x$ de distância da antena, de modo semelhante
 ao feito na Questão 4. 
 
-\begin{figure}[htb]
+\begin{figure}[htbp]
 	\caption{\label{fig:ex4-6-a-radiacao-planos}Evolução do campo $E_z$ 
 	através dos planos ortogonais.}
 	\begin{center}
@@ -554,7 +554,7 @@ O ponto de monitoramento está a $10 \cdot \Delta x$ da antena nos três eixos
 e possui as seguintes medições
 ao longo do tempo, exibidas na Figura \ref{fig:ex4-6-a-probe}.
 
-\begin{figure}[htb]
+\begin{figure}[htbp]
 	\caption{\label{fig:ex4-6-a-probe}$E_z$ em função do tempo medido no ponto de teste.}
 	\begin{center}
         \includegraphics[width=0.8\textwidth,trim=1 1 1 1,clip]{ex4-6-a-probe.png}
@@ -588,14 +588,14 @@ Com essas modificações, obtemos a dispersão da radiação em 3D exibida na Fi
 \ref{fig:ex4-6-b-radiacao}, e a projeção através do planos $XY$, $XZ$ e $YZ$ 
 exibida na Figura \ref{fig:ex4-6-b-radiacao-planos}.
 
-\begin{figure}[htb]
+\begin{figure}[htbp]
 	\caption{\label{fig:ex4-6-b-radiacao}$E_z$ irradiado pela antena ao longo do tempo.}
 	\begin{center}
         \includegraphics[width=\textwidth,trim=1 1 1 1,clip]{ex4-6-b-radiacao.png}
 	\end{center}
 \end{figure}
 
-\begin{figure}[htb]
+\begin{figure}[htbp]
 	\caption{\label{fig:ex4-6-b-radiacao-planos}$E_z$ através dos planos ortogonais.}
 	\begin{center}
         \includegraphics[width=\textwidth,trim=1 1 1 1,clip]{ex4-6-b-radiacao-planos.png}
