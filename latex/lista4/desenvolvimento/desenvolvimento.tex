@@ -49,3 +49,50 @@ instável quando a condição de CFL não é respeitada.
 		\end{tabular}
 	\label{tab:ex5-7-estabilidade}
 \end{table}
+
+\textcolor{red}{COmo deduzir a CFL nesse caso a partir de Von Neumann}
+
+\chapter{Exercício 6.1}
+
+Todo o código usado nesse exercício encontra-se no Anexo \ref{cap:ex6-1-codigo}.
+
+\section{Item (a)}
+
+Simulando a geometria do problema com o FDTD em 1 dimensão, temos a progragação da
+onda exibida na Figura \ref{fig:ex6-1-propagacao}.
+
+\begin{figure}[htbp]
+	\caption{\label{fig:ex6-1-propagacao}Propagação da onda até $t = 2 \un{ns}$.}
+	\begin{center}
+        \includegraphics[width=\textwidth,trim=1 1 1 1,clip]{ex6-1-propagacao.png}
+	\end{center}
+\end{figure}
+
+Fixando o pico do pulso gaussiano e coletando a sua posição ao longo do tempo, 
+obtemos o gráfico da Figura \ref{fig:ex6-1-a-pico-tempo}. A inclinação dessa reta 
+é a velocidade de fase $v_p$ da onda, obtida via regressão linear.
+
+\begin{figure}[htbp]
+	\caption{\label{fig:ex6-1-a-pico-tempo}Posição do pico do pulso gaussiano em função do tempo
+	simulado.}
+	\begin{center}
+        \includegraphics[width=\textwidth,trim=1 1 1 1,clip]{ex6-1-a-pico-tempo.png}
+	\end{center}
+\end{figure}
+
+Variando os parâmetros de discretização, vemos que velocidade de fase numérica se aproxima da velocidade 
+analítica $3 \cdot 10^8 \un{m/s}$, como mostra a Tabela \ref{tab:ex6-1-a-velocidades}.
+
+\begin{table}[htbp]
+	\caption{Velocidade de fase numérica obtida em função da discretização.}
+	\vspace{0.5cm}
+	\centering
+		\begin{tabular}{c|c|c}
+
+		$\Delta t$ (ps) & $\Delta x$ (mm) & $v_p \, (10^8 \cdot \un{m/s})$ \\ \hline
+		$4$ & 3.05  & 2.83  \\ \hline
+		$3$ & 2.29  & 2.86  \\ \hline
+		$2$ & 1.52  & 2.99  \\ \hline
+		\end{tabular}
+	\label{tab:ex6-1-a-velocidades}
+\end{table}
