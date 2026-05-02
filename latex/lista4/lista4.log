@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2026.4.1)  2 MAY 2026 11:54
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2026.4.1)  2 MAY 2026 13:26
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1041,7 +1041,7 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `phv' (encoding: TS1).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
-<./images/ex5-7-propagacao.png, id=31, 1121.6304pt x 715.473pt>
+<./images/ex5-7-propagacao.png, id=35, 1121.6304pt x 715.473pt>
 File: ./images/ex5-7-propagacao.png Graphic file (type png)
 <use ./images/ex5-7-propagacao.png>
 Package pdftex.def Info: ./images/ex5-7-propagacao.png  used on input line 23.
@@ -1052,20 +1052,42 @@ Package pdftex.def Info: ./images/ex5-7-propagacao.png  used on input line 23.
  <./images/ex5-7-propagacao.png>] [4]
 LaTeX Font Info:    Font shape `T1/phv/m/it' in size <12> not available
 (Font)              Font shape `T1/phv/m/sl' tried instead on input line 59.
-<./images/ex6-1-propagacao.png, id=60, 854.9541pt x 566.5968pt>
+<./images/ex6-1-propagacao.png, id=64, 854.9541pt x 566.5968pt>
 File: ./images/ex6-1-propagacao.png Graphic file (type png)
 <use ./images/ex6-1-propagacao.png>
 Package pdftex.def Info: ./images/ex6-1-propagacao.png  used on input line 67.
 (pdftex.def)             Requested size: 455.0pt x 301.17787pt.
-<./images/ex6-1-a-pico-tempo.png, id=63, 733.5405pt x 409.0482pt>
+<./images/ex6-1-a-pico-tempo.png, id=67, 733.5405pt x 409.0482pt>
 File: ./images/ex6-1-a-pico-tempo.png Graphic file (type png)
 <use ./images/ex6-1-a-pico-tempo.png>
 Package pdftex.def Info: ./images/ex6-1-a-pico-tempo.png  used on input line 79
 .
 (pdftex.def)             Requested size: 455.0pt x 253.18248pt.
-) (./elementos-pos-textuais/anexos.tex [5
+ [5
 
- <./images/ex6-1-propagacao.png>] [6 <./images/ex6-1-a-pico-tempo.png>]
+ <./images/ex6-1-propagacao.png>]
+<./images/ex6-1-b-propagacao.png, id=82, 854.9541pt x 566.5968pt>
+File: ./images/ex6-1-b-propagacao.png Graphic file (type png)
+<use ./images/ex6-1-b-propagacao.png>
+Package pdftex.def Info: ./images/ex6-1-b-propagacao.png  used on input line 11
+1.
+(pdftex.def)             Requested size: 455.0pt x 301.17787pt.
+<./images/ex6-1-c-propagacao.png, id=87, 855.6768pt x 566.5968pt>
+File: ./images/ex6-1-c-propagacao.png Graphic file (type png)
+<use ./images/ex6-1-c-propagacao.png>
+Package pdftex.def Info: ./images/ex6-1-c-propagacao.png  used on input line 14
+3.
+(pdftex.def)             Requested size: 455.0pt x 300.91943pt.
+<./images/ex6-1-c-pico-tempo.png, id=89, 733.5405pt x 409.0482pt>
+File: ./images/ex6-1-c-pico-tempo.png Graphic file (type png)
+<use ./images/ex6-1-c-pico-tempo.png>
+Package pdftex.def Info: ./images/ex6-1-c-pico-tempo.png  used on input line 15
+1.
+(pdftex.def)             Requested size: 455.0pt x 253.18248pt.
+)
+(./elementos-pos-textuais/anexos.tex [6 <./images/ex6-1-a-pico-tempo.png>]
+[7 <./images/ex6-1-b-propagacao.png> <./images/ex6-1-c-propagacao.png>]
+[8 <./images/ex6-1-c-pico-tempo.png>]
 (/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2023/02/27 1.9 listings language file
 )
@@ -1073,12 +1095,12 @@ LaTeX Font Info:    Font shape `T1/phv/m/it' in size <8> not available
 (Font)              Font shape `T1/phv/m/sl' tried instead on input line 13.
 LaTeX Font Info:    Font shape `TS1/phv/m/it' in size <8> not available
 (Font)              Font shape `TS1/phv/m/sl' tried instead on input line 13.
- [7
+ [9
 
-] [8]
-[9
+] [10]
+[11
 
-]) [10]
+]) [12]
 \tf@toc=\write5
 \openout5 = `lista4.toc'.
 
@@ -1089,11 +1111,11 @@ L3 programming layer <2020/03/25>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 21189 strings out of 476162
- 334670 string characters out of 5794815
+ 21245 strings out of 476162
+ 335968 string characters out of 5794815
  2294975 words of memory out of 5000000
- 42576 multiletter control sequences out of 15000+600000
- 594626 words of font info for 132 fonts, out of 8000000 for 9000
+ 42609 multiletter control sequences out of 15000+600000
+ 595126 words of font info for 140 fonts, out of 8000000 for 9000
  16 hyphenation exceptions out of 8191
  99i,13n,107p,1003b,2298s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></us
@@ -1109,10 +1131,10 @@ cm/cmsy6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy
 8.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/
 share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/share/texliv
 e/texmf-dist/fonts/type1/urw/helvetic/uhvro8a.pfb>
-Output written on lista4.pdf (10 pages, 454447 bytes).
+Output written on lista4.pdf (12 pages, 633964 bytes).
 PDF statistics:
- 394 PDF objects out of 1000 (max. 8388607)
- 339 compressed objects within 4 object streams
- 195 named destinations out of 1000 (max. 500000)
- 44119 words of extra memory for PDF output out of 51595 (max. 10000000)
+ 434 PDF objects out of 1000 (max. 8388607)
+ 368 compressed objects within 4 object streams
+ 203 named destinations out of 1000 (max. 500000)
+ 44168 words of extra memory for PDF output out of 51595 (max. 10000000)
 

@@ -90,9 +90,64 @@ analítica $3 \cdot 10^8 \un{m/s}$, como mostra a Tabela \ref{tab:ex6-1-a-veloci
 		\begin{tabular}{c|c|c}
 
 		$\Delta t$ (ps) & $\Delta x$ (mm) & $v_p \, (10^8 \cdot \un{m/s})$ \\ \hline
-		$4$ & 3.05  & 2.83  \\ \hline
-		$3$ & 2.29  & 2.86  \\ \hline
-		$2$ & 1.52  & 2.99  \\ \hline
+		4 & 3.05  & 2.83  \\ \hline
+		3 & 2.29  & 2.86  \\ \hline
+		2 & 1.52  & 2.99  \\ \hline
 		\end{tabular}
 	\label{tab:ex6-1-a-velocidades}
 \end{table}
+
+\textcolor{red}{Como calcular a velocidade de grupo}
+
+\section{Item (b)}
+
+Simulando o novo pulso, obtemos a progação exibida na Figura \ref{fig:ex6-1-b-propagacao}.
+Usando o mesmo método descrito no item (a), obtemos as seguintes velocidades de fase
+em função da descritização, exibida na Tabela \ref{tab:ex6-1-b-velocidades}.
+
+\begin{figure}[htbp]
+	\caption{\label{fig:ex6-1-b-propagacao}Propagação da onda até $t = 4 \un{ns}$.}
+	\begin{center}
+        \includegraphics[width=\textwidth,trim=1 1 1 1,clip]{ex6-1-b-propagacao.png}
+	\end{center}
+\end{figure}
+
+
+\begin{table}[htbp]
+	\caption{Velocidade de fase numérica obtida em função da discretização.}
+	\vspace{0.5cm}
+	\centering
+		\begin{tabular}{c|c|c}
+
+		$\Delta t$ (ps) & $\Delta x$ (mm) & $v_p \, (10^8 \cdot \un{m/s})$ \\ \hline
+		5 & 3.05  & 3.03  \\ \hline
+		3 & 2.29  & 3.02  \\ \hline
+		2 & 1.52  & 3.02   \\ \hline
+		\end{tabular}
+	\label{tab:ex6-1-b-velocidades}
+\end{table}
+
+\section{Item (c)}
+
+Com a nova fonte do item (c), obtemos a progação exibida na Figura \ref{fig:ex6-1-c-propagacao}.
+Usando o mesmo método descrito no item (a), obtemos as seguintes velocidades de fase
+em função da descritização, exibida na Tabela \ref{tab:ex6-1-b-velocidades}.
+A posição do pico do sinal em função do tempo, bem como a $v_p$ calculada a partir da
+regressão linear estão exibidos na Figura \ref{fig:ex6-1-c-pico-tempo}.
+Com a discretização sugerida no enunciado, que é bastante refinada, já obtemos 
+um valor igual ao analítico para a velocidade de fase.
+
+\begin{figure}[htbp]
+	\caption{\label{fig:ex6-1-c-propagacao}Propagação da onda até $t = 2 \un{ns}$.}
+	\begin{center}
+        \includegraphics[width=\textwidth,trim=1 1 1 1,clip]{ex6-1-c-propagacao.png}
+	\end{center}
+\end{figure}
+
+\begin{figure}[htbp]
+	\caption{\label{fig:ex6-1-c-pico-tempo}Posição do pico do pulso gaussiano em função do tempo
+	simulado.}
+	\begin{center}
+        \includegraphics[width=\textwidth,trim=1 1 1 1,clip]{ex6-1-c-pico-tempo.png}
+	\end{center}
+\end{figure}
