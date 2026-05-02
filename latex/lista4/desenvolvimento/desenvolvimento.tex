@@ -50,7 +50,7 @@ instável quando a condição de CFL não é respeitada.
 	\label{tab:ex5-7-estabilidade}
 \end{table}
 
-\textcolor{red}{COmo deduzir a CFL nesse caso a partir de Von Neumann}
+\textcolor{red}{Como deduzir a CFL nesse caso a partir de Von Neumann}
 
 \chapter{Exercício 6.1}
 
@@ -112,7 +112,6 @@ em função da descritização, exibida na Tabela \ref{tab:ex6-1-b-velocidades}.
 	\end{center}
 \end{figure}
 
-
 \begin{table}[htbp]
 	\caption{Velocidade de fase numérica obtida em função da discretização.}
 	\vspace{0.5cm}
@@ -151,3 +150,40 @@ um valor igual ao analítico para a velocidade de fase.
         \includegraphics[width=\textwidth,trim=1 1 1 1,clip]{ex6-1-c-pico-tempo.png}
 	\end{center}
 \end{figure}
+
+\chapter{Exercício 8.2}
+
+Todo o código usado nesse exercício encontra-se no Anexo \ref{cap:ex8-2-codigo}.
+
+Temos um grid 2D com condições de Mur de segunda ordem nas extremidades. Os parâmetros de discretização 
+usados foram:
+
+\begin{itemize}
+	\item $N_x = N_y = 200 \quad , \quad N_t = 500$
+	\item $\Delta x = \Delta y = \lambda_{min} / 10 = 0.03 \un{m}$
+	\item $\Delta t = 0.5 \un{CFL} = 35 \un{ps}$
+\end{itemize}
+
+Temos a propagação do campo $E_z$ (modo TM) a partir de uma fonte gaussiana no centro do grid
+exibida na Figura \ref{fig:ex8-2-propagacao}. A maior parte das ondas é absorvida pelas extremidades
+do grid. Usando uma ponta de prova em um ponto no interior da cavidade, vemos 
+que de fato a reflexão é praticamente zero, como mostra a Figura \ref{fig:ex8-2-reflexao} (b).
+
+\begin{figure}[htbp]
+	\caption{\label{fig:ex8-2-propagacao}Propagação do campo $E_z$, evidenciando a ação das condições ABC}.
+	\begin{center}
+        \includegraphics[width=\textwidth,trim=1 1 1 1,clip]{ex8-2-propagacao.png}
+	\end{center}
+\end{figure}
+
+\begin{figure}[htbp]
+	\caption{\label{fig:ex8-2-reflexao}Campo $E_z$ no interior da cavidade ao longo do tempo, com a 
+	reflexão destacada (b)}.
+	\begin{center}
+        \includegraphics[width=\textwidth,trim=1 1 1 1,clip]{ex8-2-reflexao.png}
+	\end{center}
+\end{figure}
+
+O coeficiente de reflexão por consequência das bordas ABC é dado por
+
+\[ R = \frac{0.0004}{0.07} = 0.05 \% \]
