@@ -182,6 +182,149 @@
     plt.legend()
     \end{lstlisting}
 
+    \chapter{Código Exercício 7.2 (a)}\label{cap:ex7-2-a-codigo}
+    \begin{lstlisting}[language=Python, breaklines=true, basicstyle=\tiny]
+    import numpy as np
+    import matplotlib.pyplot as plt
+    import seaborn as sns
+    from scipy.fft import fft, fftfreq
+
+    # --- parâmetros físicos ---
+    eps = 8.854187817e-12  # Vacuum permittivity (F/m)
+    mu = 4 * np.pi * 1e-7  # Vacuum permeability (H/m)
+    vp = 1 / np.sqrt(eps * mu)
+    f = 1e9
+
+    # --- domínio ---
+    min_lambda = vp / f  # comprimento de onda mínimo para 1 GHz = 3e-1 m
+    Nx = Ny = 100
+    dx = dy = 0.1 * min_lambda
+    dt = 0.5 / (vp * np.sqrt(1/dx**2 + 1/dy**2))
+    Nt = 200
+    L = Nx * dx
+    T = Nt * dt
+
+    cx, cy = Nx // 2, Ny // 2
+
+    source_x, source_y = 25, 25
+
+    Sx = vp * dt / dx
+    Sy = vp * dt / dy
+
+    grid_x_Ez = np.linspace(0, L, Nx + 1)
+    grid_y_Ez = np.linspace(0, L, Ny + 1)
+    grid_t_Ez = np.linspace(0, T, Nt + 1)
+
+    grid_x_Hx = np.linspace(0, L, Nx + 1)
+    grid_y_Hx = np.linspace(dy/2, L - dy/2, Ny)
+    grid_t_Hx = np.linspace(dt/2, T - dt/2, Nt)
+
+    grid_x_Hy = np.linspace(dx/2, L - dx/2, Nx)
+    grid_y_Hy = np.linspace(0, L, Ny + 1)
+    grid_t_Hy = np.linspace(dt/2, T - dt/2, Nt)
+
+    # --- campos ---
+    Ez_curr = Ez_next = Ez_prev = np.zeros((grid_x_Ez.shape[0], grid_y_Ez.shape[0]))
+    Hx_curr = Hx_next = np.zeros((grid_x_Hx.shape[0], grid_y_Hx.shape[0]))
+    Hy_curr = Hy_next = np.zeros((grid_x_Hy.shape[0], grid_y_Hy.shape[0]))
+
+    # ponta de prova para coletar pontos para a FFT no centro da cavidade
+    probe = []
+
+    # valores do tempo para salvar os snapshots e montar os heatmaps
+    n_snapshots = np.linspace(Nt//3, Nt - 5, 6, dtype=int)
+    Ez_snapshots = []
+
+    # mascara para o objeto scatter - dentro dele temos PEC
+    x = np.arange(Nx+1) * dx
+    y = np.arange(Ny+1) * dy
+    X, Y = np.meshgrid(x, y, indexing='ij')
+    radius = 10 * dx
+    obj_x, obj_y = 50, 50
+    mask = (X - obj_x * dx)**2 + (Y - obj_y * dy)**2 <= radius**2
+
+    for n in range(Nt-1):
+        # --- fonte (pulso gaussiano no tempo) ---
+        source_gaussiano = np.exp(-((n * dt - 1.8e-9)**2) / (0.6e-9)**2)
+
+        # --- fonte (senoidal no tempo) ---
+        source_senoidal = np.sin(2 * np.pi * f * n * dt)
+        
+        Ez_curr[source_x, source_y] += source_senoidal
+
+        Hx_next[:, :] = Hx_curr[:, :] - (dt/(mu*dy)) * (
+            Ez_curr[:, 1:] - Ez_curr[:, :-1]
+        )
+
+        Hy_next[:, :] = Hy_curr[:, :] + (dt/(mu*dx)) * (
+            Ez_curr[1:, :] - Ez_curr[:-1, :]
+        )
+
+        Ez_next[1:-1, 1:-1] = Ez_curr[1:-1, 1:-1] + (dt/eps) * (
+            (Hy_next[1:, 1:-1] - Hy_next[:-1, 1:-1]) / dx -
+            (Hx_next[1:-1, 1:] - Hx_next[1:-1, :-1]) / dy
+        )
+
+        # PEC no objeto espalhador
+        Ez_next[mask] = 0
+
+        # ABC na parede esquerda interior (i = 0)
+        for j in range(1, Ny-1):
+            Ez_next[0, j] = (
+                Ez_curr[1, j]
+                + (Sx - 1)/(Sx + 1) * (Ez_next[1, j] - Ez_curr[0, j])
+                + (Sy**2 / (2*(Sx + 1))) * (
+                    Ez_curr[0, j+1] - 2*Ez_curr[0, j] + Ez_curr[0, j-1]
+                )
+            )
+
+        # ABC na parede direita interior (i = Nx)
+        for j in range(1, Ny-1):
+            Ez_next[-1, j] = (
+                Ez_curr[-2, j]
+                + (Sx - 1)/(Sx + 1) * (Ez_next[-2, j] - Ez_curr[-1, j])
+                + (Sy**2 / (2*(Sx + 1))) * (
+                    Ez_curr[-1, j+1] - 2*Ez_curr[-1, j] + Ez_curr[-1, j-1]
+                )
+            )
+
+        # ABC na parede de baixo interior (j = 0)
+        for i in range(1, Nx-1):
+            Ez_next[i, 0] = (
+                Ez_curr[i, 1]
+                + (Sy - 1)/(Sy + 1) * (Ez_next[i, 1] - Ez_curr[i, 0])
+                + (Sx**2 / (2*(Sy + 1))) * (
+                    Ez_curr[i+1, 0] - 2*Ez_curr[i, 0] + Ez_curr[i-1, 0]
+                )
+            )
+
+        # ABC na parede de cima interior (j = Nx)
+        for i in range(1, Nx-1):
+            Ez_next[i, -1] = (
+                Ez_curr[i, -2]
+                + (Sy - 1)/(Sy + 1) * (Ez_next[i, -2] - Ez_curr[i, -1])
+                + (Sx**2 / (2*(Sy + 1))) * (
+                    Ez_curr[i+1, -1] - 2*Ez_curr[i, -1] + Ez_curr[i-1, -1]
+                )
+            )
+        
+        # PEC nas quinas
+        Ez_next[0,0] = Ez_next[0,-1] = Ez_next[-1,0] = Ez_next[-1,-1]
+
+        # salva o valor no centro para a FFT
+        probe.append(Ez_next[cx + 5, cy + 5])
+
+        # atualiza os campos para o próximo passo
+        Ez_curr = Ez_next.copy()
+        Ez_prev = Ez_curr.copy()
+        Hx_curr = Hx_next.copy()
+        Hy_curr = Hy_next.copy()
+
+        # salva para os snapshots
+        if n in n_snapshots:
+            Ez_snapshots.append(Ez_curr.copy())
+
+    \end{lstlisting}
 
     \chapter{Código Exercício 8.2}\label{cap:ex8-2-codigo}
     \begin{lstlisting}[language=Python, breaklines=true, basicstyle=\tiny]
@@ -313,7 +456,7 @@
         if n in n_snapshots:
             Ez_snapshots.append(Ez_curr.copy())
         
-    s\end{lstlisting}
+    \end{lstlisting}
 
 
 \end{anexosenv}

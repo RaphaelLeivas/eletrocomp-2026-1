@@ -151,6 +151,64 @@ um valor igual ao analítico para a velocidade de fase.
 	\end{center}
 \end{figure}
 
+\chapter{Exercício 7.2}
+
+\section{Item (a)}
+
+Todo o código usado nesse exercício encontra-se no Anexo \ref{cap:ex7-2-a-codigo}.
+
+Considerando o modo TM com condições de contorno ABC de segunda ordem em um meio 
+de espaço livre, a seguinte discretização
+foi usada:
+
+\begin{itemize}
+	\item $N_x = N_y = 100 \quad , \quad N_t = 200$
+	\item $\Delta y = \Delta x = 0.1 \cdot \lambda = 0.03 \un{m}$
+	\item $\Delta t = 0.5 \un{CFL} = 35 \un{ps}$
+\end{itemize}
+
+O primeiro passo é simular a propagação do campo total, ou seja, que inclui tanto a 
+fonte quanto o padrão de interferência causado pelas reflexões no cilindro PEC no centro do grid.
+A fonte senoidal com $f = 1 \un{GHz}$ está localizada nas coordenadas $i_s = j_s = 25$, 
+e a propagação ao longo do tempo está 
+exibida na Figura \ref{fig:ex7-2-a-campo-total}. Vemos que o campo 
+sofre reflexões ao atingir o cilindro, conforme esperado.
+
+\begin{figure}[htbp]
+	\caption{\label{fig:ex7-2-a-campo-total}Propagação do campo total $E_z$, 
+	a partir da fonte e passando pelo cilindo PEC no centro do grid}.
+	\begin{center}
+        \includegraphics[width=\textwidth,trim=1 1 1 1,clip]{ex7-2-a-campo-total.png}
+	\end{center}
+\end{figure}
+
+Agora simulamos apenas o campo incidente, desconsiderando a presença do cilindro, 
+obtendo o campo incidente exibido na Figura \ref{fig:ex7-2-a-campo-incidente}.
+
+\begin{figure}[htbp]
+	\caption{\label{fig:ex7-2-a-campo-incidente}Propagação do campo incidente $E_z$, 
+	a partir da fonte.}.
+	\begin{center}
+        \includegraphics[width=\textwidth,trim=1 1 1 1,clip]{ex7-2-a-campo-incidente.png}
+	\end{center}
+\end{figure}
+
+Com ambos os campos calculados, conseguimos fazer 
+
+\[ E_{refletido} = E_{total} - E_{incidente}  \]
+
+\noindent obtendo a propagação do campo refletido (scatter) exibido na 
+Figura \ref{fig:ex7-2-a-campo-refletido}.
+
+\begin{figure}[htbp]
+	\caption{\label{fig:ex7-2-a-campo-refletido}Propagação do campo refletido $E_z$, 
+	a partir da fonte e passando pelo cilindo PEC no centro do grid}.
+	\begin{center}
+        \includegraphics[width=\textwidth,trim=1 1 1 1,clip]{ex7-2-a-campo-refletido.png}
+	\end{center}
+\end{figure}
+
+
 \chapter{Exercício 8.2}
 
 Todo o código usado nesse exercício encontra-se no Anexo \ref{cap:ex8-2-codigo}.
