@@ -1,5 +1,7 @@
 \chapter{Exercício 5.2}
 
+Todo o código usado nesse exercício encontra-se no Anexo \ref{cap:ex5-2-codigo}.
+
 \section{Range Kutta RK2}
 
 \[ y^{n+1} = y^{n} + \left( 1 - \frac{1}{2 \alpha} \right)k_1 + \left(\frac{1}{2 \alpha}\right)k_2 \]
@@ -47,6 +49,29 @@ para essa EDO.
 \end{figure}
 
 \section{Range Kutta RK4}
+
+Usando o memso procedimento do item (a), chegamos na expressão:
+
+\[ y^{n+1} = \left( 1 + \lambda \Delta t + \frac{(\lambda \Delta t)^2}{2!} + \frac{(\lambda \Delta t)^3}{3!} + \frac{(\lambda \Delta t)^4}{4!} \right) y^n \]
+
+Injetando o sinal de Von Neumann igual feito no item (a)
+
+\[ q = 1 + \lambda \Delta t + \frac{(\lambda \Delta t)^2}{2!} + \frac{(\lambda \Delta t)^3}{3!} + \frac{(\lambda \Delta t)^4}{4!} \]
+
+\[ \left| \lambda \Delta t + \frac{(\lambda \Delta t)^2}{2!} + \frac{(\lambda \Delta t)^3}{3!} + \frac{(\lambda \Delta t)^4}{4!} \right| \leq 1 \]
+
+Jogando essa desigualdade no código, obtemos o mapa exibido na Figura \ref{fig:ex5-2-b}.
+
+\begin{figure}[htbp]
+	\caption{\label{fig:ex5-2-b}Região estável para o método RK4, em que a desigualdade é satisfeita
+	em todos os pontos marcados com 1 no mapa.}
+	\begin{center}
+        \includegraphics[width=0.8\textwidth,trim=1 1 1 1,clip]{ex5-2-b.png}
+	\end{center}
+\end{figure}
+
+
+
 
 
 

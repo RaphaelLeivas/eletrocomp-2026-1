@@ -2,6 +2,69 @@
 % Inicia os anexos
 % ---
 \begin{anexosenv}
+    \chapter{Código Exercício 5.7}\label{cap:ex5-2-codigo}
+    
+    \begin{lstlisting}[language=Python, breaklines=true, basicstyle=\tiny]
+    import numpy as np
+    import matplotlib.pyplot as plt
+    import seaborn as sns
+
+    plt.rcParams.update({'font.size': 12}) 
+
+    nx = ny = 1001
+
+    lambda_re = np.linspace(-3,3,nx)
+    lambda_im = np.linspace(-3,3,ny)
+    dt = 1
+
+    ## ---- ITEM (a) ---- ##
+    result = np.zeros((nx,ny))
+
+    for i in range(nx):
+        for j in range(ny):
+            lambda_complex = lambda_re[i] + (lambda_im[j]) * 1j
+            q = 1 + dt * lambda_complex + ((dt * lambda_complex) ** 2) / 2
+            if np.abs(q) <= 1:
+                result[i,j] = 1
+            else:
+                result[i,j] = 0
+
+    ax = sns.heatmap(result.T, annot=False, cmap='RdBu_r')
+    ticks_x = ax.get_xticks()
+    labels_x = [f'{lambda_re[int(label.get_text())]:.1f}' for label in ax.get_xticklabels()]
+    ax.set_xticklabels(labels_x)
+
+    ticks_y = ax.get_yticks()
+    labels_y = [f'{lambda_im[int(label.get_text())]:.1f}' for label in ax.get_yticklabels()]
+    ax.set_yticklabels(labels_y)
+    ax.invert_yaxis()
+    ax.grid(alpha=0.3)
+
+    ## ---- ITEM (b) ---- ##
+    result = np.zeros((nx,ny))
+
+    for i in range(nx):
+        for j in range(ny):
+            lambda_complex = lambda_re[i] + (lambda_im[j]) * 1j
+            q = 1 + dt * lambda_complex + ((dt * lambda_complex) ** 2) / 2 + ((dt * lambda_complex) ** 3) / 3 + ((dt * lambda_complex) ** 4) / 4
+            if np.abs(q) <= 1:
+                result[i,j] = 1
+            else:
+                result[i,j] = 0
+
+    ax = sns.heatmap(result.T, annot=False, cmap='RdBu_r')
+    ticks_x = ax.get_xticks()
+    labels_x = [f'{lambda_re[int(label.get_text())]:.1f}' for label in ax.get_xticklabels()]
+    ax.set_xticklabels(labels_x)
+
+    ticks_y = ax.get_yticks()
+    labels_y = [f'{lambda_im[int(label.get_text())]:.1f}' for label in ax.get_yticklabels()]
+    ax.set_yticklabels(labels_y)
+    ax.invert_yaxis()
+    ax.grid(alpha=0.3)
+
+    \end{lstlisting}
+
     \chapter{Código Exercício 5.7}\label{cap:ex5-7-codigo}
     
     \begin{lstlisting}[language=Python, breaklines=true, basicstyle=\tiny]
