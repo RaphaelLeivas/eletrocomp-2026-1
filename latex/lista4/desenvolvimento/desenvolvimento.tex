@@ -1,3 +1,55 @@
+\chapter{Exercício 5.2}
+
+\section{Range Kutta RK2}
+
+\[ y^{n+1} = y^{n} + \left( 1 - \frac{1}{2 \alpha} \right)k_1 + \left(\frac{1}{2 \alpha}\right)k_2 \]
+
+Substituindo $k_1 = \Delta t f\left( y^n \, , \, t^n \right)$, 
+$k_2 = \Delta t f\left( y^n + \alpha k_1 \, , \, t^n + \alpha \Delta t\right)$,
+$f(y,t) = \lambda y$, temos
+
+\[ y^{n+1} = y^{n} + \left( 1 - \frac{1}{2 \alpha} \right)\Delta t \lambda y^n
+ + \left(\frac{1}{2 \alpha}\right)\Delta t \lambda ( y^n + \alpha \Delta t \lambda y^n )\]
+
+ \[ y^{n+1} = y^n \left[ 1 + \Delta t \lambda
+  + \frac{\Delta t \lambda}{2 \alpha} - \frac{\Delta t \lambda}{2 \alpha} + \frac{\Delta t \lambda \alpha \Delta t \lambda}{2 \alpha } \right]\]
+
+ \[ y^{n+1} = y^n \left[ 1 + \Delta t \lambda + \frac{\left( \Delta t \lambda \right)^2}{2 } \right]\]
+
+Agora injetamos o sinal de Von Neumann para analisar a estabilidade quando $\left| q \right| \leq 1$:
+
+\[ y^n = q^n e^{j k i \Delta x} \]
+
+\noindent obtendo
+
+\[ q^{n+1} e^{j k i \Delta x} = q^{n} e^{j k i \Delta x} \left[ 1 + \Delta t \lambda + \frac{\left( \Delta t \lambda \right)^2}{2 } \right]\]
+
+\[ q = 1 + \Delta t \lambda + \frac{\left( \Delta t \lambda \right)^2}{2} \]
+
+Analisando para $\left| q \right| \leq 1$:
+
+\[ \left|1 + \Delta t \lambda + \frac{\left( \Delta t \lambda \right)^2}{2}\right| \leq 1 \]
+
+Se $\lambda > 0$, então a desigualdade acima é impossível, e logo o esquema é instável 
+$\forall \Delta t$. Para os casos em que $\lambda \leq 0$, incluindo a possibilidade 
+de ele ser complexo, podemos plotar uma mapa no plano  
+imaginário de todos os pontos de $\lambda$ que satisfazem a desigualdade acima, 
+obtendo o diagrama da Figura \ref{fig:ex5-2-a}. A desigualdade é satisfeita em todos os pontos
+marcados com valor 1 no mapa: logo, essa é a região em que o método RK2 é estável
+para essa EDO.
+
+\begin{figure}[htbp]
+	\caption{\label{fig:ex5-2-a}Região estável para o método RK2, em que a desigualdade é satisfeita
+	em todos os pontos marcados com 1 no mapa.}
+	\begin{center}
+        \includegraphics[width=0.8\textwidth,trim=1 1 1 1,clip]{ex5-2-a.png}
+	\end{center}
+\end{figure}
+
+\section{Range Kutta RK4}
+
+
+
 \chapter{Exercício 5.7}
 
 Todo o código usado nesse exercício encontra-se no Anexo \ref{cap:ex5-7-codigo}.
