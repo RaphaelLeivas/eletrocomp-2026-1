@@ -167,7 +167,21 @@ analítica $3 \cdot 10^8 \un{m/s}$, como mostra a Tabela \ref{tab:ex6-1-a-veloci
 	\label{tab:ex6-1-a-velocidades}
 \end{table}
 
-\textcolor{red}{Dúvida: Como calcular a velocidade de grupo}
+A velocidade de grupo pode ser calculada através da razão do vetor de Poynting 
+com a energia total no grid, por meio da expressão:
+
+\[ v_g = \frac{\sum_i{E_i H_i}}{\frac{1}{2} \sum_i{\epsilon E_i^2 + \mu H_i^2}} \]
+
+Aplicando essa expressão para cada instante de tempo da simulação, obtemos
+a convergência da velocidade de grupo para o valor teórico esperado exibido na 
+Figura \ref{fig:ex6-1-a-grupo}.
+
+\begin{figure}[htbp]
+	\caption{\label{fig:ex6-1-a-grupo}Convergência da velocidade de grupo $v_g$ durante a simulação.}
+	\begin{center}
+        \includegraphics[width=\textwidth,trim=1 1 1 1,clip]{ex6-1-a-grupo.png}
+	\end{center}
+\end{figure}
 
 \section{Item (b)}
 
@@ -196,6 +210,15 @@ em função da descritização, exibida na Tabela \ref{tab:ex6-1-b-velocidades}.
 	\label{tab:ex6-1-b-velocidades}
 \end{table}
 
+A convergência da velocidade de grupo está exibida na Figura \ref{fig:ex6-1-b-grupo}.
+
+\begin{figure}[htbp]
+	\caption{\label{fig:ex6-1-b-grupo}Convergência da velocidade de grupo $v_g$ durante a simulação.}
+	\begin{center}
+        \includegraphics[width=\textwidth,trim=1 1 1 1,clip]{ex6-1-b-grupo.png}
+	\end{center}
+\end{figure}
+
 \section{Item (c)}
 
 Com a nova fonte do item (c), obtemos a progação exibida na Figura \ref{fig:ex6-1-c-propagacao}.
@@ -218,6 +241,15 @@ um valor igual ao analítico para a velocidade de fase.
 	simulado.}
 	\begin{center}
         \includegraphics[width=\textwidth,trim=1 1 1 1,clip]{ex6-1-c-pico-tempo.png}
+	\end{center}
+\end{figure}
+
+A convergência da velocidade de grupo está exibida na Figura \ref{fig:ex6-1-c-grupo}.
+
+\begin{figure}[htbp]
+	\caption{\label{fig:ex6-1-c-grupo}Convergência da velocidade de grupo $v_g$ durante a simulação.}
+	\begin{center}
+        \includegraphics[width=\textwidth,trim=1 1 1 1,clip]{ex6-1-c-grupo.png}
 	\end{center}
 \end{figure}
 
