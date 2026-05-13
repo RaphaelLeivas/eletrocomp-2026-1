@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2026.4.1)  12 MAY 2026 19:50
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2026.4.1)  12 MAY 2026 21:39
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1033,7 +1033,7 @@ File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
 (./desenvolvimento/desenvolvimento.tex
 LaTeX Font Info:    Font shape `T1/phv/m/it' in size <12> not available
 (Font)              Font shape `T1/phv/m/sl' tried instead on input line 5.
-<./images/ex5-2-a.png, id=59, 406.8801pt x 348.3414pt>
+<./images/ex5-2-a.png, id=63, 406.8801pt x 348.3414pt>
 File: ./images/ex5-2-a.png Graphic file (type png)
 <use ./images/ex5-2-a.png>
 Package pdftex.def Info: ./images/ex5-2-a.png  used on input line 47.
@@ -1042,7 +1042,7 @@ Package pdftex.def Info: ./images/ex5-2-a.png  used on input line 47.
 
 
 ]
-<./images/ex5-2-b.png, id=75, 406.8801pt x 348.3414pt>
+<./images/ex5-2-b.png, id=79, 406.8801pt x 348.3414pt>
 File: ./images/ex5-2-b.png Graphic file (type png)
 <use ./images/ex5-2-b.png>
 Package pdftex.def Info: ./images/ex5-2-b.png  used on input line 69.
@@ -1057,7 +1057,7 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `phv' (encoding: TS1).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
-<./images/ex5-7-propagacao.png, id=92, 1121.6304pt x 715.473pt>
+<./images/ex5-7-propagacao.png, id=96, 1121.6304pt x 715.473pt>
 File: ./images/ex5-7-propagacao.png Graphic file (type png)
 <use ./images/ex5-7-propagacao.png>
 Package pdftex.def Info: ./images/ex5-7-propagacao.png  used on input line 95.
@@ -1066,13 +1066,13 @@ Package pdftex.def Info: ./images/ex5-7-propagacao.png  used on input line 95.
 [6
 
  <./images/ex5-7-propagacao.png>] [7]
-<./images/ex6-1-propagacao.png, id=115, 854.9541pt x 566.5968pt>
+<./images/ex6-1-propagacao.png, id=119, 854.9541pt x 566.5968pt>
 File: ./images/ex6-1-propagacao.png Graphic file (type png)
 <use ./images/ex6-1-propagacao.png>
 Package pdftex.def Info: ./images/ex6-1-propagacao.png  used on input line 137.
 
 (pdftex.def)             Requested size: 455.0pt x 301.17787pt.
-<./images/ex6-1-a-pico-tempo.png, id=118, 733.5405pt x 409.0482pt>
+<./images/ex6-1-a-pico-tempo.png, id=122, 733.5405pt x 409.0482pt>
 File: ./images/ex6-1-a-pico-tempo.png Graphic file (type png)
 <use ./images/ex6-1-a-pico-tempo.png>
 Package pdftex.def Info: ./images/ex6-1-a-pico-tempo.png  used on input line 14
@@ -1081,37 +1081,37 @@ Package pdftex.def Info: ./images/ex6-1-a-pico-tempo.png  used on input line 14
  [8
 
  <./images/ex6-1-propagacao.png>]
-<./images/ex6-1-a-grupo.png, id=131, 740.7675pt x 409.0482pt>
+<./images/ex6-1-a-grupo.png, id=135, 740.7675pt x 409.0482pt>
 File: ./images/ex6-1-a-grupo.png Graphic file (type png)
 <use ./images/ex6-1-a-grupo.png>
 Package pdftex.def Info: ./images/ex6-1-a-grupo.png  used on input line 182.
 (pdftex.def)             Requested size: 455.0pt x 250.6919pt.
 
 [9 <./images/ex6-1-a-pico-tempo.png> <./images/ex6-1-a-grupo.png>]
-<./images/ex6-1-b-propagacao.png, id=145, 854.9541pt x 566.5968pt>
+<./images/ex6-1-b-propagacao.png, id=149, 854.9541pt x 566.5968pt>
 File: ./images/ex6-1-b-propagacao.png Graphic file (type png)
 <use ./images/ex6-1-b-propagacao.png>
 Package pdftex.def Info: ./images/ex6-1-b-propagacao.png  used on input line 19
 5.
 (pdftex.def)             Requested size: 455.0pt x 301.17787pt.
-<./images/ex6-1-b-grupo.png, id=148, 740.7675pt x 409.0482pt>
+<./images/ex6-1-b-grupo.png, id=152, 740.7675pt x 409.0482pt>
 File: ./images/ex6-1-b-grupo.png Graphic file (type png)
 <use ./images/ex6-1-b-grupo.png>
 Package pdftex.def Info: ./images/ex6-1-b-grupo.png  used on input line 218.
 (pdftex.def)             Requested size: 455.0pt x 250.6919pt.
-<./images/ex6-1-c-propagacao.png, id=153, 855.6768pt x 566.5968pt>
+<./images/ex6-1-c-propagacao.png, id=157, 855.6768pt x 566.5968pt>
 File: ./images/ex6-1-c-propagacao.png Graphic file (type png)
 <use ./images/ex6-1-c-propagacao.png>
 Package pdftex.def Info: ./images/ex6-1-c-propagacao.png  used on input line 23
 5.
 (pdftex.def)             Requested size: 455.0pt x 300.91943pt.
-<./images/ex6-1-c-pico-tempo.png, id=155, 733.5405pt x 409.0482pt>
+<./images/ex6-1-c-pico-tempo.png, id=159, 733.5405pt x 409.0482pt>
 File: ./images/ex6-1-c-pico-tempo.png Graphic file (type png)
 <use ./images/ex6-1-c-pico-tempo.png>
 Package pdftex.def Info: ./images/ex6-1-c-pico-tempo.png  used on input line 24
 3.
 (pdftex.def)             Requested size: 455.0pt x 253.18248pt.
-<./images/ex6-1-c-grupo.png, id=158, 740.7675pt x 409.0482pt>
+<./images/ex6-1-c-grupo.png, id=162, 740.7675pt x 409.0482pt>
 File: ./images/ex6-1-c-grupo.png Graphic file (type png)
 <use ./images/ex6-1-c-grupo.png>
 Package pdftex.def Info: ./images/ex6-1-c-grupo.png  used on input line 252.
@@ -1121,19 +1121,19 @@ ges/ex6-1-c-propagacao.png>] [12 <./images/ex6-1-c-pico-tempo.png> <./images/ex
 6-1-c-grupo.png>] [13
 
 ]
-<./images/ex7-2-a-campo-total.png, id=196, 1115.8488pt x 714.7503pt>
+<./images/ex7-2-a-campo-total.png, id=200, 1115.8488pt x 714.7503pt>
 File: ./images/ex7-2-a-campo-total.png Graphic file (type png)
 <use ./images/ex7-2-a-campo-total.png>
 Package pdftex.def Info: ./images/ex7-2-a-campo-total.png  used on input line 2
 88.
 (pdftex.def)             Requested size: 455.0pt x 291.14977pt.
-<./images/ex7-2-a-campo-incidente.png, id=199, 1115.8488pt x 714.7503pt>
+<./images/ex7-2-a-campo-incidente.png, id=203, 1115.8488pt x 714.7503pt>
 File: ./images/ex7-2-a-campo-incidente.png Graphic file (type png)
 <use ./images/ex7-2-a-campo-incidente.png>
 Package pdftex.def Info: ./images/ex7-2-a-campo-incidente.png  used on input li
 ne 299.
 (pdftex.def)             Requested size: 455.0pt x 291.14977pt.
-<./images/ex7-2-a-campo-refletido.png, id=202, 1123.0758pt x 714.7503pt>
+<./images/ex7-2-a-campo-refletido.png, id=206, 1123.0758pt x 714.7503pt>
 File: ./images/ex7-2-a-campo-refletido.png Graphic file (type png)
 <use ./images/ex7-2-a-campo-refletido.png>
 Package pdftex.def Info: ./images/ex7-2-a-campo-refletido.png  used on input li
@@ -1144,23 +1144,23 @@ ne 314.
  <./images/ex7-2-a-campo-total.png>] [15 <./images/ex7-2-a-campo-incidente.png>
 ] [16 <./images/ex7-2-a-campo-refletido.png>] [17
 
-]
-<./images/ex8-2-propagacao.png, id=232, 1115.8488pt x 714.7503pt>
+] [18]
+<./images/ex8-2-propagacao.png, id=240, 1115.8488pt x 714.7503pt>
 File: ./images/ex8-2-propagacao.png Graphic file (type png)
 <use ./images/ex8-2-propagacao.png>
-Package pdftex.def Info: ./images/ex8-2-propagacao.png  used on input line 347.
+Package pdftex.def Info: ./images/ex8-2-propagacao.png  used on input line 573.
 
 (pdftex.def)             Requested size: 455.0pt x 291.14977pt.
-<./images/ex8-2-reflexao.png, id=234, 1397.22pt x 596.2275pt>
+<./images/ex8-2-reflexao.png, id=242, 1397.22pt x 596.2275pt>
 File: ./images/ex8-2-reflexao.png Graphic file (type png)
 <use ./images/ex8-2-reflexao.png>
-Package pdftex.def Info: ./images/ex8-2-reflexao.png  used on input line 355.
+Package pdftex.def Info: ./images/ex8-2-reflexao.png  used on input line 581.
 (pdftex.def)             Requested size: 455.0pt x 193.7811pt.
 )
-(./elementos-pos-textuais/anexos.tex [18
+(./elementos-pos-textuais/anexos.tex [19
 
  <./images/ex8-2-propagacao.png>]
-[19 <./images/ex8-2-reflexao.png>]
+[20 <./images/ex8-2-reflexao.png>]
 (/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2023/02/27 1.9 listings language file
 )
@@ -1168,18 +1168,18 @@ LaTeX Font Info:    Font shape `T1/phv/m/it' in size <8> not available
 (Font)              Font shape `T1/phv/m/sl' tried instead on input line 20.
 LaTeX Font Info:    Font shape `TS1/phv/m/it' in size <8> not available
 (Font)              Font shape `TS1/phv/m/sl' tried instead on input line 20.
- [20
+ [21
 
-] [21
+] [22
 
 ]
-[22] [23
+[23] [24
 
-] [24] [25
+] [25] [26
 
-] [26] [27] [28
+] [27] [28] [29
 
-] [29]) [30]
+] [30]) [31]
 \tf@toc=\write5
 \openout5 = `lista4.toc'.
 
@@ -1190,11 +1190,11 @@ L3 programming layer <2020/03/25>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 21816 strings out of 476162
- 345604 string characters out of 5794815
+ 21826 strings out of 476162
+ 345727 string characters out of 5794815
  2294975 words of memory out of 5000000
- 42768 multiletter control sequences out of 15000+600000
- 596626 words of font info for 164 fonts, out of 8000000 for 9000
+ 42772 multiletter control sequences out of 15000+600000
+ 596751 words of font info for 166 fonts, out of 8000000 for 9000
  16 hyphenation exceptions out of 8191
  99i,13n,107p,1003b,2186s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></us
@@ -1211,10 +1211,10 @@ m/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy
 /usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/share/t
 exlive/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/share/texlive/texmf
 -dist/fonts/type1/urw/helvetic/uhvro8a.pfb>
-Output written on lista4.pdf (30 pages, 1643773 bytes).
+Output written on lista4.pdf (31 pages, 1648953 bytes).
 PDF statistics:
- 1043 PDF objects out of 1200 (max. 8388607)
- 921 compressed objects within 10 object streams
- 569 named destinations out of 1000 (max. 500000)
- 44374 words of extra memory for PDF output out of 51595 (max. 10000000)
+ 1059 PDF objects out of 1200 (max. 8388607)
+ 936 compressed objects within 10 object streams
+ 572 named destinations out of 1000 (max. 500000)
+ 44390 words of extra memory for PDF output out of 51595 (max. 10000000)
 

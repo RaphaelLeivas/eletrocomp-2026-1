@@ -314,14 +314,240 @@ Figura \ref{fig:ex7-2-a-campo-refletido}.
         \includegraphics[width=\textwidth,trim=1 1 1 1,clip]{ex7-2-a-campo-refletido.png}
 	\end{center}
 \end{figure}
-b
+
+
 \section{Item (b)}
 
 \textcolor{red}{Mesma dúvida do exercício 7.1}
 
 \chapter{Exercício 8.1}
 
-\textcolor{red}{Dúvida sobre o desenvolvimento analítico, ver com o prof}
+\section{Item (a)}
+
+\[
+\frac{\partial^2 u}{\partial x^2}
++
+\frac{\partial^2 u}{\partial y^2}
+=
+\frac{1}{c^2}
+\frac{\partial^2 u}{\partial t^2}.
+\]
+
+Nas quinas do grid, as ondas incidem com um ângulo de 45 graus 
+ao longo da diagonal, logo introduzimos um fator $\sqrt{2}$.
+
+\[
+\frac{\partial u}{\partial t}
++
+\frac{c}{\sqrt{2}}
+\left(
+\frac{\partial u}{\partial x}
++
+\frac{\partial u}{\partial y}
+\right)
+=0.
+\]
+
+Aplica a diferença centrada na quina (exemplo: $i = j = 0$)
+
+\[
+\frac{\partial u}{\partial t}
+\approx
+\frac{
+u_{0,0}^{n+1}
+-
+u_{0,0}^{n}
+}{\Delta t},
+\]
+
+\[
+\frac{\partial u}{\partial x}
+\approx
+\frac{
+u_{1,0}^{n}
+-
+u_{0,0}^{n}
+}{\Delta x},
+\]
+
+\[
+\frac{\partial u}{\partial y}
+\approx
+\frac{
+u_{0,1}^{n}
+-
+u_{0,0}^{n}
+}{\Delta y}.
+\]
+
+Substituindo,
+
+\[
+\frac{
+u_{0,0}^{n+1}
+-
+u_{0,0}^{n}
+}{\Delta t}
++
+\frac{c}{\sqrt{2}}
+\left[
+\frac{
+u_{1,0}^{n}
+-
+u_{0,0}^{n}
+}{\Delta x}
++
+\frac{
+u_{0,1}^{n}
+-
+u_{0,0}^{n}
+}{\Delta y}
+\right]
+=0.
+\]
+
+Assumindo $\Delta x = \Delta y$ para simplificar e definindo $S = \frac{c\Delta t}{\Delta x}$
+
+\[
+\boxed{
+u_{0,0}^{n+1}
+=
+u_{0,0}^{n}
+-
+\frac{S}{\sqrt{2}}
+\left[
+u_{1,0}^{n}
++
+u_{0,1}^{n}
+-
+2u_{0,0}^{n}
+\right]
+}
+\]
+
+
+\section {Item (b)}
+
+Usa o mesmo raciocínio do item (a)
+
+\[
+\left(
+\frac{\partial}{\partial t}
++
+\frac{c}{\sqrt{2}}
+\left(
+\frac{\partial}{\partial x}
++
+\frac{\partial}{\partial y}
+\right)
+\right)
+\left(
+\frac{\partial}{\partial t}
+-
+\frac{c}{\sqrt{2}}
+\left(
+\frac{\partial}{\partial x}
++
+\frac{\partial}{\partial y}
+\right)
+\right)
+u = 0.
+\]
+
+\[
+\frac{\partial u}{\partial t}
++
+\frac{c}{\sqrt{2}}
+\left(
+\frac{\partial u}{\partial x}
++
+\frac{\partial u}{\partial y}
+\right)
+-
+\frac{c^2\Delta t}{2}
+\left(
+\frac{\partial^2 u}{\partial x^2}
++
+2\frac{\partial^2 u}{\partial x\partial y}
++
+\frac{\partial^2 u}{\partial y^2}
+\right)
+=0.
+\]
+
+Discretiza com diferença centrada
+
+\[
+\frac{\partial^2 u}{\partial x^2}
+\approx
+\frac{
+u_{1,0}^{n}
+-
+2u_{0,0}^{n}
++
+u_{-1,0}^{n}
+}{\Delta x^2},
+\]
+
+\[
+\frac{\partial^2 u}{\partial y^2}
+\approx
+\frac{
+u_{0,1}^{n}
+-
+2u_{0,0}^{n}
++
+u_{0,-1}^{n}
+}{\Delta y^2},
+\]
+
+\[
+\frac{\partial^2 u}{\partial x\partial y}
+\approx
+\frac{
+u_{1,1}^{n}
+-
+u_{1,-1}^{n}
+-
+u_{-1,1}^{n}
++
+u_{-1,-1}^{n}
+}{4\Delta x\Delta y}.
+\]
+
+Usa as mesmas simplificações do item (a),
+
+
+\[
+\boxed{
+\begin{aligned}
+u_{0,0}^{n+1}
+=
+&\;
+u_{0,0}^{n}
+-
+\frac{S}{\sqrt{2}}
+\left[
+u_{1,0}^{n}
++
+u_{0,1}^{n}
+-
+2u_{0,0}^{n}
+\right]
++
+\frac{S^2}{2}
+\left[
+u_{1,0}^{n}
++
+u_{0,1}^{n}
++
+u_{1,1}^{n}
+-
+3u_{0,0}^{n}
+\right].
+\end{aligned}
+}
+\]
 
 \chapter{Exercício 8.2}
 
