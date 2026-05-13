@@ -255,12 +255,104 @@ A convergência da velocidade de grupo está exibida na Figura \ref{fig:ex6-1-c-
 
 \chapter{Exercício 7.1}
 
-\textcolor{red}{Dúvida para aula de 07/05: entender diferença nas equações de diferenças e na abordagem em 
-relação ao exercício 7.2 }
-
-\chapter{Exercício 7.2}
+Todo o código usado nesse exercício encontra-se no Anexo \ref{cap:ex7-1-codigo}.
 
 \section{Item (a)}
+
+O primeiro passo é entender o sinal que vamos lançar na lateral esquerda. Segundo o livro,
+a frequência de corte do modo $TE_m$ (que o livro trata como o nosso caso TM) é dada por
+
+\[ f_{CTE_m} = \frac{m}{2a\sqrt{\epsilon \mu}} \]
+
+\noindent onde:
+
+\begin{itemize}
+	\item $m$: índice do modo TE considerado. $m = 0, 1, 2, \dots$
+	\item $a$: largura da faixa considerada
+\end{itemize}
+
+Substituido $m = 1$, $m = 2$ e $a = 20 \un{mm}$, obtemos a frequência do nosso sinal:
+
+\[ f = \frac{f_{CTE_1} + f_{CTE_2}}{2} \quad \Longrightarrow \quad f = 11.24 \un{GHz} \]
+
+Dessa forma, considerando as faixas como condutores perfeitos, podemos lançar o sinal
+exibido na Figura \ref{fig:ex7-1-fonte} ao longo da parede esquerda, ou seja, 
+ao longo do eixo Y. Note que o campo é nulo nas extremidades devido às bordas PEC.
+
+\begin{figure}[htbp]
+	\caption{\label{fig:ex7-1-fonte}Fonte aplicada na parede esquerda da faixa.
+	É uma onda estacionária com $f = 11.24 \un{GHz}$.}
+	\begin{center}
+        \includegraphics[width=0.8\textwidth,trim=1 1 1 1,clip]{ex7-1-fonte.png}
+	\end{center}
+\end{figure}
+
+A seguinte discretização foi usada no exercício:
+
+\begin{itemize}
+	\item $L_y = a = 20 \un{mm} \quad , \quad L_x = 3a = 60 \un{mm}$
+	\item $N_x = 224 \quad , \quad N_y = 75$
+	\item $\Delta y = \Delta x = 0.3 \un{mm}$
+	\item $\Delta t = 0.62 \un{ps}$ (condição CFL 2D)
+	\item $N_t = 200$
+\end{itemize}
+
+Note que escolhemos $N_t$ baixo para ser possível parar a simulação antes que a onda atinja 
+a borda direita, onde também temos PEC, para não considerar o efeito dessas reflexões na análise
+do campo refletido pelo objeto espalhador.
+
+O campo total, considerando as reflexões do objeto espalhador, está exibido na Figura 
+\ref{fig:ex7-1-a-total}. Subtraindo isso do campo incidente, obtemos 
+o campo espalhado exibido na Figura \ref{fig:ex7-1-a-espalhado}.
+
+\begin{figure}[htbp]
+	\caption{\label{fig:ex7-1-a-total}Campo total para a simulação do exercício 7.1 (a).}
+	\begin{center}
+        \includegraphics[width=\textwidth,trim=1 1 1 1,clip]{ex7-1-a-total.png}
+	\end{center}
+\end{figure}
+
+\begin{figure}[htbp]
+	\caption{\label{fig:ex7-1-a-espalhado}Campo espalhado na simulação do exercício 7.1 (a).}
+	\begin{center}
+        \includegraphics[width=\textwidth,trim=1 1 1 1,clip]{ex7-1-a-espalhado.png}
+	\end{center}
+\end{figure}
+
+\section{Item (b)}
+
+Repetindo o experimento para $f = 1.2 f_{CTE_2} = 17.98 \un{GHz}$, obtemos
+o campo espalhado exibido na Figura \ref{fig:ex7-1-b-espalhado}.
+Temos um resultado semelhante ao obtido no item (a).
+
+\begin{figure}[htbp]
+	\caption{\label{fig:ex7-1-b-espalhado}Campo espalhado na simulação do exercício 7.1 (b).}
+	\begin{center}
+        \includegraphics[width=\textwidth,trim=1 1 1 1,clip]{ex7-1-b-espalhado.png}
+	\end{center}
+\end{figure}
+
+\section{Item (c)}
+
+Agora mudamos a geometria do problema, colocando o objeto espalhador na vertical, 
+perto da parede de baixa da faixa. Os campos total e espelhados obtidos estão exibidos nas 
+Figuras \ref{fig:ex7-1-c-total} e \ref{fig:ex7-1-c-espalhado}, respectivamente.
+
+\begin{figure}[htbp]
+	\caption{\label{fig:ex7-1-c-total}Campo total para a simulação do exercício 7.1 (c).}
+	\begin{center}
+        \includegraphics[width=\textwidth,trim=1 1 1 1,clip]{ex7-1-c-total.png}
+	\end{center}
+\end{figure}
+
+\begin{figure}[htbp]
+	\caption{\label{fig:ex7-1-c-espalhado}Campo espalhado na simulação do exercício 7.1 (c).}
+	\begin{center}
+        \includegraphics[width=\textwidth,trim=1 1 1 1,clip]{ex7-1-c-espalhado.png}
+	\end{center}
+\end{figure}
+
+\chapter{Exercício 7.2}
 
 Todo o código usado nesse exercício encontra-se no Anexo \ref{cap:ex7-2-a-codigo}.
 
@@ -314,11 +406,6 @@ Figura \ref{fig:ex7-2-a-campo-refletido}.
         \includegraphics[width=\textwidth,trim=1 1 1 1,clip]{ex7-2-a-campo-refletido.png}
 	\end{center}
 \end{figure}
-
-
-\section{Item (b)}
-
-\textcolor{red}{Mesma dúvida do exercício 7.1}
 
 \chapter{Exercício 8.1}
 
