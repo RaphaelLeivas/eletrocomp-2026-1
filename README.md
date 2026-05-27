@@ -102,3 +102,13 @@ sudo source activate
 cd ../../
 pip install -r requirements.txt
 
+Se der problema de externally managed env
+    * chama o pip interno do environment
+
+sudo myEnv/bin/pip install -r requirements.txt
+
+e use sempre
+
+myEnv/bin/pip 
+
+em vez do pip global
