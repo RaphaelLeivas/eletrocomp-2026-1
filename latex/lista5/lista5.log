@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2026.4.1)  27 MAY 2026 22:30
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2026.4.1)  7 JUN 2026 20:28
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1041,28 +1041,27 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `phv' (encoding: TS1).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
-<./images/ex9-2-propagacao.png, id=26, 1115.8488pt x 714.7503pt>
+<./images/ex9-2-propagacao.png, id=26, 1122.3531pt x 714.7503pt>
 File: ./images/ex9-2-propagacao.png Graphic file (type png)
 <use ./images/ex9-2-propagacao.png>
 Package pdftex.def Info: ./images/ex9-2-propagacao.png  used on input line 39.
-(pdftex.def)             Requested size: 455.0pt x 291.14977pt.
-<./images/ex9-2-amplitude.png, id=29, 427.8384pt x 328.8285pt>
-File: ./images/ex9-2-amplitude.png Graphic file (type png)
-<use ./images/ex9-2-amplitude.png>
-Package pdftex.def Info: ./images/ex9-2-amplitude.png  used on input line 46.
-(pdftex.def)             Requested size: 364.00139pt x 279.37503pt.
-<./images/ex9-2-propagacao-x.png, id=32, 617.9085pt x 395.3169pt>
+(pdftex.def)             Requested size: 455.0pt x 289.46405pt.
+<./images/ex9-2-reflexao.png, id=29, 1099.10625pt x 758.835pt>
+File: ./images/ex9-2-reflexao.png Graphic file (type png)
+<use ./images/ex9-2-reflexao.png>
+Package pdftex.def Info: ./images/ex9-2-reflexao.png  used on input line 46.
+(pdftex.def)             Requested size: 455.0pt x 313.86969pt.
+<./images/ex9-2-propagacao-x.png, id=33, 632.3625pt x 395.3169pt>
 File: ./images/ex9-2-propagacao-x.png Graphic file (type png)
 <use ./images/ex9-2-propagacao-x.png>
-Package pdftex.def Info: ./images/ex9-2-propagacao-x.png  used on input line 59
+Package pdftex.def Info: ./images/ex9-2-propagacao-x.png  used on input line 66
 .
-(pdftex.def)             Requested size: 364.00139pt x 232.45262pt.
-)
-(./elementos-pos-textuais/anexos.tex [3
+(pdftex.def)             Requested size: 364.00139pt x 227.11737pt.
+ [3
 
 
-] [4 <./images/ex9-2-propagacao.png> <./images/ex9-2-amplitude.png>] [5 <./imag
-es/ex9-2-propagacao-x.png>]
+] [4 <./images/ex9-2-propagacao.png> <./images/ex9-2-reflexao.png>])
+(./elementos-pos-textuais/anexos.tex [5 <./images/ex9-2-propagacao-x.png>]
 (/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2023/02/27 1.9 listings language file
 )
@@ -1084,11 +1083,11 @@ L3 programming layer <2020/03/25>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 21107 strings out of 476162
- 333498 string characters out of 5794815
+ 21124 strings out of 476162
+ 333728 string characters out of 5794815
  2368975 words of memory out of 5000000
- 42550 multiletter control sequences out of 15000+600000
- 588793 words of font info for 125 fonts, out of 8000000 for 9000
+ 42556 multiletter control sequences out of 15000+600000
+ 588138 words of font info for 132 fonts, out of 8000000 for 9000
  16 hyphenation exceptions out of 8191
  99i,13n,107p,1003b,2298s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></us
@@ -1105,10 +1104,10 @@ m/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy
 /usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/share/t
 exlive/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/share/texlive/texmf
 -dist/fonts/type1/urw/helvetic/uhvro8a.pfb>
-Output written on lista5.pdf (8 pages, 409875 bytes).
+Output written on lista5.pdf (8 pages, 553482 bytes).
 PDF statistics:
- 321 PDF objects out of 1000 (max. 8388607)
- 267 compressed objects within 3 object streams
- 148 named destinations out of 1000 (max. 500000)
- 37951 words of extra memory for PDF output out of 42996 (max. 10000000)
+ 324 PDF objects out of 1000 (max. 8388607)
+ 270 compressed objects within 3 object streams
+ 149 named destinations out of 1000 (max. 500000)
+ 35903 words of extra memory for PDF output out of 42996 (max. 10000000)
 

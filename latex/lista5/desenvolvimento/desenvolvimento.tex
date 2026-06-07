@@ -7,31 +7,31 @@ queremos simular o modo $TM_z$ com o FDTD, usamos os seguintes parâmetros de di
 
 \begin{itemize}
 	\item $N_x = 200 \quad , \quad N_y = 200$
-	\item $\Delta y = \Delta x = 0.1 \cdot \lambda = 0.03 \un{m}$
-	\item $\Delta t = \frac{0.99}{c \sqrt{(\Delta x)^{2} + (\Delta y)^{2}}} = 70 \un{ps} $ (condição CFL 2D)
-	\item $N_t = 250$
+	\item $\Delta y = \Delta x = 1 \un{mm}$
+	\item $\Delta t = \frac{0.9}{c \sqrt{(\Delta x)^{2} + (\Delta y)^{2}}} = 2.12 \un{ps} $ (condição CFL 2D)
+	\item $N_t = 800$
 \end{itemize}
 
 A fonte aplicada no centro do domínio é uma função gaussiana dada por 
 
-\[ f(t) = e^{-\frac{(t - 1.8 \un{ns})^2}{(0.6 \un{ns})^2}} \]
+\[ f(t) = e^{-\frac{1}{2}\left(\frac{n - 40}{12}\right)^2} \]
 
-\noindent que tem um pico em $t = 1.8 \un{ns}$ e uma largura de aproximadamente $0.6 \un{ns}$.
+\noindent que tem um pico em $t = 84 \un{ps}$ e uma largura de aproximadamente $25 \un{ps}$.
 
-Os parâmetros da UPML adotados foram os seguintes:
+Os parâmetros da CPML adotados foram os seguintes:
 
 \begin{itemize}
-	\item $N_{pml} = 60 \quad , \quad m = 3$
-	\item $\sigma_{max} = 0.054$
-	\item $\sigma (x) = \sigma_{max} \left( \frac{x}{N_{pml}} \right)^m$
+	\item $N_{pml} = 30 \quad , \quad m = 3$
+	\item $R_{err} = 10^{-6}$
+	\item $eta = \sqrt{\frac{\mu}{\epsilon}}$
+	\item $\sigma_{max} = -\frac{(m+1)\ln(R_{\mathrm{err}})}{2\eta d_{\mathrm{pml}}} = 2.44$
 \end{itemize}
 
 A propagação obtida está exibida na Figura \ref{fig:ex9-2-propagacao}, 
 onde podemos observar que o campo se propaga para fora do domínio sem reflexões significativas, 
 indicando que os PMLs estão funcionando corretamente. Com uma ponta de prova
-próximo ao centro do grid, validamos que a reflexão é praticamente nula, 
-dado que o campo fica em zero após a passagem do pulso gaussiano, sem oscilações residuais,
-como mostra a Figura \ref{fig:ex9-2-amplitude}.
+próximo ao centro do grid, verificamos uma leve reflexão do campo,
+como mostra a Figura \ref{fig:ex9-2-reflexao}.
 
 \begin{figure}[htbp]
 	\caption{\label{fig:ex9-2-propagacao}Propagação de $E_z$ ao longo do grid, sem reflexão nas bordas.}
@@ -41,17 +41,24 @@ como mostra a Figura \ref{fig:ex9-2-amplitude}.
 \end{figure}
 
 \begin{figure}[htbp]
-	\caption{\label{fig:ex9-2-amplitude}Amplitude de $E_z$ no centro do grid em função do tempo.}
+	\caption{\label{fig:ex9-2-reflexao}Reflexão de $E_z$ no centro do grid em função do tempo.}
 	\begin{center}
-        \includegraphics[width=0.8\textwidth,trim=1 1 1 1,clip]{ex9-2-amplitude.png}
+        \includegraphics[width=\textwidth,trim=1 1 1 1,clip]{ex9-2-reflexao.png}
 	\end{center}
 \end{figure}
+
+O coeficiente de reflexão pode ser calculado a partir dos picos verificados na Figura \ref{fig:ex9-2-reflexao}, 
+obtendo: 
+
+\[ R = \frac{0.00007}{0.01} = 0.007 = 0.7 \% \]
+
+\noindent o qual, quando comparado com a reflexão obtida usando o Mur de $R = 5 \%$ no exercício 8.2, 
+representa uma redução quase 10 vezes melhor usando a PML.
 
 A Figura \ref{fig:ex9-2-propagacao-x} mostra a evolução do campo $E_z$ ao longo do tempo, em um corte horizontal no eixo x
 passando pelo centro da cavidade.
  As linhas verticais vermelhas indicam a região onde o campo é absorvido pelos PMLs, e podemos 
- observar que o campo se propaga para fora do domínio sem reflexões significativas, 
- indicando que os PMLs estão funcionando corretamente.
+ observar que o campo decai para zero em todos os instantes, evidenciando a absorção da PML.
 
 \begin{figure}[htbp]
 	\caption{\label{fig:ex9-2-propagacao-x}Decaimento do campo $E_z$ ao longo do eixo $x$ ao entrar nas regiões de PML.}
@@ -60,3 +67,31 @@ passando pelo centro da cavidade.
 	\end{center}
 \end{figure}
 
+Alterando o ângulo $\theta$ da ponta de prova em relação ao centro do grid, 
+podemos verificar como a reflexão da PML varia em relação ao ângulo de incidência. 
+Variando as posições $p_x$ e $p_y$ da ponta de prova, tendo em mente que 
+o ponto $\left( N_x / 2 \, , \, N_y / 2 \right)$ corresponde ao centro do grid, 
+obtemos os seguintes resultados para o coeficiente de reflexão $R$,
+exibidos na Tabela \ref{tab:reflexao-angulo}:
+
+\begin{table}[h!]
+	\caption{Variação do coeficiente de reflexão com o ângulo de incidência.}
+	\vspace{0.5cm}
+	\centering
+		\begin{tabular}{c|c|c|c}
+
+		$p_x$ & $p_y$ & $\theta$ & $R$ \\ \hline
+		$N_x / 2 + 0$    & $N_y / 2 + 50$       & $0 ^\circ$       &    0.013      \\ \hline
+		$N_x / 2 + 50$    & $N_y / 2 + 30$       & $30 ^\circ$       &    0.016      \\ \hline
+		$N_x / 2 + 50$    & $N_y / 2 + 50$       & $45 ^\circ$       &    0.019      \\ \hline
+		$N_x / 2 + 30$    & $N_y / 2 + 50$       & $60 ^\circ$       &    0.016      \\ \hline
+		$N_x / 2 + 50$    & $N_y / 2 + 0$       & $90 ^\circ$       &    0.013      \\
+		\end{tabular}
+	\label{tab:reflexao-angulo}
+\end{table}
+
+Vemos que a reflexão é máxima quando a onda incidente 
+está inclinada em 45 graus em relação à normal da borda, 
+e é mínima quando a onda incide perpendicularmente 
+(0 ou 90 graus). Assim, temos um desempenho pior da PML nas quinas do domínio, 
+conforme esperado.
