@@ -23,7 +23,7 @@ Os parâmetros da CPML adotados foram os seguintes:
 \begin{itemize}
 	\item $N_{pml} = 30 \quad , \quad m = 3$
 	\item $R_{err} = 10^{-6}$
-	\item $eta = \sqrt{\frac{\mu}{\epsilon}}$
+	\item $\eta = \sqrt{\frac{\mu}{\epsilon}}$
 	\item $\sigma_{max} = -\frac{(m+1)\ln(R_{\mathrm{err}})}{2\eta d_{\mathrm{pml}}} = 2.44$
 \end{itemize}
 
@@ -95,3 +95,86 @@ está inclinada em 45 graus em relação à normal da borda,
 e é mínima quando a onda incide perpendicularmente 
 (0 ou 90 graus). Assim, temos um desempenho pior da PML nas quinas do domínio, 
 conforme esperado.
+
+\chapter{Exercício 9.3}
+
+Todo o código usado nesse exercício encontra-se no Anexo \ref{cap:ex9-3-codigo}.
+
+Usamos os seguintes parâmetros de discretização:
+
+\begin{itemize}
+	\item $N_x = 120 \quad , \quad N_y = 60$
+	\item $\Delta y = \Delta x = 5 \un{cm}$
+	\item $\Delta t = \frac{0.9}{c \sqrt{(\Delta x)^{2} + (\Delta y)^{2}}} = 0.1 \un{ns} $ (condição CFL 2D)
+	\item $N_t = 800$
+\end{itemize}
+
+A fonte aplicada no centro do domínio é uma função senoidal dada por 
+
+\[ f(n) = \sin \left( 2\pi f_0 n \Delta t \right) \]
+
+\noindent com $f_0 = 600 \un{MHz}$.
+
+Os parâmetros da CPML adotados foram os seguintes:
+
+\begin{itemize}
+	\item $N_{pml} = 30 \quad , \quad m = 4$
+	\item $R_{err} = 10^{-6}$
+	\item $\eta = \sqrt{\frac{\mu}{\epsilon}}$
+	\item $\sigma_{max} = -\frac{(m+1)\ln(R_{\mathrm{err}})}{2\eta d_{\mathrm{pml}}} = 2.44$
+\end{itemize}
+
+A propagação obtida está exibida na Figura \ref{fig:ex9-3-propagacao}, 
+onde podemos observar que o campo se propaga para fora do domínio sem reflexões significativas, 
+indicando que os PMLs estão funcionando corretamente. 
+
+\begin{figure}[htbp]
+	\caption{\label{fig:ex9-3-propagacao}Propagação de $E_z$ ao longo do grid, sem reflexão nas bordas.}
+	\begin{center}
+        \includegraphics[width=\textwidth,trim=1 1 1 1,clip]{ex9-3-propagacao.png}
+	\end{center}
+\end{figure}
+
+Olhando em um corte horizontal no eixo x passando pelo centro da cavidade,
+podemos observar o decaimento do campo $E_z$ ao entrar nas regiões de PML, como mostra a Figura \ref{fig:ex9-3-propagacao-x}.
+
+\begin{figure}[htbp]
+	\caption{\label{fig:ex9-3-propagacao-x}Decaimento do campo $E_z$ ao longo do eixo $x$ ao entrar nas regiões de PML.}
+	\begin{center}
+        \includegraphics[width=0.8\textwidth,trim=1 1 1 1,clip]{ex9-3-propagacao-x.png}
+	\end{center}
+\end{figure}
+
+\section{Item (a)}
+
+Para calcular o coeficiente de reflexão, utilizamos o seguinte procedimento:
+
+\begin{enumerate}
+	\item Realiza a simulação completa com PML e coleta os pontos em uma ponta de prova perto do centro. 
+	Esse é o campo total $E_{total}$
+	\item Repete a simulação com as bordas muito longe (sem reflexão) e coleta os pontos em uma ponta de prova perto do centro. 
+	Esse é o campo incidente $E_{inc}$
+	\item Calcula o campo refletido como $E_{ref} = E_{total} - E_{inc}$
+	\item Calcula o coeficiente de reflexão como $R = \frac{|E_{ref}|}{|E_{inc}|}$, usando decibeis (dB)
+\end{enumerate}
+
+Variando o valor do parâmetro $m$ da PML, obtemos os valores exibidos na Tabela \ref{tab:reflexao-m}.
+Vericamos que o coeficiente de reflexão diminui à medida que aumentamos o valor de $m$, indicando uma melhor absorção da PML.
+
+\begin{table}[h!]
+	\caption{Variação do coeficiente de reflexão em função de $m$.}
+	\vspace{0.5cm}
+	\centering
+		\begin{tabular}{c|c}
+
+		$m$ & $R$ (dB)\\ \hline
+		$3$    & $-22.21 $     \\ \hline
+		$3.25$    & $-24.53$     \\ \hline
+		$3.5$    & $-26.33$     \\ \hline
+		$3.75$    & $-28.39$     \\ \hline
+		$4$    & $-30.61$      \\
+		\end{tabular}
+	\label{tab:reflexao-m}
+\end{table}
+
+\section{Item (b)}

@@ -8,7 +8,17 @@
     import numpy as np
     import matplotlib.pyplot as plt
     import seaborn as sns
-    from scipy.fft import fft, fftfreq
+
+    def compute_sigma(N, ds, n_pml, sigma_max, m_order):
+        sig = np.zeros(N)
+        for i in range(N):
+            dist_left = (n_pml - i) * ds
+            dist_right = (i - (N - 1 - n_pml)) * ds
+            if dist_left > 0:
+                sig[i] = sigma_max * (dist_left / (n_pml * ds))**m_order
+            elif dist_right > 0:
+                sig[i] = sigma_max * (dist_right / (n_pml * ds))**m_order
+        return sig
 
     # --- parâmetros físicos ---
     eps = 8.854187817e-12  # Vacuum permittivity (F/m)
@@ -16,125 +26,80 @@
     vp = 1 / np.sqrt(eps * mu)
 
     # --- domínio ---
-    min_lambda = vp / 1e9  # comprimento de onda mínimo para 1 GHz = 3e-1 m
-    Nx = Ny = 200
-    dx = dy = 0.1 * min_lambda
+    Nx = Ny = 200    
+    dx = dy = 1e-3       
     dt = 0.9 / (vp * np.sqrt(1/dx**2 + 1/dy**2))
-    Nt = 250
+    Nt = 800         
     L = Nx * dx
     T = Nt * dt
 
-    # valores do tempo para salvar os snapshots e montar os heatmaps
-    n_snapshots = np.linspace(Nt // 2, Nt - 5, 6, dtype=int)
-    Ez_snapshots = []
+    # --- PML ----
+    npml = 30               
+    m = 3                   
+    R_err = 1e-6         
+    eta = np.sqrt(mu / eps)
+    d_pml = npml * dx
+    sig_max = -(m + 1) * np.log(R_err) / (2 * eta * d_pml)
 
-    cx, cy = Nx // 2, Ny // 2
-    px, py = cx, cy # pontas de prova
+    # Declara os campos
+    Ez = np.zeros((Nx, Ny))
+    Hx = np.zeros((Nx, Ny))
+    Hy = np.zeros((Nx, Ny))
 
     grid_x_Ez = np.linspace(0, L, Nx + 1)
     grid_y_Ez = np.linspace(0, L, Ny + 1)
     grid_t_Ez = np.linspace(0, T, Nt + 1)
 
-    grid_x_Hx = np.linspace(0, L, Nx + 1)
-    grid_y_Hx = np.linspace(dy/2, L - dy/2, Ny)
-    grid_t_Hx = np.linspace(dt/2, T - dt/2, Nt)
+    # CPML
+    psi_hxy = np.zeros((Nx, Ny - 1))
+    psi_hyx = np.zeros((Nx - 1, Ny))
+    psi_ezx = np.zeros((Nx - 2, Ny - 2))
+    psi_ezy = np.zeros((Nx - 2, Ny - 2))
 
-    grid_x_Hy = np.linspace(dx/2, L - dx/2, Nx)
-    grid_y_Hy = np.linspace(0, L, Ny + 1)
-    grid_t_Hy = np.linspace(dt/2, T - dt/2, Nt)
+    sig_x_1D = compute_sigma(Nx, dx, npml, sig_max, m)
+    sig_y_1D = compute_sigma(Ny, dy, npml, sig_max, m)
+    sig_x, sig_y = np.meshgrid(sig_x_1D, sig_y_1D, indexing='ij')
 
-    # --- campos ---
-    Ez_curr = Ez_next = np.zeros((grid_x_Ez.shape[0], grid_y_Ez.shape[0]))
-    Hx_curr = Hx_next = np.zeros((grid_x_Hx.shape[0], grid_y_Hx.shape[0]))
-    Hy_curr = Hy_next = np.zeros((grid_x_Hy.shape[0], grid_y_Hy.shape[0]))
+    b_x = np.exp(-sig_x * dt / eps)
+    c_x = b_x - 1.0
+    b_y = np.exp(-sig_y * dt / eps)
+    c_y = b_y - 1.0
 
-    # ---- parâmetros da PML -----
-    Npml = 60
-    m = 3 # ordem polinomial                 
-    R0 = 1e-8 # reflexão alvo
-    sigma_max_x = -1 * (m + 1) * np.log(R0) / (2 * np.sqrt(mu / eps) * Npml * dx)
-    sigma_max_y = -1 * (m + 1) * np.log(R0) / (2 * np.sqrt(mu / eps) * Npml * dy)
+    # valores do tempo para salvar os snapshots e montar os heatmaps
+    n_snapshots = np.linspace(100, 240, 6, dtype=int)
+    Ez_snapshots = []
 
-    # ---- vetores para salvar os sigmas -----
-    # sigma = 0 dentro da regiao, diferente de zero na PML
-    sigma_x = np.zeros(Nx + 1)
-    sigma_y = np.zeros(Ny)
-
-    for i in range(Npml):
-        x = (Npml - i) / Npml
-        sigma_x[i] = sigma_max_x * x**m
-        sigma_x[Nx - i] = sigma_max_x * x**m
-
-    for j in range(Npml):
-        y = (Npml - j) / Npml
-        sigma_y[j] = sigma_max_y * y**m
-        sigma_y[Ny - j - 1] = sigma_max_y * y**m
-
-    # buffer de integração
-    I_curr = I_next = np.zeros((grid_x_Hx.shape[0], grid_y_Hx.shape[0]))
-
-    # ponta de prova para coletar pontos para a FFT no centro da cavidade
+    # ponta de prova
+    px, py = Nx // 2 + 50, Ny // 2 + 0
     probe = []
 
-    # marcha no tempo
-    for n in range(Nt-1):
-        # calcula os coeficientes
-        F1_x = ((2 * eps - dt * sigma_x[:]) / (2 * eps + dt * sigma_x[:]))
-        F2_x = (1 / mu) * ( (2 * eps * dt) / (2 * eps + dt * sigma_x[:] ) )
+    for n in range(Nt):
+        # atualiza Hx
+        dEz_y = (Ez[:, 1:] - Ez[:, :-1]) / dy
+        psi_hxy = b_y[:, :-1] * psi_hxy + c_y[:, :-1] * dEz_y
+        Hx[:, :-1] -= (dt / mu) * (dEz_y + psi_hxy)
 
-        F1_y = ((2 * eps - dt * sigma_y[:]) / (2 * eps + dt * sigma_y[:]))
-        F2_y = (1 / mu) * ( (2 * eps * dt) / (2 * eps + dt * sigma_y[:] ) )
+        # atualiza Hy
+        dEz_x = (Ez[1:, :] - Ez[:-1, :]) / dx
+        psi_hyx = b_x[:-1, :] * psi_hyx + c_x[:-1, :] * dEz_x
+        Hy[:-1, :] += (dt / mu) * (dEz_x + psi_hyx)
 
-        sigma_y_appended = np.append(sigma_y, [sigma_y[-1]])
-        sigma_e = (sigma_x[1:-1][:, None] + sigma_y_appended[1:-1][None, :]) / 2
-        G1 = (2 * eps - dt * sigma_e) / (2 * eps + dt * sigma_e)
-        G2 = 2 * dt / (2 * eps + dt * sigma_e)
+        # atualiza Ez
+        dHy_x = (Hy[1:-1, 1:-1] - Hy[:-2, 1:-1]) / dx
+        dHx_y = (Hx[1:-1, 1:-1] - Hx[1:-1, :-2]) / dy
+        psi_ezx = b_x[1:-1, 1:-1] * psi_ezx + c_x[1:-1, 1:-1] * dHy_x
+        psi_ezy = b_y[1:-1, 1:-1] * psi_ezy + c_y[1:-1, 1:-1] * dHx_y
+        Ez[1:-1, 1:-1] += (dt / eps) * ((dHy_x + psi_ezx) - (dHx_y + psi_ezy))
 
-        Hy_next[:, :] = F1_x * Hy_curr[:, :] + F2_x * (
-            (Ez_curr[1:, :] - Ez_curr[:-1, :]) / dx
-        )
+        # fonte
+        Ez[Nx//2, Ny//2] += np.exp(-0.5 * ((n * dt - (40 * dt)) / (12 * dt))**2)
 
-        Hx_next[:, :] = F1_y * Hx_curr[:, :] - F2_y * (
-            Ez_curr[:, 1:] - Ez_curr[:, :-1]
-        ) / dy + (sigma_y[:] * (dt ** 2) / (mu * eps)) * I_curr[:, :]
-            
-        # Hx_next[:, :] = Hx_curr[:, :] - (dt/(mu*dy)) * (
-        #     Ez_curr[:, 1:] - Ez_curr[:, :-1]
-        # ) + (sigma_x[1:] * (dt ** 2) / (mu * eps)) * I_curr[:, :]
-
-        Ez_next[1:-1, 1:-1] = G1 * Ez_curr[1:-1, 1:-1] + G2 * (
-            (Hy_next[1:, 1:-1] - Hy_next[:-1, 1:-1]) / dx
-            - (Hx_next[1:-1, 1:] - Hx_next[1:-1, :-1]) / dy
-        )
-
-        # Ez_next[1:-1, 1:-1] = G1 * Ez_curr[1:-1, 1:-1] + G2 * (
-        #     (Hy_next[1:, 1:-1] - Hy_next[:-1, 1:-1]) / dx -
-        #     (Hx_next[1:-1, 1:] - Hx_next[1:-1, :-1]) / dy
-        # )
-
-        I_next[:, :] = I_curr[:, :] + (Ez_curr[:, 1:] - Ez_curr[:, :-1])
-
-        # --- fontes ---
-        frequency = 1e9
-        source_gaussiano = np.exp(-((n * dt - 1.8e-9)**2) / (0.6e-9)**2)
-        source_senoidal = np.sin(2 * np.pi * frequency * n * dt)
-        Ez_next[cx, cy] = source_gaussiano
-
-        # PEC nas bordas externas do grid
-        Ez_next[0, :] = Ez_next[Nx, :] = Ez_next[:, 0] = Ez_next[:, Ny] = 0
-
-        # salva o valor no centro para a FFT
-        probe.append(Ez_next[px, py])
-
-        # atualiza os campos para o próximo passo
-        Ez_curr, Ez_next = Ez_next, Ez_curr
-        Hx_curr, Hx_next = Hx_next, Hx_curr
-        Hy_curr, Hy_next = Hy_next, Hy_curr
-        I_curr, I_next = I_next, I_curr
+        # ponta de prova
+        probe.append(Ez[px, py]) 
 
         # salva para os snapshots
         if n in n_snapshots:
-            Ez_snapshots.append(Ez_curr.copy())
+            Ez_snapshots.append(Ez.copy())
 
 
     \end{lstlisting}
