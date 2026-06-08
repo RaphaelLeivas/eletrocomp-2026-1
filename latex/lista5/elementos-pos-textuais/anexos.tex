@@ -104,4 +104,132 @@
 
     \end{lstlisting}
 
+    \chapter{Código Exercício 9.3}\label{cap:ex9-3-codigo}
+    
+    \begin{lstlisting}[language=Python, breaklines=true, basicstyle=\tiny]
+    import numpy as np
+    import matplotlib.pyplot as plt
+    import seaborn as sns
+
+    def compute_sigma_geometric(N, n_pml, sig_start, g):
+        sig = np.zeros(N)
+        for i in range(N):
+            if i < n_pml:
+                depth = n_pml - i 
+                sig[i] = sig_start * (g ** (depth - 1))
+            elif i >= N - n_pml:
+                depth = i - (N - n_pml) + 1
+                sig[i] = sig_start * (g ** (depth - 1))
+        return sig
+
+    def compute_sigma(N, ds, n_pml, sigma_max, m_order):
+        sig = np.zeros(N)
+        for i in range(N):
+            dist_left = (n_pml - i) * ds
+            dist_right = (i - (N - 1 - n_pml)) * ds
+            if dist_left > 0:
+                sig[i] = sigma_max * (dist_left / (n_pml * ds))**m_order
+            elif dist_right > 0:
+                sig[i] = sigma_max * (dist_right / (n_pml * ds))**m_order
+        return sig
+
+    # --- parâmetros físicos ---
+    eps = 8.854187817e-12  # Vacuum permittivity (F/m)
+    mu = 4 * np.pi * 1e-7  # Vacuum permeability (H/m)
+    vp = 1 / np.sqrt(eps * mu)
+
+    # --- domínio ---
+    frequency = 600e6 # frequencia da fonte
+    min_lambda = vp / frequency
+    Nx = 120
+    Ny = 60 
+    # dx = dy = 0.1 * min_lambda       
+    dx = dy = 5e-2  
+    dt = 0.9 / (vp * np.sqrt(1/dx**2 + 1/dy**2))
+    Nt = 200         
+    L = Nx * dx
+    T = Nt * dt
+
+    # --- PML ----
+    npml = 30               
+    m = 3.75            
+    g_factor = 3
+    R_err = 1e-6         
+    eta = np.sqrt(mu / eps)
+    d_pml = npml * dx
+    sig_max = -(m + 1) * np.log(R_err) / (2 * eta * d_pml)
+
+    numerator = -np.log(R_err) * (g_factor - 1)
+    denominator = 2 * eta * dx * (g_factor**npml - 1)
+    sig_min = numerator / denominator
+
+    # Declara os campos
+    Ez = np.zeros((Nx, Ny))
+    Hx = np.zeros((Nx, Ny))
+    Hy = np.zeros((Nx, Ny))
+
+    grid_x_Ez = np.linspace(0, L, Nx + 1)
+    grid_y_Ez = np.linspace(0, L, Ny + 1)
+    grid_t_Ez = np.linspace(0, T, Nt + 1)
+
+    # CPML
+    psi_hxy = np.zeros((Nx, Ny - 1))
+    psi_hyx = np.zeros((Nx - 1, Ny))
+    psi_ezx = np.zeros((Nx - 2, Ny - 2))
+    psi_ezy = np.zeros((Nx - 2, Ny - 2))
+
+    # polinomial grading
+    sig_x_1D = compute_sigma(Nx, dx, npml, sig_max, m)
+    sig_y_1D = compute_sigma(Ny, dy, npml, sig_max, m)
+    sig_x, sig_y = np.meshgrid(sig_x_1D, sig_y_1D, indexing='ij')
+
+    # geometric grading
+    sig_x_1D = compute_sigma_geometric(Nx, npml, sig_min, g_factor)
+    sig_y_1D = compute_sigma_geometric(Ny, npml, sig_min, g_factor)
+    sig_x, sig_y = np.meshgrid(sig_x_1D, sig_y_1D, indexing='ij')
+
+    b_x = np.exp(-sig_x * dt / eps)
+    c_x = b_x - 1.0
+    b_y = np.exp(-sig_y * dt / eps)
+    c_y = b_y - 1.0
+
+    # valores do tempo para salvar os snapshots e montar os heatmaps
+    n_snapshots = np.linspace(0, Nt - 5, 6, dtype=int)
+    Ez_snapshots = []
+
+    # ponta de prova
+    px, py = Nx // 2 + 10, Ny // 2 + 10
+    probe = []
+
+    for n in range(Nt):
+        # atualiza Hx
+        dEz_y = (Ez[:, 1:] - Ez[:, :-1]) / dy
+        psi_hxy = b_y[:, :-1] * psi_hxy + c_y[:, :-1] * dEz_y
+        Hx[:, :-1] -= (dt / mu) * (dEz_y + psi_hxy)
+
+        # atualiza Hy
+        dEz_x = (Ez[1:, :] - Ez[:-1, :]) / dx
+        psi_hyx = b_x[:-1, :] * psi_hyx + c_x[:-1, :] * dEz_x
+        Hy[:-1, :] += (dt / mu) * (dEz_x + psi_hyx)
+
+        # atualiza Ez
+        dHy_x = (Hy[1:-1, 1:-1] - Hy[:-2, 1:-1]) / dx
+        dHx_y = (Hx[1:-1, 1:-1] - Hx[1:-1, :-2]) / dy
+        psi_ezx = b_x[1:-1, 1:-1] * psi_ezx + c_x[1:-1, 1:-1] * dHy_x
+        psi_ezy = b_y[1:-1, 1:-1] * psi_ezy + c_y[1:-1, 1:-1] * dHx_y
+        Ez[1:-1, 1:-1] += (dt / eps) * ((dHy_x + psi_ezx) - (dHx_y + psi_ezy))
+
+        # fonte
+        # Ez[Nx//2, Ny//2] += np.exp(-0.5 * ((n * dt - (40 * dt)) / (12 * dt))**2)
+        Ez[Nx//2, Ny//2] += np.sin(2 * np.pi * frequency * n * dt)
+
+        # ponta de prova
+        probe.append(Ez[px, py]) 
+
+        # salva para os snapshots
+        if n in n_snapshots:
+            Ez_snapshots.append(Ez.copy())
+    \end{lstlisting}
+
+
 \end{anexosenv}

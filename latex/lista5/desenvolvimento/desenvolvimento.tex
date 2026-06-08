@@ -178,3 +178,36 @@ Vericamos que o coeficiente de reflexão diminui à medida que aumentamos o valo
 \end{table}
 
 \section{Item (b)}
+
+Implementando o grading geométrico para o perfil de $\sigma (x)$, obtemos 
+o perfil de decaimento exibido ao longo do eixo $x$ exibido na Figura \ref{fig:ex9-3-propagacao-x-geometric}
+obtemos os seguintes valores para o coeficiente de reflexão,
+exibidos na Tabela \ref{tab:reflexao-geometrico}:
+
+\begin{figure}[htbp]
+	\caption{\label{fig:ex9-3-propagacao-x-geometric}Decaimento do campo $E_z$ ao longo do eixo $x$ ao entrar nas regiões de PML, 
+	com função $\sigma$ com grading geométrico.}
+	\begin{center}
+        \includegraphics[width=0.8\textwidth,trim=1 1 1 1,clip]{ex9-3-propagacao-x-geometric.png}
+	\end{center}
+\end{figure}
+
+
+\begin{table}[h!]
+	\caption{Variação do coeficiente de reflexão em função de $g$.}
+	\vspace{0.5cm}
+	\centering
+		\begin{tabular}{c|c}
+
+		$g$ & $R$ (dB)\\ \hline
+		$2.5$    & $-51.28 $     \\ \hline
+		$3.0$    & $-52.71$     \\ \hline
+		$3.5$    & $-52.98$      \\
+		\end{tabular}
+	\label{tab:reflexao-geometrico}
+\end{table}
+
+Verificamos que o coeficiente de reflexão é significativamente menor usando o grading geométrico 
+do que quando usamos o grading polinomial, indicando uma melhor absorção da PML.
+Além disso, o coeficiente se reduz ligeiramente ao aumentar o parâmetro $g$, mas a diferença não é tão grande quanto a
+ variação do parâmetro $m$ no grading polinomial.

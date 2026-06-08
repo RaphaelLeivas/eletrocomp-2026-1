@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2026.4.1)  7 JUN 2026 21:52
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2026.4.1)  7 JUN 2026 22:10
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1041,17 +1041,17 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `phv' (encoding: TS1).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
-<./images/ex9-2-propagacao.png, id=32, 1122.3531pt x 714.7503pt>
+<./images/ex9-2-propagacao.png, id=34, 1122.3531pt x 714.7503pt>
 File: ./images/ex9-2-propagacao.png Graphic file (type png)
 <use ./images/ex9-2-propagacao.png>
 Package pdftex.def Info: ./images/ex9-2-propagacao.png  used on input line 39.
 (pdftex.def)             Requested size: 455.0pt x 289.46405pt.
-<./images/ex9-2-reflexao.png, id=35, 1099.10625pt x 758.835pt>
+<./images/ex9-2-reflexao.png, id=37, 1099.10625pt x 758.835pt>
 File: ./images/ex9-2-reflexao.png Graphic file (type png)
 <use ./images/ex9-2-reflexao.png>
 Package pdftex.def Info: ./images/ex9-2-reflexao.png  used on input line 46.
 (pdftex.def)             Requested size: 455.0pt x 313.86969pt.
-<./images/ex9-2-propagacao-x.png, id=39, 632.3625pt x 395.3169pt>
+<./images/ex9-2-propagacao-x.png, id=41, 632.3625pt x 395.3169pt>
 File: ./images/ex9-2-propagacao-x.png Graphic file (type png)
 <use ./images/ex9-2-propagacao-x.png>
 Package pdftex.def Info: ./images/ex9-2-propagacao-x.png  used on input line 66
@@ -1062,17 +1062,13 @@ Package pdftex.def Info: ./images/ex9-2-propagacao-x.png  used on input line 66
 
 ] [4 <./images/ex9-2-propagacao.png> <./images/ex9-2-reflexao.png>] [5 <./image
 s/ex9-2-propagacao-x.png>]
-
-LaTeX Warning: Reference `cap:ex9-3-codigo' on page 6 undefined on input line 1
-01.
-
-<./images/ex9-3-propagacao.png, id=77, 1121.6304pt x 714.7503pt>
+<./images/ex9-3-propagacao.png, id=80, 1121.6304pt x 714.7503pt>
 File: ./images/ex9-3-propagacao.png Graphic file (type png)
 <use ./images/ex9-3-propagacao.png>
 Package pdftex.def Info: ./images/ex9-3-propagacao.png  used on input line 134.
 
 (pdftex.def)             Requested size: 455.0pt x 289.64894pt.
-<./images/ex9-3-propagacao-x.png, id=80, 619.3539pt x 395.3169pt>
+<./images/ex9-3-propagacao-x.png, id=83, 619.3539pt x 395.3169pt>
 File: ./images/ex9-3-propagacao-x.png Graphic file (type png)
 <use ./images/ex9-3-propagacao-x.png>
 Package pdftex.def Info: ./images/ex9-3-propagacao-x.png  used on input line 14
@@ -1081,12 +1077,21 @@ Package pdftex.def Info: ./images/ex9-3-propagacao-x.png  used on input line 14
 LaTeX Font Info:    Font shape `T1/phv/m/it' in size <12> not available
 (Font)              Font shape `T1/phv/m/sl' tried instead on input line 148.
 
+
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-) (./elementos-pos-textuais/anexos.tex [6
+[6
 
-] [7 <./images/ex9-3-propagacao.png> <./images/ex9-3-propagacao-x.png>] [8]
-(/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
+] [7 <./images/ex9-3-propagacao.png> <./images/ex9-3-propagacao-x.png>]
+<./images/ex9-3-propagacao-x-geometric.png, id=109, 619.3539pt x 395.3169pt>
+File: ./images/ex9-3-propagacao-x-geometric.png Graphic file (type png)
+<use ./images/ex9-3-propagacao-x-geometric.png>
+Package pdftex.def Info: ./images/ex9-3-propagacao-x-geometric.png  used on inp
+ut line 191.
+(pdftex.def)             Requested size: 364.00139pt x 231.9005pt.
+)
+(./elementos-pos-textuais/anexos.tex [8 <./images/ex9-3-propagacao-x-geometric.
+png>] (/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2023/02/27 1.9 listings language file
 )
 LaTeX Font Info:    Font shape `T1/phv/m/it' in size <8> not available
@@ -1095,27 +1100,25 @@ LaTeX Font Info:    Font shape `TS1/phv/m/it' in size <8> not available
 (Font)              Font shape `TS1/phv/m/sl' tried instead on input line 23.
  [9
 
-]) [10]
+]
+[10] [11
+
+] [12]) [13]
 \tf@toc=\write5
 \openout5 = `lista5.toc'.
 
-
-(./lista5.aux)
+ (./lista5.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2020/03/25>
  ***********
-
-
-LaTeX Warning: There were undefined references.
-
  ) 
 Here is how much of TeX's memory you used:
- 21136 strings out of 476162
- 334147 string characters out of 5794815
- 2272975 words of memory out of 5000000
- 42580 multiletter control sequences out of 15000+600000
- 591656 words of font info for 138 fonts, out of 8000000 for 9000
+ 21294 strings out of 476162
+ 336780 string characters out of 5794815
+ 2325975 words of memory out of 5000000
+ 42604 multiletter control sequences out of 15000+600000
+ 591844 words of font info for 141 fonts, out of 8000000 for 9000
  16 hyphenation exceptions out of 8191
  99i,13n,107p,1003b,2300s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></us
@@ -1132,10 +1135,10 @@ m/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy
 /usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/share/t
 exlive/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/share/texlive/texmf
 -dist/fonts/type1/urw/helvetic/uhvro8a.pfb>
-Output written on lista5.pdf (10 pages, 774425 bytes).
+Output written on lista5.pdf (13 pages, 869281 bytes).
 PDF statistics:
- 325 PDF objects out of 1000 (max. 8388607)
- 263 compressed objects within 3 object streams
- 126 named destinations out of 1000 (max. 500000)
- 40045 words of extra memory for PDF output out of 42996 (max. 10000000)
+ 505 PDF objects out of 1000 (max. 8388607)
+ 435 compressed objects within 5 object streams
+ 255 named destinations out of 1000 (max. 500000)
+ 40064 words of extra memory for PDF output out of 42996 (max. 10000000)
 
