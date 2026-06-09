@@ -24,7 +24,7 @@ Os parâmetros da CPML adotados foram os seguintes:
 	\item $N_{pml} = 30 \quad , \quad m = 3$
 	\item $R_{err} = 10^{-6}$
 	\item $\eta = \sqrt{\frac{\mu}{\epsilon}}$
-	\item $\sigma_{max} = -\frac{(m+1)\ln(R_{\mathrm{err}})}{2\eta d_{\mathrm{pml}}} = 2.44$
+	\item $\sigma_{max} = -\frac{(m+1)\ln(R_{\mathrm{err}})}{2\eta N_{pml}} = 2.44$
 \end{itemize}
 
 A propagação obtida está exibida na Figura \ref{fig:ex9-2-propagacao}, 
@@ -121,7 +121,7 @@ Os parâmetros da CPML adotados foram os seguintes:
 	\item $N_{pml} = 30 \quad , \quad m = 4$
 	\item $R_{err} = 10^{-6}$
 	\item $\eta = \sqrt{\frac{\mu}{\epsilon}}$
-	\item $\sigma_{max} = -\frac{(m+1)\ln(R_{\mathrm{err}})}{2\eta d_{\mathrm{pml}}} = 2.44$
+	\item $\sigma_{max} = -\frac{(m+1)\ln(R_{\mathrm{err}})}{2\eta N_{pml}} = 2.44$
 \end{itemize}
 
 A propagação obtida está exibida na Figura \ref{fig:ex9-3-propagacao}, 
@@ -211,3 +211,71 @@ Verificamos que o coeficiente de reflexão é significativamente menor usando o 
 do que quando usamos o grading polinomial, indicando uma melhor absorção da PML.
 Além disso, o coeficiente se reduz ligeiramente ao aumentar o parâmetro $g$, mas a diferença não é tão grande quanto a
  variação do parâmetro $m$ no grading polinomial.
+
+
+\chapter{Exercício 9.4}
+
+Todo o código usado nesse exercício encontra-se no Anexo \ref{cap:ex9-4-codigo}.
+
+Usamos os seguintes parâmetros de discretização (mesmos do exercício 9.3):
+
+\begin{itemize}
+	\item $N_x = 120 \quad , \quad N_y = 60$
+	\item $\Delta y = \Delta x = 5 \un{cm}$
+	\item $\Delta t = \frac{0.9}{c \sqrt{(\Delta x)^{2} + (\Delta y)^{2}}} = 0.1 \un{ns} $ (condição CFL 2D)
+	\item $N_t = 800$
+\end{itemize}
+
+A fonte aplicada no centro do domínio é uma função senoidal dada por 
+
+\[ f(n) = \sin \left( 2\pi f_0 n \Delta t \right) \]
+
+\noindent com $f_0 = 600 \un{MHz}$.
+
+\section{Item (a)}
+
+Os parâmetros da UPML adotados foram os seguintes:
+
+\begin{itemize}
+	\item $N_{pml} = 30 \quad , \quad m = 3.75$
+	\item $R_{err} = 10^{-8}$
+	\item $\sigma_{max} = -\frac{(m+1)\ln(R_{\mathrm{err}})}{2 N_{pml} \cdot 377} = 0.116$
+\end{itemize}
+
+A propagação obtida está exibida na Figura \ref{fig:ex9-4-propagacao}, 
+onde podemos observar que o campo se propaga para fora do domínio sem reflexões significativas, 
+indicando que os PMLs estão funcionando corretamente. 
+
+\begin{figure}[htbp]
+	\caption{\label{fig:ex9-4-propagacao}Propagação de $E_z$ ao longo do grid, sem reflexão nas bordas.}
+	\begin{center}
+        \includegraphics[width=\textwidth,trim=1 1 1 1,clip]{ex9-4-propagacao.png}
+	\end{center}
+\end{figure}
+
+Olhando em um corte horizontal no eixo x passando pelo centro da cavidade,
+podemos observar o decaimento do campo $E_z$ ao entrar nas regiões de PML, como mostra a Figura \ref{fig:ex9-4-propagacao-x}.
+
+\begin{figure}[htbp]
+	\caption{\label{fig:ex9-4-propagacao-x}Decaimento do campo $E_z$ ao longo do eixo $x$ ao entrar nas regiões de PML.}
+	\begin{center}
+        \includegraphics[width=0.8\textwidth,trim=1 1 1 1,clip]{ex9-4-propagacao-x.png}
+	\end{center}
+\end{figure}
+
+Usando o mesmo procedimento do exercício 9.3, obtemos um coeficiente de reflexão $R$ de
+-33.67 dB, que é próximo do valor obtido no exercício anterior com a CPML. 
+
+\section{Item (b)}
+
+Com $f_0 = 100 \un{MHz}$ obtemos a propagação exibida na Figura \ref{fig:ex9-4-propagacao-100mhz}, 
+e o novo coeficiente de reflexão aumenta consideralvemente para - 17.6 dB,
+quase uma ordem de grandeza maior que $f_0 = 600 \un{MHz}$, indicando que a UPML
+não possui um bom desempenho se estiver a poucos comprimentos de onda de distância da fonte.
+
+\begin{figure}[htbp]
+	\caption{\label{fig:ex9-4-propagacao-100mhz}Propagação de $E_z$ ao longo do grid para $f_0 = 100 \un{MHz}$.}
+	\begin{center}
+        \includegraphics[width=\textwidth,trim=1 1 1 1,clip]{ex9-4-propagacao-100mhz.png}
+	\end{center}
+\end{figure}
