@@ -282,5 +282,66 @@ não possui um bom desempenho se estiver a poucos comprimentos de onda de distâ
 
 \chapter{Exercício 9.8}
 
-O código da UPML usado nesse exercício encontra-se no Anexo \ref{cap:ex9-8-codigo-upml}.
-O código da CPML usado nesse exercício encontra-se no Anexo \ref{cap:ex9-8-codigo-cpml}.
+Todo o código usado nesse exercício encontra-se no Anexo \ref{cap:ex9-8-codigo}.
+
+Usamos os seguintes parâmetros de discretização (mesmos do exercício 9.3):
+
+\begin{itemize}
+	\item $N_x = 200 \quad , \quad N_y = 200$
+	\item $\Delta y = \Delta x = 1 \un{mm}$
+	\item $\Delta t = \frac{0.9}{c \sqrt{(\Delta x)^{2} + (\Delta y)^{2}}} = 2.12 \un{ps} $ (condição CFL 2D)
+	\item $N_t = 800$
+\end{itemize}
+
+A fonte aplicada no centro do domínio é uma função gaussiana dada por 
+
+\[ f(t) = e^{-\frac{1}{2}\left(\frac{n - 40}{S}\right)^2} \]
+
+\noindent onde $S$ é um parâmetro que controla a abertura do pulso, estando relacionada com a frequência do sinal.
+
+As progações obtidas com a UPML e CPML são semelhantes com os resultados
+obtidos nos exercícios anteriores. O objetivo nesse exercício é variar o parâmetro $S$ e a localização da ponta 
+de prova para verificar o desempenho da UPML e da CPML em função da frequência e do ângulo de incidência.
+
+Como o pulso é gaussiano, para calcular o coeficiente de reflexão basta dividir a amplitude da onda incidente pela
+onda que foi refletida, como visto na Figura \ref{fig:ex9-2-reflexao}.
+
+A Tabela \ref{tab:resultado-9-8} sumariza o resultado obtido nesse exercício.
+
+\begin{table}[h!]
+	\caption{Desempenho da UPML e CPML em função da frequência do sinal da fonte e 
+	do ângulo de incidência.}
+	\vspace{0.5cm}
+	\centering
+		\begin{tabular}{c|c|c|c}
+
+		$S$ & $\theta$ & $R_{CPML}$ (dB) & $R_{UPML}$ (dB) \\ \hline
+		$3 \cdot \Delta t$    & $0$ & -54.23 & -41.64  \\ \hline
+		$3 \cdot \Delta t$   & $15$ & -53.38 & -41.77     \\ \hline
+		$3 \cdot \Delta t$    & $30$ & -53.4 & -42.65     \\ \hline
+		$3 \cdot \Delta t$    & $45$ & -50.74 & -43.83     \\ \hline 
+ 		 \hline 
+		$5 \cdot \Delta t$    & $0$ & -48.14 & -35.98    \\ \hline
+		$5 \cdot \Delta t$   & $15$ & -47.33 & -35.38   \\ \hline
+		$5 \cdot \Delta t$    & $30$ & -46.04 & -36.09    \\ \hline
+		$5 \cdot \Delta t$    & $45$ & -44.3 & -37.23    \\ \hline
+		 \hline 
+		$7 \cdot \Delta t$    & $0$ & -43.93 & -31.35    \\ \hline
+		$7 \cdot \Delta t$   & $15$ & -43.10 & -31.38    \\ \hline
+		$7 \cdot \Delta t$    & $30$ & -41.87 & -31.86    \\ \hline
+		$7 \cdot \Delta t$    & $45$ & -40.07 & -33.06   \\ \hline
+		\end{tabular}
+	\label{tab:resultado-9-8}
+\end{table}
+
+Em relação a frequência, vemos que tanto a CPML quanto a UPML apresentam 
+melhor desempenho em altas frequências do que em baixas. Em todos os casos, 
+contudo, o desempenho da CPML foi melhor do que o da UPML, apresentando um
+coeficiente de reflexão cerca de 10 dB menor. 
+
+Em relação ao ângulo de incidência, vemos que a CPML apresenta melhor desempenho 
+quando $\theta = 0$, e conforme o ângulo aumenta, a CPML apresenta maior reflexão do sinal. 
+Contudo, a UPML apresenta o comportamento inverso, sendo que era esperado que ela atenuasse melhor
+os sinais incidentes em $\theta = 0$. De qualquer forma, a CPML também apresenta uma melhor reflexão
+que a UPML para todos os ângulos de incidência. 
+
