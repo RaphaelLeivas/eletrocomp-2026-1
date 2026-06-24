@@ -1,0 +1,77 @@
+\chapter{Parte 1}
+
+\section{Exercício 1}
+
+Considere uma lei de conservação genérica dada por
+
+\[ \pd{u}{t} + \pd{f}{x} = 0 \]
+
+Aproximamos $u$ e $f$ por $u_h$ e $f_h$, o que resulta em um Resíduo $R$ dado por
+
+\[ R = \pd{u_h}{t} + \pd{f_h}{x} \]
+
+Usando a técnica dos resíduos ponderados, temos que em cada elemento $k$
+
+\[ \int_{D^k} R \cdot v \, dx = 0 \]
+
+Fazendo $v$ como a função de Lagrange e substituindo a expressão de $R$, temos 
+
+\[ \int_{D^k} \left( \pd{u_h}{t} + \pd{f_h}{x} \right)  L_j \, dx = 0 \]
+
+\[ \int_{D^k} \pd{u_h}{t} L_j  \, dx + \int_{D^k} \pd{f_h}{x} L_j \, dx = 0 \]
+
+Aplica integral por partes na segunda parcela da soma
+
+\[ \int_{D^k} \pd{u_h}{t} L_j  \, dx = \int_{D^k} \od{L_j}{x} f \, dx - \left[ L_j f \right]_{x_L}^{x_R}  = 0 \]
+
+\textcolor{red}{Justificar segunda integral por partes, completar}
+
+\section{Exercício 2}
+
+Dentro de um elemento $D^k$, aproximamos $u(x,t)$ por uma interpolação 
+por polinômios de Lagrange (nodal)
+
+\[ u(x,t) = u_h(x,t) = \sum_{i=1}^{N_p} u_i(t) L_i(x) \]
+
+Logo, 
+
+\[ \pd{u_h}{t} = \sum_{i=1}^{N_p} \od{u_i}{t} L_i \]
+
+Substitui isso na forma fraca
+
+\[ \int_{D^k} \sum_{i=1}^{N_p} \od{u_i}{t} L_i L_j  \, dx = \int_{D^k} \od{L_j}{x} f \, dx - \left[ L_j f \right]_{x_L}^{x_R}  = 0 \]
+
+\[ \sum_{i=1}^{N_p} \od{u_i}{t} \int_{D^k} L_i L_j  \, dx = \int_{D^k} \od{L_j}{x} f \, dx - \left[ L_j f \right]_{x_L}^{x_R}  = 0 \]
+
+Definindo
+
+\[ M_{ij} = \int_{D^k} L_i L_j  \, dx \]
+
+Temos
+
+\[ M \od{u}{t} = \dots \]
+
+Agora analisamos a segunda integral da forma fraca. Substituindo $f = au$, temos 
+
+\[ \int_{D^k} \od{L_j}{x} a u \, dx  \]
+
+Substituindo $u_h$, 
+
+\[ \int_{D^k} \od{L_j}{x} a \sum_{i=1}^{N_p} u_i(t) L_i(x) \, dx  \]
+
+\[ a  \sum_{i=1}^{N_p} u_i(t) \int_{D^k} \od{L_j}{x}  L_i(x) \, dx  \]
+
+Definindo
+
+\[ S_{ij} = \int_{D^k} \od{L_j}{x}  L_i(x) \, dx \]
+
+Temos
+
+\[  M \od{\mathbf{u}}{t} = a S \mathbf{u} - \mathbf{F} \]
+
+Usar a representação nodal é mais conveniente do ponto de vista de código 
+uma vez que armazenamos os pontos (nós) em que a função $u_h$ é avaliada.
+
+
+
+
