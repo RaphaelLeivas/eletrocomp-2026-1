@@ -72,6 +72,75 @@ Temos
 Usar a representação nodal é mais conveniente do ponto de vista de código 
 uma vez que armazenamos os pontos (nós) em que a função $u_h$ é avaliada.
 
+\section{Exercício 3}
 
+Quando $\alpha = 1$, a segunda parcela se anula e temos apenas a média aritmética das bordas
+de ambos
+elementos vizinhos.
 
+Quando $\alpha = 0$, o fluxo leva em consideração a direção de propagação por meio 
+dos termos $\hat{n}^+$ e $\hat{n}^-$.
 
+\section{Exercício 4}
+
+Os pontos GLL são escolhidos ao invés dos pontos equidistantes pois 
+ele apresentam melhor desempenho no método numérico. 
+Além disso, a matriz M se torna aproximadamente diagonal ao escolher
+os pontos GLL, o que melhora o desempenho computacional.
+
+Os pontos GLL são tabelados, tornando fácil seu uso.
+
+\section{Exercício 5}
+
+O método RK4 é alta ordem, sendo natural seu uso com o DGTD que também é de alta
+ordem. Usar o método de Euler após o obter a forma semi-discreta iria jogar fora 
+todo o ganho de acurácia que obtemos com o DGTD.
+
+Na forma semi-discreta, temos a forma 
+
+\[  M \od{\mathbf{u}}{t} = a S \mathbf{u} - \mathbf{F} \]
+
+\[  \od{\mathbf{u}}{t} = (M)^{-1} a S \mathbf{u} - \mathbf{F} \]
+
+\[  \od{\mathbf{u}}{t} = R(\mathbf{u}) \]
+
+\noindent que pode ser resolvido através de 
+
+\[
+\frac{d\mathbf{u}}{dt} = R(\mathbf{u})
+\]
+
+\[
+\mathbf{k}_1 = R(\mathbf{u}^n)
+\]
+
+\[
+\mathbf{k}_2 = R\left(\mathbf{u}^n + \frac{\Delta t}{2}\mathbf{k}_1\right)
+\]
+
+\[
+\mathbf{k}_3 = R\left(\mathbf{u}^n + \frac{\Delta t}{2}\mathbf{k}_2\right)
+\]
+
+\[
+\mathbf{k}_4 = R\left(\mathbf{u}^n + \Delta t\,\mathbf{k}_3\right)
+\]
+
+\[
+\mathbf{u}^{n+1}
+=
+\mathbf{u}^n
++
+\frac{\Delta t}{6}
+\left(
+\mathbf{k}_1
++
+2\mathbf{k}_2
++
+2\mathbf{k}_3
++
+\mathbf{k}_4
+\right)
+\]
+
+\section{Exercício 6}
