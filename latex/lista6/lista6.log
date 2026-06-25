@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2026.4.1)  23 JUN 2026 22:46
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2026.4.1)  25 JUN 2026 19:52
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1036,14 +1036,12 @@ LaTeX Font Info:    Font shape `T1/phv/m/it' in size <12> not available
  [3
 
 
-] [4])
-(./elementos-pos-textuais/anexos.tex [5]
-(/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
-File: lstlang1.sty 2023/02/27 1.9 listings language file
-)
-LaTeX Font Info:    Trying to load font information for TS1+phv on input line 1
-5.
+] [4]
 
+LaTeX Warning: Reference `cap:ex1-6' on page 5 undefined on input line 151.
+
+LaTeX Font Info:    Trying to load font information for TS1+phv on input line 1
+57.
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ts1phv.fd
 File: ts1phv.fd 2020/03/25 scalable font definitions for TS1/phv.
 )
@@ -1051,13 +1049,37 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `phv' (encoding: TS1).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
+ [5]
+<./images/ex1-6-general.png, id=58, 1140.4206pt x 706.0779pt>
+File: ./images/ex1-6-general.png Graphic file (type png)
+<use ./images/ex1-6-general.png>
+Package pdftex.def Info: ./images/ex1-6-general.png  used on input line 172.
+(pdftex.def)             Requested size: 455.0pt x 281.39755pt.
+<./images/ex1-6-velocidade.png, id=62, 960.58875pt x 372.39125pt>
+File: ./images/ex1-6-velocidade.png Graphic file (type png)
+<use ./images/ex1-6-velocidade.png>
+Package pdftex.def Info: ./images/ex1-6-velocidade.png  used on input line 183.
+
+(pdftex.def)             Requested size: 455.0pt x 175.80412pt.
+ [6 <./images/ex1-6-general.png>]
+<./images/ex1-6-convergencia.png, id=74, 428.5611pt x 339.669pt>
+File: ./images/ex1-6-convergencia.png Graphic file (type png)
+<use ./images/ex1-6-convergencia.png>
+Package pdftex.def Info: ./images/ex1-6-convergencia.png  used on input line 20
+3.
+(pdftex.def)             Requested size: 364.00139pt x 288.15746pt.
+) (./elementos-pos-textuais/anexos.tex [7 <./images/ex1-6-velocidade.png>] [8 <
+./images/ex1-6-convergencia.png>]
+(/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
+File: lstlang1.sty 2023/02/27 1.9 listings language file
+)
 LaTeX Font Info:    Font shape `T1/phv/m/it' in size <8> not available
 (Font)              Font shape `T1/phv/m/sl' tried instead on input line 23.
 LaTeX Font Info:    Font shape `TS1/phv/m/it' in size <8> not available
 (Font)              Font shape `TS1/phv/m/sl' tried instead on input line 23.
- [6
+ [9
 
-]) [7]
+]) [10]
 \tf@toc=\write5
 \openout5 = `lista6.toc'.
 
@@ -1067,30 +1089,35 @@ LaTeX Font Info:    Font shape `TS1/phv/m/it' in size <8> not available
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2020/03/25>
  ***********
+
+
+LaTeX Warning: There were undefined references.
+
  ) 
 Here is how much of TeX's memory you used:
- 20999 strings out of 476162
- 331141 string characters out of 5794815
+ 21113 strings out of 476162
+ 333342 string characters out of 5794815
  2272975 words of memory out of 5000000
- 42485 multiletter control sequences out of 15000+600000
- 588033 words of font info for 117 fonts, out of 8000000 for 9000
+ 42564 multiletter control sequences out of 15000+600000
+ 593261 words of font info for 140 fonts, out of 8000000 for 9000
  16 hyphenation exceptions out of 8191
- 99i,13n,107p,1003b,2301s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 99i,13n,107p,1003b,2300s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></us
 r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/shar
-e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texl
-ive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texlive/tex
-mf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist
-/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/
-type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/pu
-blic/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/a
-msfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uh
-vb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></u
-sr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvro8a.pfb>
-Output written on lista6.pdf (7 pages, 136602 bytes).
+e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texl
+ive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texlive/te
+xmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texlive/texmf-dis
+t/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts
+/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/
+public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/a
+msfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfont
+s/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvb8a.p
+fb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/sha
+re/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvro8a.pfb>
+Output written on lista6.pdf (10 pages, 343272 bytes).
 PDF statistics:
- 265 PDF objects out of 1000 (max. 8388607)
- 227 compressed objects within 3 object streams
- 114 named destinations out of 1000 (max. 500000)
- 35910 words of extra memory for PDF output out of 42996 (max. 10000000)
+ 310 PDF objects out of 1000 (max. 8388607)
+ 258 compressed objects within 3 object streams
+ 121 named destinations out of 1000 (max. 500000)
+ 43119 words of extra memory for PDF output out of 51595 (max. 10000000)
 
