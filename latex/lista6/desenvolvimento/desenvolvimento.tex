@@ -207,3 +207,37 @@ elementos $K$ no domínio. O resultado da convergência está exibido na Figura
 Era esperado que a norma se reduzisse por um fator mínimo de 2 a cada vez que $K$ dobra.
 No entanto, isso não é observada na Figura \ref{fig:ex1-6-convergencia}, indicando que 
 há possibilidades de melhorar o código.
+
+\section{Exercício 7}
+
+Usando a mesma discretização do exercício 6, mudando apenas a condição inicial para um pulso
+gaussiano no centro do domínio, obtemos a propagação ao longo do tempo exibida na 
+Figura \ref{fig:ex1-7-propagacao-direita} para $a = + 1 \un{m/s}$. Invertendo o sinal da velocidade, 
+temos que o sinal se propaga para a esquerda com $a = - 1 \un{m/s}$ conforme mostra 
+a Figura \ref{fig:ex1-7-propagacao-esquerda}.
+
+\begin{figure}[htbp]
+	\caption{\label{fig:ex1-7-propagacao-direita}Propagação do pulso gaussiano para $a = + 1 \un{m/s}$.}
+	\begin{center}
+        \includegraphics[width=\textwidth,trim=1 1 1 1,clip]{ex1-7-propagacao-direita.png}
+	\end{center}
+\end{figure}
+
+\begin{figure}[htbp]
+	\caption{\label{fig:ex1-7-propagacao-esquerda}Propagação do pulso gaussiano para $a = - 1 \un{m/s}$.}
+	\begin{center}
+        \includegraphics[width=\textwidth,trim=1 1 1 1,clip]{ex1-7-propagacao-esquerda.png}
+	\end{center}
+\end{figure}
+
+Usando a mesma técnica do exercício 6 de monitorar a posição do pico do sinal ao longo 
+do tempo e plotar a curva posição x tempo, tomando a regrressão linear para calcular a velocidade, 
+obtemos a velocidade numérica (para o pulso se deslocando para a esquerda) de $a_{NUM} = - 1.004 \un{m/s}$, 
+com um erro de 0.4 \% em relação ao valor teórico, como mostra a Figura \ref{fig:ex1-7-velocidade}.
+
+\begin{figure}[htbp]
+	\caption{\label{fig:ex1-7-velocidade}Posição do pico do sinal ao longo do tempo.}
+	\begin{center}
+        \includegraphics[width=0.8\textwidth,trim=1 1 1 1,clip]{ex1-7-velocidade.png}
+	\end{center}
+\end{figure}
