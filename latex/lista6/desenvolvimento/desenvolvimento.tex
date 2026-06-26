@@ -300,3 +300,58 @@ o número de elementos $K$ da malha.
 		\end{tabular}
 	\label{tab:ex1-8-convergencia}
 \end{table}
+
+\section{Exercício 9}
+
+O código usado nesse exercício é essencialmente o mesmo do exercício 6
+presente no Anexo \ref{cap:ex1-6-codigo}, usando o seguinte comando para a condição
+inicial do pulso retangular:
+
+\begin{tiny}
+	\begin{verbatim}
+	u = np.where(np.abs(x_nodes - 0.3) <= (5 * dx)/2, 1.0, 0.0).flatten().copy()
+	\end{verbatim}
+\end{tiny}
+
+O primeiro passo é definir a função degrau que será a condição inicial. 
+A função usada está exibida na Figura \ref{fig:ex1-9-inicial}, 
+com largura de $5 \cdot \Delta x$.
+
+\begin{figure}[htbp]
+	\caption{\label{fig:ex1-9-inicial}Condição inicial.}
+	\begin{center}
+        \includegraphics[width=0.8\textwidth,trim=1 1 1 1,clip]{ex1-9-inicial.png}
+	\end{center}
+\end{figure}
+
+Os parâmetros de discretização do domínio $\left[ 0 \, , \, 1 \right]$ adotados são:
+
+\begin{itemize}
+	\item $K = 50$
+    \item $N = 4$
+    \item $\Delta t = 8 \cdot 10^{-5} \un{s}$ (CFL = 0.2)
+	\item $\Delta x = 2 \cdot 10^{-2} \un{m}$
+	\item $T = 3 \un{s} \quad \Longrightarrow \quad N_t = 37500$
+	\item $a = 2 \un{m/s}$
+\end{itemize}
+
+O resultado obtido encontra-se na Figura \ref{fig:ex1-9-propagacao} para o fluxo 
+numérico upwind.
+
+\begin{figure}[htbp]
+	\caption{\label{fig:ex1-9-propagacao}Propagação do pulso retangular ao longo do tempo - fluxo upwind.}
+	\begin{center}
+        \includegraphics[width=\textwidth,trim=1 1 1 1,clip]{ex1-9-propagacao.png}
+	\end{center}
+\end{figure}
+
+Com o fluxo central, temos um resultado diferente como mostra a Figura \ref{fig:ex1-9-propagacao-central}.
+As descontinuidades introduzem oscilasções ao longo de todo o sinal, ao contrário do fluxo
+central em que essas oscilasções ocorrem apenas ao redor das bordas do pulso.
+
+\begin{figure}[htbp]
+	\caption{\label{fig:ex1-9-propagacao-central}Propagação do pulso retangular ao longo do tempo - fluxo central.}
+	\begin{center}
+        \includegraphics[width=\textwidth,trim=1 1 1 1,clip]{ex1-9-propagacao-central.png}
+	\end{center}
+\end{figure}
