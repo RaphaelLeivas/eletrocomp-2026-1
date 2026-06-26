@@ -2,107 +2,372 @@
 % Inicia os anexos
 % ---
 \begin{anexosenv}
-    \chapter{Código Exercício 9.2}\label{cap:ex9-2-codigo}
+    \chapter{Código Exercício 1.6}\label{cap:ex1-6-codigo}
     
     \begin{lstlisting}[language=Python, breaklines=true, basicstyle=\tiny]
     import numpy as np
     import matplotlib.pyplot as plt
-    import seaborn as sns
+    import scipy.special
 
-    def compute_sigma(N, ds, n_pml, sigma_max, m_order):
-        sig = np.zeros(N)
-        for i in range(N):
-            dist_left = (n_pml - i) * ds
-            dist_right = (i - (N - 1 - n_pml)) * ds
-            if dist_left > 0:
-                sig[i] = sigma_max * (dist_left / (n_pml * ds))**m_order
-            elif dist_right > 0:
-                sig[i] = sigma_max * (dist_right / (n_pml * ds))**m_order
-        return sig
+    # --- constantes ----
+    CENTRAL_FLUX = 0
+    UPWIND_FLUX = 1
+
+    A = np.array([0.0,
+    -567301805773.0 / 1357537059087.0,
+    -2404267990393.0 / 2016746695238.0,
+    -3550918686646.0 / 2091501179385.0,
+    -1275806237668.0 / 842570457699.0])
+
+    B = np.array([1432997174477.0 / 9575080441755.0,
+    5161836677717.0 / 13612068292357.0,
+    1720146321549.0 / 2090206949498.0,
+    3134564353537.0 / 4481467310338.0,
+    2277821191437.0 / 14882151754819.0])
 
     # --- parâmetros físicos ---
     eps = 8.854187817e-12  # Vacuum permittivity (F/m)
     mu = 4 * np.pi * 1e-7  # Vacuum permeability (H/m)
-    vp = 1 / np.sqrt(eps * mu)
 
     # --- domínio ---
-    Nx = Ny = 200    
-    dx = dy = 1e-3       
-    dt = 0.9 / (vp * np.sqrt(1/dx**2 + 1/dy**2))
-    Nt = 800         
-    L = Nx * dx
-    T = Nt * dt
+    vp = 1.0 * -1
+    kx = 2 * np.pi
+    xl, xr = 0, 1
 
-    # --- PML ----
-    npml = 30               
-    m = 3                   
-    R_err = 1e-6         
-    eta = np.sqrt(mu / eps)
-    d_pml = npml * dx
-    sig_max = -(m + 1) * np.log(R_err) / (2 * eta * d_pml)
+    # --- retorna matriz D - diferenciação ---
+    def get_D_matrix(nodes):
+        N = len(nodes) - 1
+        w = np.ones(N + 1)
+        
+        for j in range(N + 1):
+            for i in range(N + 1):
+                if i != j:
+                    w[j] *= 1.0 / (nodes[j] - nodes[i])
+        D = np.zeros((N + 1, N + 1))
+        
+        for i in range(N + 1):
+            for j in range(N + 1):
+                if i != j:
+                    D[i, j] = (w[j] / w[i]) / (nodes[i] - nodes[j])
+            D[i, i] = -np.sum(D[i, :])
+            
+        return D
 
-    # Declara os campos
-    Ez = np.zeros((Nx, Ny))
-    Hx = np.zeros((Nx, Ny))
-    Hy = np.zeros((Nx, Ny))
+    # --- retorna fluxo numérico ---
+    def numerical_flux(uL, uR, a, flux_type):
+        match flux_type:
+            case 0:
+                return 0.5 * a * (uL + uR)
+            case 1:
+                return a * uL if a > 0 else a * uR
+            case _: # fallback central flux
+                return 0.5 * a * (uL + uR)
+            
+    # --- retorna pontos GLL de ordem polinomial N ---
+    def get_GLL_nodes(N):
+        internal_nodes, _ = scipy.special.roots_jacobi(N - 1, 1, 1)
+        r = np.concatenate([[-1.0], internal_nodes, [1.0]]) # elemento de referência
+        return r
 
-    grid_x_Ez = np.linspace(0, L, Nx + 1)
-    grid_y_Ez = np.linspace(0, L, Ny + 1)
-    grid_t_Ez = np.linspace(0, T, Nt + 1)
+    # --- retorna pesos dos nós GLL de ordem polinomial N ---
+    def get_GLL_weights(nodes, N):
+        N = len(nodes) - 1
 
-    # CPML
-    psi_hxy = np.zeros((Nx, Ny - 1))
-    psi_hyx = np.zeros((Nx - 1, Ny))
-    psi_ezx = np.zeros((Nx - 2, Ny - 2))
-    psi_ezy = np.zeros((Nx - 2, Ny - 2))
+        # Legendre polynomial of degree N
+        P = scipy.special.legendre(N)
 
-    sig_x_1D = compute_sigma(Nx, dx, npml, sig_max, m)
-    sig_y_1D = compute_sigma(Ny, dy, npml, sig_max, m)
-    sig_x, sig_y = np.meshgrid(sig_x_1D, sig_y_1D, indexing='ij')
+        # Evaluate P_N(x_i)
+        PN = np.polyval(P, nodes)
 
-    b_x = np.exp(-sig_x * dt / eps)
-    c_x = b_x - 1.0
-    b_y = np.exp(-sig_y * dt / eps)
-    c_y = b_y - 1.0
+        # Compute weights
+        w = 2.0 / (N * (N + 1) * PN**2)
 
-    # valores do tempo para salvar os snapshots e montar os heatmaps
-    n_snapshots = np.linspace(100, 240, 6, dtype=int)
-    Ez_snapshots = []
+        return w
+        
+    # --- operador DG ---
+    def build_dg_operator(K, N, a, flux_type):
+        dx_elem = (xr - xl) / K
+        xi = get_GLL_nodes(N)
+        D_ref = get_D_matrix(xi)
+        D_phys = (2.0 / dx_elem) * D_ref
+        w = get_GLL_weights(xi, N)
+        M_local = w * dx_elem / 2.0
+        
+        # Coordenadas físicas dos nós
+        x_nodes = np.zeros((K, N + 1))
+        for k in range(K):
+            xL = xl + k * dx_elem
+            x_nodes[k, :] = xL + 0.5 * (xi + 1) * dx_elem
+            
+        return {
+            'K': K, 'N': N, 'dx_elem': dx_elem,
+            'D_phys': D_phys, 'M_local': M_local,
+            'x_nodes': x_nodes, 'a': a, 'flux_type': flux_type
+        }
+        
+    def rhs(u_flat, op):
+        # puxa os dados do operador DG
+        K, N = op['K'], op['N']
+        D = op['D_phys']
+        M = op['M_local']
+        a = op['a']
+        flux_type = op['flux_type']
+        
+        u = u_flat.reshape((K, N + 1))
+        du = np.zeros_like(u)
+        
+        # itera sobre cada elemento e vai resolvendo em cada um
+        for k in range(K):
+            du[k, :] = -a * (D @ u[k, :])
+            uL = u[k, N]
+            uR = u[(k + 1) % K, 0]
+            f_estrela_R = numerical_flux(uL, uR, a, flux_type)
+            du[k, N] += a * (uL - f_estrela_R / a) / M[N] 
+            
+            uL_prev = u[(k - 1) % K, N]
+            uR_curr = u[k, 0]
+            f_estrela_L = numerical_flux(uL_prev, uR_curr, a, flux_type)
+            du[k, 0] += a * (-uR_curr + f_estrela_L / a) / M[0]
+            
+        return du.flatten()
 
-    # ponta de prova
-    px, py = Nx // 2 + 50, Ny // 2 + 0
-    probe = []
+    # low storage Range Kutta quarta ordem
+    def lsrk4_step(u, rhs_func, dt, op):
+        q = np.zeros_like(u)
+        for i in range(5):
+            q = A[i] * q + dt * rhs_func(u, op)
+            u = u + B[i] * q
+            
+        return u
 
-    for n in range(Nt):
-        # atualiza Hx
-        dEz_y = (Ez[:, 1:] - Ez[:, :-1]) / dy
-        psi_hxy = b_y[:, :-1] * psi_hxy + c_y[:, :-1] * dEz_y
-        Hx[:, :-1] -= (dt / mu) * (dEz_y + psi_hxy)
+    def DGTD(K, N, CFL, T_final, a, kx, flux_type):
+        # gera o operador
+        dg_operator = build_dg_operator(K, N, a, flux_type)
+        x_nodes = dg_operator['x_nodes']
+        
+        # Condição inicial
+        u = np.sin(kx * x_nodes).flatten().copy()
+        u = np.exp(-0.5 * ((x_nodes - 0.5) / 0.05)**2).flatten().copy()
+        
+        # discretização
+        dx = dg_operator['dx_elem']
+        dt = CFL * dx / (np.abs(a) * (N + 1) ** 2)
+        Nt = max(1, int(T_final / dt))
+        dt = T_final / Nt # evita erro de arrendondamento
+        
+        # snapshots
+        u_history = []
+        snapshots_list = np.linspace(0, Nt - 10, 6)
+        
+        print("INICIANDO MARCHA NO TEMPO")
+        print(f"dx = {dx:.3e}, dt = {dt:.3e}, Nt = {Nt}")
+        
+        # marcha no tempo
+        for step in range(Nt):
+            u = lsrk4_step(u, rhs, dt, dg_operator)
+            
+            if step in snapshots_list:
+                u_history.append(u)
+            
+        return u_history, dx, dt, snapshots_list
 
-        # atualiza Hy
-        dEz_x = (Ez[1:, :] - Ez[:-1, :]) / dx
-        psi_hyx = b_x[:-1, :] * psi_hyx + c_x[:-1, :] * dEz_x
-        Hy[:-1, :] += (dt / mu) * (dEz_x + psi_hyx)
+    # --- Parâmetros de simulação ----
+    K = 64 # numero de elementos
+    N = 4 # ordem polinomial dentro dos elementos
+    CFL = 0.2
+    T_final = 1
 
-        # atualiza Ez
-        dHy_x = (Hy[1:-1, 1:-1] - Hy[:-2, 1:-1]) / dx
-        dHx_y = (Hx[1:-1, 1:-1] - Hx[1:-1, :-2]) / dy
-        psi_ezx = b_x[1:-1, 1:-1] * psi_ezx + c_x[1:-1, 1:-1] * dHy_x
-        psi_ezy = b_y[1:-1, 1:-1] * psi_ezy + c_y[1:-1, 1:-1] * dHx_y
-        Ez[1:-1, 1:-1] += (dt / eps) * ((dHy_x + psi_ezx) - (dHx_y + psi_ezy))
-
-        # fonte
-        Ez[Nx//2, Ny//2] += np.exp(-0.5 * ((n * dt - (40 * dt)) / (12 * dt))**2)
-
-        # ponta de prova
-        probe.append(Ez[px, py]) 
-
-        # salva para os snapshots
-        if n in n_snapshots:
-            Ez_snapshots.append(Ez.copy())
-
-
+    u_history, dx, dt, snapshots_list = DGTD(K, N, CFL, T_final, vp, kx, UPWIND_FLUX)
     \end{lstlisting}
 
+    \chapter{Código Exercício 1.8}\label{cap:ex1-8-codigo}
+    
+    \begin{lstlisting}[language=Python, breaklines=true, basicstyle=\tiny]
+    import numpy as np
+    import matplotlib.pyplot as plt
+    import scipy.special
+
+    # --- constantes ----
+    CENTRAL_FLUX = 0
+    UPWIND_FLUX = 1
+
+    A = np.array([0.0,
+    -567301805773.0 / 1357537059087.0,
+    -2404267990393.0 / 2016746695238.0,
+    -3550918686646.0 / 2091501179385.0,
+    -1275806237668.0 / 842570457699.0])
+
+    B = np.array([1432997174477.0 / 9575080441755.0,
+    5161836677717.0 / 13612068292357.0,
+    1720146321549.0 / 2090206949498.0,
+    3134564353537.0 / 4481467310338.0,
+    2277821191437.0 / 14882151754819.0])
+
+    # --- parâmetros físicos ---
+    eps = 8.854187817e-12  # Vacuum permittivity (F/m)
+    mu = 4 * np.pi * 1e-7  # Vacuum permeability (H/m)
+
+    # --- domínio ---
+    vp = 2 * np.pi
+    kx = 2 * np.pi
+    xl, xr = 0, 4 * np.pi
+
+    # --- retorna matriz D - diferenciação ---
+    def get_D_matrix(nodes):
+        N = len(nodes) - 1
+        w = np.ones(N + 1)
+        
+        for j in range(N + 1):
+            for i in range(N + 1):
+                if i != j:
+                    w[j] *= 1.0 / (nodes[j] - nodes[i])
+        D = np.zeros((N + 1, N + 1))
+        
+        for i in range(N + 1):
+            for j in range(N + 1):
+                if i != j:
+                    D[i, j] = (w[j] / w[i]) / (nodes[i] - nodes[j])
+            D[i, i] = -np.sum(D[i, :])
+            
+        return D
+
+    # --- retorna fluxo numérico ---
+    def numerical_flux(uL, uR, a, flux_type):
+        match flux_type:
+            case 0:
+                return 0.5 * a * (uL + uR)
+            case 1:
+                return a * uL if a > 0 else a * uR
+            case _: # fallback central flux
+                return 0.5 * a * (uL + uR)
+            
+    # --- retorna pontos GLL de ordem polinomial N ---
+    def get_GLL_nodes(N):
+        internal_nodes, _ = scipy.special.roots_jacobi(N - 1, 1, 1)
+        r = np.concatenate([[-1.0], internal_nodes, [1.0]]) # elemento de referência
+        return r
+
+    # --- retorna pesos dos nós GLL de ordem polinomial N ---
+    def get_GLL_weights(nodes, N):
+        N = len(nodes) - 1
+
+        # Legendre polynomial of degree N
+        P = scipy.special.legendre(N)
+
+        # Evaluate P_N(x_i)
+        PN = np.polyval(P, nodes)
+
+        # Compute weights
+        w = 2.0 / (N * (N + 1) * PN**2)
+
+        return w
+        
+    # --- operador DG ---
+    def build_dg_operator(K, N, a, flux_type):
+        dx_elem = (xr - xl) / K
+        xi = get_GLL_nodes(N)
+        D_ref = get_D_matrix(xi)
+        D_phys = (2.0 / dx_elem) * D_ref
+        w = get_GLL_weights(xi, N)
+        M_local = w * dx_elem / 2.0
+        
+        # Coordenadas físicas dos nós
+        x_nodes = np.zeros((K, N + 1))
+        for k in range(K):
+            xL = xl + k * dx_elem
+            x_nodes[k, :] = xL + 0.5 * (xi + 1) * dx_elem
+            
+        return {
+            'K': K, 'N': N, 'dx_elem': dx_elem,
+            'D_phys': D_phys, 'M_local': M_local,
+            'x_nodes': x_nodes, 'a': a, 'flux_type': flux_type
+        }
+        
+    def rhs(u_flat, op, step, dt):
+        # puxa os dados do operador DG
+        K, N = op['K'], op['N']
+        D = op['D_phys']
+        M = op['M_local']
+        a = op['a']
+        flux_type = op['flux_type']
+        
+        u = u_flat.reshape((K, N + 1))
+        du = np.zeros_like(u)
+        
+        # itera sobre cada elemento e vai resolvendo em cada um
+        for k in range(K):
+            du[k, :] = -a * (D @ u[k, :])
+            
+            # fronteira direita
+            if k == K - 1:
+                uL = u[k, N]
+                uR = uL
+            else:
+                uL = u[k, N]
+                uR = u[k+1, 0]
+            f_estrela_R = numerical_flux(uL, uR, a, flux_type)
+            du[k, N] += a * (uL - f_estrela_R / a) / M[N]
+            
+            # fronteira esquerda
+            if k == 0:
+                uL = -np.sin(2.0 * np.pi * step * dt) # fonte
+                uR = u[k, 0]
+            else:
+                uL = u[k-1, N]
+                uR = u[k, 0]
+            f_estrela_L = numerical_flux(uL, uR, a, flux_type)
+            du[k, 0] += a * (-uR + f_estrela_L / a) / M[0]
+            
+        return du.flatten()
+
+    # low storage Range Kutta quarta ordem
+    def lsrk4_step(u, rhs_func, dt, op, step):
+        q = np.zeros_like(u)
+        for i in range(5):
+            q = A[i] * q + dt * rhs_func(u, op, step, dt)
+            u = u + B[i] * q
+            
+        return u
+
+    def DGTD(K, N, CFL, T_final, a, kx, flux_type):
+        # gera o operador
+        dg_operator = build_dg_operator(K, N, a, flux_type)
+        x_nodes = dg_operator['x_nodes']
+        
+        # Condição inicial
+        u = np.sin(kx * x_nodes).flatten().copy()
+        u = np.exp(-0.5 * ((x_nodes - 0.5) / 0.05)**2).flatten().copy()
+        u = np.zeros_like(x_nodes.flatten())
+        
+        # discretização
+        dx = dg_operator['dx_elem']
+        dt = CFL * dx / (np.abs(a) * (N + 1) ** 2)
+        Nt = max(1, int(T_final / dt))
+        dt = T_final / Nt # evita erro de arrendondamento
+        
+        # snapshots
+        u_history = []
+        snapshots_list = np.linspace(0, Nt - 10, 6)
+        
+        print("INICIANDO MARCHA NO TEMPO")
+        print(f"dx = {dx:.3e}, dt = {dt:.3e}, Nt = {Nt}")
+        
+        # marcha no tempo
+        for step in range(Nt):
+            u = lsrk4_step(u, rhs, dt, dg_operator, step)
+            
+            if step in snapshots_list:
+                u_history.append(u)
+            
+        return u_history, dx, dt, snapshots_list
+
+    # --- Parâmetros de simulação ----
+    K = 32 # numero de elementos
+    N = 4 # ordem polinomial dentro dos elementos
+    CFL = 0.2
+    T_final = 10
+
+    u_history, dx, dt, snapshots_list = DGTD(K, N, CFL, T_final, vp, kx, UPWIND_FLUX)
+    \end{lstlisting}
 
 \end{anexosenv}

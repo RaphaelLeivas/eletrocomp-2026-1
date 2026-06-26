@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2026.4.1)  25 JUN 2026 20:11
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2026.4.1)  25 JUN 2026 22:21
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1037,11 +1037,9 @@ LaTeX Font Info:    Font shape `T1/phv/m/it' in size <12> not available
 
 
 ] [4]
-
-LaTeX Warning: Reference `cap:ex1-6' on page 5 undefined on input line 151.
-
 LaTeX Font Info:    Trying to load font information for TS1+phv on input line 1
 57.
+
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ts1phv.fd
 File: ts1phv.fd 2020/03/25 scalable font definitions for TS1/phv.
 )
@@ -1050,56 +1048,75 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
  [5]
-<./images/ex1-6-general.png, id=60, 1140.4206pt x 706.0779pt>
+<./images/ex1-6-general.png, id=65, 1140.4206pt x 706.0779pt>
 File: ./images/ex1-6-general.png Graphic file (type png)
 <use ./images/ex1-6-general.png>
 Package pdftex.def Info: ./images/ex1-6-general.png  used on input line 172.
 (pdftex.def)             Requested size: 455.0pt x 281.39755pt.
-<./images/ex1-6-velocidade.png, id=64, 960.58875pt x 372.39125pt>
+<./images/ex1-6-velocidade.png, id=69, 960.58875pt x 372.39125pt>
 File: ./images/ex1-6-velocidade.png Graphic file (type png)
 <use ./images/ex1-6-velocidade.png>
 Package pdftex.def Info: ./images/ex1-6-velocidade.png  used on input line 183.
 
 (pdftex.def)             Requested size: 455.0pt x 175.80412pt.
  [6 <./images/ex1-6-general.png>]
-<./images/ex1-6-convergencia.png, id=76, 428.5611pt x 339.669pt>
+<./images/ex1-6-convergencia.png, id=81, 428.5611pt x 339.669pt>
 File: ./images/ex1-6-convergencia.png Graphic file (type png)
 <use ./images/ex1-6-convergencia.png>
 Package pdftex.def Info: ./images/ex1-6-convergencia.png  used on input line 20
 3.
 (pdftex.def)             Requested size: 364.00139pt x 288.15746pt.
-<./images/ex1-7-propagacao-direita.png, id=81, 1139.6979pt x 417.7206pt>
+<./images/ex1-7-propagacao-direita.png, id=86, 1139.6979pt x 417.7206pt>
 File: ./images/ex1-7-propagacao-direita.png Graphic file (type png)
 <use ./images/ex1-7-propagacao-direita.png>
 Package pdftex.def Info: ./images/ex1-7-propagacao-direita.png  used on input l
 ine 222.
 (pdftex.def)             Requested size: 455.0pt x 166.25691pt.
-<./images/ex1-7-propagacao-esquerda.png, id=83, 1139.6979pt x 417.7206pt>
+<./images/ex1-7-propagacao-esquerda.png, id=88, 1139.6979pt x 417.7206pt>
 File: ./images/ex1-7-propagacao-esquerda.png Graphic file (type png)
 <use ./images/ex1-7-propagacao-esquerda.png>
 Package pdftex.def Info: ./images/ex1-7-propagacao-esquerda.png  used on input 
 line 229.
 (pdftex.def)             Requested size: 455.0pt x 166.25691pt.
-<./images/ex1-7-velocidade.png, id=86, 470.4777pt x 338.9463pt>
+<./images/ex1-7-velocidade.png, id=91, 470.4777pt x 338.9463pt>
 File: ./images/ex1-7-velocidade.png Graphic file (type png)
 <use ./images/ex1-7-velocidade.png>
 Package pdftex.def Info: ./images/ex1-7-velocidade.png  used on input line 241.
 
 (pdftex.def)             Requested size: 364.00139pt x 261.79839pt.
-) (./elementos-pos-textuais/anexos.tex [7 <./images/ex1-6-velocidade.png>] [8 <
-./images/ex1-6-convergencia.png> <./images/ex1-7-propagacao-direita.png>] [9 <.
-/images/ex1-7-propagacao-esquerda.png> <./images/ex1-7-velocidade.png>] (/usr/s
-hare/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
+ [7 <./images/ex1-6-velocidade.png>] [8 <./images/ex1-6-convergencia.png> <./im
+ages/ex1-7-propagacao-direita.png>] [9 <./images/ex1-7-propagacao-esquerda.png>
+ <./images/ex1-7-velocidade.png>]
+<./images/ex1-8-propagacao.png, id=124, 1140.4206pt x 706.0779pt>
+File: ./images/ex1-8-propagacao.png Graphic file (type png)
+<use ./images/ex1-8-propagacao.png>
+Package pdftex.def Info: ./images/ex1-8-propagacao.png  used on input line 267.
+
+(pdftex.def)             Requested size: 455.0pt x 281.39755pt.
+<./images/ex1-8-solucao.png, id=127, 440.847pt x 338.9463pt>
+File: ./images/ex1-8-solucao.png Graphic file (type png)
+<use ./images/ex1-8-solucao.png>
+Package pdftex.def Info: ./images/ex1-8-solucao.png  used on input line 281.
+(pdftex.def)             Requested size: 364.00139pt x 279.49461pt.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+) (./elementos-pos-textuais/anexos.tex [10 <./images/ex1-8-propagacao.png>]
+[11 <./images/ex1-8-solucao.png>]
+(/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2023/02/27 1.9 listings language file
 )
 LaTeX Font Info:    Font shape `T1/phv/m/it' in size <8> not available
-(Font)              Font shape `T1/phv/m/sl' tried instead on input line 23.
+(Font)              Font shape `T1/phv/m/sl' tried instead on input line 12.
 LaTeX Font Info:    Font shape `TS1/phv/m/it' in size <8> not available
-(Font)              Font shape `TS1/phv/m/sl' tried instead on input line 23.
+(Font)              Font shape `TS1/phv/m/sl' tried instead on input line 12.
+ [12
 
-[10
+] [13]
+[14] [15
 
-]) [11]
+] [16] [17]) [18]
 \tf@toc=\write5
 \openout5 = `lista6.toc'.
 
@@ -1108,17 +1125,13 @@ LaTeX Font Info:    Font shape `TS1/phv/m/it' in size <8> not available
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2020/03/25>
  ***********
-
-
-LaTeX Warning: There were undefined references.
-
  ) 
 Here is how much of TeX's memory you used:
- 21173 strings out of 476162
- 334825 string characters out of 5794815
- 2272975 words of memory out of 5000000
- 42599 multiletter control sequences out of 15000+600000
- 597356 words of font info for 152 fonts, out of 8000000 for 9000
+ 21498 strings out of 476162
+ 340105 string characters out of 5794815
+ 2265975 words of memory out of 5000000
+ 42643 multiletter control sequences out of 15000+600000
+ 597481 words of font info for 154 fonts, out of 8000000 for 9000
  16 hyphenation exceptions out of 8191
  99i,13n,107p,1003b,2300s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></us
@@ -1134,10 +1147,10 @@ amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts
 sy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb></us
 r/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/share/texl
 ive/texmf-dist/fonts/type1/urw/helvetic/uhvro8a.pfb>
-Output written on lista6.pdf (11 pages, 490594 bytes).
+Output written on lista6.pdf (18 pages, 649985 bytes).
 PDF statistics:
- 342 PDF objects out of 1000 (max. 8388607)
- 278 compressed objects within 3 object streams
- 126 named destinations out of 1000 (max. 500000)
- 47256 words of extra memory for PDF output out of 51595 (max. 10000000)
+ 721 PDF objects out of 1000 (max. 8388607)
+ 640 compressed objects within 7 object streams
+ 402 named destinations out of 1000 (max. 500000)
+ 47294 words of extra memory for PDF output out of 51595 (max. 10000000)
 

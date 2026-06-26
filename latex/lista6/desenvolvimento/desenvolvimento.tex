@@ -148,7 +148,7 @@ a diferença}
 
 \section{Exercício 6}
 
-Todo o código usado nesse exercício encontra-se no Anexo \ref{cap:ex1-6}.
+Todo o código usado nesse exercício encontra-se no Anexo \ref{cap:ex1-6-codigo}.
 
 Usando o método do DGTD para a equação da advecção 1D e os seguintes parâmetros de 
 discretização:
@@ -241,3 +241,62 @@ com um erro de 0.4 \% em relação ao valor teórico, como mostra a Figura \ref{
         \includegraphics[width=0.8\textwidth,trim=1 1 1 1,clip]{ex1-7-velocidade.png}
 	\end{center}
 \end{figure}
+
+\section{Exercício 8}
+
+Todo o código usado nesse exercício encontra-se no Anexo \ref{cap:ex1-8-codigo}.
+
+Usando o método do DGTD para a equação da advecção 1D e os seguintes parâmetros de 
+discretização:
+
+\begin{itemize}
+	\item $K = 64$
+    \item $N = 4$
+    \item $\Delta t = 2.5 \cdot 10^{-4} \un{s}$ (CFL = 0.2)
+	\item $\Delta x = 1.96 \cdot 10^{-1} \un{m}$
+	\item $T = 10 \un{s} \quad \Longrightarrow \quad N_t = 40000$
+\end{itemize}
+
+\noindent obtemos a seguinte propagação da onda para a direita a partir da condição inicial,
+ao aplicar a fonte senoidal na extremidade esquerda,
+exibida na Figura \ref{fig:ex1-8-propagacao}.
+
+\begin{figure}[htbp]
+	\caption{\label{fig:ex1-8-propagacao}Propagação da onda para a direita ao longo do tempo.}
+	\begin{center}
+        \includegraphics[width=\textwidth,trim=1 1 1 1,clip]{ex1-8-propagacao.png}
+	\end{center}
+\end{figure}
+
+A solução analítica é dada por
+
+\[ u_{exact}(x,t=10\un{s}) = \sin \left(x\right)  \]
+
+\noindent que está sobreposta à solução numérica obtida como mostra a Figura 
+\ref{fig:ex1-8-solucao}.
+
+\begin{figure}[htbp]
+	\caption{\label{fig:ex1-8-solucao}Solução em t = 10 s.}
+	\begin{center}
+        \includegraphics[width=0.8\textwidth,trim=1 1 1 1,clip]{ex1-8-solucao.png}
+	\end{center}
+\end{figure}
+
+A norma-$L^2$ calculada entre as soluções numérica e analítica, para diferentes valores de $K$,
+está exibida na Tabela \ref{tab:ex1-8-convergencia}. Vemos que o erro se reduz conforme aumentamos
+o número de elementos $K$ da malha.
+
+\begin{table}[h!]
+	\caption{Norma-L2 em t = 10 s para diferentes valores de $K$.}
+	\vspace{0.5cm}
+	\centering
+		\begin{tabular}{c|c}
+
+		$K$ & Norma-$L^2$ \\ \hline
+		$8$    & $0.904$      \\ \hline
+		$16$    & $0.673$    \\ \hline
+		$32$    & $0.485$       \\ \hline
+		$64$    & $0.34$     \\
+		\end{tabular}
+	\label{tab:ex1-8-convergencia}
+\end{table}
