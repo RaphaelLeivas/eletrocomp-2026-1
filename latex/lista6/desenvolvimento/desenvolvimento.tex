@@ -355,3 +355,43 @@ central em que essas oscilasções ocorrem apenas ao redor das bordas do pulso.
         \includegraphics[width=\textwidth,trim=1 1 1 1,clip]{ex1-9-propagacao-central.png}
 	\end{center}
 \end{figure}
+
+\chapter{Parte 2}
+
+\section{Exercício 1}
+
+Todo o código usado nesse exercício encontra-se no Anexo \ref{cap:ex2-1-codigo}.
+
+Usando o método do DGTD para as equações de Maxwell 1D com as seguintes discretizações:
+
+\begin{itemize}
+	\item $K = 64$
+    \item $N = 4$
+    \item $\Delta t = 1.25 \cdot 10^{-4} \un{s}$ (CFL = 0.2)
+	\item $\Delta x = 1.56 \cdot 10^{-2} \un{m}$
+	\item $T = 3 \un{s} \quad \Longrightarrow \quad N_t = 24000$
+\end{itemize}
+
+\noindent obtendo o resultado exibido na Figura \ref{fig:ex2-1-propagacao} para o fluxo central, 
+e a Figura \ref{fig:ex2-1-propagacao-upwind} para o fluxo upwind. Vemos que o resultado obtido é o mesmo
+para ambos os casos.
+
+\begin{figure}[htbp]
+	\caption{\label{fig:ex2-1-propagacao}Progação de $E_y$ e $H_z$ ao longo do tempo - fluxo central.}
+	\begin{center}
+        \includegraphics[width=\textwidth,trim=1 1 1 1,clip]{ex2-1-propagacao.png}
+	\end{center}
+\end{figure}
+
+\begin{figure}[htbp]
+	\caption{\label{fig:ex2-1-propagacao-upwind}Progação de $E_y$ e $H_z$ ao longo do tempo - fluxo upwind.}
+	\begin{center}
+        \includegraphics[width=\textwidth,trim=1 1 1 1,clip]{ex2-1-propagacao-upwind.png}
+	\end{center}
+\end{figure}
+
+Sabemos de exercícios anteriores que a solução exata para esse problema é dada por
+
+\[ E_y = \sin (\pi x) \cos (\pi t) \quad , \quad H_z = -\cos (\pi x) \sin (\pi t) \]
+
+\noindent de modo que podemos tomar a norma-$L^2$ para verificar o desempenho do método.
