@@ -395,3 +395,25 @@ Sabemos de exercícios anteriores que a solução exata para esse problema é da
 \[ E_y = \sin (\pi x) \cos (\pi t) \quad , \quad H_z = -\cos (\pi x) \sin (\pi t) \]
 
 \noindent de modo que podemos tomar a norma-$L^2$ para verificar o desempenho do método.
+
+\section{Exercício 2}
+
+Todo o código usado nesse exercício encontra-se no Anexo \ref{cap:ex2-2-codigo}.
+
+Com a mesma discretização do item anterior, agora propagamos um pulso gaussiano para a direita 
+a fim de verificar a implementação da condição de contorno absorvente de SMC. O pulso
+inicial usado é dado por 
+
+\[ E_y(x) = \exp \left[ - \frac{1}{2} \frac{(x - 0.3)^2}{0.08} \right] \]
+
+\noindent o que resulta na propagação exibida na Figura \ref{fig:ex2-2-propagacao} com o fluxo central.
+Observa-se que não há nenhuma onda refletida a partir da borda direita após a passagem do sinal, 
+indicando um bom funcionamento da condição de contorno.
+
+\begin{figure}[htbp]
+	\caption{\label{fig:ex2-2-propagacao}Propagação do pulso gaussiano para a direita em função do tempo - fluxo central.}
+	\begin{center}
+        \includegraphics[width=\textwidth,trim=1 1 1 1,clip]{ex2-2-propagacao.png}
+	\end{center}
+\end{figure}
+
