@@ -24,7 +24,15 @@ Aplica integral por partes na segunda parcela da soma
 
 \[ \int_{D^k} \pd{u_h}{t} L_j  \, dx = \int_{D^k} \od{L_j}{x} f \, dx - \left[ L_j f \right]_{x_L}^{x_R}  = 0 \]
 
-\textcolor{red}{Justificar segunda integral por partes, completar}
+Obtemos a forma fraca do esquema. Aplicando integração por partes uma segunda vez, obtemos
+a forma forte:
+
+\[ \int_{D^k} \pd{u_h}{t} L_j  \, dx = \left[ L_j f \right]_{x_L}^{x_R} - \int_{D^k} \od{f}{x} L_j  \, dx   - \left[ L_j f \right]_{x_L}^{x_R}  = 0 \]
+
+\[ \int_{D^k} \pd{u_h}{t} L_j  \, dx + \int_{D^k} \pd{f}{x} L_j + \left[ L_j (f^* - f) \right]_{x_L}^{x_R} = 0 \]
+
+
+
 
 \section{Exercício 2}
 
@@ -74,11 +82,11 @@ uma vez que armazenamos os pontos (nós) em que a função $u_h$ é avaliada.
 
 \section{Exercício 3}
 
-Quando $\alpha = 1$, a segunda parcela se anula e temos apenas a média aritmética das bordas
+Quando $\alpha = 1$ (fluxo central), a segunda parcela se anula e temos apenas a média aritmética das bordas
 de ambos
 elementos vizinhos.
 
-Quando $\alpha = 0$, o fluxo leva em consideração a direção de propagação por meio 
+Quando $\alpha = 0$ (fluxo upwind), o fluxo leva em consideração a direção de propagação por meio 
 dos termos $\hat{n}^+$ e $\hat{n}^-$.
 
 \section{Exercício 4}
@@ -92,59 +100,78 @@ Os pontos GLL são tabelados, tornando fácil seu uso.
 
 \section{Exercício 5}
 
-O método RK4 é alta ordem, sendo natural seu uso com o DGTD que também é de alta
-ordem. Usar o método de Euler após o obter a forma semi-discreta iria jogar fora 
-todo o ganho de acurácia que obtemos com o DGTD.
+Uma vez obtido a forma semi-discreta com o DGTD:
 
-Na forma semi-discreta, temos a forma 
+\[ \frac{d\mathbf{u}}{dt} = \mathbf{R}(\mathbf{u}) \]
 
-\[  M \od{\mathbf{u}}{t} = a S \mathbf{u} - \mathbf{F} \]
+\noindent usamos o método de
+Runge-Kutta explícito de quarta ordem de baixo armazenamento
+(Low-Storage Runge-Kutta -- LSRK4). Diferentemente do RK4 clássico,
+esse algoritmo necessita armazenar apenas duas variáveis de trabalho,
+reduzindo significativamente o consumo de memória.
 
-\[  \od{\mathbf{u}}{t} = (M)^{-1} a S \mathbf{u} - \mathbf{F} \]
+Definindo $\mathbf{r}$ como o vetor residual e
+$\Delta t$ como o passo de tempo, o algoritmo é dado por
 
-\[  \od{\mathbf{u}}{t} = R(\mathbf{u}) \]
-
-\noindent que pode ser resolvido através de 
-
-\[
-\frac{d\mathbf{u}}{dt} = R(\mathbf{u})
-\]
-
-\[
-\mathbf{k}_1 = R(\mathbf{u}^n)
-\]
-
-\[
-\mathbf{k}_2 = R\left(\mathbf{u}^n + \frac{\Delta t}{2}\mathbf{k}_1\right)
-\]
-
-\[
-\mathbf{k}_3 = R\left(\mathbf{u}^n + \frac{\Delta t}{2}\mathbf{k}_2\right)
-\]
-
-\[
-\mathbf{k}_4 = R\left(\mathbf{u}^n + \Delta t\,\mathbf{k}_3\right)
-\]
-
-\[
-\mathbf{u}^{n+1}
-=
-\mathbf{u}^n
+\begin{align}
+\mathbf{r}^{(i)} &=
+a_i\,\mathbf{r}^{(i-1)}
 +
-\frac{\Delta t}{6}
-\left(
-\mathbf{k}_1
+\Delta t\,\mathbf{R}\!\left(\mathbf{u}^{(i-1)}\right),
+\\
+\mathbf{u}^{(i)}
+&=
+\mathbf{u}^{(i-1)}
 +
-2\mathbf{k}_2
-+
-2\mathbf{k}_3
-+
-\mathbf{k}_4
-\right)
-\]
+b_i\,\mathbf{r}^{(i)},
+\qquad i=1,\ldots,5,
+\end{align}
 
-\textcolor{red}{Mostra pq usa low storage RK4 em vez do RK4 convencional, qual
-a diferença}
+onde $\mathbf{u}^{(0)}=\mathbf{u}^n$,
+$\mathbf{u}^{(5)}=\mathbf{u}^{n+1}$ e
+$\mathbf{r}^{(0)}=\mathbf{0}$.
+
+E os coeficientes $a$ e $b$ são dados por 
+
+\begin{align}
+a &=
+\left[
+0,\,
+-\frac{567301805773}{1357537059087},\,
+-\frac{2404267990393}{2016746695238},\,
+-\frac{3550918686646}{2091501179385},\,
+-\frac{1275806237668}{842570457699}
+\right],
+\\
+b &=
+\left[
+\frac{1432997174477}{9575080441755},\,
+\frac{5161836677717}{13612068292357},\,
+\frac{1720146321549}{2090206949498},\,
+\frac{3134564353537}{4481467310338},\,
+\frac{2277821191437}{14882151754819}
+\right].
+\end{align}
+
+O algoritmo completo pode ser descrito pelo seguinte pseudocódigo:
+
+\begin{verbatim}
+r = 0
+u = u^n
+
+for i = 1,...,5
+    r = a(i)*r + dt*R(u)
+    u = u + b(i)*r
+end
+
+u^(n+1) = u
+\end{verbatim}
+
+Esse esquema preserva a precisão de quarta ordem no tempo,
+apresentando custo computacional semelhante ao RK4 clássico, porém
+com menor demanda de memória. Essa característica o torna
+particularmente adequado para métodos de alta ordem, como o DGTD,
+nos quais o número de graus de liberdade é elevado.
 
 \section{Exercício 6}
 
@@ -417,3 +444,21 @@ indicando um bom funcionamento da condição de contorno.
 	\end{center}
 \end{figure}
 
+\section{Exercício 3}
+
+Todo o código usado nesse exercício encontra-se no Anexo \ref{cap:ex2-3-codigo}.
+
+A Figura \ref{fig:ex2-3-propagacao} mostra a propagação do campo $E_y$ com o pulso gaussiano
+para a direita com condições absorventes SMC e com a barra dielétrica $\epsilon = 3$ em 
+$0 \leq x \leq 0.5$.
+
+\begin{figure}[htbp]
+	\caption{\label{fig:ex2-3-propagacao}Propagação de $E_y$ ao longo do tempo com a barra dielétrica.}
+	\begin{center}
+        \includegraphics[width=\textwidth,trim=1 1 1 1,clip]{ex2-3-propagacao.png}
+	\end{center}
+\end{figure}
+
+Observamos a presença de reflexões em $x = 0$ e $x = 0.5$, conforme esperado, uma vez que nesses
+pontos temos descontinuidades de impedância devido à mudanças de meio, resultando em 
+reflexões no sinal. 
