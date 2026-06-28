@@ -421,7 +421,25 @@ Sabemos de exercícios anteriores que a solução exata para esse problema é da
 
 \[ E_y = \sin (\pi x) \cos (\pi t) \quad , \quad H_z = -\cos (\pi x) \sin (\pi t) \]
 
-\noindent de modo que podemos tomar a norma-$L^2$ para verificar o desempenho do método.
+\noindent de modo que podemos tomar a norma-$L^2$ para verificar o desempenho do método,
+como mostra a Tabela \ref{tab:ex2-1-convergencia}. Conforme esperado, o erro se reduz conforme
+aumentamos o número de elementos $K$ da malha, contudo ainda não na velocidade esperada.
+Como o método de ordem elevada, era esperado que a norma-$L^2$ do erro se reduzisse no mínimo
+por um fator 4 quando aumentamos $K$ por um fator 2.
+
+\begin{table}[h!]
+	\caption{Norma-L2 para diferentes valores de $K$.}
+	\vspace{0.5cm}
+	\centering
+		\begin{tabular}{c|c}
+
+		$K$ & Norma-$L^2$ \\ \hline
+		$16$    & $0.121$    \\ \hline
+		$32$    & $0.063$       \\ \hline
+		$64$    & $0.042$     \\
+		\end{tabular}
+	\label{tab:ex2-1-convergencia}
+\end{table}
 
 \section{Exercício 2}
 
