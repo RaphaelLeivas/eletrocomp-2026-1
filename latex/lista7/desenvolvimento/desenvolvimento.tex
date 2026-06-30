@@ -1,0 +1,45 @@
+\chapter{Lista 8}
+
+\section{Exercício 1, 2 e 3}
+
+Vide documento escaneado PDF ao final do arquivo.
+
+\section{Exercício 4}
+
+Devido a dificuldades em compreender e implementar o método warp and blend do livro texto,
+vamos inicialmente usar o código do Anexo \ref{cap:ex4-a-codigo} para apenas plotar os pontos 
+no triângulo de referência para $N = 3$, $N = 5$ e $N = 8$, obtendo o resultado exibido
+na Figura \ref{fig:ex4-pontos}.
+
+\begin{figure}[htbp]
+	\caption{\label{fig:ex4-pontos}Nós no triângulo de referência para diferentes ordens polinomiais.}
+	\begin{center}
+        \includegraphics[width=\textwidth,trim=1 1 1 1,clip]{ex4-pontos.png}
+	\end{center}
+\end{figure}
+
+Vemos que os nós seguem as regras que vimos em sala de aula:
+
+\begin{itemize}
+    \item Número de vértices: fixo em 3
+    \item Número de nós nas arestas (excluindo os vértices): $3(N-1)$
+    \item Número de nós internos : $\frac{(N-1)(N-2)}{2}$
+\end{itemize}
+
+Agora usamos o código do Anexo \ref{cap:ex4-b-codigo} para calcular o número de condição da matriz de Vandermonde,
+obtendo a Tabela \ref{tab:cond-vandermonde}. Note que não estamos usando o algoritmo do livro, logo os valores
+podem ser diferentes dos valores teóricos esperados.
+
+\begin{table}[h!]
+	\caption{Número de condição da matriz de Vandermonde para diferentes valores de $N$.}
+	\vspace{0.5cm}
+	\centering
+		\begin{tabular}{c|c}
+
+		$N$ & Número de Condição \\ \hline
+		$3$    & $312.4$      \\ \hline
+		$5$    & $39510$    \\ \hline
+		$8$    & $7.06 \cdot 10^7$     \\
+		\end{tabular}
+	\label{tab:cond-vandermonde}
+\end{table}

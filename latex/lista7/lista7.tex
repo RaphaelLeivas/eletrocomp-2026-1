@@ -1,0 +1,278 @@
+%% abtex2-modelo-trabalho-academico.tex, v<VERSION> laurocesar
+%% Copyright 2012-<COPYRIGHT_YEAR> by abnTeX2 group at http://www.abntex.net.br/ 
+
+%% Autor: Raphael Henrique Braga Leivas
+%% Trabalho de Conclusão de curso do curso de Engenharia de Sistemas, UFMG 2024
+
+\documentclass[
+	% -- opções da classe memoir --
+	12pt,				% tamanho da fonte
+	oneside,			% para impressão mudar para twoside para facilitar impressaõ de frente e verso 
+	a4paper,			% tamanho do papel. 
+	chapter=TITLE,
+	sumario=tradicional,
+	% -- opções do pacote babel --
+	english,			% idioma adicional para hifenização
+	brazil				% o último idioma é o principal do documento
+]{abntex2}
+
+% ----------------------------------------------------------
+% IMPORTAÇÃO DE PACOTES
+% ----------------------------------------------------------
+\usepackage{helvet}
+\renewcommand{\familydefault}{\sfdefault}			% Usa a fonte Arial			
+\usepackage[T1]{fontenc}		% Selecao de codigos de fonte.
+\usepackage[utf8]{inputenc}		% Codificacao do documento (conversão automática dos acentos)
+\usepackage{indentfirst}		% Indenta o primeiro parágrafo de cada seção.
+\usepackage{color}				% Controle das cores
+\usepackage{graphicx}			% Inclusão de gráficos
+\usepackage{microtype} 			% para melhorias de justificação
+\usepackage{hyperref}
+\usepackage{times}
+
+\usepackage{amsmath}
+\usepackage{amsthm,amsfonts}
+
+\usepackage{lipsum}				% para geração de dummy text
+\usepackage{import}
+\usepackage{blindtext}
+\usepackage{soul}
+\usepackage{lscape}
+\usepackage{listings}
+\lstset{
+  % --- Portuguese Character Support ---
+  extendedchars=true,
+  literate={á}{{\'a}}1 {é}{{\'e}}1 {í}{{\'i}}1 {ó}{{\'o}}1 {ú}{{\'u}}1
+           {Á}{{\'A}}1 {É}{{\'E}}1 {Í}{{\'I}}1 {Ó}{{\'O}}1 {Ú}{{\'U}}1
+           {à}{{\`a}}1 {è}{{\`e}}1 {ì}{{\`i}}1 {ò}{{\`o}}1 {ù}{{\`u}}1
+           {À}{{\`A}}1 {È}{{\`E}}1 {Ì}{{\`I}}1 {Ò}{{\`O}}1 {Ù}{{\`U}}1
+           {ã}{{\~a}}1 {õ}{{\~o}}1 {Ã}{{\~A}}1 {Õ}{{\~O}}1
+           {â}{{\^a}}1 {ê}{{\^e}}1 {î}{{\^i}}1 {ô}{{\^o}}1 {û}{{\^u}}1
+           {Â}{{\^A}}1 {Ê}{{\^E}}1 {Î}{{\^I}}1 {Ô}{{\^O}}1 {Û}{{\^U}}1
+           {ç}{{\c{c}}}1 {Ç}{{\c{C}}}1
+           {ñ}{{\~n}}1 {Ñ}{{\~N}}1,
+}
+
+
+\graphicspath{ {./images/} }
+
+% ---
+% Pacotes de citações
+% ---
+\usepackage[alf]{abntex2cite}	% Citações padrão ABNT
+
+% ----------------------------------------------------------
+% CONFIGURAÇÕES DO PDF
+% ----------------------------------------------------------
+
+% alterando o aspecto da cor azul
+\definecolor{blue}{RGB}{41,5,195}
+\definecolor{black}{RGB}{0,0,0}
+
+% informações do PDF
+\makeatletter
+\hypersetup{
+     	%pagebackref=true,
+		pdftitle={\@title}, 
+		pdfauthor={\@author},
+    	pdfsubject={\imprimirpreambulo},
+	    pdfcreator={LaTeX with abnTeX2},
+		pdfkeywords={abnt}{latex}{abntex}{abntex2}{trabalho acadêmico}, 
+		colorlinks=true,       		% false: boxed links; true: colored links
+    	linkcolor=black,          	% color of internal links
+    	citecolor=black,        		% color of links to bibliography
+    	filecolor=black,      		% color of file links
+		urlcolor=black,
+		bookmarksdepth=4
+}
+\makeatother
+
+\setlrmarginsandblock{3cm}{2cm}{*}
+\setulmarginsandblock{3cm}{2cm}{*}
+\checkandfixthelayout
+
+% --- 
+
+% ----------------------------------------------------------
+% FIGURAS E TABELAS
+% ----------------------------------------------------------
+
+% ---
+% Posiciona figuras e tabelas no topo da página quando adicionadas sozinhas
+% em um página em branco. Ver https://github.com/abntex/abntex2/issues/170
+\makeatletter
+\setlength{\@fptop}{5pt} % Set distance from top of page to first float
+\makeatother
+% ---
+
+% ---
+% Possibilita criação de Quadros e Lista de quadros.
+% Ver https://github.com/abntex/abntex2/issues/176
+%
+\newcommand{\quadroname}{Quadro}
+\newcommand{\listofquadrosname}{Lista de quadros}
+
+\newfloat[chapter]{quadro}{loq}{\quadroname}
+\newlistof{listofquadros}{loq}{\listofquadrosname}
+\newlistentry{quadro}{loq}{0}
+
+% configurações para atender às regras da ABNT
+\setfloatadjustment{quadro}{\centering}
+\counterwithout{quadro}{chapter}
+\renewcommand{\cftquadroname}{\quadroname\space} 
+\renewcommand*{\cftquadroaftersnum}{\hfill--\hfill}
+
+\setfloatlocations{quadro}{hbtp} % Ver https://github.com/abntex/abntex2/issues/176
+% ---
+
+% ---
+% Possibilita criação de Diagramas e Lista de Diagramas.
+% Ver https://github.com/abntex/abntex2/issues/176
+%
+\newcommand{\diagramaname}{Diagrama}
+\newcommand{\listofdiagramasname}{Lista de diagramas}
+
+\newfloat[chapter]{diagrama}{lod}{\diagramaname}
+\newlistof{listofdiagramas}{lod}{\listofdiagramasname}
+\newlistentry{diagrama}{lod}{0}
+
+% configurações para atender às regras da ABNT
+\setfloatadjustment{diagrama}{\centering}
+\counterwithout{diagrama}{chapter}
+\renewcommand{\cftdiagramaname}{\diagramaname\space} 
+\renewcommand*{\cftdiagramaaftersnum}{\hfill--\hfill}
+
+\setfloatlocations{diagrama}{hbtp} % Ver https://github.com/abntex/abntex2/issues/176
+% ---
+
+% ---
+% Possibilita criação de Circuitos e Lista de Circuitos.
+% Ver https://github.com/abntex/abntex2/issues/176
+%
+\newcommand{\circuitoname}{Circuito}
+\newcommand{\listofcircuitosname}{Lista de circuitos}
+
+\newfloat[chapter]{circuito}{loc}{\circuitoname}
+\newlistof{listofcircuitos}{loc}{\listofcircuitosname}
+\newlistentry{circuito}{loc}{0}
+
+% configurações para atender às regras da ABNT
+\setfloatadjustment{circuito}{\centering}
+\counterwithout{circuito}{chapter}
+\renewcommand{\cftcircuitoname}{\circuitoname\space} 
+\renewcommand*{\cftcircuitoaftersnum}{\hfill--\hfill}
+
+\setfloatlocations{circuito}{hbtp} % Ver https://github.com/abntex/abntex2/issues/176
+% ---
+
+% ----------------------------------------------------------
+% ESPAÇAMENTOS
+% ----------------------------------------------------------
+
+% O tamanho do parágrafo é dado por:
+\setlength{\parindent}{1.25cm}
+
+% % Controle do espaçamento entre um parágrafo e outro:
+\setlength{\parskip}{0.2cm} 
+
+\setlength{\ABNTEXcitacaorecuo}{4cm}
+
+% Espaçamento entre headers e texto abaixo
+\setlength\afterchapskip{0.2cm}
+\setlength\aftersecskip{0.2cm} %espaçamento entre seção e texto
+\setlength\aftersubsecskip{0.2cm} %espaçamento entre subseção e texto
+
+% ----------------------------------------------------------
+% CORREÇÕES DE ESTILO
+% ----------------------------------------------------------
+
+% Estilos das legendos
+\captionnamefont{\ABNTEXfontereduzida}
+\captiontitlefont{\ABNTEXfontereduzida}
+\setlength{\belowcaptionskip}{1pt} % espaçamento depois do título das tabelas/figuras
+\setlength{\abovecaptionskip}{1pt} % espaçamento antes da legenda de tabelas/figuras
+
+% Estilos dos títulos
+
+\renewcommand{\ABNTEXchapterfontsize}{\bfseries\normalsize}
+\renewcommand{\ABNTEXsectionfontsize}{\itshape\normalsize}
+\renewcommand{\ABNTEXsubsectionfontsize}{\normalfont\normalsize}
+\renewcommand{\ABNTEXsubsubsectionfontsize}{\normalfont\normalsize}
+
+\renewcommand{\chaptitlefont}{\normalfont\bfseries}
+\setsecheadstyle{\normalfont\itshape}
+\setsubsecheadstyle{\normalfont}
+\setsubsubsecheadstyle{\normalfont}
+
+\renewcommand{\ABNTEXchapterfont}{\bfseries}
+\renewcommand{\ABNTEXchapterfontsize}{\normalsize}
+\setboolean{ABNTEXupperchapter}{true}
+
+% Estilos nos sumários
+\renewcommand{\cftchapterfont}{\MakeUppercase}
+\setboolean{ABNTEXupperchapter}{true}
+
+\renewcommand{\cftsectionfont}{\normalfont}
+\renewcommand{\cftsubsectionfont}{\normalfont}
+\renewcommand{\cftsubsubsectionfont}{\normalfont}
+
+% ----------------------------------------------------------
+% COMPILA O ÍNDICE
+% ----------------------------------------------------------
+\makeindex
+
+% ----------------------------------------------------------
+% COMANDOS CUSTOMIZADOS
+% ----------------------------------------------------------
+\newcommand{\un}[1]{\;\text{#1}}
+\newcommand{\logo}{\quad \Rightarrow \quad}
+\newcommand{\codeword}[1]{\texttt{\textcolor{black}{#1}}}
+\newcommand{\specialcell}[2][c]{%
+  \begin{tabular}[#1]{@{}c@{}}#2\end{tabular}}
+
+\newcommand{\pd}[2]{\frac{\partial #1}{\partial #2}}
+\newcommand{\pdd}[2]{\frac{\partial^2 #1}{\partial #2^2}}
+\newcommand{\pdm}[3]{\frac{\partial^2 #1}{\partial #2 \partial #3}}
+\newcommand{\od}[2]{\frac{d #1}{d #2}}
+
+% ----------------------------------------------------------
+% INÍCIO DO DOCUMENTO
+% ----------------------------------------------------------
+\begin{document}
+
+%\selectlanguage{english}
+\selectlanguage{brazil}
+
+% Retira espaço extra obsoleto entre as frases.
+\frenchspacing 
+
+% ----------------------------------------------------------
+% ELEMENTOS PRÉ-TEXTUAIS
+% ----------------------------------------------------------
+\import{./elementos-pre-textuais}{capa.tex}
+\import{./elementos-pre-textuais}{sumario.tex}
+
+% % ----------------------------------------------------------
+% % ELEMENTOS TEXTUAIS
+% % ----------------------------------------------------------
+\textual
+
+\pagestyle{simple}
+
+\begin{SingleSpace}
+	
+\import{./desenvolvimento}{desenvolvimento.tex}
+
+\end{SingleSpace}
+
+% % ----------------------------------------------------------
+% % ELEMENTOS PÓS-TEXTUAIS
+% % ----------------------------------------------------------
+\postextual
+
+% \import{./elementos-pos-textuais}{referencias.tex}
+% \import{./elementos-pos-textuais}{glossario.tex}
+% \import{./elementos-pos-textuais}{apendices.tex}
+\import{./elementos-pos-textuais}{anexos.tex}
+
+\end{document}
