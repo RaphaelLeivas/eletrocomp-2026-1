@@ -129,4 +129,42 @@
     plt.show()
     \end{lstlisting}
 
+    \chapter{Código Exercício 6}\label{cap:ex6-codigo}
+    
+    \begin{lstlisting}[language=Python, breaklines=true, basicstyle=\tiny]
+    import numpy as np
+    import matplotlib.pyplot as plt
+
+    # Malha
+    N = 3
+    x = np.linspace(-1.0, 1.0, N)
+    y = np.linspace(-1.0, 1.0, N)
+    dx = x[1] - x[0]
+    dy = y[1] - y[0]
+    X, Y = np.meshgrid(x, y)
+
+    # Gradiente Az
+    Az = X**2 + Y**2
+    dAz_dy, dAz_dx = np.gradient(Az, dy, dx)
+
+    # Campo magnético B = grad(Az) x z_hat
+    Bx = dAz_dy
+    By = -dAz_dx
+
+    # Plot
+    plt.figure(figsize=(6,6))
+    plt.quiver(X, Y, Bx, By, scale_units='xy', scale=4,  angles='xy')
+
+    plt.xlabel("x")
+    plt.ylabel("y")
+    plt.title(r"$\mathbf{B}=\nabla A_z\times\hat{z} \quad$  N = 3")
+    plt.axis("equal")
+    plt.grid(True)
+    plt.ylim(-1.5,1.5)
+    plt.xlim(-1.5,1.5)
+    plt.tight_layout()
+
+    plt.show()
+    \end{lstlisting}
+
 \end{anexosenv}

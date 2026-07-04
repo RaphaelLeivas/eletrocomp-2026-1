@@ -78,3 +78,101 @@ obtendo a Tabela \ref{tab:cond-vandermonde-warp-blend}.
 Verificamos que o número de condição da matriz de Vandermonde para os nós via Warp and Blend 
 são significativamente menores do que para os nós equidistantes para uma mesma ordem polonimial $N$,
 o que torna o método mais estável para o DGTD 2D do que usar os nós equidistantes. 
+
+\section{Exercício 6}
+
+Todo o código usado para este exercício está no Anexo \ref{cap:ex6-codigo}.
+
+\subsection{Solução Analítica}
+
+Primeira coisa é calcular o gradiente de \(A_z\):
+
+\[
+A_z(x,y)=x^2+y^2,
+\]
+
+\[
+\nabla A_z
+=
+\frac{\partial A_z}{\partial x}\hat{\mathbf x}
++
+\frac{\partial A_z}{\partial y}\hat{\mathbf y}
+=
+2x\,\hat{\mathbf x}
++
+2y\,\hat{\mathbf y}.
+\]
+
+Produto vetorial com \(\hat{\mathbf z}\):
+
+\[
+\begin{aligned}
+\mathbf{B}
+&=
+\left(2x\,\hat{\mathbf x}
++
+2y\,\hat{\mathbf y}\right)
+\times
+\hat{\mathbf z} \\
+&=
+2x\left(\hat{\mathbf x}\times\hat{\mathbf z}\right)
++
+2y\left(\hat{\mathbf y}\times\hat{\mathbf z}\right).
+\end{aligned}
+\]
+
+Utilizando as identidades
+
+\[
+\hat{\mathbf x}\times\hat{\mathbf z}
+=
+-\hat{\mathbf y},
+\qquad
+\hat{\mathbf y}\times\hat{\mathbf z}
+=
+\hat{\mathbf x},
+\]
+
+obtém-se
+
+\[
+\begin{aligned}
+\mathbf{B}
+&=
+-2x\,\hat{\mathbf y}
++
+2y\,\hat{\mathbf x} \\
+&=
+2y\,\hat{\mathbf x}
+-
+2x\,\hat{\mathbf y}.
+\end{aligned}
+\]
+
+Portanto,
+
+\[
+\boxed{
+\mathbf{B}(x,y)
+=
+\begin{bmatrix}
+2y\\
+-2x\\
+0
+\end{bmatrix}.
+}
+\]
+
+\subsection{Solução Numérica}
+
+Definimos $N$ como o número de nós da malha. A solução obtida, calculada
+com a função \verb|np.gradient| plotada com a função
+\verb|quiver| para $N =3$ e $N = 4$ está exibida na Figura \ref{fig:ex6-campoB}.
+
+\begin{figure}[htbp]
+	\caption{\label{fig:ex6-campoB}Solução numérica obtida para o campo $B$ para $N = 3$ e $N = 4$.}
+	\begin{center}
+        \includegraphics[width=\textwidth,trim=1 1 1 1,clip]{ex6-campoB.png}
+	\end{center}
+\end{figure}
+ 
