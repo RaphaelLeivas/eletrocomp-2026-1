@@ -6,15 +6,19 @@ Vide documento escaneado PDF ao final do arquivo.
 
 \section{Exercício 4}
 
-Devido a dificuldades em compreender e implementar o método warp and blend do livro texto,
-vamos inicialmente usar o código do Anexo \ref{cap:ex4-a-codigo} para apenas plotar os pontos 
-no triângulo de referência para $N = 3$, $N = 5$ e $N = 8$, obtendo o resultado exibido
-na Figura \ref{fig:ex4-pontos}.
+Todo o código usado para este exercício está no Anexo \ref{cap:ex4-codigo}.
+
+\subsection{Nós equidistantes no triângulo de referência}
+
+Plotando apenas pontos 
+de forma equidistante
+no triângulo de referência para $N = 3$, $N = 5$ e $N = 8$, obtemos o resultado exibido
+na Figura \ref{fig:ex4-pontos-equidist}.
 
 \begin{figure}[htbp]
-	\caption{\label{fig:ex4-pontos}Nós no triângulo de referência para diferentes ordens polinomiais.}
+	\caption{\label{fig:ex4-pontos-equidist}Nós equidistantes no triângulo de referência para diferentes ordens polinomiais.}
 	\begin{center}
-        \includegraphics[width=\textwidth,trim=1 1 1 1,clip]{ex4-pontos.png}
+        \includegraphics[width=\textwidth,trim=1 1 1 1,clip]{ex4-pontos-equidist.png}
 	\end{center}
 \end{figure}
 
@@ -26,12 +30,11 @@ Vemos que os nós seguem as regras que vimos em sala de aula:
     \item Número de nós internos : $\frac{(N-1)(N-2)}{2}$
 \end{itemize}
 
-Agora usamos o código do Anexo \ref{cap:ex4-b-codigo} para calcular o número de condição da matriz de Vandermonde,
-obtendo a Tabela \ref{tab:cond-vandermonde}. Note que não estamos usando o algoritmo do livro, logo os valores
-podem ser diferentes dos valores teóricos esperados.
+Calculando o número de condição da matriz de Vandermonde para os mesmos valores de $N$,
+obtendo a Tabela \ref{tab:cond-vandermonde-equidist}
 
 \begin{table}[h!]
-	\caption{Número de condição da matriz de Vandermonde para diferentes valores de $N$.}
+	\caption{Número de condição da matriz de Vandermonde para diferentes valores de $N$ equidistantes no triângulo de referência.}
 	\vspace{0.5cm}
 	\centering
 		\begin{tabular}{c|c}
@@ -41,5 +44,37 @@ podem ser diferentes dos valores teóricos esperados.
 		$5$    & $39510$    \\ \hline
 		$8$    & $7.06 \cdot 10^7$     \\
 		\end{tabular}
-	\label{tab:cond-vandermonde}
+	\label{tab:cond-vandermonde-equidist}
 \end{table}
+
+\subsection{Nós via Warp and Blend}
+
+Agora plotamos os pontos via Warp and Blend no triângulo de 
+referência para $N = 3$, $N = 5$ e $N = 8$, obtendo o resultado exibido
+na Figura \ref{fig:ex4-pontos-warp-blend}, e com o número de condição da matriz de Vandermonde para os mesmos valores de $N$,
+obtendo a Tabela \ref{tab:cond-vandermonde-warp-blend}.
+
+\begin{figure}[htbp]
+	\caption{\label{fig:ex4-pontos-warp-blend}Nós via Warp and Blend no triângulo de referência para diferentes ordens polinomiais.}
+	\begin{center}
+        \includegraphics[width=\textwidth,trim=1 1 1 1,clip]{ex4-pontos-warp-blend.png}
+	\end{center}
+\end{figure}
+
+\begin{table}[h!]
+	\caption{Número de condição da matriz de Vandermonde para diferentes valores de $N$ via Warp and Blend no triângulo de referência.}
+	\vspace{0.5cm}
+	\centering
+		\begin{tabular}{c|c}
+
+		$N$ & Número de Condição \\ \hline
+		$3$    & $8.21$      \\ \hline
+		$5$    & $38.75$    \\ \hline
+		$8$    & $400$     \\
+		\end{tabular}
+	\label{tab:cond-vandermonde-warp-blend}
+\end{table}
+
+Verificamos que o número de condição da matriz de Vandermonde para os nós via Warp and Blend 
+são significativamente menores do que para os nós equidistantes para uma mesma ordem polonimial $N$,
+o que torna o método mais estável para o DGTD 2D do que usar os nós equidistantes. 

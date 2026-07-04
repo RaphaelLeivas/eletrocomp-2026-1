@@ -2,116 +2,131 @@
 % Inicia os anexos
 % ---
 \begin{anexosenv}
-    \chapter{Código Exercício 4 - Pontos no Triângulo de Referência}\label{cap:ex4-a-codigo}
+    \chapter{Código Exercício 4}\label{cap:ex4-codigo}
     
     \begin{lstlisting}[language=Python, breaklines=true, basicstyle=\tiny]
     import numpy as np
     import matplotlib.pyplot as plt
+    import scipy.special
+    from scipy.special import eval_jacobi
+    from scipy.interpolate import BarycentricInterpolator
 
-
-    def triangle_nodes(N):
-        x = []
-        y = []
+    def equidist_nodes_triangle(N):
+        points = []
 
         for i in range(N + 1):
             for j in range(N + 1 - i):
-                x.append(i / N)
-                y.append(j / N)
 
-        return np.array(x), np.array(y)
+                # Barycentric coordinates
+                l1 = i / N if N > 0 else 0.0
+                l2 = j / N if N > 0 else 0.0
+                l3 = 1.0 - l1 - l2
 
+                # Triangle vertices
+                v1 = np.array([-1.0, -1.0])
+                v2 = np.array([ 1.0, -1.0])
+                v3 = np.array([-1.0,  1.0])
 
-    def plot_triangle_nodes(N, ax=None):
+                # Cartesian coordinates
+                p = l1 * v2 + l2 * v3 + l3 * v1
+                points.append(p)
 
-        if ax is None:
-            fig, ax = plt.subplots(figsize=(6,6))
+        return np.array(points)
 
-        x, y = triangle_nodes(N)
+    def get_gll_nodes(N):
+        internal_nodes, _ = scipy.special.roots_jacobi(N - 1, 1, 1)
+        r = np.concatenate([[-1.0], internal_nodes, [1.0]]) # elemento de referência
+        return r
 
-        ax.scatter(x, y, color='red', s=60)
+    def blend(a, b, c, alpha):
+        num = (4*a*b)**alpha
+        den = num + c**alpha
+        
+        if den == 0: 
+            return 0
+        
+        return num/den
 
-        # Numeração dos nós
-        for k in range(len(x)):
-            ax.text(x[k] + 0.015,
-                    y[k] + 0.015,
-                    str(k),
-                    fontsize=9)
+    def warped_nodes_triangle(N):
+        r_list, s_list = [], []
+        
+        # configura a função warp
+        alpha = 2
+        uniform = np.linspace(-1, 1, N+1)
+        gll_nodes = get_gll_nodes(N)
+        diff_gll_uniform = gll_nodes - uniform
+        warp = BarycentricInterpolator(uniform, diff_gll_uniform)
+        
+        for i in range(N+1):
+            for j in range(N - i + 1):
+                k=N-i-j
+                lambda_1, lambda_2, lambda_3 = i/N, j/N, k/N
+                r_eq = 2*lambda_2 - 1
+                s_eq = 2*lambda_3 - 1
+                
+                zeta_1 = lambda_2 - lambda_1 
+                zeta_2 = lambda_3 - lambda_2 
+                zeta_3 = lambda_1 - lambda_3 
+                w1 = warp(zeta_1)
+                w2 = warp(zeta_2)
+                w3 = warp(zeta_3)
+                
+                b1 = blend(lambda_1, lambda_2, lambda_3, alpha)
+                b2 = blend(lambda_2, lambda_3, lambda_1, alpha)
+                b3 = blend(lambda_3, lambda_1, lambda_2, alpha)
 
-        # Contorno do triângulo
-        tri_x = [0, 1, 0, 0]
-        tri_y = [0, 0, 1, 0]
+                dr = b1 * w1 + b2 * (-w2)
+                ds = b2 * w2 + b3 * (-w3)
+                
+                r_list.append(r_eq + dr)
+                s_list.append(s_eq + ds)
 
-        ax.plot(tri_x, tri_y, 'k', lw=2)
+        return np.array(r_list), np.array(s_list)
 
-        ax.set_aspect('equal')
-        ax.set_xlim(-0.05, 1.05)
-        ax.set_ylim(-0.05, 1.05)
-        ax.set_title(f"N = {N}   ({len(x)} nós)")
-        ax.grid(True)
+    def simplex_2D(i, j, r, s):
+        a = 2.0*(1.0 + r)/(1.0 - s) - 1.0
+        b=s
+        
+        # singularidade em s=1 (vértice superior)
+        mask = np.abs(s - 1.0) < 1e-12
+        a[mask] = -1.0
+        h1 = eval_jacobi(i, 0, 0, a)
+        h2 = eval_jacobi(j, 2*i+1, 0, b)
+        
+        return np.sqrt(2.0) * h1 * h2 * (1.0 - b)**i
 
+    def vandermonde2D(N, r, s):
+        Np = (N+1)*(N+2)//2
+        V = np.zeros((len(r), Np))
+        col = 0
+        for i in range(N+1):
+            for j in range(N - i + 1):
+                V[:, col] = simplex_2D(i, j, r, s)
+                col += 1
+        return V
 
-    fig, axs = plt.subplots(1, 3, figsize=(12,6))
+    plt.rcParams.update({
+        "font.size": 14
+    })
 
-    plot_triangle_nodes(3, axs[0])
-    plot_triangle_nodes(5, axs[1])
-    plot_triangle_nodes(8, axs[2])
+    fig, axes = plt.subplots(1, 3, figsize=(16, 6))
+    N_list = [3,5,8]
+
+    for i, ax in enumerate(axes.flat):
+        # r, s = warped_nodes_triangle(N_list[i])
+        # ax.scatter(r, s, c='black')
+        
+        points = equidist_nodes_triangle(N_list[i])
+        ax.scatter(points[:,0], points[:,1], c='black')
+        
+        tri = np.array([[-1,-1], [1,-1], [-1,1], [-1,-1]])
+        ax.plot(tri[:,0], tri[:,1], '--', lw=2, color='gray' )
+        ax.set_ylabel(r'$s$')
+        ax.set_xlabel(r'$r$')
+        ax.set_title(f'Nós Equidistantes para N={N_list[i]}')
 
     plt.tight_layout()
     plt.show()
     \end{lstlisting}
-
-    \chapter{Código Exercício 4 - Número de Condição da Matriz de Vandermonde}\label{cap:ex4-b-codigo}
-    
-    \begin{lstlisting}[language=Python, breaklines=true, basicstyle=\tiny]
-    import numpy as np
-
-    def triangle_nodes(N):
-        pts = []
-
-        for i in range(N + 1):
-            for j in range(N + 1 - i):
-                x = i / N
-                y = j / N
-                pts.append((x, y))
-
-        return np.array(pts)
-
-
-    def monomial_exponents(N):
-        exp = []
-
-        for d in range(N + 1):
-            for i in range(d + 1):
-                j = d - i
-                exp.append((i, j))
-
-        return exp
-
-
-    def vandermonde(N):
-
-        pts = triangle_nodes(N)
-        exp = monomial_exponents(N)
-        V = np.zeros((len(pts), len(exp)))
-
-        for r, (x, y) in enumerate(pts):
-            for c, (i, j) in enumerate(exp):
-                V[r, c] = x**i * y**j
-
-        return V
-
-
-    for N in [3, 5, 8]:
-
-        V = vandermonde(N)
-
-        cond = np.linalg.cond(V)
-
-        print(f"N = {N}")
-        print(f"Número de nós = {V.shape[0]}")
-        print(f"Cond(V) = {cond:.3e}")
-        print()
-    \end{lstlisting}
-
 
 \end{anexosenv}

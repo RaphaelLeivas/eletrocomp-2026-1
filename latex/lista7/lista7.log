@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2026.4.1)  29 JUN 2026 21:29
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2026.4.1)  4 JUL 2026 17:11
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1033,13 +1033,14 @@ File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
 (./desenvolvimento/desenvolvimento.tex
 LaTeX Font Info:    Font shape `T1/phv/m/it' in size <12> not available
 (Font)              Font shape `T1/phv/m/sl' tried instead on input line 3.
-<./images/ex4-pontos.png, id=33, 857.8449pt x 294.1389pt>
-File: ./images/ex4-pontos.png Graphic file (type png)
-<use ./images/ex4-pontos.png>
-Package pdftex.def Info: ./images/ex4-pontos.png  used on input line 17.
-(pdftex.def)             Requested size: 455.0pt x 155.31032pt.
+<./images/ex4-pontos-equidist.png, id=33, 1140.4206pt x 417.7206pt>
+File: ./images/ex4-pontos-equidist.png Graphic file (type png)
+<use ./images/ex4-pontos-equidist.png>
+Package pdftex.def Info: ./images/ex4-pontos-equidist.png  used on input line 2
+1.
+(pdftex.def)             Requested size: 455.0pt x 166.14908pt.
 LaTeX Font Info:    Trying to load font information for TS1+phv on input line 2
-4.
+8.
 
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ts1phv.fd
 File: ts1phv.fd 2020/03/25 scalable font definitions for TS1/phv.
@@ -1048,39 +1049,44 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `phv' (encoding: TS1).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
-)
-(./elementos-pos-textuais/anexos.tex [3
+ [3
 
 
- <./images/ex4-pontos.png>]
+ <./images/ex4-pontos-equidist.png>]
+<./images/ex4-pontos-warp-blend.png, id=55, 1140.4206pt x 417.7206pt>
+File: ./images/ex4-pontos-warp-blend.png Graphic file (type png)
+<use ./images/ex4-pontos-warp-blend.png>
+Package pdftex.def Info: ./images/ex4-pontos-warp-blend.png  used on input line
+ 60.
+(pdftex.def)             Requested size: 455.0pt x 166.14908pt.
+) (./elementos-pos-textuais/anexos.tex [4 <./images/ex4-pontos-warp-blend.png>]
+
 (/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2023/02/27 1.9 listings language file
 )
 LaTeX Font Info:    Font shape `T1/phv/m/it' in size <8> not available
-(Font)              Font shape `T1/phv/m/sl' tried instead on input line 33.
- [4
+(Font)              Font shape `T1/phv/m/sl' tried instead on input line 20.
+ [5
 
-]) [5
-
-]
+] [6])
+[7]
 \tf@toc=\write5
 \openout5 = `lista7.toc'.
 
-
-(./lista7.aux)
+ (./lista7.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2020/03/25>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 21018 strings out of 476162
- 331965 string characters out of 5794815
- 2117975 words of memory out of 5000000
- 42504 multiletter control sequences out of 15000+600000
- 588411 words of font info for 118 fonts, out of 8000000 for 9000
+ 21116 strings out of 476162
+ 333467 string characters out of 5794815
+ 2229975 words of memory out of 5000000
+ 42560 multiletter control sequences out of 15000+600000
+ 589065 words of font info for 128 fonts, out of 8000000 for 9000
  16 hyphenation exceptions out of 8191
- 99i,12n,107p,1003b,1492s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 99i,13n,107p,1003b,2301s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></us
 r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/shar
 e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texli
@@ -1090,10 +1096,10 @@ onts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/t
 ype1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/ur
 w/helvetic/uhvb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/u
 hvr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvro8a.pfb>
-Output written on lista7.pdf (5 pages, 147589 bytes).
+Output written on lista7.pdf (7 pages, 212718 bytes).
 PDF statistics:
- 256 PDF objects out of 1000 (max. 8388607)
- 221 compressed objects within 3 object streams
- 119 named destinations out of 1000 (max. 500000)
- 35905 words of extra memory for PDF output out of 42996 (max. 10000000)
+ 300 PDF objects out of 1000 (max. 8388607)
+ 260 compressed objects within 3 object streams
+ 144 named destinations out of 1000 (max. 500000)
+ 35924 words of extra memory for PDF output out of 42996 (max. 10000000)
 
